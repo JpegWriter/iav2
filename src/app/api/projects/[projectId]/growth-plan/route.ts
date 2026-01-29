@@ -30,7 +30,7 @@ export async function GET(
     }
 
     // If we have a growth plan, enrich tasks with image pack info
-    if (growthPlan?.plan_data?.months) {
+    if (growthPlan?.months) {
       // Fetch all vision evidence packs for this project
       const { data: packs, error: packsError } = await adminClient
         .from('vision_evidence_packs')
@@ -68,7 +68,7 @@ export async function GET(
       console.log('[GrowthPlan] Task image map:', Object.keys(taskImageMap).length, 'tasks with images');
 
       // Enrich tasks with image data
-      for (const month of growthPlan.plan_data.months) {
+      for (const month of growthPlan.months) {
         if (month.tasks) {
           for (const task of month.tasks as GrowthPlanTask[]) {
             const imageInfo = taskImageMap[task.id];

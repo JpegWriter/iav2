@@ -39,14 +39,27 @@ export type {
   RedditPost,
   SelectedImage,
   VisionContext,
+  // New unified types
+  UnifiedContextPack,
+  UnifiedMasterProfile,
+  UnifiedWriterBrief,
+  UnifiedWriterJobConfig,
+  UnifiedProofAtom,
+  UnifiedPageSummary,
+  UnifiedInternalLinkTarget,
+  UnifiedImagePlan,
+  UnifiedRewriteContext,
 } from './types';
 
 // Orchestrator
 export {
   runWriterOrchestrator,
+  runUnifiedWriterOrchestrator,
   buildContextPack,
   generateWriterPlan,
   createDefaultPlan,
+  adaptUnifiedContextPack,
+  adaptUnifiedToLegacyJob,
   type OrchestratorOptions,
   type OrchestratorResult,
 } from './orchestrator';
@@ -78,9 +91,12 @@ export {
 export {
   validateWordPressOutput,
   validateWriterTaskInputs,
+  validateRewriteContext,
+  validateComplianceRules,
   generateContentHash,
   type ValidationResult,
   type InputValidationResult,
+  type RewriteValidationResult,
 } from './validators/wpValidator';
 
 // Prompt builders

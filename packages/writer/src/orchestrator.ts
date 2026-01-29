@@ -3,6 +3,7 @@
 // ============================================================================
 // Main entry point that coordinates the entire writing pipeline.
 // Takes a WritingJob and produces a complete WritingOutput.
+// Supports both legacy WritingJob format and new UnifiedWriterJobConfig.
 // ============================================================================
 
 import type {
@@ -22,6 +23,7 @@ import type {
   GMBPost,
   RedditPost,
   BrandToneProfile,
+  UnifiedWriterJobConfig,
 } from './types';
 
 import {
@@ -30,12 +32,9 @@ import {
 } from './tones/profiles';
 
 import {
-  selectHeroImage,
-} from './media/mediaPlanner';
-
-import {
   validateWordPressOutput,
   validateWriterTaskInputs,
+  validateRewriteContext,
   generateContentHash,
 } from './validators/wpValidator';
 
@@ -45,6 +44,10 @@ import {
   buildGmbPrompt,
   buildRedditPrompt,
 } from './prompts';
+
+import {
+  adaptUnifiedToLegacyJob,
+} from './context/adapter';
 
 // ============================================================================
 // ORCHESTRATOR OPTIONS
@@ -729,7 +732,7 @@ function slugify(text: string): string {
     .replace(/^-|-$/g, '');
 }
 
-function buildArticleUrl(job: WritingJob, slug: string): string {
+function buildArticleUrl(_job: WritingJob, slug: string): string {
   return `https://example.com/${slug}`;
 }
 
@@ -754,7 +757,63 @@ async function retryLlmCall(
 }
 
 // ============================================================================
+// UNIFIED ORCHESTRATOR (NEW FORMAT)
+// ============================================================================
+// This version accepts the new UnifiedWriterJobConfig format from the API
+
+export async function runUnifiedWriterOrchestrator(
+  jobConfig: UnifiedWriterJobConfig,
+  options: OrchestratorOptions
+): Promise<OrchestratorResult> {
+  const log = options.verbose ? console.log : () => {};
+  
+  log('[Writer] Running unified orchestrator...');
+  log(`[Writer] Master Profile v${jobConfig.masterProfileVersion}`);
+  log(`[Writer] Context Pack: ${jobConfig.taskContextPackId}`);
+  log(`[Writer] Mode: ${jobConfig.taskContextPackSnapshot.mode}`);
+
+  // Validate rewrite context if mode is 'update'
+  const contextPack = jobConfig.taskContextPackSnapshot;
+  if (contextPack.mode === 'update') {
+    const rewriteValidation = validateRewriteContext(contextPack.rewriteContext);
+    if (!rewriteValidation.valid && !options.skipValidation) {
+      return {
+        success: false,
+        errors: rewriteValidation.errors,
+        timing: {
+          total: 0,
+          contextBuild: 0,
+          planGeneration: 0,
+          articleGeneration: 0,
+          socialGeneration: 0,
+          validation: 0,
+        },
+      };
+    }
+  }
+
+  // Convert to legacy job format for backward compatibility
+  const legacyJob = adaptUnifiedToLegacyJob(
+    contextPack,
+    jobConfig.toneProfileId,
+    jobConfig.targets
+  );
+
+  // Merge tone overrides
+  const mergedOptions: OrchestratorOptions = {
+    ...options,
+    toneOverride: jobConfig.toneOverrides
+      ? { ...options.toneOverride, ...jobConfig.toneOverrides }
+      : options.toneOverride,
+  };
+
+  // Run the standard orchestrator
+  return runWriterOrchestrator(legacyJob, mergedOptions);
+}
+
+// ============================================================================
 // EXPORTS
 // ============================================================================
 
 export { buildContextPack, generateWriterPlan, createDefaultPlan };
+export { adaptUnifiedContextPack, adaptUnifiedToLegacyJob } from './context/adapter';

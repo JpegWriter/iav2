@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/server';
+import { 
+  buildMasterProfile, 
+  buildTaskContextPack,
+  type TaskInput,
+  type WriterJobConfig,
+} from '@/lib/context';
 
 // ============================================================================
 // WRITER API ROUTES
@@ -20,10 +26,14 @@ export async function POST(
     // Validate required fields
     const {
       taskId,
+      taskData: inlineTaskData, // Allow passing task data directly
       pageId,
+      mode = 'create', // 'create' or 'update'
+      originalUrl = null, // For rewrite mode
       publishingTargets = { wordpress: true, linkedin: false, gmb: false, reddit: false },
       toneProfileId = 'friendly-expert',
       toneOverrides = null,
+      forceRefreshMasterProfile = false,
     } = body;
 
     // Fetch project with context
@@ -40,76 +50,138 @@ export async function POST(
       );
     }
 
-    // Fetch user context
-    const { data: userContext } = await adminClient
-      .from('user_context')
-      .select('*')
-      .eq('project_id', projectId)
-      .single();
-
-    // Fetch task if provided
-    let task = null;
+    // Fetch task - first try the tasks table, then growth plan
+    let task: any = null;
     if (taskId) {
+      // Try tasks table first
       const { data: taskData } = await adminClient
         .from('tasks')
         .select('*, briefs(*)')
         .eq('id', taskId)
         .single();
-      task = taskData;
+      
+      if (taskData) {
+        task = taskData;
+      } else {
+        // Task not in tasks table - look in growth plan
+        const { data: growthPlan } = await adminClient
+          .from('growth_plans')
+          .select('months')
+          .eq('project_id', projectId)
+          .single();
+        
+        if (growthPlan?.months) {
+          // Find the task in the growth plan months
+          for (const month of growthPlan.months as any[]) {
+            const foundTask = month.tasks?.find((t: any) => t.id === taskId);
+            if (foundTask) {
+              task = foundTask;
+              break;
+            }
+          }
+        }
+      }
+    }
+    
+    // If still no task but inline data provided, use that
+    if (!task && inlineTaskData) {
+      task = inlineTaskData;
     }
 
-    // Fetch page if provided
-    let page = null;
-    if (pageId) {
-      const { data: pageData } = await adminClient
-        .from('pages')
-        .select('*')
-        .eq('id', pageId)
-        .single();
-      page = pageData;
+    if (!task) {
+      return NextResponse.json(
+        { error: 'Task not found. Provide taskId or taskData.' },
+        { status: 400 }
+      );
     }
 
-    // Fetch beads for proof context
-    const { data: beads } = await adminClient
-      .from('beads')
-      .select('*')
-      .eq('project_id', projectId)
-      .order('priority', { ascending: false });
+    // =========================================================================
+    // BUILD MASTER PROFILE
+    // =========================================================================
+    console.log('[Writer] Building master profile...');
+    const masterProfile = await buildMasterProfile(projectId);
+    console.log(`[Writer] Master profile v${masterProfile.version} ready`);
 
-    // Fetch reviews
-    const { data: reviews } = await adminClient
-      .from('reviews')
-      .select('*')
-      .eq('project_id', projectId)
-      .order('rating', { ascending: false })
-      .limit(10);
+    // =========================================================================
+    // BUILD TASK CONTEXT PACK
+    // =========================================================================
+    console.log('[Writer] Building task context pack...');
+    
+    // Convert task to TaskInput format
+    const taskInput: TaskInput = {
+      id: taskId || task.id || crypto.randomUUID(),
+      slug: task.slug || task.title?.toLowerCase().replace(/\s+/g, '-') || 'untitled',
+      title: task.title,
+      role: task.role || 'support',
+      intent: task.intent,
+      primaryService: task.primaryService || task.primary_service || masterProfile.business.primaryService,
+      location: task.location || task.primaryLocation || masterProfile.business.locations[0],
+      targetAudience: task.targetAudience || task.target_audience,
+      targetKeyword: task.targetKeyword || task.target_keyword,
+      secondaryKeywords: task.secondaryKeywords || [],
+      estimatedWords: task.estimatedWords || task.estimated_words || 1500,
+      toneProfileId: toneProfileId,
+      ctaType: task.ctaType || task.cta_type,
+      ctaTarget: task.ctaTarget || task.cta_target || '/contact',
+      imagePackId: task.imagePackId || task.image_pack_id,
+      mode: mode as 'create' | 'update',
+      originalUrl: originalUrl || task.originalUrl || task.original_url,
+      requiredProofElements: task.requiredProofElements || [],
+      requiredEEATSignals: task.requiredEEATSignals || [],
+    };
 
-    // Fetch vision evidence
-    const { data: visionPacks } = await adminClient
-      .from('vision_evidence_packs')
-      .select('*, vision_evidence_images(*)')
-      .eq('project_id', projectId)
-      .order('created_at', { ascending: false })
-      .limit(1);
-
-    // Build the job config
-    const jobConfig = buildJobConfig({
-      project,
-      userContext,
-      task,
-      page,
-      beads: beads || [],
-      reviews: reviews || [],
-      visionPacks: visionPacks || [],
-      publishingTargets,
+    const contextPack = await buildTaskContextPack({
+      projectId,
+      task: taskInput,
+      forceRefreshMasterProfile,
     });
+    console.log(`[Writer] Context pack ${contextPack.id} ready (mode: ${contextPack.mode})`);
+
+    // =========================================================================
+    // VALIDATE REWRITE MODE
+    // =========================================================================
+    if (contextPack.mode === 'update') {
+      if (!contextPack.rewriteContext?.originalUrl) {
+        return NextResponse.json(
+          { error: 'Update mode requires originalUrl' },
+          { status: 400 }
+        );
+      }
+      if ((contextPack.rewriteContext?.originalWordCount || 0) < 200) {
+        console.warn('[Writer] Warning: Original content is very short (<200 words)');
+      }
+    }
+
+    // =========================================================================
+    // BUILD JOB CONFIG (NEW FORMAT)
+    // =========================================================================
+    const jobConfig: WriterJobConfig = {
+      task: contextPack.writerBrief,
+      masterProfileId: masterProfile.id,
+      masterProfileVersion: masterProfile.version,
+      masterProfileSnapshot: masterProfile,
+      taskContextPackId: contextPack.id,
+      taskContextPackSnapshot: contextPack,
+      toneProfileId,
+      toneOverrides: toneOverrides || undefined,
+      targets: {
+        wordpress: publishingTargets.wordpress ?? true,
+        linkedin: publishingTargets.linkedin ?? false,
+        gmb: publishingTargets.gmb ?? false,
+        reddit: publishingTargets.reddit ?? false,
+      },
+      options: {
+        verbose: true,
+        maxRetries: 2,
+      },
+    };
 
     // Create the writer job
     const { data: writerJob, error: jobError } = await adminClient
       .from('writer_jobs')
       .insert({
         project_id: projectId,
-        task_id: taskId || null,
+        task_id: taskInput.id || null,
         page_id: pageId || null,
         job_config: jobConfig,
         target_wordpress: publishingTargets.wordpress ?? true,
@@ -119,6 +191,9 @@ export async function POST(
         tone_profile_id: toneProfileId,
         tone_overrides: toneOverrides,
         status: 'pending',
+        // NEW: Link to context pack and master profile
+        context_pack_id: contextPack.id,
+        master_profile_id: masterProfile.id,
       })
       .select()
       .single();
@@ -131,12 +206,47 @@ export async function POST(
       );
     }
 
+    // Update the task status in the growth plan to 'briefed'
+    if (taskInput.id) {
+      const { data: growthPlan } = await adminClient
+        .from('growth_plans')
+        .select('id, months')
+        .eq('project_id', projectId)
+        .single();
+      
+      if (growthPlan?.months) {
+        let updated = false;
+        const updatedMonths = (growthPlan.months as any[]).map(month => ({
+          ...month,
+          tasks: month.tasks?.map((t: any) => {
+            if (t.id === taskInput.id) {
+              updated = true;
+              return { ...t, status: 'briefed' };
+            }
+            return t;
+          }),
+        }));
+        
+        if (updated) {
+          await adminClient
+            .from('growth_plans')
+            .update({ months: updatedMonths })
+            .eq('id', growthPlan.id);
+        }
+      }
+    }
+
     // Queue the job for processing (in production, this would go to a job queue)
     // For now, we'll just return the created job
     // The actual processing would be handled by a separate worker
 
     return NextResponse.json({
-      data: writerJob,
+      data: {
+        ...writerJob,
+        masterProfileVersion: masterProfile.version,
+        contextPackId: contextPack.id,
+        mode: contextPack.mode,
+      },
       message: 'Writer job created and queued for processing',
     });
   } catch (error) {
@@ -198,257 +308,8 @@ export async function GET(
 }
 
 // ============================================================================
-// HELPER FUNCTIONS
+// Note: Legacy helper functions have been removed.
+// All context building is now handled by:
+// - buildMasterProfile() in @/lib/context
+// - buildTaskContextPack() in @/lib/context
 // ============================================================================
-
-interface BuildJobConfigParams {
-  project: any;
-  userContext: any;
-  task: any;
-  page: any;
-  beads: any[];
-  reviews: any[];
-  visionPacks: any[];
-  publishingTargets: {
-    wordpress?: boolean;
-    linkedin?: boolean;
-    gmb?: boolean;
-    reddit?: boolean;
-  };
-}
-
-function buildJobConfig(params: BuildJobConfigParams) {
-  const {
-    project,
-    userContext,
-    task,
-    page,
-    beads,
-    reviews,
-    visionPacks,
-    publishingTargets,
-  } = params;
-
-  // Build task configuration
-  const taskConfig = buildTaskConfig(task, page);
-
-  // Build user context
-  const userContextConfig = buildUserContext(userContext);
-
-  // Build site context
-  const siteContextConfig = buildSiteContext(project);
-
-  // Build proof context
-  const proofContextConfig = buildProofContext(beads || [], reviews || []);
-
-  // Build vision context
-  const visionContextConfig = buildVisionContext(visionPacks || []);
-
-  return {
-    task: taskConfig,
-    userContext: userContextConfig,
-    siteContext: siteContextConfig,
-    proofContext: proofContextConfig,
-    visionContext: visionContextConfig,
-    publishingTargets,
-  };
-}
-
-function buildTaskConfig(task: any, page: any) {
-  // Determine page role
-  const role = page?.role || task?.page?.role || 'support';
-  
-  // Determine primary service from task or page
-  const primaryService = 
-    task?.briefs?.[0]?.human_brief_md?.match(/Primary Service:\s*(.+)/)?.[1] ||
-    page?.title ||
-    'General Service';
-
-  // Build internal links from page links
-  const upLinks: any[] = [];
-  const downLinks: any[] = [];
-  const siblingLinks: any[] = [];
-
-  // Build WordPress constraints from defaults
-  const wordpress = {
-    maxBlocks: 60,
-    maxHtmlBytes: 50000,
-    excerptLength: 155,
-    targetWordCount: 1200,
-    maxTableRows: 8,
-    maxH2Count: 10,
-  };
-
-  // Determine required proof elements based on page role
-  const requiredProofElements: string[] = [];
-  const requiredEEATSignals: string[] = [];
-
-  if (role === 'money' || role === 'trust') {
-    requiredProofElements.push('testimonial', 'credential');
-    requiredEEATSignals.push('expertise', 'trustworthiness');
-  }
-
-  // Build media requirements
-  const mediaRequirements = {
-    heroRequired: true,
-    inlineImagesMin: 2,
-    inlineImagesMax: 5,
-    preferredAspectRatio: '16:9',
-  };
-
-  return {
-    role,
-    intent: determineIntent(role, task),
-    primaryService,
-    supportsPage: null, // Would be filled for support pages
-    supportType: null,
-    internalLinks: {
-      upLinks,
-      downLinks,
-      siblingLinks,
-    },
-    mediaRequirements,
-    wordpress,
-    requiredProofElements,
-    requiredEEATSignals,
-  };
-}
-
-function determineIntent(role: string, task: any): string {
-  switch (role) {
-    case 'money':
-      return 'transactional';
-    case 'trust':
-      return 'trust-building';
-    case 'authority':
-      return 'informational';
-    case 'support':
-    default:
-      return 'informational';
-  }
-}
-
-function buildUserContext(userContext: any) {
-  if (!userContext) {
-    return null;
-  }
-
-  const business = userContext.business || {};
-  const audience = userContext.audience || {};
-  const offers = userContext.offers || {};
-  const brandVoice = userContext.brand_voice || {};
-
-  return {
-    businessName: business.name,
-    industry: business.industry,
-    location: business.location?.fullAddress || business.location?.city,
-    services: offers.products || offers.services || [],
-    targetAudience: audience.targetAudience || [],
-    uniqueValueProps: business.uniqueValueProps || [],
-    yearsInBusiness: business.yearsInBusiness,
-    certifications: business.certifications || [],
-    tonePreference: brandVoice.toneProfile || 'friendly-expert',
-  };
-}
-
-function buildSiteContext(project: any) {
-  return {
-    domain: extractDomain(project.root_url),
-    primaryService: project.settings?.primaryService || null,
-    serviceAreas: project.settings?.serviceAreas || [],
-    existingPages: [], // Would be populated from pages table
-    landmarks: project.settings?.landmarks || [],
-  };
-}
-
-function extractDomain(url: string): string {
-  try {
-    return new URL(url).hostname;
-  } catch {
-    return url;
-  }
-}
-
-function buildProofContext(beads: any[], reviews: any[]) {
-  const proofContext: any = {
-    reviews: [],
-    caseStudies: [],
-    credentials: [],
-    stats: [],
-    eeatSignals: [],
-  };
-
-  // Map reviews
-  proofContext.reviews = (reviews || []).map((r: any) => ({
-    text: r.text,
-    author: r.author,
-    rating: r.rating,
-    source: r.source,
-    date: r.date,
-  }));
-
-  // Map beads to appropriate categories
-  for (const bead of beads || []) {
-    switch (bead.type) {
-      case 'proof':
-        proofContext.stats.push({
-          label: bead.label,
-          value: bead.value,
-        });
-        break;
-      case 'authority':
-        proofContext.credentials.push({
-          name: bead.label,
-          issuer: null,
-          year: null,
-        });
-        proofContext.eeatSignals.push({
-          type: 'expertise',
-          description: `${bead.label}: ${bead.value}`,
-          source: bead.source?.ref || 'bead',
-        });
-        break;
-      case 'differentiator':
-        proofContext.eeatSignals.push({
-          type: 'trustworthiness',
-          description: `${bead.label}: ${bead.value}`,
-          source: 'bead',
-        });
-        break;
-      case 'local':
-        if (bead.local_signals) {
-          proofContext.eeatSignals.push({
-            type: 'experience',
-            description: bead.value,
-            source: 'local-signal',
-          });
-        }
-        break;
-    }
-  }
-
-  return proofContext;
-}
-
-function buildVisionContext(visionPacks: any[]) {
-  if (!visionPacks || visionPacks.length === 0) {
-    return [];
-  }
-
-  const latestPack = visionPacks[0];
-  const images = latestPack.vision_evidence_images || [];
-
-  return images.map((img: any) => {
-    const evidence = img.evidence || {};
-    return {
-      assetRef: img.id,
-      description: evidence.description || '',
-      subjects: evidence.subjects || [],
-      mood: evidence.mood || '',
-      technicalQuality: evidence.technical_quality || 'good',
-      suggestedKeywords: evidence.keywords || [],
-      recommendedUse: evidence.recommended_use || 'general',
-      imageUrl: img.image_url,
-    };
-  });
-}

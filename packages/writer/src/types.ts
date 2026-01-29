@@ -536,6 +536,237 @@ export interface ContextPack {
 }
 
 // ============================================================================
+// UNIFIED CONTEXT PACK (NEW FORMAT - from @/lib/context)
+// ============================================================================
+// This is the new format that includes master profile + task-specific context
+
+export interface UnifiedContextPack {
+  // Identifiers
+  id: string;
+  projectId: string;
+  taskId: string;
+  contextHash: string;
+  generatedAt: string;
+
+  // Mode
+  mode: 'create' | 'update';
+
+  // Master Profile Reference
+  masterProfileId: string;
+  masterProfileVersion: number;
+  masterProfile: UnifiedMasterProfile;
+
+  // Task Brief
+  writerBrief: UnifiedWriterBrief;
+
+  // Internal Linking Plan
+  internalLinking: {
+    upLinks: UnifiedInternalLinkTarget[];
+    downLinks: UnifiedInternalLinkTarget[];
+    sideLinks: UnifiedInternalLinkTarget[];
+    requiredAnchors: string[];
+  };
+
+  // Proof Requirements
+  proofRequirements: {
+    requiredProofElements: string[];
+    requiredEEATSignals: string[];
+    selectedProofAtoms: UnifiedProofAtom[];
+  };
+
+  // Vision/Image Context
+  visionContext?: {
+    packId: string;
+    packNarrative: string;
+    heroImage?: UnifiedImagePlan;
+    inlineImages: UnifiedImagePlan[];
+    crossImageThemes: string[];
+  };
+
+  // Rewrite Context (mode = 'update' only)
+  rewriteContext?: UnifiedRewriteContext;
+}
+
+export interface UnifiedMasterProfile {
+  id: string;
+  projectId: string;
+  version: number;
+  profileHash: string;
+  generatedAt: string;
+
+  business: {
+    name: string;
+    niche: string;
+    yearsInBusiness?: number;
+    locations: string[];
+    primaryService: string;
+    allServices: string[];
+    usps: string[];
+    websiteUrl: string;
+  };
+
+  audience: {
+    primary: string;
+    secondary?: string[];
+    painPoints: string[];
+    objections: string[];
+    buyingTriggers: string[];
+  };
+
+  brandVoice: {
+    toneProfileId: string;
+    toneOverrides?: Partial<BrandToneProfile>;
+    tabooWords: string[];
+    complianceNotes: string[];
+    mustSay: string[];
+    mustNotSay: string[];
+  };
+
+  proofAtoms: UnifiedProofAtom[];
+
+  reviews: {
+    totalCount: number;
+    averageRating: number;
+    themes: Array<{
+      theme: string;
+      count: number;
+      sentiment: 'positive' | 'neutral' | 'negative';
+      recommendedUses: string[];
+    }>;
+    topSnippets: Array<{
+      text: string;
+      author?: string;
+      rating: number;
+      source: string;
+      hasConsent: boolean;
+    }>;
+  };
+
+  siteMap: {
+    totalPages: number;
+    moneyPages: UnifiedPageSummary[];
+    trustPages: UnifiedPageSummary[];
+    supportPages: UnifiedPageSummary[];
+    authorityPages: UnifiedPageSummary[];
+    orphanedPages: number;
+    internalLinkingHealth: 'poor' | 'fair' | 'good' | 'excellent';
+  };
+
+  localSignals?: {
+    gbpConnected: boolean;
+    napConsistent: boolean;
+    serviceAreas: string[];
+    businessHours?: string;
+    primaryPhone?: string;
+    primaryAddress?: string;
+  };
+}
+
+export interface UnifiedProofAtom {
+  id: string;
+  type: 'proof' | 'authority' | 'process' | 'differentiator' | 'offer' | 'local';
+  label: string;
+  value: string;
+  priority: number;
+  channels: string[];
+  claimsPolicy: {
+    mustBeVerifiable: boolean;
+    allowedParaphrases: string[];
+    forbiddenPhrases: string[];
+  };
+}
+
+export interface UnifiedPageSummary {
+  url: string;
+  title: string;
+  role: string;
+  priorityScore: number;
+  priorityRank: number;
+  internalLinksIn: number;
+  internalLinksOut: number;
+}
+
+export interface UnifiedWriterBrief {
+  slug: string;
+  role: PageRole;
+  intent: PageIntent;
+  primaryService: string;
+  location?: string;
+  targetAudience: string;
+  targetKeyword: string;
+  secondaryKeywords: string[];
+  estimatedWords: number;
+  toneProfileId: string;
+  ctaType: string;
+  ctaTarget: string;
+}
+
+export interface UnifiedInternalLinkTarget {
+  url: string;
+  title: string;
+  role: string;
+  priorityScore: number;
+  anchorSuggestion?: string;
+  required: boolean;
+  context: string;
+}
+
+export interface UnifiedImagePlan {
+  imageId: string;
+  imageUrl: string;
+  placement: 'hero' | 'section' | 'inline';
+  sectionHint?: string;
+  alt: string;
+  caption?: string;
+  title: string;
+  suggestedFilename: string;
+  technicalScore: number;
+  emotionalScore: number;
+}
+
+export interface UnifiedRewriteContext {
+  originalUrl: string;
+  originalTitle: string;
+  originalH1: string;
+  originalMeta?: string;
+  originalContent: string;
+  originalWordCount: number;
+  internalLinksIn: number;
+  internalLinksOut: number;
+  incomingLinkAnchors: string[];
+  preserveElements: string[];
+  removeElements: string[];
+  currentHealthScore?: number;
+  currentIssues: string[];
+}
+
+// ============================================================================
+// UNIFIED WRITER JOB CONFIG (NEW FORMAT)
+// ============================================================================
+
+export interface UnifiedWriterJobConfig {
+  task: UnifiedWriterBrief;
+  masterProfileId: string;
+  masterProfileVersion: number;
+  masterProfileSnapshot: UnifiedMasterProfile;
+  taskContextPackId: string;
+  taskContextPackSnapshot: UnifiedContextPack;
+  toneProfileId: string;
+  toneOverrides?: Partial<BrandToneProfile>;
+  targets: {
+    wordpress: boolean;
+    linkedin: boolean;
+    gmb: boolean;
+    reddit: boolean;
+  };
+  options?: {
+    skipValidation?: boolean;
+    verbose?: boolean;
+    maxRetries?: number;
+  };
+}
+
+// ============================================================================
 // ORCHESTRATOR STATUS
 // ============================================================================
 

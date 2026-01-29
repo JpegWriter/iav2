@@ -631,3 +631,188 @@ export function validateWriterTaskInputs(
     errors,
   };
 }
+
+// ============================================================================
+// REWRITE CONTEXT VALIDATOR
+// ============================================================================
+// Validates that update/rewrite mode has all required context
+
+export interface RewriteValidationResult {
+  valid: boolean;
+  errors: ValidationWarning[];
+  warnings: ValidationWarning[];
+}
+
+export function validateRewriteContext(
+  rewriteContext: {
+    originalUrl?: string;
+    originalTitle?: string;
+    originalH1?: string;
+    originalContent?: string;
+    originalWordCount?: number;
+    preserveElements?: string[];
+    removeElements?: string[];
+  } | undefined
+): RewriteValidationResult {
+  const errors: ValidationWarning[] = [];
+  const warnings: ValidationWarning[] = [];
+
+  if (!rewriteContext) {
+    errors.push({
+      code: 'MISSING_REWRITE_CONTEXT',
+      message: 'Update mode requires rewrite context with original page data',
+      severity: 'error',
+      field: 'rewriteContext',
+      suggestion: 'Provide originalUrl and fetch page data from crawl',
+    });
+    return { valid: false, errors, warnings };
+  }
+
+  // Required: originalUrl
+  if (!rewriteContext.originalUrl) {
+    errors.push({
+      code: 'MISSING_ORIGINAL_URL',
+      message: 'Rewrite context must include the original page URL',
+      severity: 'error',
+      field: 'rewriteContext.originalUrl',
+      suggestion: 'Provide the URL of the page being rewritten',
+    });
+  }
+
+  // Required: originalContent (or we can't properly rewrite)
+  if (!rewriteContext.originalContent) {
+    errors.push({
+      code: 'MISSING_ORIGINAL_CONTENT',
+      message: 'Rewrite context must include the original page content',
+      severity: 'error',
+      field: 'rewriteContext.originalContent',
+      suggestion: 'Fetch and clean the original page content from crawl data',
+    });
+  }
+
+  // Warning: originalContent too short
+  const wordCount = rewriteContext.originalWordCount || 
+    (rewriteContext.originalContent?.split(/\s+/).length || 0);
+  
+  if (wordCount > 0 && wordCount < 200) {
+    warnings.push({
+      code: 'SHORT_ORIGINAL_CONTENT',
+      message: `Original content is very short (${wordCount} words). Consider treating as new content instead.`,
+      severity: 'warning',
+      field: 'rewriteContext.originalContent',
+      suggestion: 'Verify this is the correct page or switch to create mode',
+    });
+  }
+
+  // Warning: no preservation rules
+  if (
+    (!rewriteContext.preserveElements || rewriteContext.preserveElements.length === 0) &&
+    (!rewriteContext.removeElements || rewriteContext.removeElements.length === 0)
+  ) {
+    warnings.push({
+      code: 'NO_PRESERVATION_RULES',
+      message: 'No preservation or removal rules specified for rewrite',
+      severity: 'warning',
+      field: 'rewriteContext.preserveElements',
+      suggestion: 'Consider specifying which elements to preserve (pricing, legal disclaimers) or remove',
+    });
+  }
+
+  // Warning: missing title/H1
+  if (!rewriteContext.originalTitle && !rewriteContext.originalH1) {
+    warnings.push({
+      code: 'MISSING_ORIGINAL_HEADING',
+      message: 'Original title and H1 not provided. Generated title may not maintain continuity.',
+      severity: 'warning',
+      field: 'rewriteContext.originalTitle',
+    });
+  }
+
+  return {
+    valid: errors.length === 0,
+    errors,
+    warnings,
+  };
+}
+
+// ============================================================================
+// COMPLIANCE VALIDATOR
+// ============================================================================
+// Validates output against master profile compliance rules
+
+export function validateComplianceRules(
+  outputHtml: string,
+  masterProfile: {
+    brandVoice: {
+      tabooWords: string[];
+      mustSay: string[];
+      mustNotSay: string[];
+      complianceNotes: string[];
+    };
+    proofAtoms: Array<{
+      claimsPolicy: {
+        mustBeVerifiable: boolean;
+        forbiddenPhrases: string[];
+      };
+    }>;
+  }
+): ValidationWarning[] {
+  const warnings: ValidationWarning[] = [];
+  const lowerHtml = outputHtml.toLowerCase();
+
+  // Check taboo words
+  for (const taboo of masterProfile.brandVoice.tabooWords) {
+    if (lowerHtml.includes(taboo.toLowerCase())) {
+      warnings.push({
+        code: 'TABOO_WORD_FOUND',
+        message: `Output contains taboo word: "${taboo}"`,
+        severity: 'warning',
+        field: 'content',
+        suggestion: `Replace "${taboo}" with an approved alternative`,
+      });
+    }
+  }
+
+  // Check mustNotSay phrases
+  for (const phrase of masterProfile.brandVoice.mustNotSay) {
+    if (lowerHtml.includes(phrase.toLowerCase())) {
+      warnings.push({
+        code: 'FORBIDDEN_PHRASE_FOUND',
+        message: `Output contains forbidden phrase: "${phrase}"`,
+        severity: 'error',
+        field: 'content',
+        suggestion: `Remove or rephrase: "${phrase}"`,
+      });
+    }
+  }
+
+  // Check mustSay phrases (optional)
+  for (const phrase of masterProfile.brandVoice.mustSay) {
+    if (!lowerHtml.includes(phrase.toLowerCase())) {
+      warnings.push({
+        code: 'MISSING_REQUIRED_PHRASE',
+        message: `Output missing required phrase: "${phrase}"`,
+        severity: 'warning',
+        field: 'content',
+        suggestion: `Include phrase: "${phrase}"`,
+      });
+    }
+  }
+
+  // Check proof atoms forbidden phrases
+  for (const atom of masterProfile.proofAtoms) {
+    for (const forbidden of atom.claimsPolicy.forbiddenPhrases) {
+      if (lowerHtml.includes(forbidden.toLowerCase())) {
+        warnings.push({
+          code: 'FORBIDDEN_CLAIM_PHRASE',
+          message: `Output contains forbidden claim phrase: "${forbidden}"`,
+          severity: 'error',
+          field: 'content',
+          suggestion: `This phrase violates claims policy. Remove or verify.`,
+        });
+      }
+    }
+  }
+
+  return warnings;
+}

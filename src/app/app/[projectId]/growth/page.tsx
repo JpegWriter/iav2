@@ -159,6 +159,36 @@ export default function GrowthPlannerPage({
     },
   });
 
+  // Generate brief and start writing job for a task
+  const [generatingBriefTaskId, setGeneratingBriefTaskId] = useState<string | null>(null);
+  
+  const generateBriefMutation = useMutation({
+    mutationFn: async (taskId: string) => {
+      setGeneratingBriefTaskId(taskId);
+      const res = await fetch(`/api/projects/${params.projectId}/writer`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          taskId,
+          publishingTargets: { wordpress: true, linkedin: false, gmb: false, reddit: false },
+          toneProfileId: 'friendly-expert',
+        }),
+      });
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || 'Failed to generate brief');
+      }
+      return res.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['growth-plan', params.projectId] });
+      setGeneratingBriefTaskId(null);
+    },
+    onError: () => {
+      setGeneratingBriefTaskId(null);
+    },
+  });
+
   const project = projectData?.data;
   const foundationScore = project?.foundation_score || 0;
   // DEV MODE: Always unlock growth planner for testing
@@ -413,6 +443,18 @@ export default function GrowthPlannerPage({
         </div>
         <div className="flex items-center gap-4">
           <ScoreCircle score={foundationScore} size="md" showLabel label="Foundation" />
+          {/* DEV: Master Profile Debug Link */}
+          {isDev && (
+            <a
+              href={`/api/projects/${params.projectId}/master-profile`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs px-2 py-1 bg-yellow-100 text-yellow-800 rounded hover:bg-yellow-200 transition-colors"
+              title="View Master Profile JSON (Dev Only)"
+            >
+              🔍 Master Profile
+            </a>
+          )}
           {!growthPlan && (
             <Button 
               onClick={() => generatePlanMutation.mutate()}
@@ -756,8 +798,20 @@ export default function GrowthPlannerPage({
                                   onUploadComplete={handleImageUploadComplete}
                                 />
                                 {task.status === 'planned' && (
-                                  <Button variant="outline" size="sm">
-                                    Generate Brief
+                                  <Button 
+                                    variant="outline" 
+                                    size="sm"
+                                    onClick={() => generateBriefMutation.mutate(task.id)}
+                                    disabled={generatingBriefTaskId === task.id}
+                                  >
+                                    {generatingBriefTaskId === task.id ? (
+                                      <>
+                                        <Sparkles className="w-4 h-4 mr-1 animate-spin" />
+                                        Generating...
+                                      </>
+                                    ) : (
+                                      'Generate Brief'
+                                    )}
                                   </Button>
                                 )}
                                 {task.status === 'briefed' && (
