@@ -1,0 +1,67 @@
+{
+  "name": "@iav2/writer",
+  "version": "1.0.0",
+  "description": "Ultimate Writer - Converts Growth Planner tasks into WordPress articles and social posts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "writer",
+    "content",
+    "wordpress",
+    "seo",
+    "linkedin",
+    "gmb",
+    "reddit"
+  ],
+  "author": "IAV2",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.6.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./types": {
+      "import": "./dist/types.js",
+      "types": "./dist/types.d.ts"
+    },
+    "./orchestrator": {
+      "import": "./dist/orchestrator.js",
+      "types": "./dist/orchestrator.d.ts"
+    },
+    "./tones": {
+      "import": "./dist/tones/index.js",
+      "types": "./dist/tones/index.d.ts"
+    },
+    "./media": {
+      "import": "./dist/media/mediaPlanner.js",
+      "types": "./dist/media/mediaPlanner.d.ts"
+    },
+    "./prompts": {
+      "import": "./dist/prompts/index.js",
+      "types": "./dist/prompts/index.d.ts"
+    },
+    "./validators": {
+      "import": "./dist/validators/wpValidator.js",
+      "types": "./dist/validators/wpValidator.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ]
+}
