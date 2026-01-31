@@ -43,11 +43,50 @@ import {
   buildLinkedInPrompt,
   buildGmbPrompt,
   buildRedditPrompt,
+  getSystemPrompt,
+  DEFAULT_PROMPT_PROFILE,
+  type SystemPromptId,
 } from './prompts';
 
 import {
   adaptUnifiedToLegacyJob,
 } from './context/adapter';
+
+import {
+  runExpandPass,
+  EXPAND_PASS_PROMPT_TEMPLATE,
+  type LLMClient,
+  type ExpandPassInput,
+} from './runExpandPass';
+
+import {
+  bindVisionFacts,
+  validateVisionBinding,
+} from './vision';
+
+// ============================================================================
+// EXPAND PASS TRIGGER ERRORS
+// These validation error codes trigger an expand pass
+// ============================================================================
+
+const EXPAND_PASS_TRIGGER_ERRORS = [
+  'CONTENT_TOO_SHORT',
+  'READING_TIME_TOO_LOW',
+  'VISION_REQUIRED_NOT_USED',
+  'EEAT_SCORE_TOO_LOW',
+  'MISSING_DECISION_CHECKLIST',
+  'MISSING_COMPARISON_TABLE',
+  'MISSING_AEO_QA_SECTION',
+  // SEO drafts validation errors
+  'SEO_TITLE_NOT_APPLIED',
+  'H1_NOT_APPLIED',
+  'H1_MISSING',
+  'META_DESCRIPTION_NOT_APPLIED',
+  // Vision facts validation errors
+  'VISION_FACTS_NOT_USED',
+  'MISSING_EVIDENCE_MARKER',
+  'MISSING_EVIDENCE_SECTION',
+];
 
 // ============================================================================
 // ORCHESTRATOR OPTIONS
@@ -116,6 +155,28 @@ export async function runWriterOrchestrator(
     // STEP 1: VALIDATE INPUTS
     // =========================================================================
     log('[Writer] Step 1: Validating inputs...');
+    
+    // -------------------------------------------------------------------------
+    // DIAGNOSTIC: Log vision facts and SEO drafts received from adapter
+    // -------------------------------------------------------------------------
+    log(`[Writer] === DIAGNOSTIC: Vision Facts ===`);
+    log(`[Writer] visionFacts count: ${job.task.visionFacts?.length ?? 0}`);
+    if (job.task.visionFacts && job.task.visionFacts.length > 0) {
+      job.task.visionFacts.slice(0, 3).forEach((fact, i) => {
+        log(`[Writer]   fact[${i}]: "${fact.substring(0, 100)}..."`);
+      });
+    }
+    log(`[Writer] visionProvided: ${job.task.visionProvided}`);
+    log(`[Writer] requiresVisionUsage: ${job.task.requiresVisionUsage}`);
+    
+    log(`[Writer] === DIAGNOSTIC: SEO Drafts ===`);
+    log(`[Writer] seoDrafts present: ${!!job.task.seoDrafts}`);
+    if (job.task.seoDrafts) {
+      log(`[Writer]   seoTitleDraft: "${job.task.seoDrafts.seoTitleDraft}"`);
+      log(`[Writer]   h1Draft: "${job.task.seoDrafts.h1Draft}"`);
+      log(`[Writer]   metaDescriptionDraft: "${job.task.seoDrafts.metaDescriptionDraft?.substring(0, 80)}..."`);
+    }
+    log(`[Writer] enforceSeoDrafts: ${job.task.enforceSeoDrafts}`);
 
     const inputValidation = validateWriterTaskInputs(job.task);
     if (!inputValidation.valid && !options.skipValidation) {
@@ -178,10 +239,66 @@ export async function runWriterOrchestrator(
       maxRetries
     );
 
-    const wordpressOutput = parseWordPressOutput(articleResponse, plan, contextPack);
+    let wordpressOutput = parseWordPressOutput(articleResponse, plan, contextPack);
     timing.articleGeneration = Date.now() - articleStart;
 
     log(`[Writer] Article generated: ${wordpressOutput.blocks.length} blocks`);
+
+    // =========================================================================
+    // STEP 5b: APPLY SEO DRAFTS (Force plan-time refinements)
+    // =========================================================================
+    if (job.task.seoDrafts && job.task.enforceSeoDrafts !== false) {
+      log('[Writer] Step 5b: Applying SEO drafts from growth plan...');
+      const { seoTitleDraft, h1Draft, metaDescriptionDraft } = job.task.seoDrafts;
+      
+      // Override SEO fields with plan-time drafts
+      if (seoTitleDraft) {
+        wordpressOutput.seo.seoTitle = seoTitleDraft;
+        log(`[Writer] Applied SEO title: "${seoTitleDraft}"`);
+      }
+      
+      if (metaDescriptionDraft) {
+        wordpressOutput.seo.metaDescription = metaDescriptionDraft;
+        log(`[Writer] Applied meta description: "${metaDescriptionDraft.substring(0, 50)}..."`);
+      }
+      
+      // Apply H1 draft to title and first heading block
+      if (h1Draft) {
+        wordpressOutput.title = h1Draft;
+        
+        // Find and update first H1 block if present
+        const h1BlockIndex = wordpressOutput.blocks.findIndex(
+          (b) => b.blockName === 'core/heading' && (b.attrs?.level === 1 || !b.attrs?.level)
+        );
+        if (h1BlockIndex >= 0) {
+          wordpressOutput.blocks[h1BlockIndex].innerHTML = h1Draft;
+          wordpressOutput.blocks[h1BlockIndex].innerContent = [h1Draft];
+        }
+        log(`[Writer] Applied H1: "${h1Draft}"`);
+      }
+    }
+
+    // =========================================================================
+    // STEP 5c: BIND VISION FACTS (Inject visual evidence into content)
+    // =========================================================================
+    if (job.task.visionFacts && job.task.visionFacts.length > 0) {
+      log(`[Writer] Step 5c: Binding ${job.task.visionFacts.length} vision facts...`);
+      
+      try {
+        const bindingResult = await bindVisionFacts({
+          output: wordpressOutput,
+          visionFacts: job.task.visionFacts,
+          // Uses OPENAI_API_KEY from env by default
+        });
+        
+        wordpressOutput = bindingResult.output;
+        log(`[Writer] Vision facts bound: ${bindingResult.factsInjected}/${job.task.visionFacts.length}, sections added: ${bindingResult.sectionsAdded.join(', ') || 'none'}`);
+      } catch (visionError) {
+        log(`[Writer] Vision binding error: ${visionError}`);
+        errors.push({ code: 'VISION_BINDING_FAILED', message: String(visionError), severity: 'warning', field: 'visionFacts' });
+        // Non-fatal - continue without vision facts
+      }
+    }
 
     // =========================================================================
     // STEP 6: VALIDATE WORDPRESS OUTPUT
@@ -189,9 +306,93 @@ export async function runWriterOrchestrator(
     log('[Writer] Step 6: Validating WordPress output...');
     const validationStart = Date.now();
 
-    const validation = validateWordPressOutput(wordpressOutput, job.task);
+    // validateWordPressOutput already handles SEO drafts and vision facts validation internally
+    let validation = validateWordPressOutput(wordpressOutput, job.task);
+    
+    let finalWordpressOutput = wordpressOutput;
     errors.push(...validation.warnings);
     timing.validation = Date.now() - validationStart;
+
+    // =========================================================================
+    // STEP 6b: RUN EXPAND PASS IF VALIDATION FAILS
+    // =========================================================================
+    
+    // Check if we need to trigger an expand pass
+    const needsExpandPass = validation.warnings.some(
+      (w) => w.severity === 'error' && EXPAND_PASS_TRIGGER_ERRORS.includes(w.code)
+    );
+
+    if (needsExpandPass && !options.skipValidation) {
+      log('[Writer] Step 6b: Running expand pass to fix validation errors...');
+      
+      try {
+        // Create LLM client adapter
+        const llmClient: LLMClient = {
+          generateJson: async <T>({ system, prompt, temperature }: { system: string; prompt: string; temperature?: number }) => {
+            const fullPrompt = `${system}\n\n${prompt}`;
+            const response = await retryLlmCall(() => llmCall(fullPrompt), maxRetries);
+            return JSON.parse(response) as T;
+          },
+        };
+
+        // Build expand pass input
+        const expandInput: ExpandPassInput = {
+          original: wordpressOutput,
+          intent: (job.task.intentMode || 'INFORMATIONAL') as 'MONEY' | 'SERVICE' | 'INFORMATIONAL' | 'TRUST',
+          targetWordsMin: job.task.targetWords?.min ?? job.task.targetWordCount ?? 1500,
+          targetWordsMax: job.task.targetWords?.max ?? 1800,
+          faqAnswerWordsMin: job.task.faqAnswerWords?.min ?? 80,
+          faqAnswerWordsMax: job.task.faqAnswerWords?.max ?? 120,
+          maxHtmlBytes: job.task.wordpress?.maxHtmlBytes,
+          maxBlocks: job.task.wordpress?.maxBlocks,
+          requiredInternalLinks: job.task.internalLinks?.upLinks?.map(l => ({
+            url: l.targetUrl,
+            anchorText: l.anchorSuggestion,
+          })) ?? [],
+          masterProfileContext: contextPack.masterProfile,
+          sitemapContext: contextPack.sitemap,
+          onboardingContext: contextPack.onboarding,
+          visionAnalysisContext: job.task.visionAnalysis,
+        };
+
+        // Get system prompt from promptProfile or default
+        const promptProfile = job.task.promptProfile || DEFAULT_PROMPT_PROFILE;
+        const systemPromptId = promptProfile.systemPromptId as SystemPromptId;
+        const systemPrompt = getSystemPrompt(systemPromptId);
+        
+        // Get expand pass prompt
+        const expandPassPromptId = promptProfile.expandPassPromptId as SystemPromptId || 'EXPAND_PASS_V1';
+        const expandPromptTemplate = getSystemPrompt(expandPassPromptId);
+
+        // Run expand pass
+        const expandedOutput = await runExpandPass({
+          llm: llmClient,
+          input: expandInput,
+          systemPrompt,
+          expandPromptTemplate,
+        });
+
+        log(`[Writer] Expand pass complete: ${expandedOutput.blocks.length} blocks`);
+
+        // Re-validate expanded output
+        const validation2 = validateWordPressOutput(expandedOutput as WordPressOutput, job.task);
+        
+        if (validation2.valid || validation2.warnings.filter(w => w.severity === 'error').length < 
+            validation.warnings.filter(w => w.severity === 'error').length) {
+          // Expand pass improved the output
+          finalWordpressOutput = expandedOutput as WordPressOutput;
+          validation = validation2;
+          errors.length = 0; // Clear old errors
+          errors.push(...validation2.warnings);
+          log('[Writer] Expand pass improved validation');
+        } else {
+          log('[Writer] Expand pass did not improve validation, keeping original');
+        }
+      } catch (expandError) {
+        log(`[Writer] Expand pass failed: ${expandError}`);
+        // Continue with original output
+      }
+    }
 
     if (!validation.valid && !options.skipValidation) {
       log(`[Writer] Validation failed with ${validation.warnings.filter(w => w.severity === 'error').length} errors`);
@@ -205,7 +406,7 @@ export async function runWriterOrchestrator(
     log('[Writer] Step 7: Generating social posts...');
     const socialStart = Date.now();
 
-    const articleUrl = buildArticleUrl(job, wordpressOutput.slug);
+    const articleUrl = buildArticleUrl(job, finalWordpressOutput.slug);
     const social: SocialOutput = {
       linkedinPost: createDefaultLinkedInPost(),
       gmbPost: createDefaultGmbPost(),
@@ -220,7 +421,7 @@ export async function runWriterOrchestrator(
         plan,
         job.task,
         tone,
-        wordpressOutput.title,
+        finalWordpressOutput.title,
         articleUrl
       );
       const linkedInResponse = await retryLlmCall(
@@ -238,7 +439,7 @@ export async function runWriterOrchestrator(
         plan,
         job.task,
         tone,
-        wordpressOutput.title,
+        finalWordpressOutput.title,
         articleUrl,
         'update'
       );
@@ -257,7 +458,7 @@ export async function runWriterOrchestrator(
         plan,
         job.task,
         tone,
-        wordpressOutput.title,
+        finalWordpressOutput.title,
         articleUrl
       );
       const redditResponse = await retryLlmCall(
@@ -301,7 +502,7 @@ export async function runWriterOrchestrator(
 
     const output: WritingOutput = {
       jobId: job.jobId,
-      wordpress: wordpressOutput,
+      wordpress: finalWordpressOutput,
       social,
       audit,
       generatedAt: new Date().toISOString(),
@@ -309,6 +510,112 @@ export async function runWriterOrchestrator(
     };
 
     timing.total = Date.now() - startTime;
+
+    // =========================================================================
+    // PASS/FAIL CHECKLIST (Final validation gate)
+    // =========================================================================
+    log(`[Writer] ========================================`);
+    log(`[Writer] PASS/FAIL CHECKLIST`);
+    log(`[Writer] ========================================`);
+    
+    const checklist: { item: string; pass: boolean; detail: string }[] = [];
+    
+    // 1. SEO Title: Must use seoDrafts if provided
+    const seoTitleMatch = !job.task.seoDrafts?.seoTitleDraft || 
+      finalWordpressOutput.seo.seoTitle === job.task.seoDrafts.seoTitleDraft;
+    checklist.push({
+      item: 'SEO Title uses draft',
+      pass: seoTitleMatch,
+      detail: seoTitleMatch 
+        ? `✓ "${finalWordpressOutput.seo.seoTitle}"` 
+        : `✗ Expected: "${job.task.seoDrafts?.seoTitleDraft}", Got: "${finalWordpressOutput.seo.seoTitle}"`,
+    });
+    
+    // 2. H1: Must use h1Draft if provided
+    const h1Match = !job.task.seoDrafts?.h1Draft || 
+      finalWordpressOutput.title === job.task.seoDrafts.h1Draft;
+    checklist.push({
+      item: 'H1 uses draft',
+      pass: h1Match,
+      detail: h1Match 
+        ? `✓ "${finalWordpressOutput.title}"` 
+        : `✗ Expected: "${job.task.seoDrafts?.h1Draft}", Got: "${finalWordpressOutput.title}"`,
+    });
+    
+    // 3. Meta Description: Must use metaDescriptionDraft if provided
+    const metaMatch = !job.task.seoDrafts?.metaDescriptionDraft || 
+      finalWordpressOutput.seo.metaDescription === job.task.seoDrafts.metaDescriptionDraft;
+    checklist.push({
+      item: 'Meta Description uses draft',
+      pass: metaMatch,
+      detail: metaMatch 
+        ? `✓ (${finalWordpressOutput.seo.metaDescription?.substring(0, 50)}...)` 
+        : `✗ MISMATCH`,
+    });
+    
+    // 4. Vision Facts: If provided, at least 50% must appear in content
+    const contentText = finalWordpressOutput.blocks
+      .map(b => (typeof b.innerHTML === 'string' ? b.innerHTML : ''))
+      .join(' ').toLowerCase();
+    
+    let visionFactsUsed = 0;
+    const visionFactsRequired = job.task.visionFacts?.length || 0;
+    if (visionFactsRequired > 0 && job.task.visionFacts) {
+      for (const fact of job.task.visionFacts) {
+        // Check if key words from the fact appear in content
+        const factWords = fact.toLowerCase().split(/\s+/).filter(w => w.length > 4);
+        const matchCount = factWords.filter(w => contentText.includes(w)).length;
+        if (matchCount >= Math.ceil(factWords.length * 0.3)) {
+          visionFactsUsed++;
+        }
+      }
+    }
+    const visionMinRequired = Math.min(3, Math.ceil(visionFactsRequired * 0.5));
+    const visionPass = visionFactsRequired === 0 || visionFactsUsed >= visionMinRequired;
+    checklist.push({
+      item: 'Vision Facts incorporated',
+      pass: visionPass,
+      detail: visionFactsRequired === 0 
+        ? '✓ (No vision facts provided)'
+        : visionPass 
+          ? `✓ ${visionFactsUsed}/${visionFactsRequired} facts used (min: ${visionMinRequired})` 
+          : `✗ Only ${visionFactsUsed}/${visionFactsRequired} facts used (min: ${visionMinRequired})`,
+    });
+    
+    // 5. Word count target met
+    const wordCountTarget = job.task.targetWords?.min ?? job.task.targetWordCount ?? 1500;
+    const wordCountPass = validation.stats.wordCount >= wordCountTarget * 0.9;
+    checklist.push({
+      item: 'Word count target',
+      pass: wordCountPass,
+      detail: wordCountPass 
+        ? `✓ ${validation.stats.wordCount} words (target: ${wordCountTarget})` 
+        : `✗ ${validation.stats.wordCount} words (target: ${wordCountTarget}, min: ${Math.floor(wordCountTarget * 0.9)})`,
+    });
+    
+    // 6. No critical validation errors
+    const criticalErrors = errors.filter(e => e.severity === 'error');
+    const noErrors = criticalErrors.length === 0;
+    checklist.push({
+      item: 'No critical errors',
+      pass: noErrors,
+      detail: noErrors 
+        ? '✓ Clean validation' 
+        : `✗ ${criticalErrors.length} error(s): ${criticalErrors.map(e => e.code).join(', ')}`,
+    });
+    
+    // Print checklist
+    const allPassed = checklist.every(c => c.pass);
+    for (const check of checklist) {
+      log(`[Writer] ${check.pass ? 'PASS' : 'FAIL'}: ${check.item}`);
+      log(`[Writer]       ${check.detail}`);
+    }
+    log(`[Writer] ----------------------------------------`);
+    log(`[Writer] OVERALL: ${allPassed ? 'ALL CHECKS PASSED ✓' : 'SOME CHECKS FAILED ✗'}`);
+    log(`[Writer] ========================================`);
+    
+    // Add checklist to audit output
+    audit.checklist = checklist;
 
     log(`[Writer] Complete! Total time: ${timing.total}ms`);
 
@@ -798,6 +1105,17 @@ export async function runUnifiedWriterOrchestrator(
     jobConfig.toneProfileId,
     jobConfig.targets
   );
+  
+  // =========================================================================
+  // TRACE: Verify vision facts and SEO drafts survived adapter conversion
+  // =========================================================================
+  log(`[Writer] === TRACE: After adapter - legacyJob.task.visionFacts: ${legacyJob.task.visionFacts?.length ?? 0} ===`);
+  if (legacyJob.task.seoDrafts) {
+    log(`[Writer] === TRACE: After adapter - legacyJob.task.seoDrafts.seoTitle: "${legacyJob.task.seoDrafts.seoTitleDraft}" ===`);
+  } else {
+    log(`[Writer] === TRACE: After adapter - NO seoDrafts present ===`);
+  }
+  log(`[Writer] === TRACE: After adapter - visionProvided: ${legacyJob.task.visionProvided}, requiresVisionUsage: ${legacyJob.task.requiresVisionUsage} ===`);
 
   // Merge tone overrides
   const mergedOptions: OrchestratorOptions = {

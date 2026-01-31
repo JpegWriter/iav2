@@ -5,7 +5,7 @@
 import { SupabaseClient } from '@supabase/supabase-js';
 import { ingestContext } from './context';
 import { analyzeGaps } from './gaps';
-import { buildGrowthPlan } from './builder';
+import { buildGrowthPlan, flagVisionEvidenceTasks } from './builder';
 import { 
   generateBrief, 
   generateBriefsForMonth,
@@ -26,6 +26,12 @@ import {
   sanitizeSlug,
   sanitizeTitle,
 } from './validation';
+import {
+  refineSeoDraftsForPlan,
+  refineSeoDraftsForTask,
+  validateSeoDrafts as validateTaskSeoDrafts,
+  getEffectiveSeoValues,
+} from './refineSeoDrafts';
 import {
   PersonalizedGrowthPlan,
   GrowthPlannerOptions,
@@ -107,6 +113,15 @@ export {
   formatPublishingSchedule,
   getCadenceStats,
 } from './cadence';
+// SEO Drafts refinement exports
+export {
+  refineSeoDraftsForPlan,
+  refineSeoDraftsForTask,
+  validateSeoDrafts as validateTaskSeoDrafts,
+  getEffectiveSeoValues,
+  generateHeadingContract,
+} from './refineSeoDrafts';
+export type { SeoOptions, HeadingContract, PageIntent } from './refineSeoDrafts';
 
 /**
  * Get the first day of next month as the default plan start date
@@ -523,6 +538,52 @@ export async function generatePersonalizedPlan(
   // Update months reference for remaining phases
   months.length = 0;
   months.push(...cadencedMonths);
+
+  // ========================================
+  // PHASE 6.5: SEO Drafts Refinement
+  // ========================================
+  console.log('[GrowthPlanner] Phase 6.5: Refining SEO drafts for all tasks...');
+  
+  try {
+    const geo = businessReality.primaryLocations?.[0];
+    
+    // Refine SEO drafts for all tasks in the plan
+    const refinedMonths = await refineSeoDraftsForPlan({
+      months,
+      businessName: businessReality.name,
+      geo,
+      openaiApiKey: options.openaiApiKey,
+    });
+    
+    // Replace months with refined version
+    months.length = 0;
+    months.push(...refinedMonths);
+    
+    // Count how many tasks got SEO drafts
+    const tasksWithDrafts = refinedMonths.flatMap(m => m.tasks)
+      .filter(t => t.seoTitleDraft && t.h1Draft && t.metaDescriptionDraft).length;
+    const totalTaskCount = refinedMonths.flatMap(m => m.tasks).length;
+    
+    console.log(`[GrowthPlanner] SEO drafts refined:
+    - Tasks with drafts: ${tasksWithDrafts}/${totalTaskCount}
+    - Draft coverage: ${((tasksWithDrafts / totalTaskCount) * 100).toFixed(1)}%
+    `);
+  } catch (error) {
+    console.warn('[GrowthPlanner] SEO drafts refinement failed, continuing without drafts:', error);
+    // Non-fatal - plan can proceed without SEO drafts, they'll be generated at write time
+  }
+
+  // ========================================
+  // PHASE 6.6: Vision Evidence Task Flagging
+  // ========================================
+  console.log('[GrowthPlanner] Phase 6.6: Flagging tasks requiring vision evidence...');
+  
+  const visionEvidenceResult = flagVisionEvidenceTasks(months);
+  
+  console.log(`[GrowthPlanner] Vision evidence flagging:
+    - Tasks flagged: ${visionEvidenceResult.flaggedCount}
+    - Flagged tasks: ${visionEvidenceResult.flaggedTasks.slice(0, 5).join(', ')}${visionEvidenceResult.flaggedTasks.length > 5 ? '...' : ''}
+  `);
 
   // ========================================
   // PHASE 7: Quality Scoring & Threshold

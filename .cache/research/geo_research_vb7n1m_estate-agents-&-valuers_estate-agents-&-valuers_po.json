@@ -1,0 +1,301 @@
+{
+  "geo": {
+    "geoSummary": "Portslade, Brighton and Hove, United Kingdom",
+    "primaryLocation": {
+      "name": "Portslade",
+      "formatted": "Portslade by Sea, BNH, ENG, United Kingdom",
+      "lat": 50.8329633,
+      "lon": -0.2070213,
+      "country": "United Kingdom",
+      "region": "Brighton and Hove",
+      "postcode": "BN41 1GB"
+    },
+    "nearbyAreas": [
+      {
+        "name": "the old",
+        "relationship": "adjacent"
+      },
+      {
+        "name": "be friendly",
+        "relationship": "adjacent"
+      }
+    ],
+    "proximityAnchors": [
+      {
+        "category": "transport",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      },
+      {
+        "category": "shopping",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      },
+      {
+        "category": "amenity",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      }
+    ],
+    "placeAnchors": [
+      {
+        "name": "The Foghorn",
+        "category": "catering",
+        "addressLine": "The Foghorn, 55 Boundary Road, Portslade by Sea, BN3 4EF, United Kingdom",
+        "distanceMeters": 19,
+        "lat": 50.8328559,
+        "lon": -0.2072314
+      },
+      {
+        "name": "Boundary Road",
+        "category": "public_transport",
+        "addressLine": "Boundary Road, Portslade by Sea, BN41 1AG, United Kingdom",
+        "distanceMeters": 33,
+        "lat": 50.8328102,
+        "lon": -0.2074172
+      },
+      {
+        "name": "Boundary Road",
+        "category": "public_transport",
+        "addressLine": "Boundary Road, New Church Road, Portslade by Sea, BN3 4EB, United Kingdom",
+        "distanceMeters": 33,
+        "lat": 50.8330043,
+        "lon": -0.2065592
+      },
+      {
+        "name": "17 Grams",
+        "category": "catering",
+        "addressLine": "17 Grams, 56 Station Road, Portslade by Sea, BN3 5TD, United Kingdom",
+        "distanceMeters": 42,
+        "lat": 50.8333403,
+        "lon": -0.2069848
+      },
+      {
+        "name": "Food App",
+        "category": "catering",
+        "addressLine": "Food App, Boundary Road, Portslade by Sea, BN41 1AG, United Kingdom",
+        "distanceMeters": 46,
+        "lat": 50.8326054,
+        "lon": -0.2073523
+      },
+      {
+        "name": "No 30 Cafe",
+        "category": "catering",
+        "addressLine": "No 30 Cafe, 30 Station Road, Portslade by Sea, BN41 1GB, United Kingdom",
+        "distanceMeters": 53,
+        "lat": 50.8333712,
+        "lon": -0.207418
+      },
+      {
+        "name": "Madeira Cafe and Restaurant",
+        "category": "catering",
+        "addressLine": "Madeira Cafe and Restaurant, Station Road, Portslade by Sea, BN3 5TD, United Kingdom",
+        "distanceMeters": 62,
+        "lat": 50.8334879,
+        "lon": -0.2073259
+      },
+      {
+        "name": "Boundary Road",
+        "category": "public_transport",
+        "addressLine": "Boundary Road, Station Road, Portslade by Sea, BN3 5TD, United Kingdom",
+        "distanceMeters": 74,
+        "lat": 50.8336201,
+        "lon": -0.2071477
+      },
+      {
+        "name": "Tesco",
+        "category": "commercial",
+        "addressLine": "Tesco, 19-20 Station Road, Portslade by Sea, BN41 1GB, United Kingdom",
+        "distanceMeters": 130,
+        "lat": 50.8341339,
+        "lon": -0.2070059
+      },
+      {
+        "name": "St Andrew's Road",
+        "category": "public_transport",
+        "addressLine": "St Andrew's Road, Boundary Road, Portslade by Sea, BN41 1AG, United Kingdom",
+        "distanceMeters": 137,
+        "lat": 50.8318992,
+        "lon": -0.2079934
+      }
+    ],
+    "localLanguage": [
+      {
+        "phrase": "Portslade",
+        "type": "area-name",
+        "importance": "high"
+      }
+    ],
+    "geoComparisons": [
+      {
+        "areaA": "Portslade",
+        "areaB": "the old",
+        "framingSuggestion": "When comparing Portslade and the old, factors like transport links, local amenities, and community feel often come into play.",
+        "comparisonFactors": [
+          "Transport accessibility",
+          "Local amenities",
+          "Community character",
+          "Property types"
+        ]
+      },
+      {
+        "areaA": "Portslade",
+        "areaB": "be friendly",
+        "framingSuggestion": "When comparing Portslade and be friendly, factors like transport links, local amenities, and community feel often come into play.",
+        "comparisonFactors": [
+          "Transport accessibility",
+          "Local amenities",
+          "Community character",
+          "Property types"
+        ]
+      }
+    ],
+    "localDecisionFactors": [
+      {
+        "factor": "Public transport links",
+        "category": "transport",
+        "importance": "high",
+        "phrasePattern": "The area benefits from good transport connections, with [nearby stations/stops] providing access to..."
+      },
+      {
+        "factor": "Commuter accessibility",
+        "category": "transport",
+        "importance": "medium",
+        "phrasePattern": "For commuters, the location offers..."
+      },
+      {
+        "factor": "Local amenities within walking distance",
+        "category": "walkability",
+        "importance": "high",
+        "phrasePattern": "Day-to-day conveniences are within easy reach, including..."
+      },
+      {
+        "factor": "Local character",
+        "category": "lifestyle",
+        "importance": "medium",
+        "phrasePattern": "The area has a [characteristic] feel, with..."
+      },
+      {
+        "factor": "Community feel",
+        "category": "lifestyle",
+        "importance": "medium",
+        "phrasePattern": "Residents often mention the sense of community..."
+      },
+      {
+        "factor": "Shopping and services",
+        "category": "amenities",
+        "importance": "medium",
+        "phrasePattern": "Local shops and services include..."
+      }
+    ],
+    "geoInternalLinkSuggestions": [],
+    "generatedAt": "2026-01-30T09:39:04.873Z"
+  },
+  "sources": [
+    {
+      "url": "https://jacobs-steel.co.uk/portslade/",
+      "title": "Estate Agents in Portslade",
+      "snippet": "We offer a wide range of services, including property sales, lettings, and property valuations. Our local expertise means we can help you find the best ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.sinnottgreen.co.uk/",
+      "title": "Sinnott Green | Estate Agents in Portslade, Brighton, Hove ...",
+      "snippet": "Sinnott Green, Estate Agents in Portslade, Brighton, Hove, East Sussex, Shoreham by Sea, Mile Oak.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.spencerandleigh.co.uk/branches/portslade",
+      "title": "Spencer & Leigh Estate and Letting Agent, Property ...",
+      "snippet": "Portslade. T: 01273 421777 (Sales) T: 01273 421777 (Lettings). 10 South Street Portslade Brighton BN41 2LE. Opening Hours: Sunday Closed; Monday - Friday 09:00 ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.sawyerandco.co.uk/contact-portslade/",
+      "title": "Letting Agents in Portslade",
+      "snippet": "Your Most Trusted Local Estate Agents and Letting Agents in Portslade. Book a valuation · General Enquiry · 4.84+/5 from 1245 reviews · Google Review logo.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://coxandcohomes.co.uk/",
+      "title": "Estate Agents in Hove, Brighton & Sussex | Cox & Co",
+      "snippet": "Cox & Co are trusted estate agents in Hove, helping you buy or sell in Brighton, Hove & Sussex. Expert advice, free valuation & great service. Call today!",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.tripadvisor.co.uk/Attractions-g20314053-Activities-Portslade_East_Sussex_England.html",
+      "title": "THE 5 BEST Things to Do in Portslade (2026)",
+      "snippet": "Things to Do in Portslade ; 1. Yupin Thai Massage. 5.0. (3). Spas ; 2. Jumpzone Brighton. Game & Entertainment Centres ; 3. Portslade Railway Station. 3.0. (1).",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://mindtrip.ai/location/portslade-east-sussex/portslade/lo-VAqpebMk",
+      "title": "Portslade in Portslade | What to Know Before You Go",
+      "snippet": "Portslade is divided into two main areas: Portslade Village, which retains a more traditional village feel with its historic buildings and local shops, and ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.brighton-hove.gov.uk/sites/default/files/migrated/article/inline/6608%20NAP%20S%20and%20N%20Portslade%20%20web%20map.pdf",
+      "title": "Portslade",
+      "snippet": "Community. Map. Hangleton. & Knoll. Wish. North. Portslade. Hangleton. & Knoll. North ... The ruins of Portslade Manor, north side of St Nicolas. To Aldrington.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.mybrightonandhove.org.uk/places/placestree/station-road-portslade/portslade",
+      "title": "Introducing Portslade | Station Road, ...",
+      "snippet": "Portslade is the district furthest west in the city conurbation. It lies along the West Sussex border at Southwick, and consists of a number of separate ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.travelodge.co.uk/uk/east-sussex/portslade/index.html",
+      "title": "Explore Portslade's history",
+      "snippet": "Portslade is an attractive coastal area to the east of Brighton and Hove filled with history. Visit the beautiful 16th century Portslade village situated ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.reddit.com/r/brighton/comments/ihhjkw/portslade_crew/",
+      "title": "Portslade Crew : r/brighton",
+      "snippet": "I live in Portslade near the old village and I really like it here. It's unpretentious and feels like a community. I can see why people who ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.mumsnet.com/talk/am_i_being_unreasonable/3856559-Tell-me-about-Portslade",
+      "title": "Tell me about Portslade!",
+      "snippet": "I found Portslade to be friendly and quiet. The children's centres and libraries have groups as do many churches. Being on the main bus route / ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://singletrackworld.com/forum/off-topic/anyone-live-in-portslade/",
+      "title": "Anyone live in Portslade? – Chat Forum",
+      "snippet": "If you go to Portslade Old Village there's some proper medieval houses. Good access to the Downs for walking/riding and access to the beach over the Shoreham ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.facebook.com/groups/475529386113274/?locale=en_GB",
+      "title": "Portslade Old Village",
+      "snippet": "This group is for our community in and around Portslade Old Village. Only local news and business promotions are to be shared here.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://nextdoor.co.uk/neighbourhood/portsladevillage--brighton-and-hove--england/",
+      "title": "Portslade Village, Brighton and Hove",
+      "snippet": "Portslade Village is a peaceful and family-friendly neighbourhood in Brighton and Hove, England. Known for its welcoming atmosphere.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    }
+  ]
+}

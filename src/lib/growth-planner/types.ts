@@ -5,6 +5,55 @@
 import { PageRole, Channel, BrandTone } from '@/types';
 
 // ============================================================================
+// HEADING CONTRACT TYPES
+// ============================================================================
+
+/** Heading type for content structure contracts */
+export type HeadingType = 'intent' | 'evidence' | 'geo' | 'process' | 'faq' | 'comparison' | 'pricing' | 'trust' | 'cta';
+
+/** Required heading in the content structure */
+export interface RequiredHeading {
+  /** Heading level (2 = H2, 3 = H3) */
+  level: 2 | 3;
+  /** Semantic type of the heading */
+  type: HeadingType;
+  /** Hint text for what this section should cover */
+  textHint: string;
+  /** Whether this heading is optional (default: required) */
+  optional?: boolean;
+}
+
+// ============================================================================
+// RESEARCH PACK TYPES (duplicated from @iav2/research for decoupling)
+// ============================================================================
+
+export interface AeoPack {
+  queryCluster: string[];
+  paaQuestions: string[];
+  answerShapes: string[];
+  citations: string[];
+  misconceptions: string[];
+}
+
+export interface GeoPack {
+  coordinates?: { lat: number; lng: number };
+  nearbyPlaces: Array<{
+    name: string;
+    type: string;
+    distance: number;
+  }>;
+  proximityAnchors: string[];
+  localLanguage: string[];
+}
+
+export interface ResearchPack {
+  aeo: AeoPack;
+  geo: GeoPack;
+  generatedAt: string;
+  cacheKey: string;
+}
+
+// ============================================================================
 // SERVICE REALITY LOCK - FORBIDDEN GENERIC TERMS
 // ============================================================================
 
@@ -291,6 +340,54 @@ export interface GrowthTask {
   status: 'planned' | 'briefed' | 'writing' | 'review' | 'published';
   briefId: string | null;
   
+  // HEADING CONTRACT - Structure requirements for the page
+  /** Page intent determines required structure */
+  pageIntent?: 'money' | 'service' | 'support' | 'geo' | 'trust';
+  /** Primary target keyword for the page */
+  primaryKeyword?: string;
+  /** Geographic targets for geo-intent pages */
+  geoTargets?: string[];
+  /** Required H2 sections - writer MUST include all */
+  requiredHeadings?: RequiredHeading[];
+  /** Whether vision evidence is required for this page */
+  visionRequired?: boolean;
+  /** Minimum number of vision/user facts that must appear in content */
+  mustIncludeFactsMin?: number;
+  
+  // SEO DRAFTS - Source of truth for writer (generated at plan-time)
+  /** Refined SEO title tag - writer MUST use this exactly */
+  seoTitleDraft?: string;
+  /** Refined H1 headline - writer MUST use this exactly */
+  h1Draft?: string;
+  /** Refined meta description - writer MUST use this exactly */
+  metaDescriptionDraft?: string;
+  
+  // SEO OPTIONS - User selects from these (highest leverage copy)
+  /** 3 CTR-focused SEO title options for user selection */
+  seoTitleOptions?: string[];
+  /** 2 natural H1 options (not keyword-stuffed) */
+  h1Options?: string[];
+  /** 2 meta description options */
+  metaDescriptionOptions?: string[];
+  /** SEO scores for title options (parallel array, sorted DESC) */
+  seoTitleScores?: number[];
+  /** SEO scores for H1 options (parallel array, sorted DESC) */
+  h1Scores?: number[];
+  /** Best title score for quality gating */
+  bestTitleScore?: number;
+  /** Best H1 score for quality gating */
+  bestH1Score?: number;
+  /** Detected intent used for scoring context */
+  detectedIntent?: 'money' | 'service' | 'informational' | 'case-study' | 'comparison';
+  /** Index of user-selected SEO title (0-2), null = not selected */
+  selectedSeoTitleIndex?: number | null;
+  /** Index of user-selected H1 (0-1), null = not selected */
+  selectedH1Index?: number | null;
+  /** Index of user-selected meta description (0-1), null = not selected */
+  selectedMetaIndex?: number | null;
+  /** Locked for publishing - can't publish until SEO selections made */
+  seoLocked?: boolean;
+  
   // Personalization proof
   localAnchoring: string | null;
   experienceRequired: string[];
@@ -303,6 +400,24 @@ export interface GrowthTask {
   
   // CTA
   conversionPath: string;
+  
+  // VISION EVIDENCE
+  /** Vision evidence pack ID if images uploaded */
+  imagePackId?: string;
+  /** Number of images in the pack */
+  imageCount?: number;
+  /** Extracted vision facts for writer to use */
+  visionFacts?: string[];
+  
+  // OUTCOME EVIDENCE TRACKING
+  /** Whether this task requires outcome evidence (vision present but outcomes missing) */
+  requiresOutcomeEvidence?: boolean;
+  /** Status of outcome evidence: 'missing' | 'auto-injected' | 'user-reviewed' | 'complete' */
+  outcomeEvidenceStatus?: 'missing' | 'auto-injected' | 'user-reviewed' | 'complete';
+  
+  // RESEARCH PACK (AEO + GEO)
+  /** Combined research pack from Serper/Tavily/Geoapify */
+  researchPack?: ResearchPack;
 }
 
 export interface GrowthPlanMonth {
@@ -618,6 +733,16 @@ export interface WriterBrief {
     disclaimers?: string[];
     restrictedClaims?: string[];
   };
+
+  // ========================================
+  // RESEARCH INTELLIGENCE (AEO + GEO)
+  // ========================================
+  /** AEO research: PAA, question clusters, answer shapes, citations */
+  aeo?: AeoPack;
+  /** GEO research: location context, nearby areas, local patterns */
+  geo?: GeoPack;
+  /** Full research pack (includes both AEO and GEO) */
+  researchPack?: ResearchPack;
 }
 
 // ============================================================================
@@ -674,6 +799,14 @@ export interface LegacyWriterBrief {
   metaDescription: string;
   focusKeyword: string;
   secondaryKeywords: string[];
+  
+  // RESEARCH INTELLIGENCE (AEO + GEO)
+  /** AEO research: PAA, question clusters, answer shapes, citations */
+  aeo?: AeoPack;
+  /** GEO research: location context, nearby areas, local patterns */
+  geo?: GeoPack;
+  /** Full research pack (includes both AEO and GEO) */
+  researchPack?: ResearchPack;
 }
 
 // ============================================================================

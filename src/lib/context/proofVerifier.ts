@@ -3,6 +3,10 @@
 // ============================================================================
 // Validates proof atoms against actual page content and reviews.
 // Adds verification status and safe paraphrases for unverified claims.
+//
+// HARDENED: Review claims are only verified if:
+// 1. GBP is connected and reviews are scraped, OR
+// 2. Testimonials page is parsed with explicit count
 // ============================================================================
 
 import { textContainsToken } from './pageExtractor';
@@ -15,12 +19,18 @@ import type { ProofAtom } from './types';
 export interface VerificationContext {
   /** Concatenated text from all crawled pages */
   allPageText: string;
-  /** Number of reviews found */
+  /** Number of reviews found (from GBP or parsed testimonials) */
   reviewCount: number;
   /** Average review rating */
   averageRating: number;
   /** Page essences for targeted verification */
   pageEssences?: Array<{ url: string; proofMentions: string[] }>;
+  /** Whether GBP (Google Business Profile) is connected */
+  gbpConnected?: boolean;
+  /** Whether reviews were scraped from Google Maps */
+  reviewsScraped?: boolean;
+  /** Google Maps URL for review verification */
+  googleMapsUrl?: string;
 }
 
 // ============================================================================
@@ -161,19 +171,62 @@ function hasSpeedClaim(value: string): boolean {
 // VERIFICATION METHODS
 // ============================================================================
 
+/**
+ * HARDENED: Star/review rating claims require verified source.
+ * Only verified if:
+ * 1. GBP connected + reviews scraped, OR
+ * 2. We have actual review data from testimonials
+ * 
+ * Numeric claims (e.g., "259 five star reviews") are NOT verified
+ * unless we have scraped the actual count from a trusted source.
+ */
 function verifyStarRatingClaim(
   atom: ProofAtom,
   context: VerificationContext
 ): ProofAtom {
-  // Verified if we have actual reviews
-  if (context.reviewCount > 0) {
-    return markVerified(atom, `${context.reviewCount} reviews found, avg rating ${context.averageRating}`);
+  const value = atom.value.toLowerCase();
+  
+  // Check if this is a NUMERIC review claim (e.g., "259 five star reviews")
+  const numericMatch = value.match(/(\d+)\s*(five\s*star|5\s*star|\d\.\d\s*star|star)/i);
+  
+  if (numericMatch) {
+    // Numeric claims require GBP connection OR verified review count
+    const claimedCount = parseInt(numericMatch[1], 10);
+    
+    if (context.gbpConnected && context.reviewsScraped && context.reviewCount > 0) {
+      // Verify the claimed count is roughly accurate (within 20% or +/- 10)
+      const difference = Math.abs(claimedCount - context.reviewCount);
+      const percentDiff = (difference / context.reviewCount) * 100;
+      
+      if (percentDiff <= 20 || difference <= 10) {
+        return markVerified(atom, `verified_from_gbp: ${context.reviewCount} reviews found`);
+      } else {
+        // Count mismatch - mark as outdated
+        return markUnverified(
+          atom,
+          `review_count_mismatch: claimed ${claimedCount}, found ${context.reviewCount}`,
+          'well-reviewed by our customers'
+        );
+      }
+    }
+    
+    // No GBP/verified source - cannot verify numeric claim
+    return markUnverified(
+      atom,
+      'numeric_review_claim_unverified: requires GBP connection or review scrape',
+      'well-reviewed by our customers'
+    );
   }
   
-  // Unverified if no reviews
+  // Non-numeric star claims (e.g., "five star service", "highly rated")
+  if (context.reviewCount > 0 && context.averageRating >= 4.0) {
+    return markVerified(atom, `${context.reviewCount} reviews, avg ${context.averageRating} stars`);
+  }
+  
+  // Generic star claims without verification - safe paraphrase
   return markUnverified(
     atom,
-    'no_reviews_found',
+    'star_claim_requires_review_verification',
     'well-reviewed by our customers'
   );
 }

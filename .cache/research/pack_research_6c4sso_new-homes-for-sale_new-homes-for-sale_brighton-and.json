@@ -1,0 +1,729 @@
+{
+  "aeo": {
+    "targetQueries": [
+      "New Homes for sale",
+      "what is new homes for sale",
+      "what does new homes for sale include",
+      "how does new homes for sale work",
+      "how to choose new homes for sale",
+      "why use new homes for sale",
+      "why is new homes for sale important",
+      "when to use new homes for sale",
+      "best time for new homes for sale",
+      "new homes for sale process",
+      "new homes for sale step by step",
+      "new homes for sale vs"
+    ],
+    "peopleAlsoAsk": [],
+    "questionClusters": [],
+    "answerShapes": [],
+    "citationTargets": [
+      {
+        "url": "https://www.gov.uk/first-homes-scheme/how-the-scheme-works",
+        "title": "First Homes scheme: first-time buyer's guide",
+        "snippet": "Developers offer these homes to first-time buyers with at least 30% of the market value taken off the price. Unlike shared ownership, there's no rent to pay.",
+        "type": "official",
+        "credibilityScore": 80
+      },
+      {
+        "url": "https://hoa.org.uk/advice/guides-for-homeowners/i-am-buying/top-tips-for-buying-a-new-build-home/",
+        "title": "Buying A New Build Home: Your Essential Guide 2026",
+        "snippet": "You'll be the first person to live in the house, it will be freshly decorated, have brand new appliances, and likely to be highly energy efficient which means ...",
+        "type": "industry",
+        "credibilityScore": 70
+      },
+      {
+        "url": "https://hoa.org.uk/advice/guides-for-homeowners/i-am-buying/how-do-i-find-the-perfect-property/",
+        "title": "How To Choose The Perfect House",
+        "snippet": "How do you choose the right property to buy? We set out how to choose the perfect house, what aspects to consider and pitfalls to avoid.",
+        "type": "industry",
+        "credibilityScore": 70
+      },
+      {
+        "url": "https://www.nhqb.org.uk/asset/B9B88BBA-42C1-4ED6-BB883A0B1E10770C/",
+        "title": "[PDF] New Homes Quality Board - Code of Practice",
+        "snippet": "It must be clear, fair and written in plain language, and it must keep to all relevant codes of advertising and laws. Developers must state in their sales and",
+        "type": "industry",
+        "credibilityScore": 63.136916
+      },
+      {
+        "url": "https://www.tradingstandards.uk/media/documents/commercial/codes-of-practice/consumer-code-for-new-homes---v4.pdf",
+        "title": "[PDF] Consumer Code for New Homes",
+        "snippet": "The Developer must ensure that the content of any sales and marketing material relating to the New Home is clear and truthful and must use plain English. Such",
+        "type": "guide",
+        "credibilityScore": 59.25964999999999
+      },
+      {
+        "url": "https://www.redfin.com/city/10940/CA/Long-Beach/new-homes",
+        "title": "New homes for sale & real estate in Long Beach, CA - Redfin",
+        "snippet": "There are currently 9 new homes for sale in Long Beach at a median listing price of $823K. Some of these homes are \"Hot Homes,\" meaning they're likely to sell",
+        "type": "guide",
+        "credibilityScore": 53.997856
+      }
+    ],
+    "misconceptions": [
+      {
+        "misconception": "All new homes for sale providers are the same",
+        "correction": "Quality, experience, and approach can vary significantly. Look for credentials, reviews, and local expertise."
+      },
+      {
+        "misconception": "The cheapest option is always the best value",
+        "correction": "Price should be weighed against quality, reliability, and what's included. Sometimes paying more saves money long-term."
+      }
+    ],
+    "snippetHooks": [
+      "In practice...",
+      "What usually changes the price is...",
+      "A common mistake we see is...",
+      "From experience, the key factor is...",
+      "The typical journey looks like this...",
+      "What most people don't realise is...",
+      "The main difference comes down to...",
+      "For those in the local area...",
+      "What we've found works best is...",
+      "The honest answer is..."
+    ],
+    "relatedSearches": [],
+    "generatedAt": "2026-01-30T10:08:24.631Z"
+  },
+  "geo": {
+    "geoSummary": "Brighton and Hove, Brighton and Hove, United Kingdom",
+    "primaryLocation": {
+      "name": "Brighton and Hove",
+      "formatted": "Brighton and Hove, ENG, UK",
+      "lat": 50.8453169,
+      "lon": -0.14974689789029522,
+      "country": "United Kingdom",
+      "region": "Brighton and Hove"
+    },
+    "nearbyAreas": [
+      {
+        "name": "help with",
+        "relationship": "adjacent"
+      }
+    ],
+    "proximityAnchors": [
+      {
+        "category": "transport",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      },
+      {
+        "category": "shopping",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      },
+      {
+        "category": "amenity",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      }
+    ],
+    "placeAnchors": [
+      {
+        "name": "Harrington Road",
+        "category": "public_transport",
+        "addressLine": "Harrington Road, Preston Road, Brighton, BN1 6UU, United Kingdom",
+        "distanceMeters": 133,
+        "lat": 50.8458673,
+        "lon": -0.1514235
+      },
+      {
+        "name": "Harrington Road",
+        "category": "public_transport",
+        "addressLine": "Harrington Road, Preston Road, Brighton, BN1 6UU, United Kingdom",
+        "distanceMeters": 140,
+        "lat": 50.8457828,
+        "lon": -0.1515925
+      },
+      {
+        "name": "Preston Drove",
+        "category": "public_transport",
+        "addressLine": "Preston Drove, Preston Road, Preston, BN1 6AY, United Kingdom",
+        "distanceMeters": 210,
+        "lat": 50.8438524,
+        "lon": -0.1516348
+      },
+      {
+        "name": "Costa",
+        "category": "catering",
+        "addressLine": "Costa, 225 Preston Road, Brighton, BN1 6SA, United Kingdom",
+        "distanceMeters": 239,
+        "lat": 50.8435252,
+        "lon": -0.1516282
+      },
+      {
+        "name": "The Crown and Anchor",
+        "category": "building",
+        "addressLine": "The Crown and Anchor, 213 Preston Road, Brighton, BN1 6SA, United Kingdom",
+        "distanceMeters": 265,
+        "lat": 50.843137299999995,
+        "lon": -0.15166077726269067
+      },
+      {
+        "name": "Loder Road",
+        "category": "public_transport",
+        "addressLine": "Loder Road, Surrenden Road, Brighton, BN1 6QE, United Kingdom",
+        "distanceMeters": 276,
+        "lat": 50.8462721,
+        "lon": -0.1461279
+      },
+      {
+        "name": "Loder Road",
+        "category": "public_transport",
+        "addressLine": "Loder Road, Surrenden Road, Brighton, BN1 6PP, United Kingdom",
+        "distanceMeters": 302,
+        "lat": 50.8468005,
+        "lon": -0.1461612
+      },
+      {
+        "name": "Park View",
+        "category": "catering",
+        "addressLine": "Park View, 71 Preston Drove, Brighton, BN1 6LD, United Kingdom",
+        "distanceMeters": 356,
+        "lat": 50.8442918,
+        "lon": -0.1449578
+      },
+      {
+        "name": "The Station Hotel",
+        "category": "building",
+        "addressLine": "The Station Hotel, 1 Hampstead Road, Brighton, BN1 5NG, United Kingdom",
+        "distanceMeters": 395,
+        "lat": 50.84475155,
+        "lon": -0.15538114124090593
+      },
+      {
+        "name": "Found",
+        "category": "catering",
+        "addressLine": "Found, 91A Preston Drove, Brighton, BN1 6LD, United Kingdom",
+        "distanceMeters": 419,
+        "lat": 50.8442848,
+        "lon": -0.1440326
+      }
+    ],
+    "localLanguage": [
+      {
+        "phrase": "Brighton and Hove",
+        "type": "area-name",
+        "importance": "high"
+      }
+    ],
+    "geoComparisons": [
+      {
+        "areaA": "Brighton and Hove",
+        "areaB": "help with",
+        "framingSuggestion": "When comparing Brighton and Hove and help with, factors like transport links, local amenities, and community feel often come into play.",
+        "comparisonFactors": [
+          "Transport accessibility",
+          "Local amenities",
+          "Community character",
+          "Property types"
+        ]
+      }
+    ],
+    "localDecisionFactors": [
+      {
+        "factor": "Public transport links",
+        "category": "transport",
+        "importance": "high",
+        "phrasePattern": "The area benefits from good transport connections, with [nearby stations/stops] providing access to..."
+      },
+      {
+        "factor": "Commuter accessibility",
+        "category": "transport",
+        "importance": "medium",
+        "phrasePattern": "For commuters, the location offers..."
+      },
+      {
+        "factor": "Local amenities within walking distance",
+        "category": "walkability",
+        "importance": "high",
+        "phrasePattern": "Day-to-day conveniences are within easy reach, including..."
+      },
+      {
+        "factor": "Local character",
+        "category": "lifestyle",
+        "importance": "medium",
+        "phrasePattern": "The area has a [characteristic] feel, with..."
+      },
+      {
+        "factor": "Community feel",
+        "category": "lifestyle",
+        "importance": "medium",
+        "phrasePattern": "Residents often mention the sense of community..."
+      },
+      {
+        "factor": "Shopping and services",
+        "category": "amenities",
+        "importance": "medium",
+        "phrasePattern": "Local shops and services include..."
+      }
+    ],
+    "geoInternalLinkSuggestions": [],
+    "generatedAt": "2026-01-30T10:08:22.261Z"
+  },
+  "sources": [
+    {
+      "url": "https://www.rightmove.co.uk/new-homes-for-sale/Brighton-and-Hove.html",
+      "title": "New Homes and Developments For Sale in Brighton and ...",
+      "snippet": "Find New Builds & Developments For Sale in Brighton and Hove with Rightmove. New build flats & houses for sale in Brighton and Hove.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.onthemarket.com/new-homes/property/brighton-and-hove/",
+      "title": "New Build Homes & Developments for Sale in Brighton ...",
+      "snippet": "75 results New build homes & developments for sale in Brighton and Hove. Modern 2 & 3 bedroom apartments are within 15 minutes.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.zoopla.co.uk/new-homes/property/east-sussex/brighton/",
+      "title": "New build homes and developments for sale in Brighton, ...",
+      "snippet": "New build homes and developments for sale in Brighton, East Sussex £402,500 From 2 beds The Furlong, newly built five-bedroom detached home",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.taylorwimpey.co.uk/new-homes/brighton",
+      "title": "New build homes for sale in Brighton",
+      "snippet": "We have a fantastic choice of new homes for sale in Brighton. If you're a first time buyer or looking for a family home, we have the home for you.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://oakleyproperty.com/new-homes/new-homes-properties",
+      "title": "New Homes Properties",
+      "snippet": "Brighton, Hove, Lewes, new two bedroom apartment in Hove offering sea views and generous outside space. Brighton & Hove Sales Call 01273 688881 Lewes Town. ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.ellieandco.co.uk/2025/11/hove-travel-guide.html",
+      "title": "Central Hove: A Neighbourhood Guide - Ellie & Co",
+      "snippet": "Local tips on where to eat, drink, shop, stay and things to do in Hove, Brighton's relaxed sister, known for its elegant architecture, ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://thehumblehome.uk/posts/brighton-the-ultimate-guide",
+      "title": "Brighton: My Ultimate Guide",
+      "snippet": "In my insiders guide to Brighton, I celebrate the city I'm preparing to leave but has homed me for the last 20 years!",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.visitbrighton.com/food-and-drink/areas-to-explore",
+      "title": "Areas to Explore - Brighton",
+      "snippet": "From the twisting alleyways of The Lanes to the vibrant, colourful hub of the North Laine each area of the city has its own distinctive character.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.your-move.co.uk/estate-agent/brighton/local-area-guide",
+      "title": "A local area guide of Brighton and Hove",
+      "snippet": "If you're moving house or thinking about moving, read our local area guide for Brighton and Hove to help with your search for properties for sale or to ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.zoopla.co.uk/guides/areas/hove/",
+      "title": "Living in Hove: area guide",
+      "snippet": "Moving to Hove? Get the lowdown on why it's a great place to live, fun things to do here, what the schools are like and local house prices.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.reddit.com/r/howislivingthere/comments/1eaflsc/how_is_living_in_brighton_england_uk/",
+      "title": "How is living in Brighton, England UK : r/howislivingthere",
+      "snippet": "Expensive and the housing is terrible. Overcrowded and moldy. But otherwise - it's everything you'd want in a city.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.brighton-hove.gov.uk/work-and-life-brighton-hove",
+      "title": "Work and life in Brighton & Hove",
+      "snippet": "As a resident or employee in Brighton & Hove you will be surrounded by beautiful architecture, specialist shops and a vibrant art and music scene.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.guinnesshomes.co.uk/blog/area-guides/brighton/thinking-of-moving-to-brighton-all-your-questions-answered/",
+      "title": "Thinking of Moving to Brighton? All Your Questions ...",
+      "snippet": "Creative Community: Artists, musicians, and creatives thrive here. The city is home to festivals like Brighton Fringe and the Great Escape.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=G97QmIi3-FQ",
+      "title": "Living in Brighton & Hove | Lifestyle | Travel Guide",
+      "snippet": "We've been living in brighton for the past three months and wanted to share with you all the beautiful places that we've seen and our experience.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.findawayabroad.com/post/living-in-brighton-england",
+      "title": "An Expat's Guide to Living in Brighton, England",
+      "snippet": "Living in Brighton is a great choice for those that prefer a laid-back seaside town to a big city. The best neighborhoods are The Lanes, North Laine, and ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.newhomesforsale.co.uk/",
+      "title": "New Homes for Sale - Find New Builds Near You",
+      "snippet": "Find and compare new build homes across the UK with New Homes For Sale. Explore housing developments from trusted housebuilders and start your move today.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.rightmove.co.uk/new-homes-for-sale.html",
+      "title": "UK new homes for sale",
+      "snippet": "Find new houses and flats for sale. Search over 900000 new build properties from the best property agents & developers in the UK - Rightmove.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.taylorwimpey.co.uk/",
+      "title": "New homes for sale ‧ Energy efficient homes ‧ Taylor Wimpey",
+      "snippet": "We build a wide range of high quality new homes and you'll find a selection of our most popular designs here. These homes are available on selected ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.dwh.co.uk/new-homes/",
+      "title": "New Houses For Sale | Find Your New Home | DWH",
+      "snippet": "Find your dream new home near you with David Wilson Homes. If you are looking for your next house or a first time buyer we have a range of houses for sale.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.persimmonhomes.com/",
+      "title": "Persimmon Homes: New Homes for Sale",
+      "snippet": "Explore our house types and virtual show homes. With styles ranging from one-bedroom starter homes to five-bedroom family homes, we'll have something that's ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.millerhomes.co.uk/",
+      "title": "Miller Homes: New Homes | New Build Homes For Sale",
+      "snippet": "Miller Homes has a 5 star rating for customer satisfaction with new homes for sale on new build developments located across the United Kingdom.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.redrow.co.uk/",
+      "title": "Redrow: New Build Homes & Housing Developments for Sale",
+      "snippet": "Discover a better way to live with a premium new home from Redrow. Rated 5* for customer satisfaction by the Home Builders Federation.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.barratthomes.co.uk/new-homes/",
+      "title": "New Homes For Sale | Find Your New House",
+      "snippet": "Explore our collection of 2 bedroom homes and 3 bedroom homes, perfect for first-time buyers, young families, or those looking to downsize.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.bellway.co.uk/new-homes",
+      "title": "New-build homes for sale across the UK",
+      "snippet": "Find a new home near you by browsing our quality developments across the UK. Discover the range of features you can enjoy when buying a home with us.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.zoopla.co.uk/new-homes/",
+      "title": "New Homes For Sale - Buy New-Build Houses & Flats",
+      "snippet": "Explore new-build homes for sale on Zoopla, with brand new houses and flats available across hundreds of new housing developments in the UK.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.lindenhomes.co.uk/",
+      "title": "Linden Homes: New Houses for Sale, New Build Homes Near ...",
+      "snippet": "We have a whole host of new-build homes for sale, from modern townhouses to contemporary detached homes, sleek city apartments and traditional-inspired ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.bovishomes.co.uk/",
+      "title": "Bovis Homes - New Homes for Sale",
+      "snippet": "Bovis Homes build some of the best new homes in the UK that are great places to live. Stunning new homes and apartments for sale right now.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.moneysavingexpert.com/mortgages/buying-a-new-build-home/",
+      "title": "Buying a new-build home",
+      "snippet": "Buying a new-build home throws up a unique set of challenges. We explain what you need to know before, during and after the new build buying process, ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://hoa.org.uk/advice/guides-for-homeowners/i-am-buying/top-tips-for-buying-a-new-build-home/",
+      "title": "Buying A New Build Home: Your Essential Guide 2026",
+      "snippet": "You'll be the first person to live in the house, it will be freshly decorated, have brand new appliances, and likely to be highly energy efficient which means ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.zoopla.co.uk/discover/buying/new-build-homes-guide/",
+      "title": "Buying a new-build home: everything you need to know",
+      "snippet": "These tend to include fire safety, locks on doors and windows, security lighting, alarms, gated entrances and entry phones in new housing ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.gov.uk/first-homes-scheme/how-the-scheme-works",
+      "title": "First Homes scheme: first-time buyer's guide",
+      "snippet": "Developers offer these homes to first-time buyers with at least 30% of the market value taken off the price. Unlike shared ownership, there's no rent to pay.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.martinco.com/guides/buying/new-build-property/",
+      "title": "Everything you need to know about buying a new-build ...",
+      "snippet": "Modern appliances – New builds are usually kitted out with modern appliances and technology, meaning you shouldn't have to pay for replacements ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.oakwoodpropertysolicitors.co.uk/what-is-a-new-build-home-pros-and-cons/",
+      "title": "What is a new build home? Pros and cons",
+      "snippet": "1) Ready to go · 2) Property Schemes · 3) Incentives · 4) Modern living · 5) Design your home · 6) Low bills · 7) Chain-free · 8) Warranties ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.savills.co.uk/services/buying-or-selling/buying-a-new-build-home.aspx",
+      "title": "Buying a New-Build Home",
+      "snippet": "We have a variety of new homes within developments that may suit your lifestyle. We can offer properties that are completed and ready to move into, or off plan.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.homesbyesh.co.uk/first-time-buyers-heres-what-you-need-to-know-about-new-homes/",
+      "title": "First time buyers: here's what you need to know about new ...",
+      "snippet": "New builds are much more energy efficient than older ones. They are better insulated using modern materials and techniques, have double or even ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://alexanderlawrencemk.co.uk/benefits-of-new-build-homes/",
+      "title": "Benefits Of New Build Homes",
+      "snippet": "Buying a new build has many pros- a brand new house, new appliances and a purpose-built community. However, it can sometimes be challenging to visualise and ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.persimmonhomes.com/ways-to-help-you-buy/part-exchange-your-home",
+      "title": "Part Exchange Homes, New Build ...",
+      "snippet": "Sell your home and move into a new build with our Part Exchange scheme. No estate agent fees, no chain delays, and no last-minute fall-throughs.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.gov.uk/first-homes-scheme",
+      "title": "First Homes scheme: first-time buyer's guide: Overview",
+      "snippet": "If you're a first-time buyer, you may be able to buy a home for 30% to 50% less than its market value. The home must be your only or main residence.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://hoa.org.uk/advice/guides-for-homeowners/i-am-buying/new-build-vs-existing-home/",
+      "title": "Pros and cons of new build homes: what to beware of",
+      "snippet": "Let's take a look at the pros and cons of new build homes straight from the developer and whether buying a new build home is worth it.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.barratthomes.co.uk/offers/first-homes/",
+      "title": "First Homes | First Time Buyers Scheme",
+      "snippet": "They will be able to buy a new-build home with a discount of at least 30% on market value. In some areas, the discount can be as high as 40% or 50%.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.moneysavingexpert.com/mortgages/finding-property-for-sale/",
+      "title": "Property search tips: how to find your dream home - MSE",
+      "snippet": "Use apps to monitor for-sale listings on the go. Both Rightmove and Zoopla have free apps which help to pinpoint homes for sale near to where ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://hoa.org.uk/advice/guides-for-homeowners/i-am-buying/how-do-i-find-the-perfect-property/",
+      "title": "How To Choose The Perfect House",
+      "snippet": "How do you choose the right property to buy? We set out how to choose the perfect house, what aspects to consider and pitfalls to avoid.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.platformhomeownership.com/article/top-7-tips-where-buy-house",
+      "title": "Top 7 Tips for Choosing Where to Buy a House",
+      "snippet": "Top tips for choosing where to buy a house · 1. Find somewhere that fits your budget · 2. Think about the property you want and how that fits into ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://jelson.co.uk/news/how-to-choose-the-perfect-location-for-your-new-home",
+      "title": "Choosing the perfect location for your new home",
+      "snippet": "Look into property value trends in the areas you're interested in, particularly in neighbourhoods with good schools, access to amenities and low ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.davistate.com/buy/guides/new-home-guide",
+      "title": "What to look out for when buying a new build - Home",
+      "snippet": "We've created a handy guide to help you know what to expect. There are lots of reasons why you might want to purchase a new build property.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.your-move.co.uk/blog/how-to-choose-the-right-location-when-buying-a-new-home",
+      "title": "How to choose the right location when buying a new home",
+      "snippet": "One of the first considerations is choosing the area you want to live in and the proximity to the people and places you need and want to be close to.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.keepmoat.com/new-build-homes",
+      "title": "New Homes & New Build Houses | New Homes For Sale",
+      "snippet": "Find out more about our new build housing developments. Choose a new housing development in your area today and benefit from contemporary designs and a host of ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.brookbanksonline.co.uk/blog-box-view/1454924560/1673445304/a-guide-to-finding-your-new-home-in-2023?from_page=%2Fblogs%3Fpage%3D11&post_width=full_width",
+      "title": "A guide to finding your new home in 2023",
+      "snippet": "Decide if you should sell first. If you are already a homeowner, you will need to decide whether you want to sell your current property ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.which.co.uk/news/article/9-tips-for-buying-a-new-build-property-in-2025-aaSVg6k4eYKc",
+      "title": "9 tips for buying a new build property in 2025 - Which.co.uk",
+      "snippet": "Thinking of buying a new-build property? Our expert advice explains what to look out for, from developer checks to new-build mortgage ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T10:08:21.782Z"
+    },
+    {
+      "url": "https://www.newhomesource.com/",
+      "title": "New Homes | Search Home Builders and New Homes for Sale",
+      "snippet": "Search Over 12000 New Home Communities - the World's Largest New Home Database. Compare Pricing, Pictures, and Floor Plans for New Homes for Sale.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T10:08:24.629Z"
+    },
+    {
+      "url": "https://www.realtor.com/guides/guide-to-buying-new-construction-home/steps-to-buying-a-new-construction-house/",
+      "title": "The Steps To Buying a Brand-New Home - Realtor.com",
+      "snippet": "Set a budget · Get preapproved for a mortgage · Choose a location · Hire a real estate agent · Shop home builders · Decide whether to build or buy move-in ready.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T10:08:24.629Z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=cxzsKo_M8GI",
+      "title": "Buying a NEW CONSTRUCTION Home - The Complete Guide for ...",
+      "snippet": "Buying a NEW CONSTRUCTION Home - The Complete Guide for Buyers\nAngela O'Hare - Favorite Las Vegas Realtor\n21300 subscribers\n269 likes\n2731 views\n9 Sep 2024\nBuying a New Construction Home - The Complete Guide for Buyers\n\nPurchasing a new construction home is an exciting journey that offers the chance to customize a property to fit your exact needs and preferences. However, it also involves a series of important steps to ensure the process goes smoothly. Here’s a comprehensive guide to help you navigate buying a new construction home in Las Vegas.\n\nBLOG POST: https://neighborhoodsinlasvegas.com/buying-a-new-construction-home-the-complete-guide-for-buyers/\n\n#newconstruction #homebuying #homebuyingtips \n\nNew videos every MONDAY - Subscribe here: http://bit.ly/2E3qmOT\n\nBUYERS\n🚨Buyer Form: https://bit.ly/buyerandsellerform\n🚨Buyer Registration: https://favoritelasvegasrealtor.com/buyer-lead-registration\n🚨FREE Buyer Guide: https://favoritelasvegasrealtor.com/buyer-guide-download\n\nSELLERS\n🚨Seller Form: https://bit.ly/buyerandsellerform\n🚨Seller Registration: https://favoritelasvegasrealtor.com/seller-lead-registration\n🚨FREE Seller Guide: https://favoritelasvegasrealtor.com/seller-guide-download\n🚨Seller Home Value: https://favoritelasvegasrealtor.com/home-worth\n\nSUMMERLIN\n✅ Summerlin North: https://favoritelasvegasrealtor.com/summerlin-north\n✅ Summerlin South: https://favoritelasvegasrealtor.com/summerlin-south\n✅ Summerlin West: https://favoritelasvegasrealtor.com/summerlin-west\n✅ Siena: https://favoritelasvegasrealtor.com/siena\n✅ Sun City Summerlin: https://favoritelasvegasrealtor.com/sun-city-summerlin\n✅ Mira Villa: https://favoritelasvegasrealtor.com/mira-villa\n✅ Red Rock Country Club: https://favoritelasvegasrealtor.com/red-rock-country-club\n✅ The Ridges: https://favoritelasvegasrealtor.com/the-ridges\n✅ Open Houses in Summerlin: https://favoritelasvegasrealtor.com/open-houses-in-summerlin\n✅ Summerlin Price Reduced: https://favoritelasvegasrealtor.com/summerlin-price-reduced-listings\n\nAngela O'Hare is a full time Realtor in Las Vegas, Nevada. She specializes in  Summerlin, Sun City Summerlin and the surrounding areas in the West/NW side of town; including Desert Shores, The Lakes, Peccole Ranch, Providence, and Skye Canyon.\n\nEmail: theohareteamlv@gmail.com\nDirect: 702-370-5112\nCompany: Home Realty Center\nAddress: 9484 W. Lake Mead Blvd. #8 Las Vegas, NV 89134\nLicense #: S.0180246\n\nAngela also specializes in helping Veterans and Active Duty Military find their dream home. She is certified as a Military Relocations Professional, certified in the Military & Veterans Housing and member of the Veterans Association of Real Estate Professionals.\n\nWEBSITE ➡️ https://neighborhoodsinlasvegas.com/\nFACEBOOK ➡️ https://www.facebook.com/theohareteam/\nINSTAGRAM ➡️ https://www.instagram.com/favoritelasvegasrealtor/\nLINKEDIN ➡️ https://www.linkedin.com/in/angela-o-hare-55275259/\nPINTEREST ➡️ https://www.pinterest.com/theohareteam/\n8 comments\n",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T10:08:24.629Z"
+    },
+    {
+      "url": "https://www.zillow.com/learn/how-to-buy-new-construction-homes/",
+      "title": "How to Buy a New Construction Home | Zillow",
+      "snippet": "Learn how to buy a new construction home with our helpful guide. From budgeting to choosing a builder, we'll walk you through all the steps.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T10:08:24.629Z"
+    },
+    {
+      "url": "https://www.nar.realtor/the-facts",
+      "title": "Get the Facts - National Association of REALTORS®",
+      "snippet": "#### Whether you’re a REALTOR®, brokerage leader, MLS executive, homebuyer, or home seller, the resources here provide the facts and latest news on NAR's policy updates. Resources on NAR’s new MLS policy providing additional marketing choices for consumers while preserving equal access to property information on Multiple Listing Services. ### Consumer Guide: What Veterans Need To Know about Buying a Home. ### Consumer Guide: Buying Your First Home. ### Consumer Guide: Home Inspections. ### Consumer Guide: Preparing to Sell Your Home. ### Consumer Guide: What Goes Into Pricing Your Home. ### Consumer Guide: Marketing Your Home. ### Consumer Guide: Buying Land and Building a New Home. ### Consumer Guide: Your Home and Estate Planning. ### Consumer Guide: 8 Tips for Selling Your Home in Winter. ### Home Sellers: What the NAR Settlement Means for You. REALTORS® are a trusted source of advice and stand ready to help you navigate the complex home selling process with choices that work best for you.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T10:08:24.629Z"
+    },
+    {
+      "url": "https://www.tradingstandards.uk/media/documents/commercial/codes-of-practice/consumer-code-for-new-homes---v4.pdf",
+      "title": "[PDF] Consumer Code for New Homes",
+      "snippet": "The Developer must ensure that the content of any sales and marketing material relating to the New Home is clear and truthful and must use plain English. Such",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T10:08:24.629Z"
+    },
+    {
+      "url": "https://mhwc.co.uk/how-to/2024-new-rules-for-uk-home-sellers-from-national-trading-standards/",
+      "title": "2024 New Rules for UK Home Sellers from National Trading ...",
+      "snippet": "The National Trading Standards Estate and Letting Agency Team (NTSELAT) are implementing new requirements for material information to be included in property",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T10:08:24.629Z"
+    },
+    {
+      "url": "https://www.nhqb.org.uk/asset/B9B88BBA-42C1-4ED6-BB883A0B1E10770C/",
+      "title": "[PDF] New Homes Quality Board - Code of Practice",
+      "snippet": "It must be clear, fair and written in plain language, and it must keep to all relevant codes of advertising and laws. Developers must state in their sales and",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T10:08:24.629Z"
+    },
+    {
+      "url": "https://www.estateagenttoday.co.uk/breaking-news/2025/10/the-new-home-buying-rules-that-estate-agents-need-to-follow/",
+      "title": "The new home buying rules that estate agents need to follow",
+      "snippet": "Estate agents will need mandatory qualifications and must follow new material information rules under a major overhaul of the home buying",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T10:08:24.629Z"
+    },
+    {
+      "url": "https://www.whatmortgage.co.uk/property-market/home-sellers-face-extra-costs-under-new-trading-standards-rules/",
+      "title": "Home sellers face extra costs under new trading standards rules",
+      "snippet": "Changes to the way homes are sold are being rolled out. Whilst it's good news for buyers, the guidelines mean additional costs for sellers.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T10:08:24.629Z"
+    },
+    {
+      "url": "https://www.redfin.com/city/10940/CA/Long-Beach/new-homes",
+      "title": "New homes for sale & real estate in Long Beach, CA - Redfin",
+      "snippet": "There are currently 9 new homes for sale in Long Beach at a median listing price of $823K. Some of these homes are \"Hot Homes,\" meaning they're likely to sell",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T10:08:24.629Z"
+    },
+    {
+      "url": "https://www.trulia.com/for_sale/Long_Beach,CA/new_homes_lt/",
+      "title": "Long Beach, CA New Construction Homes For Sale - 39 Listings",
+      "snippet": "39 New Construction Homes For Sale in Long Beach, CA and nearby areas. Browse photos, see new properties, get open house info,",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T10:08:24.629Z"
+    },
+    {
+      "url": "https://www.homes.com/new-homes/for-sale/long-beach-ca/",
+      "title": "New Construction Homes for Sale in Long Beach, CA",
+      "snippet": "Search from 13 new construction homes for sale in Long Beach, CA. Explore new communities, floor plans, and move-in ready homes. Connect directly with home",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T10:08:24.629Z"
+    },
+    {
+      "url": "https://www.tollbrothers.com/luxury-homes/Long-Beach-CA",
+      "title": "New Homes for Sale near Long Beach, California by Toll Brothers",
+      "snippet": "Build your dream home near Long Beach, CA with Toll Brothers. Choose from a wide selection of new homes for sale with flexible floor plans & luxury",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T10:08:24.629Z"
+    },
+    {
+      "url": "https://www.realtor.com/realestateandhomes-search/Long-Beach_CA/shw-nc",
+      "title": "New Construction Homes for Sale in Long Beach, CA | Realtor.com®",
+      "snippet": "New construction homes for sale in Long Beach, CA have a median listing home price of $864,500. There are 16 new construction homes for sale in Long Beach, CA,",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T10:08:24.629Z"
+    }
+  ],
+  "cache": {
+    "cacheKey": "pack_research_6c4sso_new-homes-for-sale_new-homes-for-sale_brighton-and",
+    "cachedAt": "2026-01-30T10:08:24.634Z",
+    "expiresAt": "2026-02-06T10:08:24.634Z",
+    "fromCache": false
+  },
+  "request": {
+    "businessName": "Estate and lettings agents in Brighton and Hove",
+    "focusKeyword": "New Homes for sale",
+    "service": "New Homes for sale",
+    "geoPrimary": "Brighton and Hove",
+    "intent": "INFORMATIONAL",
+    "pageRole": "support"
+  }
+}

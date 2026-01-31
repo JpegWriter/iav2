@@ -181,6 +181,15 @@ export function adaptUnifiedToLegacyJob(
         maxH2Count: 10,
         maxTableRows: 8,
       },
+      // =====================================================================
+      // CRITICAL: Pass through SEO drafts and vision facts from writer brief
+      // =====================================================================
+      seoDrafts: brief.seoDrafts,
+      enforceSeoDrafts: brief.enforceSeoDrafts ?? true,
+      visionFacts: brief.visionFacts,
+      visionProvided: !!(brief.visionFacts && brief.visionFacts.length > 0),
+      requiresVisionUsage: !!(brief.visionFacts && brief.visionFacts.length > 0),
+      geoProvided: !!brief.location,
     },
     userContext: {
       businessName: profile.business.name,

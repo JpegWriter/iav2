@@ -1,0 +1,217 @@
+{
+  "geo": {
+    "geoSummary": "United States, United States",
+    "primaryLocation": {
+      "name": "United States",
+      "formatted": "United States",
+      "lat": 39.7837304,
+      "lon": -100.445882,
+      "country": "United States"
+    },
+    "nearbyAreas": [],
+    "proximityAnchors": [
+      {
+        "category": "amenity",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      }
+    ],
+    "placeAnchors": [
+      {
+        "name": "The LandMark Inn",
+        "category": "accommodation",
+        "addressLine": "The LandMark Inn, 189 South Penn Avenue, Oberlin, KS 67749, United States of America",
+        "distanceMeters": 8147,
+        "lat": 39.8191127,
+        "lon": -100.529216
+      },
+      {
+        "name": "The Re-Load",
+        "category": "catering",
+        "addressLine": "The Re-Load, South Penn Avenue, Oberlin, KS 67749, United States of America",
+        "distanceMeters": 8197,
+        "lat": 39.8200773,
+        "lon": -100.5291978
+      },
+      {
+        "name": "Frontier Cafe",
+        "category": "catering",
+        "addressLine": "Frontier Cafe, North York Avenue, Oberlin, KS 67749, United States of America",
+        "distanceMeters": 8477,
+        "lat": 39.827759,
+        "lon": -100.5267599
+      },
+      {
+        "name": "Pizza Hut",
+        "category": "building",
+        "addressLine": "Pizza Hut, West Frontier Parkway, Oberlin, KS 67749, United States of America",
+        "distanceMeters": 8680,
+        "lat": 39.828376399999996,
+        "lon": -100.52923005
+      },
+      {
+        "name": "Godfather's Pizza",
+        "category": "catering",
+        "addressLine": "Godfather's Pizza, West Frontier Parkway, Oberlin, KS 67749, United States of America",
+        "distanceMeters": 8991,
+        "lat": 39.8284439,
+        "lon": -100.5334173
+      }
+    ],
+    "localLanguage": [
+      {
+        "phrase": "United States",
+        "type": "area-name",
+        "importance": "high"
+      }
+    ],
+    "geoComparisons": [],
+    "localDecisionFactors": [
+      {
+        "factor": "Public transport links",
+        "category": "transport",
+        "importance": "high",
+        "phrasePattern": "The area benefits from good transport connections, with [nearby stations/stops] providing access to..."
+      },
+      {
+        "factor": "Commuter accessibility",
+        "category": "transport",
+        "importance": "medium",
+        "phrasePattern": "For commuters, the location offers..."
+      },
+      {
+        "factor": "Local amenities within walking distance",
+        "category": "walkability",
+        "importance": "high",
+        "phrasePattern": "Day-to-day conveniences are within easy reach, including..."
+      },
+      {
+        "factor": "Local character",
+        "category": "lifestyle",
+        "importance": "medium",
+        "phrasePattern": "The area has a [characteristic] feel, with..."
+      },
+      {
+        "factor": "Community feel",
+        "category": "lifestyle",
+        "importance": "medium",
+        "phrasePattern": "Residents often mention the sense of community..."
+      },
+      {
+        "factor": "Shopping and services",
+        "category": "amenities",
+        "importance": "medium",
+        "phrasePattern": "Local shops and services include..."
+      }
+    ],
+    "geoInternalLinkSuggestions": [],
+    "generatedAt": "2026-01-31T08:02:05.664Z"
+  },
+  "sources": [
+    {
+      "url": "https://www.vavoompinups.com/",
+      "title": "Vavoom Pinups: HOME",
+      "snippet": "At Vavoom we specialize in empowering pinup + boudoir solo shoots, fun couple shoots, family shoots, adorable mommy + me shoots, retro maternity shoots, and ...",
+      "type": "local",
+      "fetchedAt": "2026-01-31T08:02:05.663Z"
+    },
+    {
+      "url": "https://www.fineart-pinups.com/about-us",
+      "title": "Pin-up & Boudoir Photography - Fine Art",
+      "snippet": "We continue to be the ultimate experience in sexy modern pinup and boudoir photography. Please contact us today to set up your very own special day of YOU!",
+      "type": "local",
+      "fetchedAt": "2026-01-31T08:02:05.663Z"
+    },
+    {
+      "url": "https://www.cocohausproductions.com/blog/the-power-of-modern-pinup-photography",
+      "title": "The Power of Modern Pinup Photography",
+      "snippet": "Don't Be Afraid to Experiment: Modern pinup is all about blending classic elements with fresh ideas. Think retro-inspired poses with edgy ...",
+      "type": "local",
+      "fetchedAt": "2026-01-31T08:02:05.663Z"
+    },
+    {
+      "url": "https://leboudoirstudio.com/pinup-photo-shoot-at-le-boudoir-studio/",
+      "title": "Pinup Photo Shoot at Le Boudoir Studio",
+      "snippet": "Feeling inspired to do your own pinup shoot? Call us at 480 495 5455 to book your own vintage boudoir photo shoot! And check out our past pinup ...",
+      "type": "local",
+      "fetchedAt": "2026-01-31T08:02:05.663Z"
+    },
+    {
+      "url": "https://kellytareskiphotography.com/pin-up-boudoir-photography-in-spokane-washington/",
+      "title": "Pin-Up Boudoir Photography in Spokane Washington",
+      "snippet": "You can choose from a variety of styles, from classic vintage to modern pin-up glam. A Fun and Relaxed Atmosphere. During the photo shoot, I strive to create a ...",
+      "type": "local",
+      "fetchedAt": "2026-01-31T08:02:05.663Z"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_area",
+      "title": "List of U.S. states and territories by area",
+      "snippet": "This is a complete list of all 50 US states, its federal district (Washington DC) and its major territories ordered by total area, land area and water area.",
+      "type": "local",
+      "fetchedAt": "2026-01-31T08:02:05.663Z"
+    },
+    {
+      "url": "https://www.visitusa.org.uk/default.aspx?pname=Explore-USA&upid=2",
+      "title": "Explore the USA | USA State Map",
+      "snippet": "Just pick a destination from the dropdown menu or click on our interactive map to start planning your USA trip and you can access a guide to each US State.",
+      "type": "local",
+      "fetchedAt": "2026-01-31T08:02:05.663Z"
+    },
+    {
+      "url": "https://www.roughguides.com/usa/map/",
+      "title": "Map of the USA | USA Regions",
+      "snippet": "Plan your trip around the USA with interactive travel maps from Rough Guides. Use Rough Guides maps to explore all the regions of the USA.",
+      "type": "local",
+      "fetchedAt": "2026-01-31T08:02:05.663Z"
+    },
+    {
+      "url": "https://www.visittheusa.co.uk/",
+      "title": "Visit The USA: Guide To USA Holidays & Travel Around America",
+      "snippet": "VisitTheUSA is the USA official guide for traveling the United States of America. Discover here all the information you need for your American holidays.",
+      "type": "local",
+      "fetchedAt": "2026-01-31T08:02:05.663Z"
+    },
+    {
+      "url": "https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf",
+      "title": "Census Regions and Divisions of the United States",
+      "snippet": "Division 6: East South Central. Delaware (10). District of Columbia (11). Florida (12). Georgia (13). Maryland (24). North Carolina (37).",
+      "type": "local",
+      "fetchedAt": "2026-01-31T08:02:05.663Z"
+    },
+    {
+      "url": "https://www.gov.uk/guidance/living-in-the-usa",
+      "title": "Living in the USA",
+      "snippet": "Information about moving to, living or retiring in the USA – including visas, working, healthcare and driving.",
+      "type": "local",
+      "fetchedAt": "2026-01-31T08:02:05.663Z"
+    },
+    {
+      "url": "https://www.pssremovals.com/blog/pros-and-cons-living-in-usa",
+      "title": "Pros and cons of living in the USA for expats",
+      "snippet": "Americans enjoy more than twice the average living space of EU residents, as land prices are much lower than in other countries. In addition, as ...",
+      "type": "local",
+      "fetchedAt": "2026-01-31T08:02:05.663Z"
+    },
+    {
+      "url": "https://www.reddit.com/r/MovingToUSA/comments/1fy5c3x/uk_citizens_in_the_usa_how_is_life_any_regrets/",
+      "title": "UK citizens in the USA - how is life? any regrets?",
+      "snippet": "I would like to hear from people that have lived in both US and UK. Do you prefer the USA - has your life improved? Any regrets?",
+      "type": "local",
+      "fetchedAt": "2026-01-31T08:02:05.663Z"
+    },
+    {
+      "url": "https://www.expat.hsbc.com/expat-explorer/expat-guides/united-states/",
+      "title": "Moving to the United States | Expats Guide",
+      "snippet": "Discover the United States of America. Prepare for expat living with our handy guides to life, work and managing your money in the USA.",
+      "type": "local",
+      "fetchedAt": "2026-01-31T08:02:05.663Z"
+    },
+    {
+      "url": "https://www.shipit.co.uk/blog/moving-to-the-usa",
+      "title": "Moving to the USA From the UK 2025",
+      "snippet": "Cost of Living in the USA. The cost of living in the U.S. is 15% higher than in the UK. This is due to higher prices for groceries ...",
+      "type": "local",
+      "fetchedAt": "2026-01-31T08:02:05.663Z"
+    }
+  ]
+}

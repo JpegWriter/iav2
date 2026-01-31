@@ -82,6 +82,83 @@ export interface WordPressConstraints {
   maxH2Count?: number;
   /** Maximum table rows before splitting */
   maxTableRows?: number;
+  /** Image block handling policy */
+  imagePolicy?: ImagePolicy;
+}
+
+export interface ImagePolicy {
+  /** Whether image blocks are allowed */
+  allowImageBlocks: boolean;
+  /** Require valid URL or PLACEHOLDER: prefix */
+  requireValidImageUrlOrPlaceholder: boolean;
+  /** Prefix for placeholder images */
+  placeholderPrefix: string;
+}
+
+// ============================================================================
+// UPGRADE RULES (FOR AUTHORITY CONTENT UPGRADE)
+// ============================================================================
+
+export interface UpgradeRules {
+  preserveTopic: boolean;
+  preserveInternalLinksExactly: boolean;
+  allowAddInternalLinksIfSitemapProvided: boolean;
+  maxAdditionalInternalLinks: number;
+  
+  mustInclude: {
+    decisionChecklist: boolean;
+    comparisonTable: boolean;
+    aeoQASection: {
+      enabled: boolean;
+      titlePattern: string;
+      minQuestions: number;
+      maxQuestions: number;
+    };
+  };
+  
+  style: {
+    tone: 'calm_experienced_professional' | 'friendly_expert' | 'authoritative_formal';
+    noHypeClaims: boolean;
+    maxParagraphWords: number;
+    scannableFormatting: boolean;
+  };
+  
+  seoFields: {
+    enforceFocusKeywordInFirst150Words: boolean;
+    enforceFocusKeywordInMetaDescription: boolean;
+    titleTagShouldInclude: string[];
+  };
+  
+  sitemapBoundaries: {
+    respectPageRole: boolean;
+    avoidTopicBleed: boolean;
+    avoidCannibalisingAdjacentPages: boolean;
+  };
+  
+  vision: {
+    useAsFirstPartyEvidenceWhenProvided: boolean;
+    forbidSpeculationBeyondObservations: boolean;
+    visionDoesNotRequireImageBlock: boolean;
+  };
+}
+
+// ============================================================================
+// PROMPT PROFILE (CONFIGURABLE PROMPT SELECTION)
+// ============================================================================
+
+export interface PromptProfile {
+  systemPromptId: 'MASTER_AUTHORITY_WRITER_PROMPT_V1' | 'UNIVERSAL_UPGRADE_PROMPT_V1' | 'EXPAND_PASS_V1';
+  expandPassPromptId: string;
+  temperature: number;
+}
+
+// ============================================================================
+// INPUT CONTRACT (EXPECTED INPUTS/OUTPUTS)
+// ============================================================================
+
+export interface InputContract {
+  expects: string[];
+  outputFormat: 'WordPressOutputJSON' | 'MarkdownText';
 }
 
 export interface WriterTask {
@@ -90,10 +167,69 @@ export interface WriterTask {
   primaryService: string;
   location?: string;
   intent: PageIntent;
+  /** Intent mode for content generation - determines content focus */
+  intentMode?: 'MONEY' | 'SERVICE' | 'INFORMATIONAL' | 'TRUST';
   /** Required for support pages - which money page this supports */
   supportsPage?: string;
   supportType?: SupportType;
   targetAudience: string;
+  
+  // =========================================================================
+  // WORD COUNT TARGETS
+  // =========================================================================
+  
+  /** Target word count range for the article */
+  targetWords?: {
+    min: number; // Default: 1500
+    max: number; // Default: 1800
+  };
+  /** Backwards compat: Target word count for the article (default: 1500) */
+  targetWordCount?: number;
+  /** FAQ answer word count range */
+  faqAnswerWords?: {
+    min: number; // Default: 80
+    max: number; // Default: 120
+  };
+  /** Target reading time in minutes (default: 7) */
+  readingTimeTarget?: number;
+  
+  // =========================================================================
+  // EEAT & VISION GATES
+  // =========================================================================
+  
+  /** Minimum EEAT score required (0-100, default: 70) */
+  minEEATScore?: number;
+  /** Whether vision analysis usage is required (error if not used) */
+  requiresVisionUsage?: boolean;
+  /** Whether vision analysis was provided */
+  visionProvided?: boolean;
+  /** Whether geographic context was provided */
+  geoProvided?: boolean;
+  /** Vision analysis data if images were analyzed */
+  visionAnalysis?: VisionAnalysisContext;
+  /** Extracted vision facts to incorporate into content */
+  visionFacts?: string[];
+  
+  // =========================================================================
+  // SEO DRAFTS (From plan-time refinement - source of truth)
+  // =========================================================================
+  
+  /** Plan-time SEO drafts that writer MUST use */
+  seoDrafts?: {
+    /** Refined SEO title tag - writer MUST use this exactly */
+    seoTitleDraft: string;
+    /** Refined H1 headline - writer MUST use this exactly */
+    h1Draft: string;
+    /** Refined meta description - writer MUST use this exactly */
+    metaDescriptionDraft: string;
+  };
+  /** Whether SEO drafts enforcement is enabled */
+  enforceSeoDrafts?: boolean;
+  
+  // =========================================================================
+  // CONTENT REQUIREMENTS
+  // =========================================================================
+  
   /** Proof elements to include */
   requiredProofElements: ProofElementType[];
   /** EEAT signals to incorporate */
@@ -101,6 +237,46 @@ export interface WriterTask {
   internalLinks: InternalLinkRequirements;
   mediaRequirements: MediaRequirements;
   wordpress: WordPressConstraints;
+  
+  // =========================================================================
+  // UPGRADE RULES (OPTIONAL - FOR AUTHORITY UPGRADE TASKS)
+  // =========================================================================
+  
+  /** Rules for upgrading/improving content */
+  upgradeRules?: UpgradeRules;
+  
+  /** Prompt configuration for this task */
+  promptProfile?: PromptProfile;
+  
+  /** Expected inputs and output format */
+  inputContract?: InputContract;
+}
+
+// ============================================================================
+// VISION ANALYSIS CONTEXT (FOR EEAT)
+// ============================================================================
+
+export interface VisionAnalysisContext {
+  /** Summary of all visual observations */
+  summary?: string;
+  /** Common visual themes identified */
+  themes?: string[];
+  /** Key observations from image analysis */
+  observations?: string[];
+  /** Quality indicators observed */
+  qualityIndicators?: Record<string, string | number>;
+  /** Repeated patterns across images */
+  patterns?: string[];
+  /** Environmental/situational context */
+  environmentContext?: string;
+  /** Workflow or process indicators */
+  workflowIndicators?: string;
+  /** Individual image analyses */
+  images?: Array<{
+    url?: string;
+    description?: string;
+    analysis?: string;
+  }>;
 }
 
 // ============================================================================
@@ -452,6 +628,12 @@ export interface AuditOutput {
   readingTimeMinutes: number;
   blockCount: number;
   htmlBytes: number;
+  /** Pass/Fail checklist for quality gates */
+  checklist?: Array<{
+    item: string;
+    pass: boolean;
+    detail: string;
+  }>;
 }
 
 // ============================================================================
@@ -532,6 +714,52 @@ export interface ContextPack {
     heroCandidate?: SelectedImage;
     inlineCandidates: SelectedImage[];
     emotionalCues: string[];
+  };
+  // ========================================
+  // RESEARCH INTELLIGENCE (AEO + GEO)
+  // ========================================
+  researchSummary?: {
+    /** AEO: People Also Ask questions from SERP */
+    paaQuestions: string[];
+    /** AEO: Grouped questions by type (how, cost, best, etc.) */
+    questionClusters: Array<{
+      type: string;
+      questions: string[];
+    }>;
+    /** AEO: Lead sentences for featured snippet targeting */
+    snippetHooks: Array<{
+      hook: string;
+      wordCount: number;
+    }>;
+    /** AEO: Authoritative domains to cite */
+    citationTargets: string[];
+    /** AEO: Common myths to address */
+    misconceptions: Array<{
+      myth: string;
+      truth: string;
+    }>;
+    /** GEO: Location context summary */
+    locationSummary: string;
+    /** GEO: Nearby areas for local SEO */
+    nearbyAreas: string[];
+    /** GEO: Proximity anchors (landmarks, stations) */
+    proximityAnchors: Array<{
+      name: string;
+      distance: string;
+    }>;
+    /** GEO: Local language patterns */
+    localPhrases: string[];
+    /** GEO: Local decision factors */
+    decisionFactors: Array<{
+      factor: string;
+      tip: string;
+    }>;
+    /** Quality scores */
+    quality: {
+      aeoScore: number;
+      geoScore: number;
+      overallScore: number;
+    };
   };
 }
 
@@ -699,6 +927,16 @@ export interface UnifiedWriterBrief {
   toneProfileId: string;
   ctaType: string;
   ctaTarget: string;
+  // SEO drafts from plan-time refinement (source of truth for SEO fields)
+  seoDrafts?: {
+    seoTitleDraft: string;
+    h1Draft: string;
+    metaDescriptionDraft: string;
+  };
+  // Vision facts from image analysis (must be woven into content)
+  visionFacts?: string[];
+  // Whether SEO drafts should be enforced (default: true)
+  enforceSeoDrafts?: boolean;
 }
 
 export interface UnifiedInternalLinkTarget {

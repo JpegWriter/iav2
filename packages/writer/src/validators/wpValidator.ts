@@ -31,9 +31,18 @@ export interface ValidationResult {
     internalLinkCount: number;
     imageCount: number;
     tableCount: number;
+    listCount: number;
     maxTableRows: number;
     keyphraseOccurrences: number;
     readingTimeMinutes: number;
+    // New: Upgrade rules validation
+    hasDecisionChecklist: boolean;
+    hasComparisonTable: boolean;
+    hasAeoQASection: boolean;
+    aeoQuestionCount: number;
+    focusKeywordInFirst150Words: boolean;
+    focusKeywordInMetaDescription: boolean;
+    eeatScore: number;
   };
 }
 
@@ -158,6 +167,66 @@ export function validateWordPressOutput(
     });
   }
 
+  // =========================================================================
+  // AUTHORITY CONTENT ENFORCEMENT (STEP 2 - LENGTH)
+  // =========================================================================
+  
+  // Enforce minimum word count - articles under this are not authority content
+  const MIN_WORDS = task.targetWordCount ?? 1500;
+  if (stats.wordCount < MIN_WORDS) {
+    warnings.push({
+      code: 'CONTENT_TOO_SHORT',
+      message: `Article too short (${stats.wordCount} words). Minimum required: ${MIN_WORDS}.`,
+      severity: 'error',
+      field: 'blocks',
+      suggestion: 'Expand sections with more detail, add decision support section, expand FAQ answers',
+    });
+  }
+
+  // Enforce minimum reading time
+  const MIN_READING_MINUTES = task.readingTimeTarget ?? 7;
+  if (stats.readingTimeMinutes < MIN_READING_MINUTES) {
+    warnings.push({
+      code: 'READING_TIME_TOO_LOW',
+      message: `Reading time too low (${stats.readingTimeMinutes} min). Target: ${MIN_READING_MINUTES} min.`,
+      severity: 'warning',
+      field: 'blocks',
+      suggestion: 'Add more substantive content to each section',
+    });
+  }
+
+  // =========================================================================
+  // IMAGE BLOCK SAFETY (STEP 3 - NO EMPTY IMAGE BLOCKS)
+  // =========================================================================
+  
+  output.blocks.forEach((block, index) => {
+    if (block.blockName === 'core/image') {
+      const hasUrl = block.attrs?.url;
+      const hasInnerHtml = block.innerHTML?.includes('<img') || block.innerHTML?.includes('<figure');
+
+      if (!hasUrl && !hasInnerHtml) {
+        warnings.push({
+          code: 'INVALID_IMAGE_BLOCK',
+          message: `Invalid image block at index ${index}. Image blocks must include url and innerHTML.`,
+          severity: 'error',
+          field: 'blocks',
+          suggestion: 'Remove empty image block or add PLACEHOLDER:description in url attr',
+        });
+      }
+
+      // Check for empty innerHTML specifically
+      if (block.innerHTML === '' || block.innerHTML === null) {
+        warnings.push({
+          code: 'EMPTY_IMAGE_BLOCK',
+          message: `Empty innerHTML in image block at index ${index}. This will break rendering.`,
+          severity: 'error',
+          field: 'blocks',
+          suggestion: 'Add proper <figure><img/></figure> structure or remove the block',
+        });
+      }
+    }
+  });
+
   // Check for CTA block
   const hasCTA = output.blocks.some(
     (block) =>
@@ -223,6 +292,232 @@ export function validateWordPressOutput(
     });
   }
 
+  // =========================================================================
+  // VISION ANALYSIS USAGE CHECK (STEP 6 - EEAT ENFORCEMENT)
+  // =========================================================================
+  
+  // If vision analysis was provided, check if it was actually used
+  if (task.visionAnalysis && Object.keys(task.visionAnalysis).length > 0) {
+    const fullText = output.blocks.map(b => b.innerHTML || '').join(' ').toLowerCase();
+    const visionPatterns = [
+      /we see/i,
+      /we observe/i,
+      /in practice/i,
+      /from the images/i,
+      /visual evidence/i,
+      /the images show/i,
+      /analysis reveals/i,
+      /visual inspection/i,
+      /from our analysis/i,
+      /pattern (we|that) (see|observe)/i,
+    ];
+    
+    const usedVision = visionPatterns.some(pattern => pattern.test(fullText));
+    
+    if (!usedVision) {
+      warnings.push({
+        code: 'VISION_NOT_USED',
+        message: 'Vision analysis was provided but not referenced in the content.',
+        severity: 'warning',
+        field: 'blocks',
+        suggestion: 'Include phrases like "From the images provided..." or "The visual evidence suggests..."',
+      });
+    }
+  }
+
+  // =========================================================================
+  // AUTHORITY STRUCTURE CHECKS
+  // =========================================================================
+  
+  // Check for decision support section (checklist, table, or comparison)
+  const hasDecisionSupport = output.blocks.some(block => 
+    block.blockName === 'core/list' || 
+    block.blockName === 'core/table' ||
+    (block.innerHTML && (
+      block.innerHTML.includes('checklist') ||
+      block.innerHTML.includes('right for you') ||
+      block.innerHTML.includes('consider if')
+    ))
+  );
+  
+  if (!hasDecisionSupport && stats.wordCount >= 1000) {
+    warnings.push({
+      code: 'MISSING_DECISION_SUPPORT',
+      message: 'No decision support section (checklist or comparison table) found.',
+      severity: 'warning',
+      field: 'blocks',
+      suggestion: 'Add a "Is this right for you?" checklist or comparison table',
+    });
+  }
+
+  // Check for FAQ section (common questions pattern)
+  const hasFAQ = output.blocks.some(block => 
+    block.innerHTML && (
+      block.innerHTML.toLowerCase().includes('common questions') ||
+      block.innerHTML.toLowerCase().includes('frequently asked') ||
+      block.innerHTML.toLowerCase().includes('faq')
+    )
+  );
+  
+  if (!hasFAQ && stats.wordCount >= 1200) {
+    warnings.push({
+      code: 'MISSING_FAQ_SECTION',
+      message: 'No FAQ/Common Questions section found for authority content.',
+      severity: 'warning',
+      field: 'blocks',
+      suggestion: 'Add "Common Questions About [Topic]" section with 5-7 questions',
+    });
+  }
+
+  // =========================================================================
+  // EEAT SCORE GATE (Deterministic heuristic scoring)
+  // =========================================================================
+  
+  const fullText = output.blocks.map(b => b.innerHTML || '').join(' ');
+  const eeatScore = scoreEEAT(fullText, output.blocks, task);
+  const minEEATScore = task.minEEATScore ?? 70;
+  
+  if (eeatScore.score < minEEATScore) {
+    warnings.push({
+      code: 'EEAT_SCORE_TOO_LOW',
+      message: `EEAT score ${eeatScore.score}/${eeatScore.max}. Minimum required: ${minEEATScore}. Missing: ${eeatScore.missing.join(', ')}`,
+      severity: 'error',
+      field: 'blocks',
+      suggestion: 'Add first-party experience markers, decision support, trade-offs, and process explanations',
+    });
+  }
+
+  // =========================================================================
+  // VISION REQUIRED NOT USED (stricter than VISION_NOT_USED warning)
+  // =========================================================================
+  
+  if (task.requiresVisionUsage && task.visionProvided) {
+    const visionMarkers = /(from the visuals|from the images|across the analysed|we see|in practice)/i;
+    if (!visionMarkers.test(fullText)) {
+      warnings.push({
+        code: 'VISION_REQUIRED_NOT_USED',
+        message: 'Vision analysis was provided but not referenced using evidence-based language.',
+        severity: 'error',
+        field: 'blocks',
+        suggestion: 'Reference vision analysis with "From the visuals provided..." or "Across the analysed images..."',
+      });
+    }
+  }
+
+  // =========================================================================
+  // UPGRADE RULES VALIDATION (IF DEFINED)
+  // =========================================================================
+  
+  if (task.upgradeRules) {
+    const rules = task.upgradeRules;
+    
+    // Check decision checklist requirement
+    if (rules.mustInclude?.decisionChecklist && !stats.hasDecisionChecklist) {
+      warnings.push({
+        code: 'MISSING_DECISION_CHECKLIST',
+        message: 'Decision checklist required but not found.',
+        severity: 'error',
+        field: 'blocks',
+        suggestion: 'Add a checklist with "What to look for", "How to choose", or "Questions to ask"',
+      });
+    }
+    
+    // Check comparison table requirement
+    if (rules.mustInclude?.comparisonTable && !stats.hasComparisonTable) {
+      warnings.push({
+        code: 'MISSING_COMPARISON_TABLE',
+        message: 'Comparison table required but not found.',
+        severity: 'error',
+        field: 'blocks',
+        suggestion: 'Add a table comparing options, features, or scenarios',
+      });
+    }
+    
+    // Check AEO Q&A section requirement
+    if (rules.mustInclude?.aeoQASection?.enabled) {
+      if (!stats.hasAeoQASection) {
+        warnings.push({
+          code: 'MISSING_AEO_QA_SECTION',
+          message: 'AEO Q&A section required but not found.',
+          severity: 'error',
+          field: 'blocks',
+          suggestion: `Add "${rules.mustInclude.aeoQASection.titlePattern.replace('{{topic}}', '[Topic]')}" section`,
+        });
+      } else if (stats.aeoQuestionCount < (rules.mustInclude.aeoQASection.minQuestions || 5)) {
+        warnings.push({
+          code: 'INSUFFICIENT_AEO_QUESTIONS',
+          message: `Only ${stats.aeoQuestionCount} questions in AEO section. Minimum: ${rules.mustInclude.aeoQASection.minQuestions || 5}`,
+          severity: 'warning',
+          field: 'blocks',
+          suggestion: 'Add more questions to the FAQ section',
+        });
+      }
+    }
+    
+    // Check paragraph length
+    if (rules.style?.maxParagraphWords && stats.maxParagraphWords > rules.style.maxParagraphWords) {
+      warnings.push({
+        code: 'PARAGRAPH_TOO_LONG',
+        message: `Longest paragraph (${stats.maxParagraphWords} words) exceeds maximum (${rules.style.maxParagraphWords})`,
+        severity: 'warning',
+        field: 'blocks',
+        suggestion: 'Break up long paragraphs for better scannability',
+      });
+    }
+    
+    // Check SEO field requirements
+    if (rules.seoFields?.enforceFocusKeywordInFirst150Words && !stats.focusKeywordInFirst150Words) {
+      warnings.push({
+        code: 'FOCUS_KEYWORD_NOT_IN_INTRO',
+        message: 'Focus keyword not found in first 150 words.',
+        severity: 'warning',
+        field: 'seo.focusKeyphrase',
+        suggestion: 'Add focus keyword naturally in the introduction',
+      });
+    }
+    
+    if (rules.seoFields?.enforceFocusKeywordInMetaDescription && !stats.focusKeywordInMetaDescription) {
+      warnings.push({
+        code: 'FOCUS_KEYWORD_NOT_IN_META',
+        message: 'Focus keyword not found in meta description.',
+        severity: 'warning',
+        field: 'seo.metaDescription',
+        suggestion: 'Include focus keyword in the meta description',
+      });
+    }
+    
+    // Check for hype claims if noHypeClaims is enabled
+    if (rules.style?.noHypeClaims) {
+      const hypePatterns = /\b(best|leading|world-class|premier|top-rated|#1|number one|unmatched|unparalleled|guaranteed results)\b/i;
+      if (hypePatterns.test(fullText)) {
+        warnings.push({
+          code: 'HYPE_CLAIMS_DETECTED',
+          message: 'Hype language detected. Content should use calm, experienced tone.',
+          severity: 'warning',
+          field: 'blocks',
+          suggestion: 'Remove superlatives like "best", "leading", "world-class" unless explicitly supported',
+        });
+      }
+    }
+  }
+
+  // =========================================================================
+  // SEO DRAFTS ENFORCEMENT (Plan-time drafts are source of truth)
+  // =========================================================================
+  
+  const seoDraftsWarnings = validateSeoDrafts(output, task);
+  warnings.push(...seoDraftsWarnings);
+
+  // =========================================================================
+  // VISION FACTS ENFORCEMENT
+  // =========================================================================
+  
+  const visionFactsWarnings = validateVisionFactsUsage(output, task);
+  warnings.push(...visionFactsWarnings);
+
+  // Update stats with EEAT score
+  stats.eeatScore = eeatScore.score;
+
   const hasErrors = warnings.some((w) => w.severity === 'error');
 
   return {
@@ -245,6 +540,7 @@ function calculateStats(output: WordPressOutput): ValidationResult['stats'] {
   let paragraphCount = 0;
   let maxParagraphWords = 0;
   let tableCount = 0;
+  let listCount = 0;
   let maxTableRows = 0;
 
   function processBlock(block: WPBlock): void {
@@ -269,6 +565,10 @@ function calculateStats(output: WordPressOutput): ValidationResult['stats'] {
       tableCount++;
       const rows = (block.innerHTML || '').match(/<tr/gi)?.length || 0;
       maxTableRows = Math.max(maxTableRows, rows);
+    }
+
+    if (block.blockName === 'core/list') {
+      listCount++;
     }
 
     // Count words in other content blocks
@@ -301,6 +601,49 @@ function calculateStats(output: WordPressOutput): ValidationResult['stats'] {
   // Calculate reading time (200 words per minute)
   const readingTimeMinutes = Math.ceil(wordCount / 200);
 
+  // Full text for analysis
+  const fullText = output.blocks.map(b => b.innerHTML || '').join(' ');
+  
+  // Check for decision checklist (list with decision-related language)
+  const hasDecisionChecklist = output.blocks.some(block => {
+    if (block.blockName !== 'core/list') return false;
+    const text = (block.innerHTML || '').toLowerCase();
+    return /(what to look for|how to choose|checklist|consider|ask yourself|prepare|before you|questions to ask)/i.test(text);
+  });
+
+  // Check for comparison table
+  const hasComparisonTable = tableCount > 0 && output.blocks.some(block => {
+    if (block.blockName !== 'core/table') return false;
+    const text = (block.innerHTML || '').toLowerCase();
+    return /(vs|versus|compare|comparison|option|pros|cons|advantage|disadvantage)/i.test(text);
+  });
+
+  // Check for AEO Q&A section
+  const aeoPatterns = /(common questions|frequently asked|faq|q&a|questions about)/i;
+  const hasAeoQASection = aeoPatterns.test(fullText);
+  
+  // Count questions in FAQ section (look for ? in content after FAQ heading)
+  let aeoQuestionCount = 0;
+  let inFaqSection = false;
+  for (const block of output.blocks) {
+    if (block.blockName === 'core/heading' && aeoPatterns.test(block.innerHTML || '')) {
+      inFaqSection = true;
+    } else if (inFaqSection && block.blockName === 'core/heading') {
+      const level = block.attrs?.level as number;
+      if (level === 2) inFaqSection = false; // End of FAQ section
+      if (level === 3) aeoQuestionCount++; // Each H3 is a question
+    }
+  }
+
+  // Check focus keyword in first 150 words
+  const first150Words = fullText.split(/\s+/).slice(0, 150).join(' ').toLowerCase();
+  const focusKeyword = (output.seo.focusKeyphrase || '').toLowerCase();
+  const focusKeywordInFirst150Words = focusKeyword.length > 0 && first150Words.includes(focusKeyword);
+
+  // Check focus keyword in meta description
+  const metaDesc = (output.seo.metaDescription || '').toLowerCase();
+  const focusKeywordInMetaDescription = focusKeyword.length > 0 && metaDesc.includes(focusKeyword);
+
   return {
     blockCount,
     htmlBytes,
@@ -312,9 +655,17 @@ function calculateStats(output: WordPressOutput): ValidationResult['stats'] {
     internalLinkCount: output.internalLinksUsed.length,
     imageCount: (output.images.hero ? 1 : 0) + output.images.inline.length,
     tableCount,
+    listCount,
     maxTableRows,
     keyphraseOccurrences,
     readingTimeMinutes,
+    hasDecisionChecklist,
+    hasComparisonTable,
+    hasAeoQASection,
+    aeoQuestionCount,
+    focusKeywordInFirst150Words,
+    focusKeywordInMetaDescription,
+    eeatScore: 0, // Will be calculated separately by scoreEEAT
   };
 }
 
@@ -815,4 +1166,361 @@ export function validateComplianceRules(
   }
 
   return warnings;
+}
+
+// ============================================================================
+// EEAT SCORE FUNCTION (Deterministic heuristic scoring)
+// ============================================================================
+
+interface EEATScoreResult {
+  score: number;
+  max: number;
+  missing: string[];
+}
+
+/**
+ * Deterministic EEAT scoring based on presence of authority signals.
+ * Intentionally boring and tuneable - adjust weights as needed.
+ * 
+ * Score breakdown (max 100):
+ * - AEO Q&A section: 15 points
+ * - Comparison table: 10 points
+ * - Checklist/list: 10 points
+ * - Decision-support language: 15 points
+ * - First-party experience markers: 20 points
+ * - Trade-offs/nuance: 10 points
+ * - Process explanation: 10 points
+ * - Local/context signals: 10 points
+ */
+function scoreEEAT(text: string, blocks: any[], task: any): EEATScoreResult {
+  const missing: string[] = [];
+  let score = 0;
+  const max = 100;
+
+  // Check for AEO Q&A section
+  const hasAeoSection = /Common Questions About|Frequently Asked|FAQ/i.test(text);
+  if (hasAeoSection) {
+    score += 15;
+  } else {
+    missing.push('AEO Q&A section');
+  }
+
+  // Check for comparison table
+  const hasTable = blocks.some(
+    (b: any) => b?.blockName === 'core/table' || /<table/i.test(b?.innerHTML ?? '')
+  );
+  if (hasTable) {
+    score += 10;
+  } else {
+    missing.push('comparison table');
+  }
+
+  // Check for checklist/list
+  const hasChecklist = /<ul>|<ol>/i.test(text);
+  if (hasChecklist) {
+    score += 10;
+  } else {
+    missing.push('checklist/list');
+  }
+
+  // Check for decision-support language
+  const hasDecisionLanguage = /(what to look for|how to choose|is this right for you|compare|criteria|consider if)/i.test(text);
+  if (hasDecisionLanguage) {
+    score += 15;
+  } else {
+    missing.push('decision-support language');
+  }
+
+  // Check for first-party experience markers (most important - 20 pts)
+  const hasFirstParty = /(in our experience|we often see|in practice|we typically|a common scenario|we recommend|we've found|from our work)/i.test(text);
+  if (hasFirstParty) {
+    score += 20;
+  } else {
+    missing.push('first-party experience markers');
+  }
+
+  // Check for trade-offs and nuance
+  const hasTradeoffs = /(however|on the other hand|trade[- ]off|depends on|in some cases|that said|the downside)/i.test(text);
+  if (hasTradeoffs) {
+    score += 10;
+  } else {
+    missing.push('trade-offs/nuance');
+  }
+
+  // Check for process explanation
+  const hasProcess = /(step|process|stages|how it works|what happens next|first.*then|the process)/i.test(text);
+  if (hasProcess) {
+    score += 10;
+  } else {
+    missing.push('process explanation');
+  }
+
+  // Check for local/context signals (only if geo context was provided)
+  const geoProvided = task?.geoProvided === true;
+  if (geoProvided) {
+    const hasLocalContext = /(in this area|locally|nearby|neighbourhood|local market|in [A-Z][a-z]+)/i.test(text);
+    if (hasLocalContext) {
+      score += 10;
+    } else {
+      missing.push('local/context signals');
+    }
+  } else {
+    // Give the points if geo wasn't required
+    score += 10;
+  }
+
+  // Cap at max
+  score = Math.min(max, score);
+
+  return { score, max, missing };
+}
+
+// ============================================================================
+// SEO DRAFTS VALIDATION
+// ============================================================================
+// Validates that plan-time SEO drafts are applied by the writer
+
+function validateSeoDrafts(
+  output: WordPressOutput,
+  task: WriterTask
+): ValidationWarning[] {
+  const warnings: ValidationWarning[] = [];
+  
+  // Check if plan-time drafts exist on the task
+  const seoDrafts = task.seoDrafts;
+  
+  if (!seoDrafts) {
+    // No drafts provided - this is a warning for new-style tasks
+    if (task.enforceSeoDrafts) {
+      warnings.push({
+        code: 'SEO_DRAFTS_MISSING',
+        message: 'SEO drafts (seoTitleDraft, h1Draft, metaDescriptionDraft) not provided in task.',
+        severity: 'error',
+        field: 'seoDrafts',
+        suggestion: 'Run plan refinement to generate SEO drafts before writing',
+      });
+    }
+    return warnings;
+  }
+
+  // Validate title tag matches seoTitleDraft
+  if (seoDrafts.seoTitleDraft) {
+    const titleMatch = fuzzyMatch(output.seo.seoTitle, seoDrafts.seoTitleDraft, 0.8);
+    if (!titleMatch) {
+      warnings.push({
+        code: 'SEO_TITLE_NOT_APPLIED',
+        message: `Title tag doesn't match plan draft. Expected: "${seoDrafts.seoTitleDraft}"`,
+        severity: 'error',
+        field: 'seo.seoTitle',
+        suggestion: `Use the planned title: "${seoDrafts.seoTitleDraft}"`,
+      });
+    }
+  }
+
+  // Validate H1 matches h1Draft
+  if (seoDrafts.h1Draft) {
+    const firstH1 = findFirstH1(output.blocks);
+    if (!firstH1) {
+      warnings.push({
+        code: 'H1_MISSING',
+        message: 'No H1 heading found in content.',
+        severity: 'error',
+        field: 'blocks',
+        suggestion: `Add H1: "${seoDrafts.h1Draft}"`,
+      });
+    } else {
+      const h1Match = fuzzyMatch(stripHtml(firstH1), seoDrafts.h1Draft, 0.8);
+      if (!h1Match) {
+        warnings.push({
+          code: 'H1_NOT_APPLIED',
+          message: `H1 doesn't match plan draft. Expected: "${seoDrafts.h1Draft}"`,
+          severity: 'error',
+          field: 'blocks',
+          suggestion: `Use the planned H1: "${seoDrafts.h1Draft}"`,
+        });
+      }
+    }
+  }
+
+  // Validate meta description matches metaDescriptionDraft
+  if (seoDrafts.metaDescriptionDraft) {
+    const metaMatch = fuzzyMatch(output.seo.metaDescription, seoDrafts.metaDescriptionDraft, 0.7);
+    if (!metaMatch) {
+      warnings.push({
+        code: 'META_DESCRIPTION_NOT_APPLIED',
+        message: `Meta description doesn't match plan draft. Expected: "${seoDrafts.metaDescriptionDraft}"`,
+        severity: 'error',
+        field: 'seo.metaDescription',
+        suggestion: `Use the planned meta: "${seoDrafts.metaDescriptionDraft}"`,
+      });
+    }
+  }
+
+  return warnings;
+}
+
+function findFirstH1(blocks: WPBlock[]): string | null {
+  for (const block of blocks) {
+    if (block.blockName === 'core/heading' && block.attrs?.level === 1) {
+      return block.innerHTML || null;
+    }
+    if (block.innerBlocks && block.innerBlocks.length > 0) {
+      const found = findFirstH1(block.innerBlocks);
+      if (found) return found;
+    }
+  }
+  return null;
+}
+
+function fuzzyMatch(actual: string, expected: string, threshold: number): boolean {
+  if (!actual || !expected) return false;
+  
+  const normalizeText = (s: string) => s.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
+  const a = normalizeText(actual);
+  const e = normalizeText(expected);
+  
+  // Exact match
+  if (a === e) return true;
+  
+  // Contains match (actual contains expected core)
+  if (a.includes(e.slice(0, Math.floor(e.length * 0.7)))) return true;
+  
+  // Word overlap match
+  const aWords = new Set(a.split(/\s+/));
+  const eWords = e.split(/\s+/);
+  const matchedWords = eWords.filter(w => aWords.has(w));
+  const matchRatio = matchedWords.length / eWords.length;
+  
+  return matchRatio >= threshold;
+}
+
+// ============================================================================
+// VISION FACTS VALIDATION
+// ============================================================================
+// Validates that provided vision facts are incorporated into the content
+
+function validateVisionFactsUsage(
+  output: WordPressOutput,
+  task: WriterTask
+): ValidationWarning[] {
+  const warnings: ValidationWarning[] = [];
+  
+  // Get vision facts from task
+  const visionFacts = task.visionFacts;
+  
+  if (!visionFacts || visionFacts.length === 0) {
+    return warnings; // No facts to validate
+  }
+
+  const fullText = extractAllText(output);
+  const lowerText = fullText.toLowerCase();
+
+  // Check how many facts are present
+  let factsFound = 0;
+  const missingFacts: string[] = [];
+  
+  for (const fact of visionFacts) {
+    // Check for fact presence (at least 60% of significant words)
+    const factWords = fact.toLowerCase()
+      .split(/\s+/)
+      .filter(w => w.length > 4);
+    
+    const matchedWords = factWords.filter(word => lowerText.includes(word));
+    
+    if (matchedWords.length >= Math.ceil(factWords.length * 0.6)) {
+      factsFound++;
+    } else {
+      missingFacts.push(fact.slice(0, 50) + (fact.length > 50 ? '...' : ''));
+    }
+  }
+
+  // Require at least 3 facts or all facts if fewer than 3
+  const minRequired = Math.min(3, visionFacts.length);
+  
+  if (factsFound < minRequired) {
+    warnings.push({
+      code: 'VISION_FACTS_NOT_USED',
+      message: `Only ${factsFound}/${visionFacts.length} vision facts incorporated. Minimum required: ${minRequired}.`,
+      severity: 'error',
+      field: 'blocks',
+      suggestion: `Missing facts: ${missingFacts.slice(0, 3).join('; ')}`,
+    });
+  }
+
+  // Check for evidence marker phrases
+  const evidenceMarkers = [
+    'in practice',
+    'from the visuals',
+    'we often see',
+    'from recent site visits',
+    'on the ground',
+    'based on local inspections',
+    'we\'ve observed',
+    'during recent work',
+  ];
+  
+  const hasEvidenceMarker = evidenceMarkers.some(marker => 
+    lowerText.includes(marker.toLowerCase())
+  );
+  
+  if (!hasEvidenceMarker && visionFacts.length > 0) {
+    warnings.push({
+      code: 'MISSING_EVIDENCE_MARKER',
+      message: 'Vision facts provided but no evidence marker phrases found.',
+      severity: 'warning',
+      field: 'blocks',
+      suggestion: 'Use phrases like "In practice, we\'ve observed..." or "From recent site visits..."',
+    });
+  }
+
+  // Check for dedicated evidence section
+  const hasEvidenceSection = /(what we've seen in practice|local evidence|on-site observations)/i.test(fullText);
+  
+  if (!hasEvidenceSection && visionFacts.length >= 2) {
+    warnings.push({
+      code: 'MISSING_EVIDENCE_SECTION',
+      message: 'Multiple vision facts provided but no dedicated evidence section.',
+      severity: 'warning',
+      field: 'blocks',
+      suggestion: 'Add a section titled "What We\'ve Seen in Practice" or "Local Evidence"',
+    });
+  }
+
+  return warnings;
+}
+
+function extractAllText(output: WordPressOutput): string {
+  const texts: string[] = [];
+  
+  // Extract from blocks
+  if (output.blocks) {
+    for (const block of output.blocks) {
+      if (block.innerHTML) {
+        texts.push(stripHtml(block.innerHTML));
+      }
+      if (block.innerBlocks) {
+        for (const inner of block.innerBlocks) {
+          if (inner.innerHTML) {
+            texts.push(stripHtml(inner.innerHTML));
+          }
+        }
+      }
+    }
+  }
+
+  // Extract from SEO
+  if (output.seo) {
+    if (output.seo.metaDescription) texts.push(output.seo.metaDescription);
+    if (output.seo.titleTag) texts.push(output.seo.titleTag);
+  }
+
+  // Extract from FAQs
+  if (output.faq) {
+    for (const qa of output.faq) {
+      texts.push(qa.question);
+      texts.push(qa.answer);
+    }
+  }
+
+  return texts.join(' ');
 }

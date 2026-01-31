@@ -1,0 +1,277 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WriterTask",
+  "description": "Task configuration for the Writer pipeline with authority content requirements",
+  "type": "object",
+  "properties": {
+    "slug": {
+      "type": "string",
+      "description": "URL slug for the page"
+    },
+    "role": {
+      "type": "string",
+      "enum": ["money", "support", "trust", "authority", "operational"],
+      "description": "Page role in the site hierarchy"
+    },
+    "primaryService": {
+      "type": "string",
+      "description": "Primary service this page covers"
+    },
+    "location": {
+      "type": "string",
+      "description": "Geographic location context"
+    },
+    "intent": {
+      "type": "string",
+      "enum": ["MONEY", "SERVICE", "INFORMATIONAL", "TRUST"],
+      "description": "Intent mode for content generation - determines content focus"
+    },
+    "targetAudience": {
+      "type": "string",
+      "description": "Target audience description"
+    },
+    "targetWords": {
+      "type": "object",
+      "description": "Word count target range",
+      "properties": {
+        "min": { "type": "number", "default": 1500 },
+        "max": { "type": "number", "default": 1800 }
+      },
+      "required": ["min", "max"]
+    },
+    "faqAnswerWords": {
+      "type": "object",
+      "description": "FAQ answer word count range",
+      "properties": {
+        "min": { "type": "number", "default": 80 },
+        "max": { "type": "number", "default": 120 }
+      },
+      "required": ["min", "max"]
+    },
+    "minEEATScore": {
+      "type": "number",
+      "description": "Minimum EEAT score required (0-100)",
+      "default": 70,
+      "minimum": 0,
+      "maximum": 100
+    },
+    "requiresVisionUsage": {
+      "type": "boolean",
+      "description": "Whether vision analysis usage is required (error if not used)",
+      "default": false
+    },
+    "visionProvided": {
+      "type": "boolean",
+      "description": "Whether vision analysis was provided",
+      "default": false
+    },
+    "geoProvided": {
+      "type": "boolean",
+      "description": "Whether geographic context was provided",
+      "default": false
+    },
+    "wordpress": {
+      "type": "object",
+      "description": "WordPress-specific constraints",
+      "properties": {
+        "readingTimeTargetMin": {
+          "type": "number",
+          "description": "Minimum reading time in minutes",
+          "default": 6
+        },
+        "maxHtmlBytes": {
+          "type": "number",
+          "description": "Maximum HTML bytes allowed",
+          "default": 120000
+        },
+        "maxBlocks": {
+          "type": "number",
+          "description": "Maximum number of blocks allowed",
+          "default": 120
+        },
+        "excerptLength": {
+          "type": "number",
+          "description": "Excerpt length in characters",
+          "default": 160
+        },
+        "maxH2Count": {
+          "type": "number",
+          "description": "Maximum H2 headings",
+          "default": 10
+        },
+        "maxTableRows": {
+          "type": "number",
+          "description": "Maximum table rows before splitting",
+          "default": 8
+        },
+        "requiredInternalLinks": {
+          "type": "array",
+          "description": "Internal links that must be preserved",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": { "type": "string" },
+              "anchorText": { "type": "string" }
+            },
+            "required": ["url"]
+          }
+        },
+        "imagePolicy": {
+          "type": "object",
+          "description": "Image block handling policy",
+          "properties": {
+            "allowImageBlocks": { "type": "boolean", "default": true },
+            "requireValidImageUrlOrPlaceholder": { "type": "boolean", "default": true },
+            "placeholderPrefix": { "type": "string", "default": "PLACEHOLDER:" }
+          }
+        }
+      },
+      "required": ["maxBlocks", "maxHtmlBytes", "excerptLength"]
+    },
+    "upgradeRules": {
+      "type": "object",
+      "description": "Rules for upgrading/improving content",
+      "properties": {
+        "preserveTopic": { "type": "boolean", "default": true },
+        "preserveInternalLinksExactly": { "type": "boolean", "default": true },
+        "allowAddInternalLinksIfSitemapProvided": { "type": "boolean", "default": true },
+        "maxAdditionalInternalLinks": { "type": "number", "default": 2 },
+        "mustInclude": {
+          "type": "object",
+          "properties": {
+            "decisionChecklist": { "type": "boolean", "default": true },
+            "comparisonTable": { "type": "boolean", "default": true },
+            "aeoQASection": {
+              "type": "object",
+              "properties": {
+                "enabled": { "type": "boolean", "default": true },
+                "titlePattern": { "type": "string", "default": "Common Questions About {{topic}}" },
+                "minQuestions": { "type": "number", "default": 5 },
+                "maxQuestions": { "type": "number", "default": 7 }
+              }
+            }
+          }
+        },
+        "style": {
+          "type": "object",
+          "properties": {
+            "tone": { 
+              "type": "string", 
+              "enum": ["calm_experienced_professional", "friendly_expert", "authoritative_formal"],
+              "default": "calm_experienced_professional"
+            },
+            "noHypeClaims": { "type": "boolean", "default": true },
+            "maxParagraphWords": { "type": "number", "default": 120 },
+            "scannableFormatting": { "type": "boolean", "default": true }
+          }
+        },
+        "seoFields": {
+          "type": "object",
+          "properties": {
+            "enforceFocusKeywordInFirst150Words": { "type": "boolean", "default": true },
+            "enforceFocusKeywordInMetaDescription": { "type": "boolean", "default": true },
+            "titleTagShouldInclude": {
+              "type": "array",
+              "items": { "type": "string" },
+              "default": ["focusKeyword", "locationOrContext", "benefit"]
+            }
+          }
+        },
+        "sitemapBoundaries": {
+          "type": "object",
+          "properties": {
+            "respectPageRole": { "type": "boolean", "default": true },
+            "avoidTopicBleed": { "type": "boolean", "default": true },
+            "avoidCannibalisingAdjacentPages": { "type": "boolean", "default": true }
+          }
+        },
+        "vision": {
+          "type": "object",
+          "properties": {
+            "useAsFirstPartyEvidenceWhenProvided": { "type": "boolean", "default": true },
+            "forbidSpeculationBeyondObservations": { "type": "boolean", "default": true },
+            "visionDoesNotRequireImageBlock": { "type": "boolean", "default": true }
+          }
+        }
+      }
+    },
+    "promptProfile": {
+      "type": "object",
+      "description": "Prompt configuration for this task",
+      "properties": {
+        "systemPromptId": { 
+          "type": "string",
+          "enum": ["MASTER_AUTHORITY_WRITER_PROMPT_V1", "UNIVERSAL_UPGRADE_PROMPT_V1", "EXPAND_PASS_V1"],
+          "default": "MASTER_AUTHORITY_WRITER_PROMPT_V1"
+        },
+        "expandPassPromptId": { 
+          "type": "string",
+          "default": "EXPAND_PASS_V1"
+        },
+        "temperature": { "type": "number", "default": 0.2, "minimum": 0, "maximum": 1 }
+      }
+    },
+    "inputContract": {
+      "type": "object",
+      "description": "Expected inputs and output format",
+      "properties": {
+        "expects": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [
+            "draftArticleTextOrWpJson",
+            "seoDetailsOptional",
+            "masterProfileOptional",
+            "sitemapOptional",
+            "onboardingOptional",
+            "visionAnalysisOptional"
+          ]
+        },
+        "outputFormat": {
+          "type": "string",
+          "enum": ["WordPressOutputJSON", "MarkdownText"],
+          "default": "WordPressOutputJSON"
+        }
+      }
+    },
+    "requiredProofElements": {
+      "type": "array",
+      "description": "Proof elements to include in content",
+      "items": {
+        "type": "string",
+        "enum": [
+          "review_quote",
+          "statistic",
+          "case_study_reference",
+          "before_after",
+          "testimonial",
+          "award_mention",
+          "certification_badge",
+          "guarantee"
+        ]
+      }
+    },
+    "requiredEEATSignals": {
+      "type": "array",
+      "description": "EEAT signals to incorporate",
+      "items": {
+        "type": "string",
+        "enum": [
+          "years_active",
+          "credentials",
+          "certifications",
+          "awards",
+          "case_studies",
+          "client_count",
+          "projects_completed",
+          "local_presence",
+          "industry_memberships",
+          "media_mentions",
+          "speaking_engagements",
+          "publications"
+        ]
+      }
+    }
+  },
+  "required": ["wordpress", "intent", "targetWords", "faqAnswerWords"]
+}

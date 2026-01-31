@@ -6,6 +6,19 @@ import { scrapePage, discoverPages, ScrapedPage } from '@/lib/scraper';
 import { PageRole } from '@/types';
 
 // ============================================================================
+// RE-EXPORT AEO + GEO RESEARCH INTEGRATION
+// ============================================================================
+
+export {
+  enrichPlanWithResearch,
+  enrichTaskWithResearch,
+  saveEnrichedPlan,
+  isPlanEnriched,
+  type ResearchIntegrationOptions,
+  type ResearchIntegrationResult,
+} from './integration';
+
+// ============================================================================
 // TYPES
 // ============================================================================
 

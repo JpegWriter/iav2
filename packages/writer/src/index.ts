@@ -49,6 +49,11 @@ export type {
   UnifiedInternalLinkTarget,
   UnifiedImagePlan,
   UnifiedRewriteContext,
+  // Upgrade rules types
+  ImagePolicy,
+  UpgradeRules,
+  PromptProfile,
+  InputContract,
 } from './types';
 
 // Orchestrator
@@ -99,6 +104,27 @@ export {
   type RewriteValidationResult,
 } from './validators/wpValidator';
 
+// Quality Gate (PASS/FAIL validation)
+export {
+  runQualityGate,
+  createDefaultRequirements,
+  type GateCode,
+  type GateViolation,
+  type GateResult,
+  type ValidationInput,
+} from './validators/qualityGate';
+
+// Expand Pass
+export {
+  runExpandPass,
+  EXPAND_PASS_PROMPT_TEMPLATE,
+  type LLMClient,
+  type ExpandPassInput,
+  type IntentType,
+  type WordPressOutput as ExpandPassWordPressOutput,
+  type WPBlock as ExpandPassWPBlock,
+} from './runExpandPass';
+
 // Prompt builders
 export {
   buildArticlePrompt,
@@ -122,3 +148,13 @@ export {
   type GmbPostType,
   type SubredditCategory,
 } from './prompts';
+
+// Vision Facts Binding
+export {
+  bindVisionFacts,
+  validateVisionBinding,
+  extractVisionFactsFromPack,
+  EVIDENCE_MARKERS,
+  type BindVisionFactsInput,
+  type BindVisionFactsResult,
+} from './vision';

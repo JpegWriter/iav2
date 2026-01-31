@@ -161,6 +161,7 @@ export function buildArticlePrompt(
   const businessContext = buildBusinessContext(contextPack);
   const proofContext = buildProofContext(contextPack);
   const visionContext = buildVisionContext(contextPack);
+  const researchContext = buildResearchContext(contextPack);
   const planContext = buildPlanContext(plan);
   const constraintContext = buildConstraints(task);
   const linkContext = buildLinkContext(task);
@@ -187,7 +188,10 @@ ${proofContext}
 # AVAILABLE IMAGES
 ${visionContext}
 
-# ARTICLE STRUCTURE (Follow This Outline)
+${researchContext ? `# RESEARCH INTELLIGENCE (AEO + GEO)
+${researchContext}
+
+` : ''}# ARTICLE STRUCTURE (Follow This Outline)
 ${planContext}
 
 # INTERNAL LINKING REQUIREMENTS
@@ -221,7 +225,23 @@ ${BLOCK_INSTRUCTIONS}
 
 8. **NO ASSUMPTIONS**: If you don't have specific information, don't invent it. Use what's provided.
 
-# OUTPUT FORMAT
+${researchContext ? `# AEO/GEO REQUIREMENTS
+
+**AEO SECTION MANDATORY**: Include a "Frequently Asked Questions" or "Common Questions" H2 section with:
+- 5-7 questions from the PAA/Question Clusters
+- Each answer: 80-120 words, starting with the lead sentence provided
+- Format: H3 for question, paragraph for answer
+- Target featured snippet format (direct answer in first sentence)
+
+**GEO INTEGRATION MANDATORY**: Include:
+- Nearby areas mentioned naturally in content (1-2 references)
+- At least one proximity anchor reference
+- Local decision factors in comparison/checklist sections
+- Local language patterns woven into copy
+
+**MISCONCEPTIONS SECTION**: If myths provided, include a "Common Misconceptions" or "Myths vs Reality" subsection addressing them.
+
+` : ''}# OUTPUT FORMAT
 Return ONLY valid JSON matching this schema:
 ${OUTPUT_SCHEMA}
 
@@ -336,6 +356,115 @@ function buildVisionContext(contextPack: ContextPack): string {
     sections.push(`
 ### Emotional Cues to Match
 ${vision.emotionalCues.join(', ')}`);
+  }
+
+  return sections.join('\n');
+}
+
+function buildResearchContext(contextPack: ContextPack): string | null {
+  const research = contextPack.researchSummary;
+  
+  if (!research) {
+    return null;
+  }
+
+  const sections: string[] = [];
+
+  // AEO Section
+  sections.push('## AEO (Answer Engine Optimization) Intelligence');
+  
+  // PAA Questions
+  if (research.paaQuestions && research.paaQuestions.length > 0) {
+    sections.push(`
+### People Also Ask (from Google SERP)
+${research.paaQuestions.map((q, i) => `${i + 1}. ${q}`).join('\n')}`);
+  }
+
+  // Question Clusters
+  if (research.questionClusters && research.questionClusters.length > 0) {
+    sections.push(`
+### Question Clusters (grouped by type)`);
+    for (const cluster of research.questionClusters) {
+      sections.push(`
+**${cluster.type.toUpperCase()} Questions:**
+${cluster.questions.map(q => `- ${q}`).join('\n')}`);
+    }
+  }
+
+  // Snippet Hooks
+  if (research.snippetHooks && research.snippetHooks.length > 0) {
+    sections.push(`
+### Featured Snippet Hooks (use as lead sentences)
+${research.snippetHooks.map((h, i) => `${i + 1}. "${h.hook}" (target: ${h.wordCount} words)`).join('\n')}`);
+  }
+
+  // Citation Targets
+  if (research.citationTargets && research.citationTargets.length > 0) {
+    sections.push(`
+### Authoritative Sources to Reference
+${research.citationTargets.map(c => `- ${c}`).join('\n')}`);
+  }
+
+  // Misconceptions
+  if (research.misconceptions && research.misconceptions.length > 0) {
+    sections.push(`
+### Common Misconceptions to Address`);
+    for (const m of research.misconceptions) {
+      sections.push(`
+**Myth:** ${m.myth}
+**Truth:** ${m.truth}`);
+    }
+  }
+
+  // GEO Section
+  sections.push(`
+
+## GEO (Geographic Optimization) Intelligence`);
+
+  // Location Summary
+  if (research.locationSummary) {
+    sections.push(`
+### Location Context
+${research.locationSummary}`);
+  }
+
+  // Nearby Areas
+  if (research.nearbyAreas && research.nearbyAreas.length > 0) {
+    sections.push(`
+### Nearby Areas (mention naturally for local SEO)
+${research.nearbyAreas.join(', ')}`);
+  }
+
+  // Proximity Anchors
+  if (research.proximityAnchors && research.proximityAnchors.length > 0) {
+    sections.push(`
+### Proximity Anchors (landmarks/transport)
+${research.proximityAnchors.map(p => `- ${p.name}: ${p.distance}`).join('\n')}`);
+  }
+
+  // Local Phrases
+  if (research.localPhrases && research.localPhrases.length > 0) {
+    sections.push(`
+### Local Language Patterns
+${research.localPhrases.map(p => `- "${p}"`).join('\n')}`);
+  }
+
+  // Decision Factors
+  if (research.decisionFactors && research.decisionFactors.length > 0) {
+    sections.push(`
+### Local Decision Factors`);
+    for (const f of research.decisionFactors) {
+      sections.push(`- **${f.factor}**: ${f.tip}`);
+    }
+  }
+
+  // Quality Info
+  if (research.quality) {
+    sections.push(`
+### Research Quality
+- AEO Score: ${research.quality.aeoScore}/100
+- GEO Score: ${research.quality.geoScore}/100
+- Overall: ${research.quality.overallScore}/100`);
   }
 
   return sections.join('\n');

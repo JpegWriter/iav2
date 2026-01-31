@@ -17,8 +17,10 @@ import type {
   StoryAngle,
   TechnicalFlags,
   ComplianceNotes,
+  MetadataEmbedRequest,
 } from '@/types/visionEvidence';
 import { createAdminClient } from '@/lib/supabase/server';
+import { embedMetadata } from './embed';
 
 // ============================================================================
 // DATABASE RECORD TYPES
@@ -230,16 +232,32 @@ export async function analyzeImagePack(
 
   const analysisResults = await Promise.all(analysisPromises);
 
+  // Validate taskId is a valid UUID before including it
+  // Task IDs from growth planner are strings like "task-6-case-study-XXX", not UUIDs
+  const isValidUUID = (id: string): boolean => {
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+    return uuidRegex.test(id);
+  };
+  
+  const taskIds: string[] = [];
+  if (request.taskId && isValidUUID(request.taskId)) {
+    taskIds.push(request.taskId);
+  }
+
   // Create the pack first (to get ID for images)
   const { data: packData, error: packError } = await supabase
     .from('vision_evidence_packs')
     .insert({
       project_id: request.projectId,
-      context_snapshot: request.context,
+      context_snapshot: {
+        ...request.context,
+        // Store the original task ID in context if it's not a UUID
+        linkedTaskId: request.taskId && !isValidUUID(request.taskId) ? request.taskId : undefined,
+      },
       combined_narrative: '',
       cross_image_themes: [],
       used_in_brief_ids: [],
-      used_in_task_ids: request.taskId ? [request.taskId] : [],
+      used_in_task_ids: taskIds,
     })
     .select('id')
     .single();
@@ -339,6 +357,10 @@ export async function analyzeImagePack(
     })
     .eq('id', packId);
 
+  // Auto-embed IPTC metadata into images using vision analysis results
+  // This embeds initial metadata from AI analysis; can be updated after writer approval
+  await autoEmbedMetadata(imageRecords, request.context);
+
   // Fetch the complete pack
   const { data: completePack } = await supabase
     .from('vision_evidence_packs')
@@ -412,6 +434,67 @@ function getMimeType(filename: string): string {
     arw: 'image/x-sony-arw',
   };
   return mimeTypes[ext || ''] || 'image/jpeg';
+}
+
+// ============================================================================
+// AUTO-EMBED IPTC METADATA
+// ============================================================================
+// Automatically embeds IPTC/EXIF/XMP metadata into images after vision analysis.
+// Uses the AI-generated alt text, caption, and keywords from analysis results.
+// This runs silently in the background - failures don't block image analysis.
+// ============================================================================
+
+async function autoEmbedMetadata(
+  images: VisionEvidenceImage[],
+  context: VisionContextSnapshot
+): Promise<void> {
+  // Process all images in parallel, catching errors individually
+  const embedPromises = images.map(async (image) => {
+    try {
+      // Determine output format from original file
+      const ext = image.originalFilename.toLowerCase().split('.').pop();
+      const outputFormat: 'jpeg' | 'png' | 'webp' = 
+        ext === 'png' ? 'png' : 
+        ext === 'webp' ? 'webp' : 
+        'jpeg';
+
+      const embedRequest: MetadataEmbedRequest = {
+        imageId: image.id,
+        fields: {
+          // Use AI-generated alt text as title
+          title: image.evidence.suggestedAlt || context.topic,
+          // Use scene summary as description
+          description: image.evidence.sceneSummary,
+          // Use suggested alt as alt text
+          altText: image.evidence.suggestedAlt,
+          // Use suggested caption
+          caption: image.evidence.suggestedCaption,
+          // Use AI-generated keywords
+          keywords: image.evidence.suggestedKeywords,
+          // Add location if available
+          city: context.location || undefined,
+          // Use topic as headline
+          headline: context.topic,
+        },
+        outputFormat,
+        preserveOriginal: true, // Keep original, create embedded version
+      };
+
+      const result = await embedMetadata(embedRequest);
+      
+      if (!result.success) {
+        console.warn(`[AutoEmbed] Failed for ${image.originalFilename}: ${result.error}`);
+      } else {
+        console.log(`[AutoEmbed] Embedded ${result.embeddedFields.length} fields into ${image.originalFilename}`);
+      }
+    } catch (error) {
+      // Don't let embed failures break image analysis
+      console.error(`[AutoEmbed] Error for ${image.originalFilename}:`, error);
+    }
+  });
+
+  // Wait for all embeds to complete (or fail silently)
+  await Promise.allSettled(embedPromises);
 }
 
 function findBestHeroImage(images: VisionEvidenceImage[]): string | null {

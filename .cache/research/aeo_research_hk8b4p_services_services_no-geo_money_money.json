@@ -1,0 +1,574 @@
+{
+  "aeo": {
+    "targetQueries": [
+      "services",
+      "services cost",
+      "services price",
+      "best services",
+      "best services near me",
+      "services vs",
+      "services comparison",
+      "how does services work",
+      "how to choose services",
+      "services mistakes to avoid",
+      "common services problems",
+      "what is services"
+    ],
+    "peopleAlsoAsk": [],
+    "questionClusters": [],
+    "answerShapes": [],
+    "citationTargets": [
+      {
+        "url": "https://www.gov.uk/government/publications/complying-with-provision-of-services-regulations-for-businesses-and-competent-authorities",
+        "title": "Complying with Provision of Services Regulations for businesses ...",
+        "snippet": "## Cookies on GOV.UK. We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services. We also use cookies set by other sites to help us de",
+        "type": "official",
+        "credibilityScore": 100
+      },
+      {
+        "url": "https://www.att.org.uk/provision-services-regulations",
+        "title": "The Provision of Services Regulations",
+        "snippet": "The Provision of Services Regulations set out the information which service providers must provide to their clients and prospective clients.",
+        "type": "industry",
+        "credibilityScore": 100
+      },
+      {
+        "url": "https://www.trade.gov/country-commercial-guides/united-kingdom-licensing-requirements-professional-services",
+        "title": "United Kingdom - Licensing Requirements for Professional Services",
+        "snippet": "The Provision of Services Regulations protect UK businesses and consumer rights by ensuring that the regulation of service activity is",
+        "type": "official",
+        "credibilityScore": 100
+      },
+      {
+        "url": "https://www.legislation.gov.uk/ukdsi/2009/9780111486276/contents",
+        "title": "The Provision of Services Regulations 2009 - Legislation.gov.uk",
+        "snippet": "This is a draft item of legislation. This draft has since been made as a UK Statutory Instrument: The Provision of Services Regulations 2009 No. 2999.",
+        "type": "official",
+        "credibilityScore": 100
+      },
+      {
+        "url": "https://www.gov.uk/search/services",
+        "title": "Services",
+        "snippet": "Sign in to your Universal Credit account - report a change, add a note to your journal, see your payments and do other tasks",
+        "type": "official",
+        "credibilityScore": 80
+      },
+      {
+        "url": "https://uk.practicallaw.thomsonreuters.com/6-508-2554?transitionType=Default&contextData=(sc.Default)",
+        "title": "The Provision of Services Regulations 2009 (SI 2009/2999)",
+        "snippet": "Provision of Services Regulations 2009: service provider checklist. UK Toolkits. Supply of goods and services toolkit; Supply of goods and services toolkit",
+        "type": "guide",
+        "credibilityScore": 77.873385
+      },
+      {
+        "url": "https://dictionary.cambridge.org/dictionary/english/service",
+        "title": "SERVICE | English meaning - Cambridge Dictionary",
+        "snippet": "service noun (EMPLOYMENT) ... work done for others, such as cleaning or repairing, caring for a building, or making deliveries: This building has five service ...",
+        "type": "industry",
+        "credibilityScore": 70
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Service",
+        "title": "Service",
+        "snippet": "Economics and business · Customer service, provision of assistance to customers or clients · Domestic service, employment in a residence · Table service, food ...",
+        "type": "industry",
+        "credibilityScore": 70
+      },
+      {
+        "url": "https://dictionary.cambridge.org/us/dictionary/english/service",
+        "title": "SERVICE | definition in the Cambridge English Dictionary",
+        "snippet": "### service noun (PUBLIC NEED). ### service noun (WORK). The battleship has been in service since 1965. Her mother was in service. a career in the services. ### service noun (IN SPORTS). She has a ver",
+        "type": "industry",
+        "credibilityScore": 68.762518
+      },
+      {
+        "url": "https://www.which.co.uk/reviews/motorway-service-stations/article/best-and-worst-motorway-service-stations-aw3Ww9F9pEIw",
+        "title": "Best And Worst Motorway Service Stations 2026 - Which.co.uk",
+        "snippet": "Which? reveals the best motorway service stations in the UK - and the ones to avoid - with ratings for shops, food outlets, prices and ...",
+        "type": "guide",
+        "credibilityScore": 65
+      }
+    ],
+    "misconceptions": [
+      {
+        "misconception": "All services providers are the same",
+        "correction": "Quality, experience, and approach can vary significantly. Look for credentials, reviews, and local expertise."
+      },
+      {
+        "misconception": "The cheapest option is always the best value",
+        "correction": "Price should be weighed against quality, reliability, and what's included. Sometimes paying more saves money long-term."
+      }
+    ],
+    "snippetHooks": [
+      "In practice...",
+      "What usually changes the price is...",
+      "A common mistake we see is...",
+      "From experience, the key factor is...",
+      "The typical journey looks like this...",
+      "What most people don't realise is...",
+      "The main difference comes down to...",
+      "For those in the local area...",
+      "What we've found works best is...",
+      "The honest answer is..."
+    ],
+    "relatedSearches": [],
+    "generatedAt": "2026-01-30T12:35:05.806Z"
+  },
+  "sources": [
+    {
+      "url": "https://dictionary.cambridge.org/dictionary/english/service",
+      "title": "SERVICE | English meaning - Cambridge Dictionary",
+      "snippet": "service noun (EMPLOYMENT) ... work done for others, such as cleaning or repairing, caring for a building, or making deliveries: This building has five service ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.gov.uk/search/services",
+      "title": "Services",
+      "snippet": "Sign in to your Universal Credit account - report a change, add a note to your journal, see your payments and do other tasks",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Service",
+      "title": "Service",
+      "snippet": "Economics and business · Customer service, provision of assistance to customers or clients · Domestic service, employment in a residence · Table service, food ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.dictionary.com/browse/services",
+      "title": "SERVICES Definition & Meaning",
+      "snippet": "SERVICES definition: work performed for remuneration See examples of services used in a sentence.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.nhs.uk/nhs-services/",
+      "title": "NHS services",
+      "snippet": "Find out about NHS services such as GPs, pharmacies and hospitals, services near you, and online services to manage your health.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.planningcenter.com/services",
+      "title": "Planning Center Services: Worship Planning Software",
+      "snippet": "Service planning and volunteer scheduling, for any team. Worship planning, volunteer scheduling, team communication, and rehearsal tools all in one place.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.merriam-webster.com/dictionary/service",
+      "title": "SERVICE Definition & Meaning",
+      "snippet": "1 ... a ... the occupation or function of serving ... in active service ... b ... employment as a servant ... entered his service ... 2 ... a ... the work performed by one that ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://pcoservices.zendesk.com/hc/en-us",
+      "title": "Services - Zendesk",
+      "snippet": "Planning Center Services allows you to manage your schedule, update contact information, and access plans and files. You can access Services from a web browser ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://digital.nhs.uk/services",
+      "title": "Services",
+      "snippet": "We help health and care professionals deliver the best possible care by providing critical IT services that are safe, fast and reliable.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.servicesltd.co.uk/",
+      "title": "Services Limited | Consulting | Nottingham |",
+      "snippet": "Services Ltd is a consultancy unlike any other. Covering a wide range of topics and programs our training is performed to the highest and most recent standards.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.kwik-fit.com/servicing/service-pricing",
+      "title": "Car Service Pricing - Save When Booking With An MOT",
+      "snippet": "The cost of a Full or Interim Service, as well as an Engine Oil & Filter Change, largely depends on the size of your car's engine, the time taken to service ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.rac.co.uk/drive/advice/car-maintenance/car-service-how-much-does-it-cost-and-whats-included/",
+      "title": "Car service: how much does it cost and what's included?",
+      "snippet": "How much is a full car service? · ​Full service for a small-sized car - £170-£210 · Full service for a medium-sized car - £210-£300 · Full ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.checkatrade.com/blog/cost-guides/car-service-cost/",
+      "title": "How Much Does A Car Service Cost in 2026?",
+      "snippet": "How much does a full service cost in the UK? · Small car full service – £170 · Medium car full service – £210 · Large car full service – £395.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.halfords.com/car-servicing/petrol-diesel-servicing/full-service-PRODUCTFULLSERVICE.html",
+      "title": "Full Service - Book a Full Car Service Online",
+      "snippet": "We charge from £239.99 for a mobile full service in selected locations, where pricing increases based on the size of the vehicle engine CC and selected ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.cinch.co.uk/guides/car-maintenance/car-service-cost",
+      "title": "How much is a car service?",
+      "snippet": "Interim/minor service cost. An interim/minor service usually costs around £70 to £250, depending on the size of your car and the garage/centre ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.lookers.co.uk/blog/how-much-is-a-car-service?srsltid=AfmBOopIJG5igPAKD88H2GZ_2iMnBqWLDYxM2HG4L9S32azyCIHF3vGp",
+      "title": "How Much Is A Car Service?",
+      "snippet": "For a full service, expect to pay about £185-£285 or more. Again, prices will vary between independent garages and big garage chains.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.scrapcarcomparison.co.uk/blog/how-much-should-a-car-service-cost/",
+      "title": "How Much Should a Car Service Cost and What's Included?",
+      "snippet": "The average cost of services across the UK will likely see an interim service costing in the region of £75-£125, while a full service will likely set you back ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://bookmygarage.com/car-servicing/",
+      "title": "Compare Car Service Deals & Book in Just 3 Steps",
+      "snippet": "Compare thousands of UK garages & book a car service near you in just 3 steps. Never pay until the day. Book up to 12 months in advance.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.reddit.com/r/CarTalkUK/comments/1gkdvkn/how_much_does_servicing_your_car_cost_usually/",
+      "title": "How much does servicing your car cost usually?",
+      "snippet": "Service my car myself every 6k miles, around £120 a year, 2 hours of my time aswell so I'd say in total £190 per 6k miles.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.clickmechanic.com/blog/how-much-is-a-car-service/",
+      "title": "How Much is a Car Service",
+      "snippet": "A full car service typically costs between £150 and £300 in the UK. This price can vary depending on the car's make, model, and engine size.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.starlingbank.com/resources/business-guides/how-to-price-your-services/",
+      "title": "How to price your services",
+      "snippet": "There are three main pricing methods: cost-plus pricing, market rate pricing and value-based pricing.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.sumup.com/en-gb/starting-business/how-to-price-a-service/",
+      "title": "How to Price a Service as a Small Business in the UK",
+      "snippet": "Discover the essentials of how to price a service. From understanding your costs to conducting competitor research, make pricing simple with ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://betterproposals.io/blog/how-to-price-a-service/",
+      "title": "How to Price Your Services: 5 Ways to Charge for Your Work",
+      "snippet": "In this blog, we'll show you a few ways that you can set up your pricing strategy and ask for money for the services that you provide.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.pennyfreedom.co.uk/knowledge-hub/how-to-price-your-services-as-a-sole-trader",
+      "title": "How to Price Your Services as a Sole Trader",
+      "snippet": "How to Price Your Services as a Sole Trader · 1. Understand your costs · 2. Choose a pricing model that works for you · 3. Factor in your value, ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://medium.com/new-writers-welcome/how-to-price-your-services-224d057f6df8",
+      "title": "How to Price Your Services",
+      "snippet": "Most business owners think pricing their service is just a numbers game. It's not. Yes, you need to know your costs and profit margins, but pricing only works ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.bgateway.com/resources/pricing-products-and-services",
+      "title": "A quick guide to pricing products & services",
+      "snippet": "Work out an hourly rate for your time that you're happy with, and calculate that by the number of hours you'll spend to give you a cost to add on to your cost ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.startuploans.co.uk/support-and-guidance/business-guidance/marketing/how-to-price-your-products-and-services",
+      "title": "How to price your products and services",
+      "snippet": "The simplest option is cost-plus or mark-up pricing. Decide on a percentage mark-up - known as 'margin' - and add that to your costs to give you a price.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=dQCU7othEb0",
+      "title": "How To Price Your Services - My Four-Step Framework",
+      "snippet": "In this video I'll provide a fourstep process to help you figure out the right pricing how to price your services.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://digitalboost.org.uk/small-business-pricing-the-ultimate-guide-to-pricing-your-services/",
+      "title": "Small Business Pricing: The Ultimate Guide to Pricing Your ...",
+      "snippet": "Discover game-changing pricing strategies for small businesses. Value your services, attract clients, and boost profits with expert insights!",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://business.bankofamerica.com/en/resources/how-to-price-a-product-or-service",
+      "title": "How to Price a Product or Service",
+      "snippet": "Here is an overview of some important things to know about pricing, including how to price your product or service competitively, different pricing strategies.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.bestservices.co.uk/",
+      "title": "Lightning Protection, Surge Protection & Earthing | BEST",
+      "snippet": "BEST Services are experts in providing comprehensive qualified design solutions for lightning protective measures which are economical, effective and reliable.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.carparisonleasing.co.uk/blog/6-of-the-best-motorway-service-stations-to-visit-on-your-next-road-trip",
+      "title": "6 of the Best Motorway Service Stations to Visit",
+      "snippet": "Six of our favourite service stations · Gloucester Services · Tebay Services · Stafford North · Fleet · Beaconsfield · Cairn Lodge Services ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.reddit.com/r/CasualUK/comments/1f0hwey/whats_the_best_motorway_services_in_the_uk/",
+      "title": "What's the best Motorway Services in the UK? : r/CasualUK",
+      "snippet": "In addition to the others mentioned, there's Cambridge services on the A14 and Hopwood Park on the M42. Both are worth stopping at. Quiet- ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.bestservice.com/en/index.html",
+      "title": "Best Service Home | bestservice.com | EN",
+      "snippet": "Best Service | Soundware | Sounds | PlugIns | Virtual Instruments | Sample CDs | Orchestra Library | Sampling | Ethno Synthesizer | Drums | Loops | soundFX.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.which.co.uk/reviews/motorway-service-stations/article/best-and-worst-motorway-service-stations-aw3Ww9F9pEIw",
+      "title": "Best And Worst Motorway Service Stations 2026 - Which.co.uk",
+      "snippet": "Which? reveals the best motorway service stations in the UK - and the ones to avoid - with ratings for shops, food outlets, prices and ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.theaa.com/breakdown-cover/advice/best-uk-service-stations",
+      "title": "These are the top 20 Best UK Service Stations",
+      "snippet": "A closer look at the top three · 1. Gloucester Services · 2. Tebay Services · 3. Moto Stafford Northbound. One of a pair of service stations flanking the M6 ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://find-and-update.company-information.service.gov.uk/company/03197463",
+      "title": "BEST SERVICES LIMITED overview - Companies House",
+      "snippet": "BEST SERVICES LIMITED - Free company information from Companies House including registered office address, filing history, accounts, annual return, ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://uk.linkedin.com/company/best-services-ltd",
+      "title": "BEST Services Ltd",
+      "snippet": "BEST Services Ltd provides a total service in Earthing, Lightning Protection, Steeplejack and Maintenance Services throughout the UK and Europe.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.brindley.co.uk/news/uks-best-worst-motorway-services-ranked-with-honest-reviews/?srsltid=AfmBOorv4C2yONhw91FObb_PFeBUF-abfP12nfxz5EtdGQBID9xo9TVH",
+      "title": "The UK's Best & Worst Motorway Services Ranked",
+      "snippet": "Following our research, Tebay services, located in the North West, officially takes the top spot for the UK's best motorway services. With an ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.bestservices.co.uk/contact/",
+      "title": "Contact Us | BEST",
+      "snippet": "Contact the team at BEST for help and advice about lightning protection, surge protection and specialist earthing. Get in touch to find out more or request ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://moto-way.com/services/",
+      "title": "Motorway services near you",
+      "snippet": "Motorway services near you · Baldock Extra · Barton Park · Beaconsfield Extra · Birch Eastbound · Birch Westbound · Blackburn with Darwen Extra · Blyth · Bridgwater.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://motorwayservices.uk/",
+      "title": "Motorway Services Online | motorway services & motorway ...",
+      "snippet": "Find motorway services near you with the online guide to UK motorway services, with details of every motorway service area in the UK including facilities, ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.which.co.uk/reviews/motorway-service-stations/article/best-and-worst-motorway-service-stations-aw3Ww9F9pEIw",
+      "title": "Best And Worst Motorway Service Stations 2026 - Which.co.uk",
+      "snippet": "Which? reveals the best motorway service stations in the UK - and the ones to avoid - with ratings for shops, food outlets, prices and ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.kwik-fit.com/servicing",
+      "title": "Book Your Car's Service Online At Your Local Centre",
+      "snippet": "Car Servicing at Kwik Fit. At Kwik Fit, we're the motor vehicle servicing experts, offering drivers a choice of ways to service their cars.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://welcomebreak.co.uk/",
+      "title": "Welcome Break | Motorway Services And Hotels",
+      "snippet": "Our 59 Motorway service areas and 31 hotels across the UK's motorway network offer you a warm welcome. Eat in, take away Welcome Breaks got you covered.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.mercedes-benzsouthwest.co.uk/blog/the-best-south-west-service-stations-for-an-enjoyable-pit-stop",
+      "title": "The best South West service stations for an enjoyable pit stop",
+      "snippet": "Cornwall Services is one of the very best in the country. Located on the A30 near Bodmin and just a 22 minute drive from our Mercedes-Benz of Truro showroom, ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://theextramile.guide/",
+      "title": "The Extra Mile",
+      "snippet": "The Extra Mile: Delicious Alternatives to Motorway Services; The Coastal Café Guide; and 2024's The Farm Shop Guide. All will help make your day more memorable.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://motorwayservices.uk/Map:Services",
+      "title": "Map:Services motorway service station",
+      "snippet": "Find motorway services near you with our map of motorway services, allowing you to filter by facility, rating or motorway to find the nearest service ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.reddit.com/r/CasualUK/comments/1f0hwey/whats_the_best_motorway_services_in_the_uk/",
+      "title": "What's the best Motorway Services in the UK? : r/CasualUK",
+      "snippet": "Killington lake has a nice lake, as does Annandale water. The latter also frequently has ducks and geese kicking about in the car park.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://moto-way.com/journey-planner/",
+      "title": "Journey planner",
+      "snippet": "Find a Moto services Search Moto Journey planner Plan your journey and find great places to take a break.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:01.948Z"
+    },
+    {
+      "url": "https://www.theserviceguide.com/",
+      "title": "The Service Guide ~ Your Personal Home Manual ~ Connect To ...",
+      "snippet": "Think of The Service Guide as your personal home manual where you can get answers to your home related inquiries, learn what you need to know about projects",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:05.806Z"
+    },
+    {
+      "url": "https://research.fairfaxcounty.gov/human-services-resources/ResourceGuides",
+      "title": "Community and Human Services Resources - Library Research",
+      "snippet": "The Human Services Resource Guide, aka, the HSRG, is a searchable database that contains information on thousands of nonprofit and government",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:05.806Z"
+    },
+    {
+      "url": "https://washington.org/visitors-guide",
+      "title": "Official Visitors Guide & Request Form - Washington DC",
+      "snippet": "The twice-yearly guide is packed with all you need to plan your next trip to the nation's capital, including information on free things to do, neighborhoods,",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:05.806Z"
+    },
+    {
+      "url": "https://mylifemycommunityvirginia.org/program/73939/community-guide",
+      "title": "Community Guide | VirginiaNavigator",
+      "snippet": "Holistic Care Services LLC is certified to provide community guide services within Virginia, which includes a general community.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:05.806Z"
+    },
+    {
+      "url": "https://www.newkent-va.us/976/Resource-Guide-for-New-Kent-County-Onlin",
+      "title": "Resource Guide for New Kent County (Online)",
+      "snippet": "It is designed to offer a broad list and overview of services available from various profit and non-profit agencies, churches, professional societies, private",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:05.806Z"
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/complying-with-provision-of-services-regulations-for-businesses-and-competent-authorities",
+      "title": "Complying with Provision of Services Regulations for businesses ...",
+      "snippet": "## Cookies on GOV.UK. We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services. We also use cookies set by other sites to help us deliver content from their services. # Complying with Provision of Services Regulations for businesses and Competent Authorities. ### Guidance on the Provision of Services Regulations for Competent Authorities and businesses. This guidance will help businesses to understand what steps they need to take to provide services within the UK. The Provision of Services Regulations protects UK businesses and consumer rights by ensuring that the regulation of service activity is proportionate and justified in the public interest. If you wish to provide a service in the UK, you must check what authorisations and licences you will need to obtain. If you require further information, wish to give feedback or ask a question, email us at servicesregulations@businessandtrade.gov.uk. 1. Updated contact information to 'servicesregulations@businessandtrade.gov.uk'. ## Help us improve GOV.UK.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:05.806Z"
+    },
+    {
+      "url": "https://www.att.org.uk/provision-services-regulations",
+      "title": "The Provision of Services Regulations",
+      "snippet": "The Provision of Services Regulations set out the information which service providers must provide to their clients and prospective clients.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:05.806Z"
+    },
+    {
+      "url": "https://www.trade.gov/country-commercial-guides/united-kingdom-licensing-requirements-professional-services",
+      "title": "United Kingdom - Licensing Requirements for Professional Services",
+      "snippet": "The Provision of Services Regulations protect UK businesses and consumer rights by ensuring that the regulation of service activity is",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:05.806Z"
+    },
+    {
+      "url": "https://uk.practicallaw.thomsonreuters.com/6-508-2554?transitionType=Default&contextData=(sc.Default)",
+      "title": "The Provision of Services Regulations 2009 (SI 2009/2999)",
+      "snippet": "Provision of Services Regulations 2009: service provider checklist. UK Toolkits. Supply of goods and services toolkit; Supply of goods and services toolkit",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:05.806Z"
+    },
+    {
+      "url": "https://www.legislation.gov.uk/ukdsi/2009/9780111486276/contents",
+      "title": "The Provision of Services Regulations 2009 - Legislation.gov.uk",
+      "snippet": "This is a draft item of legislation. This draft has since been made as a UK Statutory Instrument: The Provision of Services Regulations 2009 No. 2999.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:05.806Z"
+    },
+    {
+      "url": "https://dictionary.cambridge.org/us/dictionary/english/service",
+      "title": "SERVICE | definition in the Cambridge English Dictionary",
+      "snippet": "### service noun (PUBLIC NEED). ### service noun (WORK). The battleship has been in service since 1965. Her mother was in service. a career in the services. ### service noun (IN SPORTS). She has a very fast service. ### service noun (REPAIR). be of service (to someone)\"). ### service verb [T] (MACHINE). ### service verb [T] (DEBT). to provide services to or for someone:. ### service noun (WORK). You should have the services of a lawyer. ### service noun (SYSTEM). ### service noun (EMPLOYMENT). ### service verb [T] (REPAIR). ## **service** | Business English. **be of service (to sb)**. Hello, how can I be of service? If we find a technology that will work, it could be in service by 2012. to provide a service to someone:. ## Collocations with service. ## service. These are words often used in combination with service. See all collocations with service. What is the pronunciation of *service*? ## Translations of service.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:05.806Z"
+    },
+    {
+      "url": "https://www.planningcenter.com/services",
+      "title": "Planning Center Services: Worship Planning Software",
+      "snippet": "*   Worship planning Service planning and volunteer scheduling. Service planning and volunteer scheduling, for any team. Worship planning, volunteer scheduling, team communication, and rehearsal tools all in one place. Add your worship songs, scheduled volunteers, and any special notes so you and your team can be fully prepared. Set times for each of your services, whether you have a single service or multiple services, and add volunteers to them. Image 21: Add service items:quality(80)). Image 24: Rearrange service items:quality(80)). Image 25: Add service items:quality(80)). All of your volunteers can use the Services mobile app to stay in the loop—from responding to serve requests, viewing plans, chatting with team members, and much more. Create templates for teams and service items to easily reuse when making a new plan. ### Is Services just for worship teams? Services is for anyone who needs to coordinate volunteers or plan services, regardless of the ministry area. All plans include unlimited feature access, teams, service types, and plans.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:05.806Z"
+    },
+    {
+      "url": "https://pcoservices.zendesk.com/hc/en-us",
+      "title": "Services - Zendesk",
+      "snippet": "Planning Center Services allows you to manage your schedule, update contact information, and access plans and files. You can access Services from a web browser",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:05.806Z"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Service_(economics)",
+      "title": "Service (economics) - Wikipedia",
+      "snippet": "# Service (economics). * Simple English \"Service (economics) – Simple English\"). The service consumer is also inseparable from service delivery. Example: The taxi service which transports the service consumer from home to work is different from the taxi service which transports the same service consumer from work to home – another point in time, the other direction, possibly another route, probably another taxi-driver and cab. ## Service quality. [edit&action=edit&section=5 \"Edit section: Service quality\")]. * Service delivery point – the physical location or logical interface where the benefits of the service are rendered to the consumer. * Service fulfillment target – the provider's promise to deliver the service, expressed as the ratio of the count of successful service deliveries to the count of service requests by a single consumer or consumer group over some time period. * Service delivery duration – the maximum allowable period for effectively rendering all service benefits to the consumer. * Service delivery unit – the scope/number of action(s) that constitute a delivered service. [edit&action=edit&section=8 \"Edit section: Service-commodity goods continuum\")]. [edit&action=edit&section=9 \"Edit section: Service types\")].",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:05.806Z"
+    },
+    {
+      "url": "https://www.ny.gov/services",
+      "title": "Services | The State of New York - NY.Gov",
+      "snippet": "An official website of New York State. **Official websites use ny.gov**. A **ny.gov** website belongs to an official New York State government organization. **Secure ny.gov websites use HTTPS**. A **lock icon** or **https://** means you’ve safely connected to a ny.gov website. Share sensitive information only on official, secure websites. # Search New York State Services. Explore the services available in New York State. ## Service Finder Tool. Use the services finder tool to answer a few questions and get a customized list of potential services that you may be eligible for. ## Service Categories. ### Did you find this page helpful? Scroll back to the top of the page. You are leaving the official State of New York website. The State of New York does not imply approval of the listed destinations, warrant the accuracy of any information set out in those destinations, or endorse any opinions expressed therein.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:05.806Z"
+    }
+  ]
+}

@@ -51,7 +51,7 @@ let sharpModule: SharpModule | null = null;
 async function getSharp(): Promise<SharpModule | null> {
   if (sharpModule) return sharpModule;
   try {
-    // @ts-expect-error - sharp is an optional dependency
+    // Dynamic import - sharp may not be available in all environments
     const imported = await import('sharp');
     sharpModule = imported.default as unknown as SharpModule;
     return sharpModule;

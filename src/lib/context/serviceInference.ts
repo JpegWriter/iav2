@@ -3,6 +3,8 @@
 // ============================================================================
 // Infers primaryService and allServices from page content.
 // Also builds the siteContentDigest from aggregated page essences.
+//
+// HARDENED: Multi-confirm rule + niche lock + conservative quarantine mode.
 // ============================================================================
 
 import type {
@@ -11,7 +13,38 @@ import type {
   WriterSnapshot,
   ProfileConfidence,
   ProfileCompleteness,
+  ServiceInferenceResult,
 } from './types';
+
+// ============================================================================
+// NICHE DEFINITIONS (for niche lock enforcement)
+// ============================================================================
+
+export const NICHE_DEFINITIONS: Record<string, {
+  keywords: string[];
+  excludeServices: string[];
+}> = {
+  'estate agent': {
+    keywords: ['property', 'valuation', 'estate', 'lettings', 'sales', 'properties', 'rent', 'buy', 'sell', 'landlord', 'tenant'],
+    excludeServices: ['plumbing', 'electrical', 'hvac', 'heating', 'air conditioning', 'drain', 'pipe', 'wiring', 'geyser'],
+  },
+  'architect': {
+    keywords: ['architecture', 'design', 'building', 'planning', 'restoration', 'renovation', 'residential', 'commercial'],
+    excludeServices: ['plumbing', 'electrical', 'hvac', 'drain cleaning', 'pipe repair'],
+  },
+  'plumber': {
+    keywords: ['plumbing', 'drain', 'pipe', 'toilet', 'bathroom', 'leak', 'water heater', 'geyser'],
+    excludeServices: ['estate agent', 'property valuation', 'architecture'],
+  },
+  'electrician': {
+    keywords: ['electrical', 'wiring', 'socket', 'lighting', 'fuse', 'circuit'],
+    excludeServices: ['estate agent', 'property valuation', 'architecture'],
+  },
+  'hvac': {
+    keywords: ['hvac', 'heating', 'air conditioning', 'ventilation', 'cooling'],
+    excludeServices: ['estate agent', 'property valuation', 'architecture'],
+  },
+};
 
 // ============================================================================
 // SERVICE PRIORITY (for tie-breaking)
@@ -39,6 +72,26 @@ const SERVICE_PRIORITY: Record<string, number> = {
   'maintenance': 10,
   'repair': 5,
 };
+
+// ============================================================================
+// SERVICE SOURCE TYPES (for multi-confirm validation)
+// ============================================================================
+
+export type ServiceSource = 
+  | 'nav_item'           // From navigation menu
+  | 'h1_heading'         // From H1 on a page
+  | 'h2_heading'         // From H2 on a page
+  | 'service_url'        // From URL pattern (/services/, /typology/)
+  | 'service_page'       // From dedicated service page
+  | 'page_content'       // From general page content
+  | 'business_name';     // From business name
+
+interface ServiceEvidence {
+  service: string;
+  sources: Set<ServiceSource>;
+  pageUrls: Set<string>;
+  confidence: number;
+}
 
 // ============================================================================
 // TYPOLOGY URL PARSING
@@ -88,97 +141,177 @@ function slugToHumanLabel(slug: string): string {
 }
 
 // ============================================================================
-// MAIN INFERENCE FUNCTION
+// MAIN INFERENCE FUNCTION (HARDENED)
+// ============================================================================
+// Multi-confirm rule: services must appear in 2+ independent sources.
+// Niche lock: if niche is known, filter out cross-niche pollution.
+// Conservative mode: quarantine if confidence is low.
 // ============================================================================
 
 export interface InferredServices {
-  primaryService: string;
+  primaryService: string | null;  // null if quarantined
   allServices: string[];
   confidence: 'high' | 'med' | 'low';
+  quarantined: boolean;
+  quarantineReason?: string;
+  evidence?: Map<string, ServiceEvidence>;
 }
 
+/**
+ * Hardened service inference with multi-confirm validation
+ */
 export function inferServicesFromEssences(
   pageEssences: PageEssence[],
   businessName?: string,
-  allPageUrls?: string[]
+  allPageUrls?: string[],
+  lockedNiche?: string
 ): InferredServices {
-  // Count service occurrences across all pages
-  const serviceCounts = new Map<string, number>();
-  const serviceByPage = new Map<string, Set<string>>();
+  // Build evidence map with source tracking
+  const evidenceMap = new Map<string, ServiceEvidence>();
+  
+  // Helper to add evidence
+  const addEvidence = (service: string, source: ServiceSource, pageUrl?: string) => {
+    const normalized = service.toLowerCase();
+    if (!evidenceMap.has(normalized)) {
+      evidenceMap.set(normalized, {
+        service: normalized,
+        sources: new Set(),
+        pageUrls: new Set(),
+        confidence: 0,
+      });
+    }
+    const evidence = evidenceMap.get(normalized)!;
+    evidence.sources.add(source);
+    if (pageUrl) evidence.pageUrls.add(pageUrl);
+  };
 
+  // 1. Collect evidence from page essences
   pageEssences.forEach((essence) => {
-    serviceByPage.set(essence.url, new Set());
     essence.servicesMentioned.forEach((service) => {
-      const normalized = service.toLowerCase();
-      serviceCounts.set(normalized, (serviceCounts.get(normalized) || 0) + 1);
-      serviceByPage.get(essence.url)?.add(normalized);
+      // Determine source type based on where service was found
+      const url = essence.url.toLowerCase();
+      
+      // Check if this is a service page URL
+      if (/\/(service|services|typology|category)\//.test(url)) {
+        addEvidence(service, 'service_url', essence.url);
+        addEvidence(service, 'service_page', essence.url);
+      } else {
+        addEvidence(service, 'page_content', essence.url);
+      }
     });
   });
 
-  // Get unique services sorted by frequency
-  const sortedServices = Array.from(serviceCounts.entries())
-    .sort((a, b) => {
-      // First by count
-      if (b[1] !== a[1]) return b[1] - a[1];
-      // Then by priority
-      const priorityA = SERVICE_PRIORITY[a[0]] || 0;
-      const priorityB = SERVICE_PRIORITY[b[0]] || 0;
-      return priorityB - priorityA;
-    })
-    .map(([service]) => service);
-
-  // UPGRADE: Also infer services from typology/category URLs
+  // 2. Collect evidence from typology/service URLs (high confidence)
   const urlsToCheck = allPageUrls || pageEssences.map(e => e.url);
   const typologyServices = inferServicesFromTypologyUrls(urlsToCheck);
-  
-  // Merge typology services with extracted services (typology services are high-confidence)
-  const allServicesSet = new Set<string>([
-    ...sortedServices.map(capitalizeFirst),
-    ...typologyServices,
-  ]);
-  const allServicesList = Array.from(allServicesSet);
+  typologyServices.forEach((service) => {
+    addEvidence(service, 'service_url');
+  });
 
-  // Infer primary service
-  let primaryService = sortedServices[0] || '';
-
-  // Check if business name hints at a service
+  // 3. Check business name for service hints
   if (businessName) {
     const nameLower = businessName.toLowerCase();
-    if (nameLower.includes('plumb') && sortedServices.includes('plumbing')) {
-      primaryService = 'plumbing';
-    } else if (nameLower.includes('electr') && sortedServices.includes('electrical')) {
-      primaryService = 'electrical';
-    } else if (nameLower.includes('architect')) {
-      primaryService = 'architecture';
+    if (nameLower.includes('plumb')) addEvidence('plumbing', 'business_name');
+    if (nameLower.includes('electr')) addEvidence('electrical', 'business_name');
+    if (nameLower.includes('architect')) addEvidence('architecture', 'business_name');
+    if (nameLower.includes('estate') || nameLower.includes('property')) {
+      addEvidence('estate agent', 'business_name');
     }
   }
 
-  // If no primary from content but we have typology services, use first one
-  if (!primaryService && typologyServices.length > 0) {
-    primaryService = typologyServices[0];
+  // 4. Apply niche lock filtering
+  if (lockedNiche) {
+    const nicheDef = NICHE_DEFINITIONS[lockedNiche.toLowerCase()];
+    if (nicheDef) {
+      // Remove services that don't belong to this niche
+      for (const [service, evidence] of Array.from(evidenceMap.entries())) {
+        if (nicheDef.excludeServices.some(excluded => 
+          service.includes(excluded) || excluded.includes(service)
+        )) {
+          evidenceMap.delete(service);
+        }
+      }
+    }
   }
 
-  // Fallback: If plumbing appears at all, use it
-  if (!primaryService && sortedServices.includes('plumbing')) {
-    primaryService = 'plumbing';
+  // 5. Calculate confidence for each service based on multi-confirm rule
+  for (const [service, evidence] of Array.from(evidenceMap.entries())) {
+    let confidence = 0;
+    
+    // High-value sources
+    if (evidence.sources.has('business_name')) confidence += 3;
+    if (evidence.sources.has('service_url')) confidence += 2;
+    if (evidence.sources.has('service_page')) confidence += 2;
+    if (evidence.sources.has('nav_item')) confidence += 2;
+    if (evidence.sources.has('h1_heading')) confidence += 2;
+    if (evidence.sources.has('h2_heading')) confidence += 1;
+    if (evidence.sources.has('page_content')) confidence += 1;
+    
+    // Multi-page bonus
+    if (evidence.pageUrls.size >= 3) confidence += 2;
+    else if (evidence.pageUrls.size >= 2) confidence += 1;
+    
+    evidence.confidence = confidence;
   }
 
-  // Determine confidence - UPGRADE: typology sites with 6+ services = med confidence
-  let confidence: InferredServices['confidence'] = 'low';
-  if (allServicesList.length >= 5 && serviceCounts.get(primaryService.toLowerCase())! >= 3) {
-    confidence = 'high';
-  } else if (allServicesList.length >= 6 && typologyServices.length >= 4) {
-    confidence = 'med';  // Typology site with structured categories
-  } else if (allServicesList.length >= 3 && serviceCounts.get(primaryService.toLowerCase())! >= 2) {
-    confidence = 'med';
-  } else if (typologyServices.length >= 6) {
-    confidence = 'med';  // Typology site with many categories
+  // 6. Filter services by multi-confirm rule (require 2+ independent sources)
+  const confirmedServices = Array.from(evidenceMap.entries())
+    .filter(([_, evidence]) => {
+      // Must have at least 2 different source types OR appear on 3+ pages
+      return evidence.sources.size >= 2 || evidence.pageUrls.size >= 3;
+    })
+    .sort((a, b) => b[1].confidence - a[1].confidence)
+    .map(([service]) => capitalizeFirst(service));
+
+  // 7. Determine primary service
+  let primaryService: string | null = null;
+  let overallConfidence: 'high' | 'med' | 'low' = 'low';
+  let quarantined = false;
+  let quarantineReason: string | undefined;
+
+  if (confirmedServices.length > 0) {
+    // Get the highest-confidence service
+    const topService = confirmedServices[0].toLowerCase();
+    const topEvidence = evidenceMap.get(topService);
+    
+    if (topEvidence && topEvidence.confidence >= 4) {
+      primaryService = capitalizeFirst(topService);
+      overallConfidence = topEvidence.confidence >= 6 ? 'high' : 'med';
+    } else if (topEvidence && topEvidence.confidence >= 2) {
+      primaryService = capitalizeFirst(topService);
+      overallConfidence = 'med';
+    } else {
+      // Low confidence - quarantine
+      primaryService = null;
+      quarantined = true;
+      quarantineReason = 'Service inference confidence too low - requires manual confirmation';
+    }
+  } else {
+    // No confirmed services
+    quarantined = true;
+    quarantineReason = 'No services confirmed with multi-source validation';
+  }
+
+  // 8. Final safety check: if we have a niche but inferred a completely different primary service
+  if (lockedNiche && primaryService) {
+    const nicheDef = NICHE_DEFINITIONS[lockedNiche.toLowerCase()];
+    if (nicheDef && !nicheDef.keywords.some(kw => 
+      primaryService!.toLowerCase().includes(kw) || kw.includes(primaryService!.toLowerCase())
+    )) {
+      // Primary service doesn't match niche - quarantine
+      quarantined = true;
+      quarantineReason = `Inferred service "${primaryService}" conflicts with niche "${lockedNiche}"`;
+      primaryService = null;
+    }
   }
 
   return {
-    primaryService: capitalizeFirst(primaryService),
-    allServices: allServicesList.slice(0, 15),
-    confidence,
+    primaryService,
+    allServices: confirmedServices.slice(0, 15),
+    confidence: overallConfidence,
+    quarantined,
+    quarantineReason,
+    evidence: evidenceMap,
   };
 }
 
@@ -189,10 +322,11 @@ export function inferServicesFromEssences(
 export function buildSiteContentDigest(
   pageEssences: PageEssence[],
   businessName?: string,
-  allPageUrls?: string[]
+  allPageUrls?: string[],
+  lockedNiche?: string
 ): SiteContentDigest {
   // Pass allPageUrls to service inference for typology parsing
-  const inferredServices = inferServicesFromEssences(pageEssences, businessName, allPageUrls);
+  const inferredServices = inferServicesFromEssences(pageEssences, businessName, allPageUrls, lockedNiche);
 
   // Aggregate USPs from proof mentions
   const allProofs = new Set<string>();
@@ -254,6 +388,8 @@ export function buildSiteContentDigest(
     inferredContactMethods: Array.from(contactMethods),
     riskyClaimsFound: Array.from(riskyClaimsFound),
     safeClaimsFound: Array.from(safeClaimsFound).slice(0, 5),
+    serviceInferenceQuarantined: inferredServices.quarantined,
+    serviceInferenceReason: inferredServices.quarantineReason,
     contradictions,
   };
 }
@@ -274,8 +410,11 @@ export function buildWriterSnapshot(
     e.url.includes('/index') ||
     e.role === 'money'
   );
+  
+  // Handle null primaryService gracefully
+  const primaryServiceLabel = digest.inferredPrimaryService || 'professional';
   const oneLiner = homePage?.oneLiner || 
-    `Professional ${digest.inferredPrimaryService.toLowerCase()} services`;
+    `Professional ${primaryServiceLabel.toLowerCase()} services`;
 
   // Build geo pack
   const allLocations = new Set<string>(locations);
@@ -287,7 +426,7 @@ export function buildWriterSnapshot(
   const geoPack = {
     primaryLocation: locationList[0] || 'Local area',
     serviceAreas: locationList.slice(0, 5),
-    localPhrasing: buildLocalPhrasing(digest.inferredPrimaryService, locationList),
+    localPhrasing: buildLocalPhrasing(digest.inferredPrimaryService || 'Services', locationList),
   };
 
   // Build EEAT pack
@@ -311,7 +450,7 @@ export function buildWriterSnapshot(
     topMoneyPages: moneyPages.map((p) => ({
       url: p.url,
       title: p.title || p.oneLiner,
-      anchor: buildAnchorText(p, digest.inferredPrimaryService),
+      anchor: buildAnchorText(p, primaryServiceLabel),
     })),
     quoteUrl: digest.inferredCTAs.find((c) => c.type === 'quote')?.url,
   };

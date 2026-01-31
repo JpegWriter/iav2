@@ -1,0 +1,574 @@
+{
+  "aeo": {
+    "targetQueries": [
+      "services",
+      "what is services",
+      "what does services include",
+      "how does services work",
+      "how to choose services",
+      "why use services",
+      "why is services important",
+      "when to use services",
+      "best time for services",
+      "services process",
+      "services step by step",
+      "services vs"
+    ],
+    "peopleAlsoAsk": [],
+    "questionClusters": [],
+    "answerShapes": [],
+    "citationTargets": [
+      {
+        "url": "https://www.gov.uk/government/publications/complying-with-provision-of-services-regulations-for-businesses-and-competent-authorities",
+        "title": "Complying with Provision of Services Regulations for businesses ...",
+        "snippet": "## Cookies on GOV.UK. We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services. We also use cookies set by other sites to help us de",
+        "type": "official",
+        "credibilityScore": 100
+      },
+      {
+        "url": "https://www.trade.gov/country-commercial-guides/united-kingdom-licensing-requirements-professional-services",
+        "title": "United Kingdom - Licensing Requirements for Professional Services",
+        "snippet": "The Provision of Services Regulations protect UK businesses and consumer rights by ensuring that the regulation of service activity is",
+        "type": "official",
+        "credibilityScore": 100
+      },
+      {
+        "url": "https://www.legislation.gov.uk/ukdsi/2009/9780111486276/contents",
+        "title": "The Provision of Services Regulations 2009 - Legislation.gov.uk",
+        "snippet": "This is a draft item of legislation. This draft has since been made as a UK Statutory Instrument: The Provision of Services Regulations 2009 No. 2999.",
+        "type": "official",
+        "credibilityScore": 100
+      },
+      {
+        "url": "https://www.chinohills.org/1648/City-Hall-Service-Guide",
+        "title": "City Hall Service Guide | Chino Hills, CA - Official Website",
+        "snippet": "A complete virtual guide to City services during COVID-19 closures.",
+        "type": "industry",
+        "credibilityScore": 80.274047
+      },
+      {
+        "url": "https://cms-lawnow.com/en/ealerts/2010/01/provision-of-services-regulations-2009",
+        "title": "Provision of Services Regulations 2009 - CMS LawNow",
+        "snippet": "The Provision of Services Regulations 2009 came into effect on 28 December 2009, and implement the EU Services Directive (2006/123/EC) in the UK.",
+        "type": "guide",
+        "credibilityScore": 80.14549
+      },
+      {
+        "url": "https://www.gov.uk/search/services",
+        "title": "Services",
+        "snippet": "Sign in to your Universal Credit account - report a change, add a note to your journal, see your payments and do other tasks",
+        "type": "official",
+        "credibilityScore": 80
+      },
+      {
+        "url": "https://www.gov.uk/government/publications/the-nhs-choice-framework/the-nhs-choice-framework-what-choices-are-available-to-me-in-the-nhs",
+        "title": "what choices are available to you in your NHS care",
+        "snippet": "You have the right to make choices about the services commissioned by NHS bodies and to information to support these choices.",
+        "type": "official",
+        "credibilityScore": 80
+      },
+      {
+        "url": "https://uk.practicallaw.thomsonreuters.com/8-501-0896?transitionType=Default&contextData=(sc.Default)",
+        "title": "Provision of Services Regulations 2009: obligations on businesses",
+        "snippet": "This practice note summarises the obligations imposed on businesses in the services sector by the Provision of Services Regulations 2009 (SI 2009/2999) (PSRs).",
+        "type": "guide",
+        "credibilityScore": 78.709817
+      },
+      {
+        "url": "https://lacounty.gov/newsroom/public-information/guide-to-county-services/",
+        "title": "Guide to County Services - COUNTY OF LOS ANGELES",
+        "snippet": "To inform the public of available services, the Board of Supervisors ordered the preparation of this Guide to County Services. This guide is an update of",
+        "type": "official",
+        "credibilityScore": 70.71217999999999
+      },
+      {
+        "url": "https://dictionary.cambridge.org/dictionary/english/service",
+        "title": "SERVICE | English meaning - Cambridge Dictionary",
+        "snippet": "service noun (EMPLOYMENT) ... work done for others, such as cleaning or repairing, caring for a building, or making deliveries: This building has five service ...",
+        "type": "industry",
+        "credibilityScore": 70
+      }
+    ],
+    "misconceptions": [
+      {
+        "misconception": "All services providers are the same",
+        "correction": "Quality, experience, and approach can vary significantly. Look for credentials, reviews, and local expertise."
+      },
+      {
+        "misconception": "The cheapest option is always the best value",
+        "correction": "Price should be weighed against quality, reliability, and what's included. Sometimes paying more saves money long-term."
+      }
+    ],
+    "snippetHooks": [
+      "In practice...",
+      "What usually changes the price is...",
+      "A common mistake we see is...",
+      "From experience, the key factor is...",
+      "The typical journey looks like this...",
+      "What most people don't realise is...",
+      "The main difference comes down to...",
+      "For those in the local area...",
+      "What we've found works best is...",
+      "The honest answer is..."
+    ],
+    "relatedSearches": [],
+    "generatedAt": "2026-01-30T12:35:09.988Z"
+  },
+  "sources": [
+    {
+      "url": "https://www.gov.uk/search/services",
+      "title": "Services",
+      "snippet": "Sign in to your Universal Credit account - report a change, add a note to your journal, see your payments and do other tasks",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://dictionary.cambridge.org/dictionary/english/service",
+      "title": "SERVICE | English meaning - Cambridge Dictionary",
+      "snippet": "service noun (EMPLOYMENT) ... work done for others, such as cleaning or repairing, caring for a building, or making deliveries: This building has five service ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.nhs.uk/nhs-services/",
+      "title": "NHS services",
+      "snippet": "Find out about NHS services such as GPs, pharmacies and hospitals, services near you, and online services to manage your health.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.planningcenter.com/services",
+      "title": "Planning Center Services: Worship Planning Software",
+      "snippet": "Service planning and volunteer scheduling, for any team. Worship planning, volunteer scheduling, team communication, and rehearsal tools all in one place.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Service_(economics)",
+      "title": "Service (economics)",
+      "snippet": "A service is an act or use for which a consumer, company, or government is willing to pay. [1] Examples include work done by barbers, doctors, lawyers, ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://pcoservices.zendesk.com/hc/en-us",
+      "title": "Services - Zendesk",
+      "snippet": "Planning Center Services allows you to manage your schedule, update contact information, and access plans and files. You can access Services from a web browser ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://digital.nhs.uk/services",
+      "title": "Services",
+      "snippet": "We help health and care professionals deliver the best possible care by providing critical IT services that are safe, fast and reliable.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://maps.org.uk/en",
+      "title": "Money and Pensions Service",
+      "snippet": "We help people across the UK to improve their financial wellbeing and build a better, more confident future. We make sure everyone can access high-quality ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.gov.uk/",
+      "title": "Welcome to GOV.UK",
+      "snippet": "Services and information, benefits, includes eligibility, appeals, tax credits and Universal Credit, births, deaths, marriages and care.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.find-tender.service.gov.uk/",
+      "title": "Find a Tender Service - GOV.UK",
+      "snippet": "Find a Tender is where public sector buyers publish notices about procurements and contracts that suppliers can search and apply for.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://dictionary.cambridge.org/dictionary/english/service",
+      "title": "SERVICE | English meaning - Cambridge Dictionary",
+      "snippet": "service noun (EMPLOYMENT) ... work done for others, such as cleaning or repairing, caring for a building, or making deliveries: This building has five service ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Service_(economics)",
+      "title": "Service (economics)",
+      "snippet": "A service is an act or use for which a consumer, company, or government is willing to pay. [1] Examples include work done by barbers, doctors, lawyers, ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.merriam-webster.com/dictionary/service",
+      "title": "SERVICE Definition & Meaning",
+      "snippet": "1 ... a ... the occupation or function of serving ... in active service ... b ... employment as a servant ... entered his service ... 2 ... a ... the work performed by one that ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://aptien.com/en/kb/articles/what-is-service",
+      "title": "What is a Service? | Service Management",
+      "snippet": "What is a Service? A Simple Explanation. A service is the work done or resources provided by a service provider that delivers value to the ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://good.services/writing/what-is-a-service",
+      "title": "What is a service?",
+      "snippet": "'Services' provide a neat filing system in which to organise all of our people, systems, policies and processes into groups that make sense to ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.gov.uk/service-manual/service-assessments/what-a-service-is",
+      "title": "What a service is - Service Manual",
+      "snippet": "A service is all the things that government collectively provides to deliver an outcome for all of its users, through any path they take to reach their goal.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.collinsdictionary.com/dictionary/english/service",
+      "title": "SERVICE definition and meaning | Collins English Dictionary",
+      "snippet": "A service is something that the public needs, such as transport, communications facilities, hospitals, or energy supplies, which is provided in a planned and ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.novelvista.com/blogs/it-service-management/what-is-definition-of-service",
+      "title": "What Is a Service? Definition & Complete Guide",
+      "snippet": "A service is any intangible activity, process, or benefit that fulfills a need without requiring the ownership of a physical item.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://uk.indeed.com/career-advice/career-development/services-examples",
+      "title": "12 services examples and what services are: a guide",
+      "snippet": "Services include the supply of products that consumers engage in to improve their lives, with items on offer ranging from fundamental services that are key to ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://gds.blog.gov.uk/2018/04/04/what-do-we-mean-when-we-talk-about-services/",
+      "title": "What do we mean when we talk about services? - GDS blog",
+      "snippet": "A whole service is everything the user and government needs to do to achieve an outcome, as initially described in Lou Downe's blog post from 2016.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://uk.indeed.com/career-advice/career-development/services-examples",
+      "title": "12 services examples and what services are: a guide",
+      "snippet": "1. Banking · 2. Insurance · 3. Property letting · 4. Teaching and education · 5. Childcare · 6. Personal training · 7. Car mechanic · 8. Architecture.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.halfords.com/car-servicing/advice/car-servicing-whats-included.html",
+      "title": "Car Servicing - What's Included",
+      "snippet": "What we'll replace · Engine Oil · Oil Filter · Air Filter - worth up to £70 · Cabin filter - worth up to £60 · Brake Fluid - worth up to £49.99.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Service_(economics)",
+      "title": "Service (economics)",
+      "snippet": "A service is an act or use for which a consumer, company, or government is willing to pay. Examples include work done by barbers, doctors, lawyers, ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://corporatefinanceinstitute.com/resources/management/products-and-services/",
+      "title": "Products and Services - Definitions, Examples, Differences",
+      "snippet": "A product is a tangible item that is put on the market for acquisition, attention, or consumption, while a service is an intangible item.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.rac.co.uk/drive/advice/how-to/what-is-a-car-service-car-service-checklist/",
+      "title": "What is a car service? | Car service checklist",
+      "snippet": "Typically, it will include a range of checks, including checking the oil, tyres, brakes, suspension, exhaust and other components. The service ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://services.blog.gov.uk/2024/09/25/how-government-defines-a-service/",
+      "title": "How government defines a service",
+      "snippet": "An official definition of a service for the specific purpose of focussing on outcomes, and tying all of the different types and scopes of services together.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://cambridgeservicealliance.eng.cam.ac.uk/Research/Glossary",
+      "title": "Definitions of Service-Related Terms",
+      "snippet": "It is the integration of many service research areas and service disciplines, such as service economics, service marketing, service operations, service ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://aptien.com/en/kb/articles/what-is-service",
+      "title": "What is a Service? | Service Management",
+      "snippet": "IT Support & Managed Services: Includes software maintenance, network security, and tech support. · Human Resources (HR) Services: Recruitment, ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://whatworksgrowth.org/insights/making-sense-of-services/",
+      "title": "Making sense of services",
+      "snippet": "Higher skilled tradable services – where the key productive input is human capital and skills – can include legal services, software development ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.theaa.com/driving-advice/service-repair/car-servicing-complete-guide",
+      "title": "Car Service | What's included and what's the cost?",
+      "snippet": "All services will include checking lights, brakes, tyres, steering, suspension and all fluid levels. An interim service might also include:.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://good.services/writing/what-is-a-service",
+      "title": "What is a service?",
+      "snippet": "'Services' provide a neat filing system in which to organise all of our people, systems, policies and processes into groups that make sense to ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://uk.indeed.com/career-advice/career-development/services-examples",
+      "title": "12 services examples and what services are: a guide",
+      "snippet": "1. Banking · 2. Insurance · 3. Property letting · 4. Teaching and education · 5. Childcare · 6. Personal training · 7. Car mechanic · 8. Architecture.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://services.blog.gov.uk/2024/09/25/how-government-defines-a-service/",
+      "title": "How government defines a service",
+      "snippet": "The Central Digital and Data Office (CDDO) is introducing a cross-government definition of a service.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.gov.uk/service-manual/service-assessments/what-a-service-is",
+      "title": "What a service is - Service Manual",
+      "snippet": "A service is all the things that government collectively provides to deliver an outcome for all of its users, through any path they take to reach their goal.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://help.productive.io/en/articles/12048956-what-are-services",
+      "title": "What Are Services - In Productive",
+      "snippet": "Learn what services are in Productive, how they connect tracking, scheduling, invoicing, and help analyze profitability.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://aptien.com/en/kb/articles/what-is-service",
+      "title": "What is a Service? | Service Management",
+      "snippet": "A service is the work done or resources provided by a service provider that delivers value to the customer. · When you talk about a service, you' ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Service_(economics)",
+      "title": "Service (economics)",
+      "snippet": "A service is an act or use for which a consumer, company, or government is willing to pay. Examples include work done by barbers, doctors, lawyers, ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://yasm.com/wiki/en/index.php/Service",
+      "title": "What is a Service?",
+      "snippet": "Products can be produced in advance. Services are work or benefits provided to customers on demand. Services cannot be produced in advance.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.theserviceorg.com/articles/types-and-stages-of-services",
+      "title": "Types and stages of services",
+      "snippet": "Because many services are operationally quite large, we've been using stages to organise what good practice looks like, what problems we're ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/dotnet/framework/windows-services/introduction-to-windows-service-applications",
+      "title": "Introduction to Windows Service Applications",
+      "snippet": "Microsoft Windows services, formerly known as NT services, enable you to create long-running executable applications that run in their own Windows sessions.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.nhs.uk/using-the-nhs/about-the-nhs/your-choices-in-the-nhs/",
+      "title": "Your choices in the NHS",
+      "snippet": "You can view what choices are currently available to NHS patients in the NHS Choice Framework. Here you'll also find information about when you cannot choose.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/the-nhs-choice-framework/the-nhs-choice-framework-what-choices-are-available-to-me-in-the-nhs",
+      "title": "what choices are available to you in your NHS care",
+      "snippet": "You have the right to make choices about the services commissioned by NHS bodies and to information to support these choices.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.england.nhs.uk/wp-content/uploads/2019/06/patient-choice-patient-leaflet-easy-read-guide-v2.pdf",
+      "title": "If your GP refers you, you can choose.",
+      "snippet": "You may be able to choose from different private or NHS hospitals which provide health services to the. NHS. You may also be able to choose the team that cares ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://adhduk.co.uk/right-to-choose/",
+      "title": "Right to Choose (NHS England)",
+      "snippet": "Right to Choose - If you are based in England under the NHS you now have a legal right to choose your mental healthcare provider and your choice of mental ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.problemshared.net/resources/how-to-pick-your-right-to-choose-provider",
+      "title": "How to choose the perfect Right to Choose provider for you",
+      "snippet": "This article explains what Right to Choose is, and breaks down the ProblemShared service in detail so you can make an informed choice.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.healthwatch.co.uk/advice-and-information/2025-08-01/nhs-referrals-and-your-right-choose",
+      "title": "NHS referrals and your right to choose",
+      "snippet": "Did you know you can choose which hospital you go to when referred for a test, diagnosis, or treatment? Find out how.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.psicon.co.uk/nhs/patients",
+      "title": "Right to Choose UK | NHS Referral Process",
+      "snippet": "As long as you're registered with a GP in England you have the legal right to choose the service you want to receive your NHS treatment from.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://usetherightservice.com/",
+      "title": "Use the Right Service: Welcome",
+      "snippet": "Throughout this website, you can find information about what service is best for you, and how you can make an appointment or visit the most suitable service.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.clinical-partners.co.uk/nhs-services/right-to-choose-for-gps",
+      "title": "Right to Choose patient referrals for GPs",
+      "snippet": "Our NHS Right to Choose services. Your NHS patients, aged five and above, in England can be referred to our service for: Adult autism assessments; Adult ADHD ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.nhs.uk/nhs-services/hospitals/book-an-appointment/",
+      "title": "Book an appointment using the NHS e-Referral Service",
+      "snippet": "How far away is the hospital or clinic? In most cases, you have the legal right to choose the hospital or service you'd like to go to. This includes private ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.297Z"
+    },
+    {
+      "url": "https://www.chinohills.org/1648/City-Hall-Service-Guide",
+      "title": "City Hall Service Guide | Chino Hills, CA - Official Website",
+      "snippet": "A complete virtual guide to City services during COVID-19 closures.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.988Z"
+    },
+    {
+      "url": "https://lacounty.gov/newsroom/public-information/guide-to-county-services/",
+      "title": "Guide to County Services - COUNTY OF LOS ANGELES",
+      "snippet": "To inform the public of available services, the Board of Supervisors ordered the preparation of this Guide to County Services. This guide is an update of",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.988Z"
+    },
+    {
+      "url": "https://www.medicare.gov/medicare-and-you",
+      "title": "Medicare & You",
+      "snippet": "The \"Medicare & You\" handbook is your official guide to Medicare. We mail an updated printed handbook to all Medicare households in late September.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.988Z"
+    },
+    {
+      "url": "https://ocpsc.ca.gov/resources-guide/",
+      "title": "California Community Resource Guide | OCPSC - CA.gov",
+      "snippet": "The California Community Resource Guide provides an easy-to-navigate online directory to search for State services, resources, and assistance.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.988Z"
+    },
+    {
+      "url": "https://www.acquisition.gov/psc-manual",
+      "title": "Product and Service Code Manual - Acquisition.GOV",
+      "snippet": "An official website of the United States Government. # Product and Service Code Manual. #### Favorite. #### X. Welcome to the Product and Service Code (PSC) manual page, where you can find the archive version in multiple formats along with supporting documentation. | Name | Size | Last Update   Sort ascending |. | PSC April 2025.xlsx | 451.92 KB | Apr 8, 2025 |. | PSC Manual April 2025.docx | 847.5 KB | Apr 8, 2025 |. | PSC Manual April 2025.pdf | 1.99 MB | Apr 8, 2025 |. | SOP\\_PSC\\_Updated\\_Process\\_Final\\_March\\_19\\_2020.docx | 972.96 KB | May 4, 2020 |. | Appendix B\\_PSC Changes Business Case Template April 2020.docx | 48.98 KB | Apr 28, 2020 |. + Civilian Agency Acquisition Council (CAAC)\"). + Interagency Suspension and Debarment Committee (ISDC)\"). An official website of the General Services Administration. Looking for U.S. government information and services?",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.988Z"
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/complying-with-provision-of-services-regulations-for-businesses-and-competent-authorities",
+      "title": "Complying with Provision of Services Regulations for businesses ...",
+      "snippet": "## Cookies on GOV.UK. We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services. We also use cookies set by other sites to help us deliver content from their services. # Complying with Provision of Services Regulations for businesses and Competent Authorities. ### Guidance on the Provision of Services Regulations for Competent Authorities and businesses. This guidance will help businesses to understand what steps they need to take to provide services within the UK. The Provision of Services Regulations protects UK businesses and consumer rights by ensuring that the regulation of service activity is proportionate and justified in the public interest. If you wish to provide a service in the UK, you must check what authorisations and licences you will need to obtain. If you require further information, wish to give feedback or ask a question, email us at servicesregulations@businessandtrade.gov.uk. 1. Updated contact information to 'servicesregulations@businessandtrade.gov.uk'. ## Help us improve GOV.UK.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.988Z"
+    },
+    {
+      "url": "https://www.trade.gov/country-commercial-guides/united-kingdom-licensing-requirements-professional-services",
+      "title": "United Kingdom - Licensing Requirements for Professional Services",
+      "snippet": "The Provision of Services Regulations protect UK businesses and consumer rights by ensuring that the regulation of service activity is",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.988Z"
+    },
+    {
+      "url": "https://cms-lawnow.com/en/ealerts/2010/01/provision-of-services-regulations-2009",
+      "title": "Provision of Services Regulations 2009 - CMS LawNow",
+      "snippet": "The Provision of Services Regulations 2009 came into effect on 28 December 2009, and implement the EU Services Directive (2006/123/EC) in the UK.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.988Z"
+    },
+    {
+      "url": "https://uk.practicallaw.thomsonreuters.com/8-501-0896?transitionType=Default&contextData=(sc.Default)",
+      "title": "Provision of Services Regulations 2009: obligations on businesses",
+      "snippet": "This practice note summarises the obligations imposed on businesses in the services sector by the Provision of Services Regulations 2009 (SI 2009/2999) (PSRs).",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.988Z"
+    },
+    {
+      "url": "https://www.legislation.gov.uk/ukdsi/2009/9780111486276/contents",
+      "title": "The Provision of Services Regulations 2009 - Legislation.gov.uk",
+      "snippet": "This is a draft item of legislation. This draft has since been made as a UK Statutory Instrument: The Provision of Services Regulations 2009 No. 2999.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.988Z"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/YtrN1tfReMo",
+      "title": "Services, What are they? no one knows, but I'll try to explain - YouTube",
+      "snippet": "Services are things teams provide - this could be a website, a server, and API or something else. Tracking what they are, and their status,",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.988Z"
+    },
+    {
+      "url": "https://www.dictionary.com/browse/services",
+      "title": "SERVICES Definition & Meaning - Dictionary.com",
+      "snippet": "SERVICES definition: work performed for remuneration See examples of services used in a sentence.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.988Z"
+    },
+    {
+      "url": "https://www.collinsdictionary.com/us/dictionary/english/service",
+      "title": "SERVICE definition in American English - Collins Dictionary",
+      "snippet": "A service is something that the public needs, such as transportation, communications facilities, hospitals, or energy supplies, which is provided in a planned",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.988Z"
+    },
+    {
+      "url": "https://www.merriam-webster.com/dictionary/service",
+      "title": "SERVICE Definition & Meaning - Merriam-Webster",
+      "snippet": "glad to be of service. **:** to perform services for: such as. **:** of or relating to the armed services. **:** offering repair, maintenance, or incidental services. ## Synonyms of *service*. ## Examples of *service* in a Sentence. See All Example Sentences for *service*. derivative of service entry 1. from attributive use of service entry 1. probably respelling by folk-etymological association with service entry 1 of *serves,* plural of *serve* \"the tree *Sorbus domestica,* its fruit,\" going back to Middle English *cerve, cirve, serve,* going back to Old English *syrfe* (weak noun), borrowed from Vulgar Latin *\\*sorbea,* from Latin *sorbum* \"fruit of *Sorbus domestica* and related species\" (of uncertain origin) + *-ea,* noun derivative of *-ea,* feminine of *-eus* -eous. The first known use of *service* was. + press (someone or something) into service. ## Rhymes for *service*. See All Rhymes for *service*. be of *service* to them. **:** to provide services for: as. ## More from Merriam-Webster on *service*.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.988Z"
+    },
+    {
+      "url": "https://dictionary.cambridge.org/us/dictionary/english/service",
+      "title": "SERVICE | definition in the Cambridge English Dictionary",
+      "snippet": "### service noun (PUBLIC NEED). ### service noun (WORK). The battleship has been in service since 1965. Her mother was in service. a career in the services. ### service noun (IN SPORTS). She has a very fast service. ### service noun (REPAIR). be of service (to someone)\"). ### service verb [T] (MACHINE). ### service verb [T] (DEBT). to provide services to or for someone:. ### service noun (WORK). You should have the services of a lawyer. ### service noun (SYSTEM). ### service noun (EMPLOYMENT). ### service verb [T] (REPAIR). ## **service** | Business English. **be of service (to sb)**. Hello, how can I be of service? If we find a technology that will work, it could be in service by 2012. to provide a service to someone:. ## Collocations with service. ## service. These are words often used in combination with service. See all collocations with service. What is the pronunciation of *service*? ## Translations of service.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.988Z"
+    }
+  ]
+}

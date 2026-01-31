@@ -6,6 +6,9 @@
 //
 // ENHANCED: Now includes page consumption, service inference, proof verification,
 // role reclassification, and writer snapshot generation.
+//
+// HARDENED: Added TruthLayer, ProfileLocks, niche-locked service inference,
+// and stricter review claim gating.
 // ============================================================================
 
 import { createServerSupabaseClient } from '@/lib/supabase/server';
@@ -22,6 +25,8 @@ import type {
   WriterSnapshot,
   ProfileConfidence,
   ProfileCompleteness,
+  TruthLayer,
+  ProfileLocks,
 } from './types';
 import { extractSignalsFromText } from './pageExtractor';
 import { summarisePage, selectKeyPages, enforceOneLinerQuality, type PageData } from './pageSummariser';
@@ -34,6 +39,7 @@ import {
   buildProfileConfidence,
   buildProfileCompleteness,
   inferServicesFromTypologyUrls,
+  NICHE_DEFINITIONS,
 } from './serviceInference';
 
 // ============================================================================
@@ -190,11 +196,15 @@ export async function buildMasterProfile(projectId: string): Promise<MasterProfi
   const businessName = userContext?.business?.name || project.name;
   const niche = userContext?.business?.niche || '';
   
+  // Determine if we should lock the niche (if explicitly set by user)
+  const nicheLocked = !!niche && niche.length > 0;
+  const lockedNiche = nicheLocked ? niche : undefined;
+  
   // Get all page URLs for typology service inference
   const allPageUrls = pages.map((p: any) => p.url);
   
-  // First pass: get inferred services for oneLiner fallback
-  const initialServiceInference = inferServicesFromEssences(allEssences, businessName, allPageUrls);
+  // First pass: get inferred services for oneLiner fallback (with niche lock)
+  const initialServiceInference = inferServicesFromEssences(allEssences, businessName, allPageUrls, lockedNiche);
   const primaryLocation = allEssences.find(e => e.locationsMentioned.length > 0)?.locationsMentioned[0] || '';
   const topServices = initialServiceInference.allServices.slice(0, 3);
 
@@ -224,19 +234,25 @@ export async function buildMasterProfile(projectId: string): Promise<MasterProfi
     );
   }
 
-  const siteContentDigest = buildSiteContentDigest(allEssences, businessName, allPageUrls);
+  // Pass lockedNiche to filter cross-niche pollution
+  const siteContentDigest = buildSiteContentDigest(allEssences, businessName, allPageUrls, lockedNiche);
 
   // ========================================================================
-  // STEP 4: Build business section with inferred services
+  // STEP 4: Build business section with inferred services (with quarantine handling)
   // ========================================================================
   const businessSection = buildBusinessSection(project, userContext);
 
-  // Patch with inferred services if empty
-  if (!businessSection.primaryService && siteContentDigest.inferredPrimaryService) {
-    businessSection.primaryService = siteContentDigest.inferredPrimaryService;
-  }
-  if (businessSection.allServices.length === 0 && siteContentDigest.inferredAllServices.length > 0) {
-    businessSection.allServices = siteContentDigest.inferredAllServices;
+  // Get the full service inference result for quarantine check
+  const fullServiceInference = inferServicesFromEssences(allEssences, businessName, allPageUrls, lockedNiche);
+  
+  // Only patch with inferred services if NOT quarantined
+  if (!fullServiceInference.quarantined) {
+    if (!businessSection.primaryService && fullServiceInference.primaryService) {
+      businessSection.primaryService = fullServiceInference.primaryService;
+    }
+    if (businessSection.allServices.length === 0 && fullServiceInference.allServices.length > 0) {
+      businessSection.allServices = fullServiceInference.allServices;
+    }
   }
 
   // ========================================================================
@@ -247,12 +263,20 @@ export async function buildMasterProfile(projectId: string): Promise<MasterProfi
   // Concatenate all page text for verification
   const allPageText = pages.map((p: any) => p.cleaned_text || '').join(' ');
 
+  // Check if GBP is connected (from localSignals or user context)
+  const gbpConnected = userContext?.local_signals?.gbpConnected || false;
+  const googleMapsUrl = userContext?.local_signals?.googleMapsUrl;
+  const reviewsScraped = reviews.length > 0 && reviews.some((r: any) => r.source === 'google_maps' || r.source === 'gbp');
+
   const verificationContext: VerificationContext = {
     allPageText,
     reviewCount: reviews.length,
     averageRating: reviews.length > 0
       ? reviews.reduce((sum: number, r: any) => sum + (r.rating || 0), 0) / reviews.length
       : 0,
+    gbpConnected,
+    reviewsScraped,
+    googleMapsUrl,
   };
 
   const verifiedProofAtoms = verifyProofAtoms(rawProofAtoms, verificationContext);
@@ -272,6 +296,12 @@ export async function buildMasterProfile(projectId: string): Promise<MasterProfi
   if (brandVoice.mustSay.length === 0 && governedMustSay.length > 0) {
     brandVoice.mustSay = governedMustSay;
   }
+  
+  // HARDENED: Auto-populate mustNotSay with all risky claims found
+  const allRiskyClaims = new Set<string>(brandVoice.mustNotSay);
+  siteContentDigest.riskyClaimsFound.forEach(claim => allRiskyClaims.add(claim));
+  brandVoice.mustNotSay = Array.from(allRiskyClaims);
+  
   if (brandVoice.mustNotSay.length === 0 && siteContentDigest.riskyClaimsFound.length > 0) {
     brandVoice.mustNotSay = siteContentDigest.riskyClaimsFound.slice(0, 3);
   }
@@ -301,26 +331,70 @@ export async function buildMasterProfile(projectId: string): Promise<MasterProfi
   );
 
   // ========================================================================
-  // STEP 9: Build confidence and completeness
+  // STEP 9: Build confidence and completeness (with quarantine awareness)
   // ========================================================================
-  const servicesConfidence = inferServicesFromEssences(allEssences, businessName).confidence;
-  
   const confidence = buildProfileConfidence(
-    servicesConfidence,
+    fullServiceInference.confidence,
     reclassifiedSiteMap.moneyPages.length,
     reviews.length,
     reclassifiedSiteMap.internalLinkingHealth
   );
 
+  // Build completeness with quarantine-aware blockers
   const completeness = buildProfileCompleteness(
     businessSection.primaryService,
     businessSection.allServices,
     reclassifiedSiteMap.moneyPages.length,
     writerSnapshot.linkTargets.contactUrl
   );
+  
+  // Add quarantine-specific blockers if services are quarantined
+  if (fullServiceInference.quarantined) {
+    completeness.actionRequired.push('CONFIRM_SERVICES');
+    if (fullServiceInference.quarantineReason) {
+      completeness.blockers.push(fullServiceInference.quarantineReason);
+    }
+  }
+  
+  // Add GBP connection blocker if reviews are claimed but not verified
+  const hasUnverifiedReviewClaims = verifiedProofAtoms.some(
+    a => a.verification === 'unverified' && /\d+\s*(five\s*star|5\s*star|star|review)/i.test(a.value)
+  );
+  if (hasUnverifiedReviewClaims && !gbpConnected) {
+    completeness.actionRequired.push('CONNECT_GBP');
+  }
+  
+  // Add phone confirmation if no phones found
+  const hasPhoneNumbers = allEssences.some(e => e.extractedSignals.phoneNumbers.length > 0);
+  if (!hasPhoneNumbers) {
+    completeness.actionRequired.push('CONFIRM_PHONE');
+  }
 
   // ========================================================================
-  // STEP 10: Assemble final profile
+  // STEP 10: Build Truth Layer (single source of verified facts)
+  // ========================================================================
+  const truthLayer: TruthLayer = buildTruthLayer(
+    verifiedProofAtoms,
+    businessName,
+    nicheLocked,
+    lockedNiche,
+    fullServiceInference.quarantined,
+    hasPhoneNumbers,
+    gbpConnected
+  );
+
+  // ========================================================================
+  // STEP 11: Build Profile Locks (prevent inference drift)
+  // ========================================================================
+  const locks: ProfileLocks = {
+    nicheLocked,
+    lockedNiche,
+    serviceInferenceMode: 'conservative',
+    servicesConfirmed: !fullServiceInference.quarantined && fullServiceInference.confidence !== 'low',
+  };
+
+  // ========================================================================
+  // STEP 12: Assemble final profile
   // ========================================================================
   const profile: Omit<MasterProfile, 'id' | 'projectId' | 'version' | 'profileHash' | 'generatedAt'> = {
     business: businessSection,
@@ -344,6 +418,8 @@ export async function buildMasterProfile(projectId: string): Promise<MasterProfi
     writerSnapshot,
     confidence,
     completeness,
+    truthLayer,
+    locks,
   };
 
   // Compute hash for deduplication
@@ -393,6 +469,52 @@ export async function buildMasterProfile(projectId: string): Promise<MasterProfi
   }
 
   return fullProfile;
+}
+
+// ============================================================================
+// TRUTH LAYER BUILDER
+// ============================================================================
+
+function buildTruthLayer(
+  proofAtoms: ProofAtom[],
+  businessName: string,
+  nicheLocked: boolean,
+  lockedNiche: string | undefined,
+  servicesQuarantined: boolean,
+  hasPhoneNumbers: boolean,
+  gbpConnected: boolean
+): TruthLayer {
+  // Verified claims that can be used freely
+  const verifiedClaims = proofAtoms
+    .filter(a => a.verification === 'verified')
+    .map(a => a.value);
+
+  // Restricted claims that should not be used
+  const restrictedClaims = proofAtoms
+    .filter(a => a.verification === 'unverified')
+    .map(a => a.value);
+
+  // Items that need confirmation
+  const unknownsToConfirm: string[] = [];
+  
+  if (servicesQuarantined) {
+    unknownsToConfirm.push('services');
+  }
+  if (!hasPhoneNumbers) {
+    unknownsToConfirm.push('phone number');
+  }
+  if (!gbpConnected) {
+    unknownsToConfirm.push('GBP connection');
+  }
+
+  return {
+    verifiedClaims,
+    restrictedClaims,
+    unknownsToConfirm,
+    primaryEntity: businessName,
+    nicheLocked,
+    lockedNiche,
+  };
 }
 
 // ============================================================================

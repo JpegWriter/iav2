@@ -6,6 +6,52 @@
 // ============================================================================
 
 // ============================================================================
+// SERVICE INFERENCE RESULT
+// ============================================================================
+
+export interface ServiceInferenceResult {
+  primaryService: string | null;
+  allServices: string[];
+  confidence: 'high' | 'med' | 'low';
+  quarantined: boolean;
+  quarantineReason?: string;
+}
+
+// ============================================================================
+// TRUTH LAYER (Single source of truth for writers)
+// ============================================================================
+
+export interface TruthLayer {
+  /** Claims that have been verified and can be used freely */
+  verifiedClaims: string[];
+  /** Claims that are risky/unverified and should not be used */
+  restrictedClaims: string[];
+  /** Items that need manual confirmation before use */
+  unknownsToConfirm: string[];
+  /** The verified business entity name */
+  primaryEntity: string;
+  /** Whether the niche has been locked (prevents cross-niche pollution) */
+  nicheLocked: boolean;
+  /** The locked niche value */
+  lockedNiche?: string;
+}
+
+// ============================================================================
+// LOCKS (Prevent inference drift)
+// ============================================================================
+
+export interface ProfileLocks {
+  /** Whether the niche is locked and should not be overridden */
+  nicheLocked: boolean;
+  /** The locked niche value */
+  lockedNiche?: string;
+  /** Service inference mode: 'conservative' quarantines low-confidence, 'aggressive' guesses */
+  serviceInferenceMode: 'conservative' | 'aggressive';
+  /** Whether to trust inferred services or require manual confirmation */
+  servicesConfirmed: boolean;
+}
+
+// ============================================================================
 // PAGE ESSENCE (Key Page Summaries)
 // ============================================================================
 
@@ -33,13 +79,15 @@ export interface PageEssence {
 }
 
 export interface SiteContentDigest {
-  inferredPrimaryService: string;
+  inferredPrimaryService: string | null;  // null if quarantined
   inferredAllServices: string[];
   inferredUSPs: string[];
   inferredCTAs: Array<{ type: string; text: string; url?: string }>;
   inferredContactMethods: string[];
   riskyClaimsFound: string[];
   safeClaimsFound: string[];
+  serviceInferenceQuarantined: boolean;
+  serviceInferenceReason?: string;
   contradictions: Array<{
     topic: string;
     pages: string[];
@@ -182,6 +230,12 @@ export interface MasterProfile {
 
   // Completeness & Blockers
   completeness?: ProfileCompleteness;
+
+  // Truth Layer - single source of verified facts for writers
+  truthLayer?: TruthLayer;
+
+  // Locks - prevent inference drift
+  locks?: ProfileLocks;
 }
 
 export interface ToneOverrides {
@@ -300,6 +354,16 @@ export interface WriterBrief {
   toneProfileId: string;
   ctaType: string;
   ctaTarget: string;
+  // SEO drafts from plan-time refinement (source of truth for SEO fields)
+  seoDrafts?: {
+    seoTitleDraft: string;
+    h1Draft: string;
+    metaDescriptionDraft: string;
+  };
+  // Vision facts from image analysis (must be woven into content)
+  visionFacts?: string[];
+  // Whether SEO drafts should be enforced (default: true)
+  enforceSeoDrafts?: boolean;
 }
 
 export interface InternalLinkTarget {

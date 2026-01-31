@@ -20,6 +20,31 @@ import type {
 } from './types';
 
 // ============================================================================
+// UUID VALIDATION & CONVERSION
+// ============================================================================
+
+const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+function isValidUUID(str: string): boolean {
+  return UUID_REGEX.test(str);
+}
+
+/**
+ * Converts a string task ID to a deterministic UUID.
+ * For task IDs that are already UUIDs, returns as-is.
+ * For string IDs like "task-6-case-study-XXX", generates a v5-style UUID.
+ */
+function toDbTaskId(taskId: string): string {
+  if (isValidUUID(taskId)) {
+    return taskId;
+  }
+  // Generate a deterministic UUID from the string
+  // Using SHA-256 hash, then formatting as UUID v4
+  const hash = crypto.createHash('sha256').update(taskId).digest('hex');
+  return `${hash.slice(0, 8)}-${hash.slice(8, 12)}-4${hash.slice(13, 16)}-a${hash.slice(17, 20)}-${hash.slice(20, 32)}`;
+}
+
+// ============================================================================
 // INPUT TYPES
 // ============================================================================
 
@@ -49,6 +74,14 @@ export interface TaskInput {
   originalUrl?: string;
   requiredProofElements?: string[];
   requiredEEATSignals?: string[];
+  // SEO drafts from plan-time refinement (source of truth)
+  seoDrafts?: {
+    seoTitleDraft: string;
+    h1Draft: string;
+    metaDescriptionDraft: string;
+  };
+  // Vision facts extracted from image analysis
+  visionFacts?: string[];
 }
 
 // ============================================================================
@@ -116,8 +149,11 @@ export async function buildTaskContextPack(
   // Compute hash
   const contextHash = computeContextHash(packContent);
 
+  // Convert task ID to UUID for database storage
+  const dbTaskId = toDbTaskId(task.id);
+
   // Check if this exact pack already exists
-  const existingPack = await findExistingPack(supabase, projectId, task.id, contextHash);
+  const existingPack = await findExistingPack(supabase, projectId, dbTaskId, contextHash);
   
   if (existingPack) {
     return existingPack.context_json;
@@ -127,7 +163,7 @@ export async function buildTaskContextPack(
   const fullPack: TaskContextPack = {
     id: crypto.randomUUID(),
     projectId,
-    taskId: task.id,
+    taskId: task.id, // Keep original task ID in the JSON for reference
     contextHash,
     generatedAt: new Date().toISOString(),
     ...packContent,
@@ -139,7 +175,7 @@ export async function buildTaskContextPack(
     .insert({
       id: fullPack.id,
       project_id: projectId,
-      task_id: task.id,
+      task_id: dbTaskId, // Use converted UUID for database
       mode,
       original_url: task.originalUrl || null,
       original_content: rewriteContext?.originalContent || null,
@@ -152,7 +188,7 @@ export async function buildTaskContextPack(
   if (insertError) {
     // If duplicate error, fetch existing
     if (insertError.code === '23505') {
-      const existing = await findExistingPack(supabase, projectId, task.id, contextHash);
+      const existing = await findExistingPack(supabase, projectId, dbTaskId, contextHash);
       if (existing) {
         return existing.context_json;
       }
@@ -181,6 +217,12 @@ function buildWriterBrief(task: TaskInput, masterProfile: MasterProfile): Writer
     toneProfileId: task.toneProfileId || masterProfile.brandVoice.toneProfileId,
     ctaType: task.ctaType || getDefaultCtaType(task.role),
     ctaTarget: task.ctaTarget || '/contact',
+    // SEO drafts from plan-time refinement (source of truth)
+    seoDrafts: task.seoDrafts,
+    // Vision facts from image analysis
+    visionFacts: task.visionFacts,
+    // Enforce SEO drafts by default
+    enforceSeoDrafts: true,
   };
 }
 

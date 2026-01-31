@@ -1,0 +1,285 @@
+{
+  "geo": {
+    "geoSummary": "Brighton and Hove, Brighton and Hove, United Kingdom",
+    "primaryLocation": {
+      "name": "Brighton and Hove",
+      "formatted": "Brighton and Hove, ENG, UK",
+      "lat": 50.8453169,
+      "lon": -0.14974689789029522,
+      "country": "United Kingdom",
+      "region": "Brighton and Hove"
+    },
+    "nearbyAreas": [
+      {
+        "name": "help with",
+        "relationship": "adjacent"
+      }
+    ],
+    "proximityAnchors": [
+      {
+        "category": "transport",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      },
+      {
+        "category": "shopping",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      },
+      {
+        "category": "amenity",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      }
+    ],
+    "placeAnchors": [
+      {
+        "name": "Harrington Road",
+        "category": "public_transport",
+        "addressLine": "Harrington Road, Preston Road, Brighton, BN1 6UU, United Kingdom",
+        "distanceMeters": 133,
+        "lat": 50.8458673,
+        "lon": -0.1514235
+      },
+      {
+        "name": "Harrington Road",
+        "category": "public_transport",
+        "addressLine": "Harrington Road, Preston Road, Brighton, BN1 6UU, United Kingdom",
+        "distanceMeters": 140,
+        "lat": 50.8457828,
+        "lon": -0.1515925
+      },
+      {
+        "name": "Preston Drove",
+        "category": "public_transport",
+        "addressLine": "Preston Drove, Preston Road, Preston, BN1 6AY, United Kingdom",
+        "distanceMeters": 210,
+        "lat": 50.8438524,
+        "lon": -0.1516348
+      },
+      {
+        "name": "Costa",
+        "category": "catering",
+        "addressLine": "Costa, 225 Preston Road, Brighton, BN1 6SA, United Kingdom",
+        "distanceMeters": 239,
+        "lat": 50.8435252,
+        "lon": -0.1516282
+      },
+      {
+        "name": "The Crown and Anchor",
+        "category": "building",
+        "addressLine": "The Crown and Anchor, 213 Preston Road, Brighton, BN1 6SA, United Kingdom",
+        "distanceMeters": 265,
+        "lat": 50.843137299999995,
+        "lon": -0.15166077726269067
+      },
+      {
+        "name": "Loder Road",
+        "category": "public_transport",
+        "addressLine": "Loder Road, Surrenden Road, Brighton, BN1 6QE, United Kingdom",
+        "distanceMeters": 276,
+        "lat": 50.8462721,
+        "lon": -0.1461279
+      },
+      {
+        "name": "Loder Road",
+        "category": "public_transport",
+        "addressLine": "Loder Road, Surrenden Road, Brighton, BN1 6PP, United Kingdom",
+        "distanceMeters": 302,
+        "lat": 50.8468005,
+        "lon": -0.1461612
+      },
+      {
+        "name": "Park View",
+        "category": "catering",
+        "addressLine": "Park View, 71 Preston Drove, Brighton, BN1 6LD, United Kingdom",
+        "distanceMeters": 356,
+        "lat": 50.8442918,
+        "lon": -0.1449578
+      },
+      {
+        "name": "The Station Hotel",
+        "category": "building",
+        "addressLine": "The Station Hotel, 1 Hampstead Road, Brighton, BN1 5NG, United Kingdom",
+        "distanceMeters": 395,
+        "lat": 50.84475155,
+        "lon": -0.15538114124090593
+      },
+      {
+        "name": "Found",
+        "category": "catering",
+        "addressLine": "Found, 91A Preston Drove, Brighton, BN1 6LD, United Kingdom",
+        "distanceMeters": 419,
+        "lat": 50.8442848,
+        "lon": -0.1440326
+      }
+    ],
+    "localLanguage": [
+      {
+        "phrase": "Brighton and Hove",
+        "type": "area-name",
+        "importance": "high"
+      }
+    ],
+    "geoComparisons": [
+      {
+        "areaA": "Brighton and Hove",
+        "areaB": "help with",
+        "framingSuggestion": "When comparing Brighton and Hove and help with, factors like transport links, local amenities, and community feel often come into play.",
+        "comparisonFactors": [
+          "Transport accessibility",
+          "Local amenities",
+          "Community character",
+          "Property types"
+        ]
+      }
+    ],
+    "localDecisionFactors": [
+      {
+        "factor": "Public transport links",
+        "category": "transport",
+        "importance": "high",
+        "phrasePattern": "The area benefits from good transport connections, with [nearby stations/stops] providing access to..."
+      },
+      {
+        "factor": "Commuter accessibility",
+        "category": "transport",
+        "importance": "medium",
+        "phrasePattern": "For commuters, the location offers..."
+      },
+      {
+        "factor": "Local amenities within walking distance",
+        "category": "walkability",
+        "importance": "high",
+        "phrasePattern": "Day-to-day conveniences are within easy reach, including..."
+      },
+      {
+        "factor": "Local character",
+        "category": "lifestyle",
+        "importance": "medium",
+        "phrasePattern": "The area has a [characteristic] feel, with..."
+      },
+      {
+        "factor": "Community feel",
+        "category": "lifestyle",
+        "importance": "medium",
+        "phrasePattern": "Residents often mention the sense of community..."
+      },
+      {
+        "factor": "Shopping and services",
+        "category": "amenities",
+        "importance": "medium",
+        "phrasePattern": "Local shops and services include..."
+      }
+    ],
+    "geoInternalLinkSuggestions": [],
+    "generatedAt": "2026-01-30T10:08:22.261Z"
+  },
+  "sources": [
+    {
+      "url": "https://www.rightmove.co.uk/new-homes-for-sale/Brighton-and-Hove.html",
+      "title": "New Homes and Developments For Sale in Brighton and ...",
+      "snippet": "Find New Builds & Developments For Sale in Brighton and Hove with Rightmove. New build flats & houses for sale in Brighton and Hove.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.onthemarket.com/new-homes/property/brighton-and-hove/",
+      "title": "New Build Homes & Developments for Sale in Brighton ...",
+      "snippet": "75 results New build homes & developments for sale in Brighton and Hove. Modern 2 & 3 bedroom apartments are within 15 minutes.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.zoopla.co.uk/new-homes/property/east-sussex/brighton/",
+      "title": "New build homes and developments for sale in Brighton, ...",
+      "snippet": "New build homes and developments for sale in Brighton, East Sussex £402,500 From 2 beds The Furlong, newly built five-bedroom detached home",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.taylorwimpey.co.uk/new-homes/brighton",
+      "title": "New build homes for sale in Brighton",
+      "snippet": "We have a fantastic choice of new homes for sale in Brighton. If you're a first time buyer or looking for a family home, we have the home for you.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://oakleyproperty.com/new-homes/new-homes-properties",
+      "title": "New Homes Properties",
+      "snippet": "Brighton, Hove, Lewes, new two bedroom apartment in Hove offering sea views and generous outside space. Brighton & Hove Sales Call 01273 688881 Lewes Town. ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.ellieandco.co.uk/2025/11/hove-travel-guide.html",
+      "title": "Central Hove: A Neighbourhood Guide - Ellie & Co",
+      "snippet": "Local tips on where to eat, drink, shop, stay and things to do in Hove, Brighton's relaxed sister, known for its elegant architecture, ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://thehumblehome.uk/posts/brighton-the-ultimate-guide",
+      "title": "Brighton: My Ultimate Guide",
+      "snippet": "In my insiders guide to Brighton, I celebrate the city I'm preparing to leave but has homed me for the last 20 years!",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.visitbrighton.com/food-and-drink/areas-to-explore",
+      "title": "Areas to Explore - Brighton",
+      "snippet": "From the twisting alleyways of The Lanes to the vibrant, colourful hub of the North Laine each area of the city has its own distinctive character.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.your-move.co.uk/estate-agent/brighton/local-area-guide",
+      "title": "A local area guide of Brighton and Hove",
+      "snippet": "If you're moving house or thinking about moving, read our local area guide for Brighton and Hove to help with your search for properties for sale or to ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.zoopla.co.uk/guides/areas/hove/",
+      "title": "Living in Hove: area guide",
+      "snippet": "Moving to Hove? Get the lowdown on why it's a great place to live, fun things to do here, what the schools are like and local house prices.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.reddit.com/r/howislivingthere/comments/1eaflsc/how_is_living_in_brighton_england_uk/",
+      "title": "How is living in Brighton, England UK : r/howislivingthere",
+      "snippet": "Expensive and the housing is terrible. Overcrowded and moldy. But otherwise - it's everything you'd want in a city.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.brighton-hove.gov.uk/work-and-life-brighton-hove",
+      "title": "Work and life in Brighton & Hove",
+      "snippet": "As a resident or employee in Brighton & Hove you will be surrounded by beautiful architecture, specialist shops and a vibrant art and music scene.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.guinnesshomes.co.uk/blog/area-guides/brighton/thinking-of-moving-to-brighton-all-your-questions-answered/",
+      "title": "Thinking of Moving to Brighton? All Your Questions ...",
+      "snippet": "Creative Community: Artists, musicians, and creatives thrive here. The city is home to festivals like Brighton Fringe and the Great Escape.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=G97QmIi3-FQ",
+      "title": "Living in Brighton & Hove | Lifestyle | Travel Guide",
+      "snippet": "We've been living in brighton for the past three months and wanted to share with you all the beautiful places that we've seen and our experience.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    },
+    {
+      "url": "https://www.findawayabroad.com/post/living-in-brighton-england",
+      "title": "An Expat's Guide to Living in Brighton, England",
+      "snippet": "Living in Brighton is a great choice for those that prefer a laid-back seaside town to a big city. The best neighborhoods are The Lanes, North Laine, and ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T10:08:22.259Z"
+    }
+  ]
+}

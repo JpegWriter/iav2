@@ -18,10 +18,15 @@ import {
   Lock,
   Play,
   Pause,
-  Search
+  Search,
+  ChevronDown,
+  ChevronUp,
+  Sparkles,
 } from 'lucide-react';
 import { useState } from 'react';
 import { cn, getSeverityColor, extractPath } from '@/lib/utils';
+import { ContentScoreCard } from '@/components/fix-planner/ContentScoreCard';
+import { FixBriefPanel } from '@/components/fix-planner/FixBriefPanel';
 
 type TaskStatus = 'all' | 'open' | 'in_progress' | 'review' | 'done';
 type Severity = 'all' | 'critical' | 'warning' | 'info';
@@ -34,6 +39,19 @@ export default function FixPlannerPage({
   const [statusFilter, setStatusFilter] = useState<TaskStatus>('all');
   const [severityFilter, setSeverityFilter] = useState<Severity>('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [expandedTasks, setExpandedTasks] = useState<Set<string>>(new Set());
+
+  const toggleTaskExpanded = (taskId: string) => {
+    setExpandedTasks(prev => {
+      const next = new Set(prev);
+      if (next.has(taskId)) {
+        next.delete(taskId);
+      } else {
+        next.add(taskId);
+      }
+      return next;
+    });
+  };
 
   const queryClient = useQueryClient();
 
@@ -359,16 +377,58 @@ export default function FixPlannerPage({
                       </Link>
                     )}
                     
-                    {task.fixItems && task.fixItems.length > 1 && (
-                      <p className="text-sm text-slate-500 mt-1">
-                        +{task.fixItems.length - 1} more issues
-                      </p>
+                    {/* Show all fix items, not just the first one */}
+                    {task.fixItems && task.fixItems.length > 0 && (
+                      <div className="mt-2 space-y-1">
+                        {task.fixItems.map((item: { severity?: string; title?: string; description?: string; category?: string } | string, idx: number) => {
+                          const itemText = typeof item === 'string' ? item : (item.title || item.description || 'Issue');
+                          return (
+                            <p key={idx} className="text-sm text-slate-600 flex items-start gap-2">
+                              <span className="text-amber-500 mt-0.5">•</span>
+                              <span>{itemText}</span>
+                            </p>
+                          );
+                        })}
+                      </div>
                     )}
 
                     {task.acceptance_criteria && task.acceptance_criteria.length > 0 && (
-                      <p className="text-sm text-slate-500 mt-1">
+                      <p className="text-sm text-slate-500 mt-2">
                         ✓ {task.acceptance_criteria[0]}
                       </p>
+                    )}
+                    
+                    {/* Expand/Collapse for Content Score & Fix Brief */}
+                    <button
+                      onClick={() => toggleTaskExpanded(task.id)}
+                      className="mt-3 flex items-center gap-1 text-xs text-primary-600 hover:text-primary-700"
+                    >
+                      {expandedTasks.has(task.id) ? (
+                        <>
+                          <ChevronUp className="w-3 h-3" />
+                          Hide Quality Score & Brief
+                        </>
+                      ) : (
+                        <>
+                          <ChevronDown className="w-3 h-3" />
+                          View Quality Score & Generate Brief
+                        </>
+                      )}
+                    </button>
+                    
+                    {/* Content Score Card and Fix Brief Panel */}
+                    {expandedTasks.has(task.id) && task.page_id && (
+                      <div className="mt-4 space-y-4 border-t border-slate-100 pt-4">
+                        <ContentScoreCard 
+                          projectId={params.projectId} 
+                          pageId={task.page_id} 
+                        />
+                        <FixBriefPanel 
+                          projectId={params.projectId} 
+                          pageId={task.page_id}
+                          taskId={task.id}
+                        />
+                      </div>
                     )}
                   </div>
 
@@ -389,6 +449,15 @@ export default function FixPlannerPage({
                       >
                         {getStatusLabel(task.status)}
                       </Button>
+                    )}
+                    {/* Quick Preview Improvements button */}
+                    {task.page_id && task.status !== 'published' && (
+                      <Link href={`/app/${params.projectId}/fix/${task.page_id}?taskId=${task.id}`}>
+                        <Button variant="outline" size="sm" className="text-primary-600 border-primary-200 hover:bg-primary-50">
+                          <Sparkles className="w-4 h-4 mr-1" />
+                          Preview
+                        </Button>
+                      </Link>
                     )}
                     <Link href={`/app/${params.projectId}/pages/${task.page_id}`}>
                       <Button variant="ghost" size="sm">

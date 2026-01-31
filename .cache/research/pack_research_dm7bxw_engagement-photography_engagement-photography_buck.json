@@ -1,0 +1,796 @@
+{
+  "aeo": {
+    "targetQueries": [
+      "Engagement photography",
+      "best engagement photography",
+      "best engagement photography near me",
+      "engagement photography vs",
+      "engagement photography comparison",
+      "engagement photography mistakes to avoid",
+      "common engagement photography problems",
+      "what is engagement photography",
+      "what does engagement photography include",
+      "why use engagement photography",
+      "why is engagement photography important",
+      "how does engagement photography work"
+    ],
+    "peopleAlsoAsk": [],
+    "questionClusters": [],
+    "answerShapes": [],
+    "citationTargets": [
+      {
+        "url": "https://digital-photography-school.com/6-tips-better-engagement-photos/",
+        "title": "7 Tips for Beautiful (and Meaningful) Engagement Photography",
+        "snippet": "Create beautiful engagement photos with these 7 tips. We explain how to keep your clients relaxed, capture meaningful moments, and more!",
+        "type": "guide",
+        "credibilityScore": 99.991775
+      },
+      {
+        "url": "https://laurenebliss.com/your-guide-to-fall-engagement-photos/",
+        "title": "Your Guide to Fall Engagement Photos | Lauren Bliss Photography",
+        "snippet": "Do you envision your fall engagement photos set against the backdrop of vibrant foliage and beautiful sunset rays? Check out my guide to",
+        "type": "guide",
+        "credibilityScore": 99.98746
+      },
+      {
+        "url": "https://www.rmg.co.uk/venue-hire/filming-photography/important-information",
+        "title": "Important information about filming and photography",
+        "snippet": "Engagement and wedding shoots are prohibited unless the wedding is taking place onsite. Please contact RMG Enquiries if you have any queries about non-",
+        "type": "guide",
+        "credibilityScore": 77.50779
+      },
+      {
+        "url": "https://www.pinterest.com/trecreative/engagement-photo-ideas/",
+        "title": "180 Engagement Photo Ideas - Pinterest",
+        "snippet": "Scroll through this board full of inspiring and unique engagement photography sessions. Booking these photoshoots during your engagement is such a magical way.",
+        "type": "guide",
+        "credibilityScore": 68.97452
+      },
+      {
+        "url": "https://livehappystudio.com/orlando-engagement-photography/",
+        "title": "Fun Engagement Photography in Orlando, Florida - Live Happy Studio",
+        "snippet": "Celebrate your love with engagement photography in Orlando. Our sessions are designed to capture romantic AND fun quirky moments.",
+        "type": "guide",
+        "credibilityScore": 65.835214
+      },
+      {
+        "url": "https://kristilittmanphoto.com/the-ultimate-engagement-photography-session-guide/",
+        "title": "The Ultimate Engagement Photography Session Guide",
+        "snippet": "Whether you’re already planning your wedding or just starting this exciting chapter, finding a photographer for your engagement photography session is one of the first steps in savoring this special t",
+        "type": "guide",
+        "credibilityScore": 65.279555
+      },
+      {
+        "url": "https://marissanicole.co/engagements-and-couples",
+        "title": "Orlando Engagement Photographer | Marissa Nicole Photography",
+        "snippet": "Celebrate your engagement with authentic, heartfelt photos by an Orlando engagement photographer who makes you feel at ease.",
+        "type": "guide",
+        "credibilityScore": 59.401022999999995
+      },
+      {
+        "url": "https://stephanieheymannphotography.com/engagement",
+        "title": "Engagement Session Guide - stephanie heymann Photography",
+        "snippet": "A guide that walks you through everything you need to know. I'll cover what to wear, whether to bring pets & how to manage them, location ideas and more!",
+        "type": "guide",
+        "credibilityScore": 57.52307
+      },
+      {
+        "url": "https://www.bergreenphotography.com/engagement-photoshoot-survival-guide/",
+        "title": "Engagement Photoshoot Survival Guide - Bergreen Photography",
+        "snippet": "This guide will talk about engagement photoshoot styles, poses, and other little details to make the engagement session a success.",
+        "type": "guide",
+        "credibilityScore": 56.575525000000006
+      },
+      {
+        "url": "https://www.michellevilaphotography.com/orlando-central-florida-engagement-wedding-photographer-portfolio",
+        "title": "Orlando and Central Florida Engagement Portrait Photography",
+        "snippet": "At Michelle Vila Photography, we create engagement sessions across Orlando and Central Florida that blend romance, joy, and creativity with timeless imagery you",
+        "type": "guide",
+        "credibilityScore": 56.546730000000004
+      }
+    ],
+    "misconceptions": [
+      {
+        "misconception": "All engagement photography providers are the same",
+        "correction": "Quality, experience, and approach can vary significantly. Look for credentials, reviews, and local expertise."
+      },
+      {
+        "misconception": "The cheapest option is always the best value",
+        "correction": "Price should be weighed against quality, reliability, and what's included. Sometimes paying more saves money long-term."
+      }
+    ],
+    "snippetHooks": [
+      "In practice...",
+      "What usually changes the price is...",
+      "A common mistake we see is...",
+      "From experience, the key factor is...",
+      "The typical journey looks like this...",
+      "What most people don't realise is...",
+      "The main difference comes down to...",
+      "For those in the local area...",
+      "What we've found works best is...",
+      "The honest answer is..."
+    ],
+    "relatedSearches": [],
+    "generatedAt": "2026-01-30T13:00:08.422Z"
+  },
+  "geo": {
+    "geoSummary": "Buckinghamshire, Buckinghamshire, United Kingdom",
+    "primaryLocation": {
+      "name": "Buckinghamshire",
+      "formatted": "Buckinghamshire, ENG, UK",
+      "lat": 51.840894,
+      "lon": -0.8998073587480795,
+      "country": "United Kingdom",
+      "region": "Buckinghamshire"
+    },
+    "nearbyAreas": [],
+    "proximityAnchors": [
+      {
+        "category": "transport",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      },
+      {
+        "category": "shopping",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      },
+      {
+        "category": "amenity",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      }
+    ],
+    "placeAnchors": [
+      {
+        "name": "Crossroads",
+        "category": "public_transport",
+        "addressLine": "Crossroads, Waddesdon Hill, Waddesdon, HP18 0ER, United Kingdom",
+        "distanceMeters": 427,
+        "lat": 51.8442924,
+        "lon": -0.9026718
+      },
+      {
+        "name": "Waddesdon Crossroads",
+        "category": "public_transport",
+        "addressLine": "Waddesdon Crossroads, Waddesdon Hill, Waddesdon, HP18 0ER, United Kingdom",
+        "distanceMeters": 434,
+        "lat": 51.8442602,
+        "lon": -0.9029899
+      },
+      {
+        "name": "Unnamed",
+        "category": "public_transport",
+        "addressLine": "A41, Waddesdon, HP18 0NJ, United Kingdom",
+        "distanceMeters": 628,
+        "lat": 51.8437103,
+        "lon": -0.891916
+      },
+      {
+        "name": "Fleet Marston Cranwell Gate",
+        "category": "public_transport",
+        "addressLine": "Fleet Marston Cranwell Gate, A41, Waddesdon, HP18 0QB, United Kingdom",
+        "distanceMeters": 672,
+        "lat": 51.8433412,
+        "lon": -0.8908991
+      },
+      {
+        "name": "Porky's Diner",
+        "category": "catering",
+        "addressLine": "Porky's Diner, A41, Waddesdon, HP18 0NQ, United Kingdom",
+        "distanceMeters": 1075,
+        "lat": 51.8453199,
+        "lon": -0.9136755
+      },
+      {
+        "name": "Anstey Close",
+        "category": "public_transport",
+        "addressLine": "Anstey Close, A41, Waddesdon, HP18 0NA, United Kingdom",
+        "distanceMeters": 1262,
+        "lat": 51.845442,
+        "lon": -0.9165802
+      },
+      {
+        "name": "The Chadnis",
+        "category": "catering",
+        "addressLine": "The Chadnis, 43-45 High Street, Waddesdon, HP18 0LL, United Kingdom",
+        "distanceMeters": 1541,
+        "lat": 51.8461342,
+        "lon": -0.9205127
+      },
+      {
+        "name": "The Lion",
+        "category": "catering",
+        "addressLine": "The Lion, High Street, Waddesdon, HP18 0LB, United Kingdom",
+        "distanceMeters": 1700,
+        "lat": 51.845869,
+        "lon": -0.9231367
+      },
+      {
+        "name": "94 Coffee Shop",
+        "category": "catering",
+        "addressLine": "94 Coffee Shop, 94 High Street, Waddesdon, HP18 0JD, United Kingdom",
+        "distanceMeters": 1807,
+        "lat": 51.8457407,
+        "lon": -0.9248362
+      },
+      {
+        "name": "The Long Dog",
+        "category": "catering",
+        "addressLine": "The Long Dog, High Street, Waddesdon, HP18 0JF, United Kingdom",
+        "distanceMeters": 2009,
+        "lat": 51.8462884,
+        "lon": -0.9276206
+      }
+    ],
+    "localLanguage": [
+      {
+        "phrase": "Buckinghamshire",
+        "type": "area-name",
+        "importance": "high"
+      }
+    ],
+    "geoComparisons": [],
+    "localDecisionFactors": [
+      {
+        "factor": "Public transport links",
+        "category": "transport",
+        "importance": "high",
+        "phrasePattern": "The area benefits from good transport connections, with [nearby stations/stops] providing access to..."
+      },
+      {
+        "factor": "Commuter accessibility",
+        "category": "transport",
+        "importance": "medium",
+        "phrasePattern": "For commuters, the location offers..."
+      },
+      {
+        "factor": "Local amenities within walking distance",
+        "category": "walkability",
+        "importance": "high",
+        "phrasePattern": "Day-to-day conveniences are within easy reach, including..."
+      },
+      {
+        "factor": "Local character",
+        "category": "lifestyle",
+        "importance": "medium",
+        "phrasePattern": "The area has a [characteristic] feel, with..."
+      },
+      {
+        "factor": "Community feel",
+        "category": "lifestyle",
+        "importance": "medium",
+        "phrasePattern": "Residents often mention the sense of community..."
+      },
+      {
+        "factor": "Shopping and services",
+        "category": "amenities",
+        "importance": "medium",
+        "phrasePattern": "Local shops and services include..."
+      }
+    ],
+    "geoInternalLinkSuggestions": [],
+    "generatedAt": "2026-01-30T13:00:08.333Z"
+  },
+  "sources": [
+    {
+      "url": "https://jessicawyles.co.uk/buckinghamshire-engagement-photographer/",
+      "title": "Buckinghamshire Engagement Photographer",
+      "snippet": "As a Buckinghamshire engagement photographer I absolutely loved walking around at the beautiful Stowe Gardens in during summer 2021.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:08.332Z"
+    },
+    {
+      "url": "https://katrinamatthewsphotography.co.uk/engagement-session-locations/",
+      "title": "Engagement Session Locations",
+      "snippet": "My favourite spots in Hertfordshire & Buckinghamshire · Stockgrove Country Park · Ashridge Estate · Tring Park · Cassiobury Park.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:08.332Z"
+    },
+    {
+      "url": "https://damionmowerphotography.co.uk/burnham-beeches-engagement-photography/",
+      "title": "Burnham Beeches Engagement Photography",
+      "snippet": "Burnham Beeches engagement photography by Damion Mower. A local Buckinghamshire photographer capturing elegant, natural and unique images.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:08.332Z"
+    },
+    {
+      "url": "https://alisonbusbyphotography.co.uk/category/engagement/",
+      "title": "Engagement",
+      "snippet": "An engagement shoot with her and fiancé Will at the family home near Amersham in Buckinghamshire. Making an engagement shoot fun.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:08.332Z"
+    },
+    {
+      "url": "https://hannahmia.com/black-park-slough-berkshire-engagement-photographer/",
+      "title": "Black Park Country Park Buckinghamshire Engagement ...",
+      "snippet": "Buckinghamshire engagement photographer - a casual, colourful engagement photoshoot in Black Park Country Park, Buckinghamshire.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:08.332Z"
+    },
+    {
+      "url": "https://www.struttandparker.com/properties/residential/area-guides/buckinghamshire",
+      "title": "Buckinghamshire Area Guide",
+      "snippet": "Read our Buckinghamshire area guide to learn more about living in the county, including information on key schools, transport links and property prices.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:08.332Z"
+    },
+    {
+      "url": "https://www.visitsoutheastengland.com/places-to-visit/Buckinghamshire",
+      "title": "Things To Do in Buckinghamshire",
+      "snippet": "Official guide to Buckinghamshire with hundreds of things to do, what's on & best places to visit throughout 2026 in Aylesbury, Wycombe, Milton Keynes ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:08.332Z"
+    },
+    {
+      "url": "https://www.griggshomes.co.uk/buckinghamshire-area-guide",
+      "title": "Buckinghamshire Area Guide, Average House Prices and ...",
+      "snippet": "Buckinghamshire is located 45 mins north of London and has a population of 540000. The average house prices in Buckinghamshire are £413924 and the country ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:08.332Z"
+    },
+    {
+      "url": "https://www.britainexpress.com/counties/bucks/index.htm",
+      "title": "Buckinghamshire England travel guide",
+      "snippet": "A profile of the county of Buckinghamshire, England, highlighting attractions, history, and visitor information.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:08.332Z"
+    },
+    {
+      "url": "https://whichschooladvisor.com/uk/area-guide/south-east-england/buckinghamshire",
+      "title": "Buckinghamshire Area Guide - The best places to live in UK",
+      "snippet": "Read our Buckinghamshire area guide for a quick overview of the area and its schools.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:08.332Z"
+    },
+    {
+      "url": "https://www.reddit.com/r/Buckinghamshire/comments/1eb6ape/best_place_in_buckinghamshire/",
+      "title": "Best place in Buckinghamshire",
+      "snippet": "Beaconsfield is on the same train line as Wycombe, super expensive to live in, but has some very nice pubs and restaurants. Marlow can be ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:08.332Z"
+    },
+    {
+      "url": "https://bucksoxon.muddystilettos.co.uk/best-places-to-live/buckinghamshire/",
+      "title": "Buckinghamshire",
+      "snippet": "A hop and a skip into London, yet somehow a million miles away, Buckinghamshire is famous for its stunning Chilterns landscape, chic market towns and relaxed ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:08.332Z"
+    },
+    {
+      "url": "https://connectexperts.co.uk/why-move-to-buckinghamshire/",
+      "title": "Why Move to Buckinghamshire | Living & Mortgage Advice",
+      "snippet": "Moving to Buckinghamshire offers the ideal balance of scenic countryside, historic charm, and modern convenience, making it a fantastic place to live. With ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:08.332Z"
+    },
+    {
+      "url": "https://www.arkrelocation.com/10-best-places-to-live-in-buckinghamshire/",
+      "title": "10 Best Places to Live in Buckinghamshire",
+      "snippet": "With its rolling hills, picturesque villages, and vibrant market towns, Buckinghamshire offers an excellent quality of life for families, professionals, and ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:08.332Z"
+    },
+    {
+      "url": "https://www.homeviews.com/area/buckinghamshire",
+      "title": "Buckinghamshire Reviews",
+      "snippet": "Buckinghamshire is a county in the southeast of England. The largest and most populous town in Buckinghamshire is Milton Keynes with over 200,000 residents.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:08.332Z"
+    },
+    {
+      "url": "https://lucydarbyphotography.co.uk/couples",
+      "title": "Couple & Engagement photography",
+      "snippet": "Couples photoshoots are a great chance to capture important moments or to simply celebrate your love for one another. My sessions are relaxed and fun, ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://suzyelizabethphotography.co.uk/engagement-shoot-tips-and-advice/",
+      "title": "Engagement Shoot Tips & Advice",
+      "snippet": "Here I talk about why I think they are a great idea and what to expect on the day. Plus I give my engagement shoot tips and advice for getting the best out of ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.dominiquebader.com/couple-photography/",
+      "title": "Couples & Engagement Photography in the UK",
+      "snippet": "As a portrait and wedding photographer, I'm passionate about capturing authentic, timeless and romantic images. With a unique blend of fine art and documentary ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://amybphotography.co.uk/brighton-engagement-photography/",
+      "title": "Brighton Engagement Photography -",
+      "snippet": "Brighton Engagement Photography: If you're interested in booking me for a Brighton Engagement shoot then please don't hesitate to get in touch. INSTAGRAM.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.mattbadenoch.com/engagement-photography-london/",
+      "title": "Fun & Relaxed Engagement Photography in London",
+      "snippet": "Visiting London and want some amazing photos to celebrate your engagement and remember your trip? Click for fun and relaxed Engagement Photography.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://karibellamy.com/london-engagement-photo-session/",
+      "title": "London Engagement Sessions | Artistic and Natural ...",
+      "snippet": "Celebrate landmarks in your relationship with London engagement sessions. Become camera confident while capturing authentic, artistic engagement photos.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://maddiefarrisphotography.co.uk/yorkshire-engagement-photography/",
+      "title": "Yorkshire Engagement Photography",
+      "snippet": "Get in touch to book your engagement session or couple's session (you don't have to be getting hitched!) and we can start planning your own magical photos!",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.petersmartphotography.co.uk/engagement-photography-wiltshire/",
+      "title": "Engagement Photography Wiltshire",
+      "snippet": "I'm a Swindon based engagement photographer and I photograph couples all over Wiltshire and the South West. Priced at £400 for a shoot or £250 if added to a ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://beatriciphotography.co.uk/london-engagement-shoots/",
+      "title": "London Engagement Shoot Photographer",
+      "snippet": "Beatrici Photography is a London-based engagement and pre-wedding photographer, specializing in authentic, fun couple's photography. She captures genuine ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=tjzwwVZctB8",
+      "title": "10 Easy Posing Ideas for Engagement Photography",
+      "snippet": "10 simple yet stunning poses that flatter any couple and location. · Easy-to-follow instructions for mastering each pose, even for beginners.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.tomhodgson.co.uk/surprise-engagement-photos/",
+      "title": "Surprise engagement photos",
+      "snippet": "I am here to talk you through how to make sure your proposal is a success so we can get you some great natural photos of your surprise engagement.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://albertpalmerphotography.com/engagement-pictures-portfolio/",
+      "title": "Engagement Pictures Portfolio | UK Engagement Shoot",
+      "snippet": "A little slideshow of my engagement pictures portfolio. Some of my favourite images from the engagement shoots I've been on in the last few years.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://wedissimo.com/wedding-photographers/engagement_shoot/",
+      "title": "Top Engagement Photographers in Engagement_Shoot",
+      "snippet": "Get in touch for engagement photo shoot prices from these UK based photographers. Find your engagement photographer and find your wedding photographer too.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.dianavphotography.co.uk/blog/2019/7/23/best-engagement-shoot-locations-in-london",
+      "title": "9 Top engagement shoot and pre-wedding photo locations ...",
+      "snippet": "10 of the best engagement and pre-wedding shoot locations in London · Westminster, Big Ben etc · London Bridge and Borough Market · Small London ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.hitched.co.uk/wedding-planning/photography/engagement-photos/",
+      "title": "33 Fun Ideas for Your Engagement Photo Shoot",
+      "snippet": "Need some inspiration for your engagement photos? We've got all of the ideas and tips you'll need to get a set you'll cherish forever.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://davidwaltersphotography.co.uk/liverpool-engagement-photography/",
+      "title": "Liverpool Engagement Photographer",
+      "snippet": "Looking for Liverpool engagement photography? Capture your love story with natural, relaxed, and beautifully composed photos.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://liamandbee.com/london-engagement-photography/",
+      "title": "London Engagement Photography - Liam + Bee",
+      "snippet": "The best London engagement photography by multi award winning photographer, Liam Crawley. Engagement photography in London with a creativity.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://hannahtimmphotography.co.uk/cardiff-engagement-photography/",
+      "title": "Cardiff Engagement Photography; Sophie & Karl at Parc ...",
+      "snippet": "Cardiff Engagement Photography shoot at Parc Cefn Onn. View this colourful Autumn engagement session by Hannah Timm Photography.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.carolinerushtonphotography.co.uk/engagements/",
+      "title": "Engagements - Northamptonshire Wedding Photographer",
+      "snippet": "As a Northamptonshire Engagement Photographer, this photo session can be the perfect way to see my approach to capturing you in a relaxed way.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://matthewanthonyphotography.co.uk/derbyshire-engagement-photographer-becky-matt/",
+      "title": "Derbyshire Engagement Photographer (Becky & Matt)",
+      "snippet": "As a Derbyshire engagement photographer, there's a good reason I often recommend Elvaston Castle to couples. It's quite simply a beautiful location!",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.bigeyephotography.co.uk/engagement-photography-gloucestershire/",
+      "title": "Engagement Photography Gloucestershire",
+      "snippet": "A selection of fun engagement photography Gloucestershire images from my portfolio by Bigeye Photography - Wedidng Photography.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.aimeelaoisephotography.com/bristol-engagement-photography",
+      "title": "Bristol Couples and Engagement Photographer",
+      "snippet": "Capturing your journey together, Bristol engagement photography by wedding photographer Aimee Laoise. Timeless, emotive photographs capturing your ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.alexbucklandphotography.co.uk/portfolio/engagements/",
+      "title": "South East Engagement | Pre Wedding",
+      "snippet": "A collection of photos of some of my favourite engagement, pre wedding shoots and proposal photo shoots from across South East and the rest of the UK.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://poppycarterportraits.com/cotswolds-engagement-photography-poppy-carter-portraits/",
+      "title": "Cotswolds Engagement Photography",
+      "snippet": "I shoot 50+ engagements in the UK and Europe. From the cotswolds to London and everywhere in between. I know all the best locations and the best times of day & ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.arj-photo.co.uk/article/do-you-need-a-pre-wedding-shoot",
+      "title": "Do You Need A Pre-Wedding Shoot Or Engagement Shoot?",
+      "snippet": "A pre-wedding shoot, sometimes also called an engagement shoot, is a photoshoot in the build up to your wedding. And some wedding planning guides will tell you ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.ambergarrettphoto.com/blog/proposal-vs-engagement-photos",
+      "title": "Engagement VS Proposal Photos | Las Vegas Desert ...",
+      "snippet": "A proposal session captures the PROPOSAL plus some celebratory portraits, where an engagement session is a totally separate portrait session to celebrate.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.facebook.com/groups/151856018237861/posts/8948245295265512/",
+      "title": "This seems like a silly question, so I apologize in advance lol",
+      "snippet": "Engagement shoot is usually for you and your significant other, usually are used for the wedding photos, invites, website, etc. Bridal portraits ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.onceinalifetimephotography.co.uk/wedding-planning-guide/engagement-or-pre-wedding-photos",
+      "title": "Should I Do Engagement or Pre-Wedding Photos?",
+      "snippet": "Engagement shoots are generally shorter and more affordable, while pre-wedding shoots can be more elaborate and may require more time and ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.reddit.com/r/weddingplanning/comments/1iysmhr/engagement_shoot_or_second_photographer/",
+      "title": "Engagement shoot or second photographer?",
+      "snippet": "If you have full confidence in front of the camera and you are fully familiar with the photographer already, skip the engagement pictures. They ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.emma-barrow.com/blog/why-have-a-pre-wedding-engagement-photoshoot",
+      "title": "What is it and why should you have a Pre Wedding or ...",
+      "snippet": "A couples photoshoot before the wedding is described much like an engagement shoot or a pre wedding session. It's a photo shoot separate to your wedding day.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.huffingtonpost.co.uk/laura-babb/engagement-photography-whats-the-point_b_2989417.html",
+      "title": "Engagement Photography: What's the Point?",
+      "snippet": "For most people the idea of engagement photography (or pre-wedding photography) is a bit intimidating at best and full on terrifying at worst.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.kelsiescullyphotography.com/why-having-an-engagement-photography-session-matters/",
+      "title": "Why having an engagement photography session matters",
+      "snippet": "Engagement photography is a photoshoot session that takes place in the months prior to your wedding. And this blog post will help you decide if an engagement ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.visionaryviewsllc.com/engagement-photos-vs-wedding-photos-whats-the-difference/",
+      "title": "Engagement Photos vs. Wedding Photos: What's the ...",
+      "snippet": "Engagement photos are about capturing the raw joy of your relationship in a relaxed, creative way, while wedding photos focus on the timeless, formal moments ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.oliviabosserteducation.com/photography-education/4445-gussQ",
+      "title": "What Is An Engagement Session, and Should You Do One?",
+      "snippet": "What actually is an engagement session? It's quite self explanatory really, but essentially this is a photoshoot for just you and your fiancé.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.davespinkphotography.co.uk/candid-vs-posed-engagement-photos-finding-your-perfect-style/",
+      "title": "Candid vs Posed Engagement Photos: Finding Your ...",
+      "snippet": "This article will explore how candid engagement photos capture genuine laughter and emotion, while posed engagement photos highlight the beauty of the moment.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.jessicawhitaker.co/blog/feliciaanddavid",
+      "title": "Felicia and David | 50mm vs 35mm Lens Comparison for ...",
+      "snippet": "We will be comparing how the focal lengths look in full-body photographs, back lighting, full shade, and close-up portraits.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://symboll.com/wedding-traditions/engagement-photography-styles-and-formats/",
+      "title": "Engagement Photography Styles and Formats",
+      "snippet": "Our engagement photography styles include a Photojournalistic approach, Assisted, & an option for both of us to be involved.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://photographyhero.com/what-best-lens-portrait-photography/",
+      "title": "What is the Best Lens for Engagement Photography?",
+      "snippet": "There are three focal lengths that are of most value on an engagement session are: 50mm, 85mm and a telephoto lens of 135mm or above.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.merryohler.com/blog/the-difference-between-proposal-engagement-photography",
+      "title": "Two Hearts, Two Moments: Decoding Proposal and ...",
+      "snippet": "Understanding the difference between proposal and engagement photography helps you capture them in their most accurate form. They're not just ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://joegoetzphotography.com/deciphering-the-magic-proposal-vs-engagement-photography/?srsltid=AfmBOoozDMuhNFh1bfvZtQGK2UPOSPbfTdPi18OXS1mopKKylu4rY_zL",
+      "title": "Deciphering the Magic – Proposal vs. Engagement ...",
+      "snippet": "Engagement photography comes after the proposal and is a more planned and structured session. It allows the couple to bask in the glow of their ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://aurorebridgesphotography.com/engagement-session-style-guide/",
+      "title": "Engagement session style guide",
+      "snippet": "I decided to write this post to have an easy-to-share format engagement session style guide with visuals for my couples.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.heatherbien.com/2018/03/how-to-select-your-perfect-engagement.html",
+      "title": "How to Select An Engagement Photographer - Heather Bien",
+      "snippet": "Today is all about finding the right photographer for you, and next week I'll address the when to schedule, what to wear, and where to shoot ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T13:00:07.969Z"
+    },
+    {
+      "url": "https://www.bergreenphotography.com/engagement-photoshoot-survival-guide/",
+      "title": "Engagement Photoshoot Survival Guide - Bergreen Photography",
+      "snippet": "This guide will talk about engagement photoshoot styles, poses, and other little details to make the engagement session a success.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T13:00:08.421Z"
+    },
+    {
+      "url": "https://kristilittmanphoto.com/the-ultimate-engagement-photography-session-guide/",
+      "title": "The Ultimate Engagement Photography Session Guide",
+      "snippet": "Whether you’re already planning your wedding or just starting this exciting chapter, finding a photographer for your engagement photography session is one of the first steps in savoring this special time. As a wedding photographer who’s shot hundreds of engagement sessions, both locally and internationally, I’ve put together this guide to help you prepare for your engagement photos in the most fun, laid-back way possible. And if you’re planning to book your wedding photographer too, many offer discounted engagement sessions, which is an awesome way to get comfortable with your photographer before the big day. If you’re planning to use your engagement photos for wedding invitations, that gives us enough time to get everything ready. The goal is to make sure we capture your personality and your connection, so I’ll guide you through some engagement photography poses and prompts to make it feel natural and effortless. Want to book Kristi for your luxury wedding, adventure elopement, or engagement session?",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T13:00:08.421Z"
+    },
+    {
+      "url": "https://digital-photography-school.com/6-tips-better-engagement-photos/",
+      "title": "7 Tips for Beautiful (and Meaningful) Engagement Photography",
+      "snippet": "Create beautiful engagement photos with these 7 tips. We explain how to keep your clients relaxed, capture meaningful moments, and more!",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T13:00:08.421Z"
+    },
+    {
+      "url": "https://stephanieheymannphotography.com/engagement",
+      "title": "Engagement Session Guide - stephanie heymann Photography",
+      "snippet": "A guide that walks you through everything you need to know. I'll cover what to wear, whether to bring pets & how to manage them, location ideas and more!",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T13:00:08.421Z"
+    },
+    {
+      "url": "https://laurenebliss.com/your-guide-to-fall-engagement-photos/",
+      "title": "Your Guide to Fall Engagement Photos | Lauren Bliss Photography",
+      "snippet": "Do you envision your fall engagement photos set against the backdrop of vibrant foliage and beautiful sunset rays? Check out my guide to",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T13:00:08.421Z"
+    },
+    {
+      "url": "https://www.rmg.co.uk/venue-hire/filming-photography/important-information",
+      "title": "Important information about filming and photography",
+      "snippet": "Engagement and wedding shoots are prohibited unless the wedding is taking place onsite. Please contact RMG Enquiries if you have any queries about non-",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T13:00:08.421Z"
+    },
+    {
+      "url": "https://www.parliament.uk/visiting/venue-hire/commons/planning/information/media/",
+      "title": "Filming and photography rules at events - UK Parliament",
+      "snippet": "Filming and photography for personal, non-commercial, non-broadcasting use is permitted within event venues.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T13:00:08.421Z"
+    },
+    {
+      "url": "https://www.pauldavidsmith.co.uk/photographers-rights/",
+      "title": "Photographers Rights In The UK - Paul David Smith Photography",
+      "snippet": "In general, you do not need permission to take someone's picture in the UK and so long as you're on public land while you're doing so, you can snap away",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T13:00:08.421Z"
+    },
+    {
+      "url": "https://liamsmithphotography.com/wedding-photography/london-wedding-photographer/resources/legal-requirements-for-wedding-photography-in-london/",
+      "title": "The Legal Requirements and Permits for Wedding Photography in ...",
+      "snippet": "In this guide, we'll discuss the rules and regulations you need to know when planning your wedding photography in London's public spaces.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T13:00:08.421Z"
+    },
+    {
+      "url": "https://bridebook.com/uk/article/the-ultimate-guide-to-engagement-photos",
+      "title": "The Ultimate Guide to Engagement Photos | Wedding Advice",
+      "snippet": "We've put together this handy guide to ensure you're fully prepared to go into your big engagement photoshoot.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T13:00:08.421Z"
+    },
+    {
+      "url": "https://www.pinterest.com/trecreative/engagement-photo-ideas/",
+      "title": "180 Engagement Photo Ideas - Pinterest",
+      "snippet": "Scroll through this board full of inspiring and unique engagement photography sessions. Booking these photoshoots during your engagement is such a magical way.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T13:00:08.421Z"
+    },
+    {
+      "url": "https://livehappystudio.com/orlando-engagement-photography/",
+      "title": "Fun Engagement Photography in Orlando, Florida - Live Happy Studio",
+      "snippet": "Celebrate your love with engagement photography in Orlando. Our sessions are designed to capture romantic AND fun quirky moments.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T13:00:08.421Z"
+    },
+    {
+      "url": "https://marissanicole.co/engagements-and-couples",
+      "title": "Orlando Engagement Photographer | Marissa Nicole Photography",
+      "snippet": "Celebrate your engagement with authentic, heartfelt photos by an Orlando engagement photographer who makes you feel at ease.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T13:00:08.421Z"
+    },
+    {
+      "url": "https://www.michellevilaphotography.com/orlando-central-florida-engagement-wedding-photographer-portfolio",
+      "title": "Orlando and Central Florida Engagement Portrait Photography",
+      "snippet": "At Michelle Vila Photography, we create engagement sessions across Orlando and Central Florida that blend romance, joy, and creativity with timeless imagery you",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T13:00:08.421Z"
+    },
+    {
+      "url": "https://www.kristinrichellephotography.com/couples-engagement-photographer/",
+      "title": "Couples & Engagement Photographer | Orlando Photography",
+      "snippet": "My favorite way to capture it is by adventure! During your session, we will adventure through the woods, get silly and of course, save lots of time for romance.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T13:00:08.421Z"
+    }
+  ],
+  "cache": {
+    "cacheKey": "pack_research_dm7bxw_engagement-photography_engagement-photography_buck",
+    "cachedAt": "2026-01-30T13:00:08.424Z",
+    "expiresAt": "2026-02-06T13:00:08.424Z",
+    "fromCache": false
+  },
+  "request": {
+    "businessName": "Wedding photographer",
+    "focusKeyword": "Engagement photography",
+    "service": "Engagement photography",
+    "geoPrimary": "Buckinghamshire",
+    "intent": "TRUST",
+    "pageRole": "trust"
+  }
+}

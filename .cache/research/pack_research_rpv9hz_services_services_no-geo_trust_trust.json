@@ -1,0 +1,581 @@
+{
+  "aeo": {
+    "targetQueries": [
+      "services",
+      "best services",
+      "best services near me",
+      "services vs",
+      "services comparison",
+      "services mistakes to avoid",
+      "common services problems",
+      "what is services",
+      "what does services include",
+      "why use services",
+      "why is services important",
+      "how does services work"
+    ],
+    "peopleAlsoAsk": [],
+    "questionClusters": [],
+    "answerShapes": [],
+    "citationTargets": [
+      {
+        "url": "https://www.gov.uk/government/publications/complying-with-provision-of-services-regulations-for-businesses-and-competent-authorities",
+        "title": "Complying with Provision of Services Regulations for businesses ...",
+        "snippet": "## Cookies on GOV.UK. We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services. We also use cookies set by other sites to help us de",
+        "type": "official",
+        "credibilityScore": 100
+      },
+      {
+        "url": "https://www.trade.gov/country-commercial-guides/united-kingdom-licensing-requirements-professional-services",
+        "title": "United Kingdom - Licensing Requirements for Professional Services",
+        "snippet": "The Provision of Services Regulations protect UK businesses and consumer rights by ensuring that the regulation of service activity is",
+        "type": "official",
+        "credibilityScore": 100
+      },
+      {
+        "url": "https://www.legislation.gov.uk/ukdsi/2009/9780111486276/contents",
+        "title": "The Provision of Services Regulations 2009 - Legislation.gov.uk",
+        "snippet": "This is a draft item of legislation. This draft has since been made as a UK Statutory Instrument: The Provision of Services Regulations 2009 No. 2999.",
+        "type": "official",
+        "credibilityScore": 100
+      },
+      {
+        "url": "https://www.chinohills.org/1648/City-Hall-Service-Guide",
+        "title": "City Hall Service Guide | Chino Hills, CA - Official Website",
+        "snippet": "A complete virtual guide to City services during COVID-19 closures.",
+        "type": "industry",
+        "credibilityScore": 80.274047
+      },
+      {
+        "url": "https://cms-lawnow.com/en/ealerts/2010/01/provision-of-services-regulations-2009",
+        "title": "Provision of Services Regulations 2009 - CMS LawNow",
+        "snippet": "The Provision of Services Regulations 2009 came into effect on 28 December 2009, and implement the EU Services Directive (2006/123/EC) in the UK.",
+        "type": "guide",
+        "credibilityScore": 80.14549
+      },
+      {
+        "url": "https://www.gov.uk/search/services",
+        "title": "Services",
+        "snippet": "Sign in to your Universal Credit account - report a change, add a note to your journal, see your payments and do other tasks",
+        "type": "official",
+        "credibilityScore": 80
+      },
+      {
+        "url": "https://find-and-update.company-information.service.gov.uk/company/07290902",
+        "title": "VS SERVICES (UK) LTD overview - Companies House",
+        "snippet": "Nature of business (SIC). 47240 - Retail sale of bread, cakes, flour confectionery and sugar confectionery in specialised stores; 47260 - Retail sale of ...",
+        "type": "official",
+        "credibilityScore": 80
+      },
+      {
+        "url": "https://uk.practicallaw.thomsonreuters.com/8-501-0896?transitionType=Default&contextData=(sc.Default)",
+        "title": "Provision of Services Regulations 2009: obligations on businesses",
+        "snippet": "This practice note summarises the obligations imposed on businesses in the services sector by the Provision of Services Regulations 2009 (SI 2009/2999) (PSRs).",
+        "type": "guide",
+        "credibilityScore": 78.709817
+      },
+      {
+        "url": "https://lacounty.gov/newsroom/public-information/guide-to-county-services/",
+        "title": "Guide to County Services - COUNTY OF LOS ANGELES",
+        "snippet": "To inform the public of available services, the Board of Supervisors ordered the preparation of this Guide to County Services. This guide is an update of",
+        "type": "official",
+        "credibilityScore": 70.71217999999999
+      },
+      {
+        "url": "https://dictionary.cambridge.org/dictionary/english/service",
+        "title": "SERVICE | English meaning - Cambridge Dictionary",
+        "snippet": "service noun (EMPLOYMENT) ... work done for others, such as cleaning or repairing, caring for a building, or making deliveries: This building has five service ...",
+        "type": "industry",
+        "credibilityScore": 70
+      }
+    ],
+    "misconceptions": [
+      {
+        "misconception": "All services providers are the same",
+        "correction": "Quality, experience, and approach can vary significantly. Look for credentials, reviews, and local expertise."
+      },
+      {
+        "misconception": "The cheapest option is always the best value",
+        "correction": "Price should be weighed against quality, reliability, and what's included. Sometimes paying more saves money long-term."
+      }
+    ],
+    "snippetHooks": [
+      "In practice...",
+      "What usually changes the price is...",
+      "A common mistake we see is...",
+      "From experience, the key factor is...",
+      "The typical journey looks like this...",
+      "What most people don't realise is...",
+      "The main difference comes down to...",
+      "For those in the local area...",
+      "What we've found works best is...",
+      "The honest answer is..."
+    ],
+    "relatedSearches": [],
+    "generatedAt": "2026-01-30T12:35:09.997Z"
+  },
+  "geo": {
+    "geoSummary": "No location specified",
+    "primaryLocation": {
+      "name": "Unknown",
+      "formatted": "Unknown"
+    },
+    "nearbyAreas": [],
+    "proximityAnchors": [],
+    "placeAnchors": [],
+    "localLanguage": [],
+    "geoComparisons": [],
+    "localDecisionFactors": [],
+    "geoInternalLinkSuggestions": [],
+    "generatedAt": "2026-01-30T12:35:06.335Z"
+  },
+  "sources": [
+    {
+      "url": "https://dictionary.cambridge.org/dictionary/english/service",
+      "title": "SERVICE | English meaning - Cambridge Dictionary",
+      "snippet": "service noun (EMPLOYMENT) ... work done for others, such as cleaning or repairing, caring for a building, or making deliveries: This building has five service ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.gov.uk/search/services",
+      "title": "Services",
+      "snippet": "Sign in to your Universal Credit account - report a change, add a note to your journal, see your payments and do other tasks",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Service",
+      "title": "Service",
+      "snippet": "Economics and business · Customer service, provision of assistance to customers or clients · Domestic service, employment in a residence · Table service, food ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.planningcenter.com/services",
+      "title": "Planning Center Services: Worship Planning Software",
+      "snippet": "Service planning and volunteer scheduling, for any team. Worship planning, volunteer scheduling, team communication, and rehearsal tools all in one place.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.patient-services.co.uk/",
+      "title": "Patient Services: Login",
+      "snippet": "Enjoy the convenience of GP online services with the ability to interact with your GP practice at any time of the day or night, wherever you are.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.nhs.uk/nhs-services/",
+      "title": "NHS services",
+      "snippet": "Find out about NHS services such as GPs, pharmacies and hospitals, services near you, and online services to manage your health.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.dictionary.com/browse/services",
+      "title": "SERVICES Definition & Meaning",
+      "snippet": "SERVICES definition: work performed for remuneration See examples of services used in a sentence.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://pcoservices.zendesk.com/hc/en-us",
+      "title": "Services - Zendesk",
+      "snippet": "Planning Center Services allows you to manage your schedule, update contact information, and access plans and files. You can access Services from a web browser ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.hertfordshire.gov.uk/services/our-services.aspx",
+      "title": "Our services",
+      "snippet": "Discover all services available at Hertfordshire County Council from schools and education and adult social services to fire and rescue and recycling.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://maps.org.uk/en",
+      "title": "Money and Pensions Service",
+      "snippet": "We help people across the UK to improve their financial wellbeing and build a better, more confident future. We make sure everyone can access high-quality ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.bestservices.co.uk/",
+      "title": "Lightning Protection, Surge Protection & Earthing | BEST",
+      "snippet": "BEST Services are experts in providing comprehensive qualified design solutions for lightning protective measures which are economical, effective and reliable.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.carparisonleasing.co.uk/blog/6-of-the-best-motorway-service-stations-to-visit-on-your-next-road-trip",
+      "title": "6 of the Best Motorway Service Stations to Visit",
+      "snippet": "Six of our favourite service stations · Gloucester Services · Tebay Services · Stafford North · Fleet · Beaconsfield · Cairn Lodge Services ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.reddit.com/r/CasualUK/comments/1f0hwey/whats_the_best_motorway_services_in_the_uk/",
+      "title": "What's the best Motorway Services in the UK? : r/CasualUK",
+      "snippet": "In addition to the others mentioned, there's Cambridge services on the A14 and Hopwood Park on the M42. Both are worth stopping at. Quiet- ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.bestservice.com/en/index.html",
+      "title": "Best Service Home | bestservice.com | EN",
+      "snippet": "Best Service | Soundware | Sounds | PlugIns | Virtual Instruments | Sample CDs | Orchestra Library | Sampling | Ethno Synthesizer | Drums | Loops | soundFX.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.which.co.uk/reviews/motorway-service-stations/article/best-and-worst-motorway-service-stations-aw3Ww9F9pEIw",
+      "title": "Best And Worst Motorway Service Stations 2026 - Which.co.uk",
+      "snippet": "Which? reveals the best motorway service stations in the UK - and the ones to avoid - with ratings for shops, food outlets, prices and ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.theaa.com/breakdown-cover/advice/best-uk-service-stations",
+      "title": "These are the top 20 Best UK Service Stations",
+      "snippet": "A closer look at the top three · 1. Gloucester Services · 2. Tebay Services · 3. Moto Stafford Northbound. One of a pair of service stations flanking the M6 ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://find-and-update.company-information.service.gov.uk/company/03197463",
+      "title": "BEST SERVICES LIMITED overview - Companies House",
+      "snippet": "BEST SERVICES LIMITED - Free company information from Companies House including registered office address, filing history, accounts, annual return, ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://uk.linkedin.com/company/best-services-ltd",
+      "title": "BEST Services Ltd",
+      "snippet": "BEST Services Ltd provides a total service in Earthing, Lightning Protection, Steeplejack and Maintenance Services throughout the UK and Europe.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.brindley.co.uk/news/uks-best-worst-motorway-services-ranked-with-honest-reviews/?srsltid=AfmBOor7T-Ch_jIlfJpHXWoKl_8JJobV_f4UmrXLXSrrt4JmGotk0XMc",
+      "title": "The UK's Best & Worst Motorway Services Ranked",
+      "snippet": "Following our research, Tebay services, located in the North West, officially takes the top spot for the UK's best motorway services. With an ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.bestservices.co.uk/contact/",
+      "title": "Contact Us | BEST",
+      "snippet": "Contact the team at BEST for help and advice about lightning protection, surge protection and specialist earthing. Get in touch to find out more or request ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://moto-way.com/services/",
+      "title": "Motorway services near you",
+      "snippet": "Motorway services near you · Baldock Extra · Barton Park · Beaconsfield Extra · Birch Eastbound · Birch Westbound · Blackburn with Darwen Extra · Blyth · Bridgwater.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://motorwayservices.uk/",
+      "title": "Motorway Services Online | motorway services & motorway ...",
+      "snippet": "Find motorway services near you with the online guide to UK motorway services, with details of every motorway service area in the UK including facilities, ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.mercedes-benzsouthwest.co.uk/blog/the-best-south-west-service-stations-for-an-enjoyable-pit-stop",
+      "title": "The best South West service stations for an enjoyable pit stop",
+      "snippet": "Cornwall Services is one of the very best in the country. Located on the A30 near Bodmin and just a 22 minute drive from our Mercedes-Benz of Truro showroom, ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.kwik-fit.com/servicing",
+      "title": "Book Your Car's Service Online At Your Local Centre",
+      "snippet": "Car Servicing at Kwik Fit. At Kwik Fit, we're the motor vehicle servicing experts, offering drivers a choice of ways to service their cars.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.reddit.com/r/AskUK/comments/ab6t3x/what_are_the_best_motorway_services_youve/",
+      "title": "What are the best Motorway Services you've experienced?",
+      "snippet": "Stop 24 off the M20 near Folkestone was reasonable, and Oxford services on the M40 has a pretty cool building with an artificial lake IIRC ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://welcomebreak.co.uk/",
+      "title": "Welcome Break | Motorway Services And Hotels",
+      "snippet": "Our 59 Motorway service areas and 31 hotels across the UK's motorway network offer you a warm welcome. Eat in, take away Welcome Breaks got you covered.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.tripadvisor.co.uk/Restaurant_Review-g186254-d5795736-Reviews-Moto_Motorway_Services-Exeter_Devon_England.html",
+      "title": "MOTO MOTORWAY SERVICES, Exeter - 2026 Reviews & ...",
+      "snippet": "Order takeaway and delivery at Moto Motorway Services, Exeter with Tripadvisor: See 348 unbiased reviews of Moto Motorway Services, ranked #394 on ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.postoffice.co.uk/branch-finder",
+      "title": "Branch Finder",
+      "snippet": "Branch finder. The majority of our Post Office branches offer: Posting to the UK and abroad; Everyday banking; Bill payments and top-ups. Find a branch.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://find-and-update.company-information.service.gov.uk/company/07290902",
+      "title": "VS SERVICES (UK) LTD overview - Companies House",
+      "snippet": "Nature of business (SIC). 47240 - Retail sale of bread, cakes, flour confectionery and sugar confectionery in specialised stores; 47260 - Retail sale of ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.reddit.com/r/SaaS/comments/1ai818i/services_vs_solutions/",
+      "title": "Services vs Solutions : r/SaaS",
+      "snippet": "A service: simply put it is a business offering to help of support a consumer or business in one area, which is similar to a product.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://creativestreammarketing.com/do-you-have-a-product-a-solution-or-a-service/",
+      "title": "Solutions vs. Services vs. Products - What's the Difference?",
+      "snippet": "Many tech companies refer to their offering as a product, others call it a solution, and still others refer to their service.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://visualstudio.microsoft.com/",
+      "title": "Visual Studio: IDE and Code Editor for Software Development",
+      "snippet": "Visual Studio dev tools & services make app development easy for any developer, on any platform & language. Develop with our code editor or IDE anywhere for ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.servicenow.com/community/itsm-forum/business-service-vs-application-service-vs-technical-service/td-p/2929856",
+      "title": "Business Service vs Application Service vs Technical Service",
+      "snippet": "Business Service: eg \"communication and collaboration\" where the business service offering could be mail. Application Service: is the different instances of a ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.webapper.com/saas-vs-services-as-software/",
+      "title": "SaaS vs. Services as Software",
+      "snippet": "Core Differences in SaaS vs. Service as Software · SaaS changes how software is delivered and consumed · Service as Software changes how ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://pieheartstudio.co.uk/resources/ecommerce-vs-services-5-key-differences-in-website-strategy/",
+      "title": "Ecommerce vs Services: 5 key differences in website strategy",
+      "snippet": "If you run a service-based business, most website conversion advice you'll find online probably isn't written for you.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=1YDR8CCVAVo",
+      "title": "Services Vs Application",
+      "snippet": "Services are a core component of the Microsoft Windows operating system and that enables the creation and management of long running processes.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.albion.vc/blog/software-vs-services-what-every-saas-founder-should-know",
+      "title": "Software vs services: what every SaaS founder should know",
+      "snippet": "With software, you win the customer once and charge forever. With services, the revenues end when the project ends. Frankly, if you performed ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://good.services/writing/products-vs-services",
+      "title": "How products and services work together",
+      "snippet": "While services help our user achieve an end goal, products are how we organise ourselves to deliver that goal. For example, the service of ' ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.comparethemarket.com/mot-service-repair/",
+      "title": "Compare MOT, services and repairs near you",
+      "snippet": "Need an MOT, service or repairs on your car? Compare garages near you to find cheap deals from over 2600 options, no booking fees or card details required.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://bookmygarage.com/",
+      "title": "BookMyGarage | Compare INSTANT MOT & Service Deals",
+      "snippet": "Thousands of garages nationwide. One easy click to compare instant prices with huge savings. Collect & return. Book now, don't pay until the day.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.uswitch.com/",
+      "title": "Uswitch.com - We Put U First - Uswitch",
+      "snippet": "Compare and switch broadband deals, mobile phone deals, car & home insurance, gas and electricity suppliers, credit cards, boiler cover & more.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.whocanfixmycar.com/car-service",
+      "title": "Compare Car Service Prices",
+      "snippet": "The average cost of a full service booked on FixMyCar is £194.92. A full service involves a mechanic running around 60+ individual checks on your vehicle's ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.confused.com/repairs",
+      "title": "Compare car MOT, servicing & repairs",
+      "snippet": "Need an MOT, service or repair work to fix your car? We compare garages near you to find the best deal. Just pop in a few details and we'll do the rest.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.which.co.uk/",
+      "title": "Which? | Expert testing, reviews and advice - Which?",
+      "snippet": "Which? works for you reviewing products and services, so that you make the best purchase decisions for your needs.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.gocompare.com/",
+      "title": "Go.Compare™ Official Site | Quick and Easy Quotes in Minutes",
+      "snippet": "Go.Compare is a UK comparison site that launched in 2006. We help people find and compare car, home, pet and travel insurance, broadband, loans, energy and more",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.parcelmonkey.co.uk/",
+      "title": "Parcel Monkey: Compare Parcel Delivery & Courier Quotes",
+      "snippet": "Compare cheap parcel delivery & courier prices with Parcel Monkey! We compare all major couriers to get you the best services & delivery rates.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.moneysavingexpert.com/compare-broadband-deals/",
+      "title": "Compare Broadband Deals January 2026",
+      "snippet": "Compare and combine broadband, landline and TV deals with Unbundled from MoneySavingExpert. Simply enter your postcode to check if you could save money with ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.moneyhelper.org.uk/en/everyday-money/budgeting/price-comparison-sites-guide",
+      "title": "Get the most out of comparison websites",
+      "snippet": "Comparison sites help you find the best deal on everything from gas and electricity to broadband and bank accounts. Here's all you need to know.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T12:35:09.568Z"
+    },
+    {
+      "url": "https://www.chinohills.org/1648/City-Hall-Service-Guide",
+      "title": "City Hall Service Guide | Chino Hills, CA - Official Website",
+      "snippet": "A complete virtual guide to City services during COVID-19 closures.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.996Z"
+    },
+    {
+      "url": "https://lacounty.gov/newsroom/public-information/guide-to-county-services/",
+      "title": "Guide to County Services - COUNTY OF LOS ANGELES",
+      "snippet": "To inform the public of available services, the Board of Supervisors ordered the preparation of this Guide to County Services. This guide is an update of",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.996Z"
+    },
+    {
+      "url": "https://www.medicare.gov/medicare-and-you",
+      "title": "Medicare & You",
+      "snippet": "The \"Medicare & You\" handbook is your official guide to Medicare. We mail an updated printed handbook to all Medicare households in late September.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.996Z"
+    },
+    {
+      "url": "https://ocpsc.ca.gov/resources-guide/",
+      "title": "California Community Resource Guide | OCPSC - CA.gov",
+      "snippet": "The California Community Resource Guide provides an easy-to-navigate online directory to search for State services, resources, and assistance.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.997Z"
+    },
+    {
+      "url": "https://www.acquisition.gov/psc-manual",
+      "title": "Product and Service Code Manual - Acquisition.GOV",
+      "snippet": "An official website of the United States Government. # Product and Service Code Manual. #### Favorite. #### X. Welcome to the Product and Service Code (PSC) manual page, where you can find the archive version in multiple formats along with supporting documentation. | Name | Size | Last Update   Sort ascending |. | PSC April 2025.xlsx | 451.92 KB | Apr 8, 2025 |. | PSC Manual April 2025.docx | 847.5 KB | Apr 8, 2025 |. | PSC Manual April 2025.pdf | 1.99 MB | Apr 8, 2025 |. | SOP\\_PSC\\_Updated\\_Process\\_Final\\_March\\_19\\_2020.docx | 972.96 KB | May 4, 2020 |. | Appendix B\\_PSC Changes Business Case Template April 2020.docx | 48.98 KB | Apr 28, 2020 |. + Civilian Agency Acquisition Council (CAAC)\"). + Interagency Suspension and Debarment Committee (ISDC)\"). An official website of the General Services Administration. Looking for U.S. government information and services?",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.997Z"
+    },
+    {
+      "url": "https://www.gov.uk/government/publications/complying-with-provision-of-services-regulations-for-businesses-and-competent-authorities",
+      "title": "Complying with Provision of Services Regulations for businesses ...",
+      "snippet": "## Cookies on GOV.UK. We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services. We also use cookies set by other sites to help us deliver content from their services. # Complying with Provision of Services Regulations for businesses and Competent Authorities. ### Guidance on the Provision of Services Regulations for Competent Authorities and businesses. This guidance will help businesses to understand what steps they need to take to provide services within the UK. The Provision of Services Regulations protects UK businesses and consumer rights by ensuring that the regulation of service activity is proportionate and justified in the public interest. If you wish to provide a service in the UK, you must check what authorisations and licences you will need to obtain. If you require further information, wish to give feedback or ask a question, email us at servicesregulations@businessandtrade.gov.uk. 1. Updated contact information to 'servicesregulations@businessandtrade.gov.uk'. ## Help us improve GOV.UK.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.997Z"
+    },
+    {
+      "url": "https://www.trade.gov/country-commercial-guides/united-kingdom-licensing-requirements-professional-services",
+      "title": "United Kingdom - Licensing Requirements for Professional Services",
+      "snippet": "The Provision of Services Regulations protect UK businesses and consumer rights by ensuring that the regulation of service activity is",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.997Z"
+    },
+    {
+      "url": "https://cms-lawnow.com/en/ealerts/2010/01/provision-of-services-regulations-2009",
+      "title": "Provision of Services Regulations 2009 - CMS LawNow",
+      "snippet": "The Provision of Services Regulations 2009 came into effect on 28 December 2009, and implement the EU Services Directive (2006/123/EC) in the UK.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.997Z"
+    },
+    {
+      "url": "https://uk.practicallaw.thomsonreuters.com/8-501-0896?transitionType=Default&contextData=(sc.Default)",
+      "title": "Provision of Services Regulations 2009: obligations on businesses",
+      "snippet": "This practice note summarises the obligations imposed on businesses in the services sector by the Provision of Services Regulations 2009 (SI 2009/2999) (PSRs).",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.997Z"
+    },
+    {
+      "url": "https://www.legislation.gov.uk/ukdsi/2009/9780111486276/contents",
+      "title": "The Provision of Services Regulations 2009 - Legislation.gov.uk",
+      "snippet": "This is a draft item of legislation. This draft has since been made as a UK Statutory Instrument: The Provision of Services Regulations 2009 No. 2999.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.997Z"
+    },
+    {
+      "url": "https://www.youtube.com/shorts/YtrN1tfReMo",
+      "title": "Services, What are they? no one knows, but I'll try to explain - YouTube",
+      "snippet": "Services are things teams provide - this could be a website, a server, and API or something else. Tracking what they are, and their status,",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.997Z"
+    },
+    {
+      "url": "https://www.collinsdictionary.com/us/dictionary/english/service",
+      "title": "SERVICE definition in American English - Collins Dictionary",
+      "snippet": "A service is something that the public needs, such as transportation, communications facilities, hospitals, or energy supplies, which is provided in a planned",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.997Z"
+    },
+    {
+      "url": "https://www.merriam-webster.com/dictionary/service",
+      "title": "SERVICE Definition & Meaning - Merriam-Webster",
+      "snippet": "glad to be of service. **:** to perform services for: such as. **:** of or relating to the armed services. **:** offering repair, maintenance, or incidental services. ## Synonyms of *service*. ## Examples of *service* in a Sentence. See All Example Sentences for *service*. derivative of service entry 1. from attributive use of service entry 1. probably respelling by folk-etymological association with service entry 1 of *serves,* plural of *serve* \"the tree *Sorbus domestica,* its fruit,\" going back to Middle English *cerve, cirve, serve,* going back to Old English *syrfe* (weak noun), borrowed from Vulgar Latin *\\*sorbea,* from Latin *sorbum* \"fruit of *Sorbus domestica* and related species\" (of uncertain origin) + *-ea,* noun derivative of *-ea,* feminine of *-eus* -eous. The first known use of *service* was. + press (someone or something) into service. ## Rhymes for *service*. See All Rhymes for *service*. be of *service* to them. **:** to provide services for: as. ## More from Merriam-Webster on *service*.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.997Z"
+    },
+    {
+      "url": "https://dictionary.cambridge.org/us/dictionary/english/service",
+      "title": "SERVICE | definition in the Cambridge English Dictionary",
+      "snippet": "### service noun (PUBLIC NEED). ### service noun (WORK). The battleship has been in service since 1965. Her mother was in service. a career in the services. ### service noun (IN SPORTS). She has a very fast service. ### service noun (REPAIR). be of service (to someone)\"). ### service verb [T] (MACHINE). ### service verb [T] (DEBT). to provide services to or for someone:. ### service noun (WORK). You should have the services of a lawyer. ### service noun (SYSTEM). ### service noun (EMPLOYMENT). ### service verb [T] (REPAIR). ## **service** | Business English. **be of service (to sb)**. Hello, how can I be of service? If we find a technology that will work, it could be in service by 2012. to provide a service to someone:. ## Collocations with service. ## service. These are words often used in combination with service. See all collocations with service. What is the pronunciation of *service*? ## Translations of service.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T12:35:09.997Z"
+    }
+  ],
+  "cache": {
+    "cacheKey": "pack_research_rpv9hz_services_services_no-geo_trust_trust",
+    "cachedAt": "2026-01-30T12:35:09.999Z",
+    "expiresAt": "2026-02-06T12:35:09.999Z",
+    "fromCache": false
+  },
+  "request": {
+    "businessName": "General",
+    "focusKeyword": "services",
+    "service": "services",
+    "intent": "TRUST",
+    "pageRole": "trust"
+  }
+}

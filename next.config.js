@@ -4,7 +4,9 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: '10mb',
     },
+    serverComponentsExternalPackages: ['sharp'],
   },
+  transpilePackages: ['@iav2/research'],
   images: {
     remotePatterns: [
       {

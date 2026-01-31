@@ -44,9 +44,9 @@ export async function POST(
       );
     }
 
-    if (body.images.length > 3) {
+    if (body.images.length > 10) {
       return NextResponse.json(
-        { success: false, error: 'Maximum 3 images allowed per pack' },
+        { success: false, error: 'Maximum 10 images allowed per pack' },
         { status: 400 }
       );
     }
@@ -82,7 +82,28 @@ export async function POST(
       brandTone: (body.context.brandTone as BrandTone[]) || ['professional'],
       targetAudience: body.context.targetAudience || '',
       contentIntent: body.context.contentIntent || 'showcase',
+      // CRITICAL: Preserve writerNotes from UI "Image Context" field
+      writerNotes: body.context.writerNotes || '',
     };
+
+    // Optional: user-provided facts about the images / project
+    // Example: "Sold in 3 days", "12 viewings", "Flint stone-clad", etc.
+    // ALSO extract from writerNotes if it's a single string (the user's "Image Context" text)
+    let userFacts: string[] = Array.isArray(body.userFacts) ? body.userFacts : [];
+    
+    // If writerNotes exists and userFacts is empty, treat writerNotes as a single user fact
+    if (body.context.writerNotes && userFacts.length === 0) {
+      // Split by newlines or semicolons to allow multiple facts in one text block
+      const notesAsFacts = body.context.writerNotes
+        .split(/[\n;]+/)
+        .map((s: string) => s.trim())
+        .filter((s: string) => s.length > 0);
+      userFacts = notesAsFacts;
+      console.log(`[Vision] Extracted ${userFacts.length} userFacts from writerNotes:`, userFacts);
+    }
+
+    // Also accept linkedTaskId to link pack to growth plan task
+    const linkedTaskId: string | undefined = body.linkedTaskId || body.taskId;
 
     // Build the analysis request
     const analysisRequest: VisionAnalysisRequest = {
@@ -93,7 +114,12 @@ export async function POST(
         url: img.url,
         filename: img.filename,
       })),
-      context,
+      // Store user facts and linkedTaskId inside snapshot so no DB migration needed
+      context: {
+        ...context,
+        userFacts,
+        linkedTaskId,
+      } as VisionContextSnapshot,
     };
 
     // Run the analysis

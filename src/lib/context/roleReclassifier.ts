@@ -65,7 +65,10 @@ const TRUST_PAGE_PATTERNS = [
   /\/(about|about-us|who-we-are|our-team|our-story)/i,
   /\/(contact|contact-us|get-in-touch|kontakt)/i,
   /\/(reviews|testimonials|our-clients|case-studies)/i,
+  /\/(our-testimonials|client-testimonials|customer-reviews)/i,
+  /\/(what-our-clients-say|client-feedback|customer-feedback)/i,
   /\/(faq|faqs|frequently-asked)/i,
+  /\/(accreditations|certifications|awards)/i,
 ];
 
 const AUTHORITY_PAGE_PATTERNS = [
@@ -91,6 +94,8 @@ export function reclassifyPages(pages: PageForClassification[]): PageForClassifi
 export function classifyPage(page: PageForClassification): string {
   const url = page.url.toLowerCase();
   const path = extractPath(url);
+  const titleLower = (page.title || '').toLowerCase();
+  const h1Lower = (page.h1 || '').toLowerCase();
 
   // Step 1: Check explicit non-money patterns (HIGHEST priority)
   for (const pattern of NON_MONEY_PATTERNS) {
@@ -113,9 +118,28 @@ export function classifyPage(page: PageForClassification): string {
     }
   }
 
-  // Step 3: Check trust page patterns
+  // Step 3: Check trust page patterns (URL-based)
   for (const pattern of TRUST_PAGE_PATTERNS) {
     if (pattern.test(path)) {
+      return 'trust';
+    }
+  }
+
+  // Step 3.5: Check title/H1 for trust indicators (testimonials, reviews, about)
+  // This catches pages like "Our Testimonials" even if URL is generic
+  const trustTitlePatterns = [
+    /testimonial/i,
+    /review/i,
+    /what\s+(our\s+)?(clients?|customers?)\s+say/i,
+    /client\s+feedback/i,
+    /about\s+us/i,
+    /meet\s+the\s+team/i,
+    /our\s+story/i,
+    /who\s+we\s+are/i,
+  ];
+  
+  for (const pattern of trustTitlePatterns) {
+    if (pattern.test(titleLower) || pattern.test(h1Lower)) {
       return 'trust';
     }
   }
@@ -159,9 +183,7 @@ export function classifyPage(page: PageForClassification): string {
     return 'money';
   }
 
-  // Check title/H1 for service indicators
-  const titleLower = (page.title || '').toLowerCase();
-  const h1Lower = (page.h1 || '').toLowerCase();
+  // Check title/H1 for service indicators (reuse already declared variables)
   const hasServiceInTitle =
     signals.serviceTokens.some((s) => titleLower.includes(s.toLowerCase())) ||
     signals.serviceTokens.some((s) => h1Lower.includes(s.toLowerCase()));

@@ -132,7 +132,13 @@ export interface VisionContextSnapshot {
   location: string | null;
   brandTone: BrandTone[];
   targetAudience: string;
-  contentIntent: 'showcase' | 'explain' | 'prove' | 'inspire' | 'inform';
+  contentIntent: 'showcase' | 'explain' | 'prove' | 'inspire' | 'inform' | 'case-study';
+  /** User's "Image Context" notes from the UI - to be injected into article */
+  writerNotes?: string;
+  /** Parsed user-provided facts (from writerNotes or explicit list) */
+  userFacts?: string[];
+  /** Link to a specific growth plan task */
+  linkedTaskId?: string;
 }
 
 // ============================================================================

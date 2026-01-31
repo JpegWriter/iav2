@@ -1,0 +1,268 @@
+{
+  "geo": {
+    "geoSummary": "Manchester, UK, Greater Manchester, United Kingdom",
+    "primaryLocation": {
+      "name": "Manchester, UK",
+      "formatted": "Manchester, ENG, United Kingdom",
+      "lat": 53.4794892,
+      "lon": -2.2451148,
+      "country": "United Kingdom",
+      "region": "Greater Manchester"
+    },
+    "nearbyAreas": [],
+    "proximityAnchors": [
+      {
+        "category": "transport",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      },
+      {
+        "category": "shopping",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      },
+      {
+        "category": "amenity",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      }
+    ],
+    "placeAnchors": [
+      {
+        "name": "Founder's Hall",
+        "category": "catering",
+        "addressLine": "Founder's Hall, Albert Square, Manchester, M2 3FU, United Kingdom",
+        "distanceMeters": 49,
+        "lat": 53.4798206,
+        "lon": -2.2456001
+      },
+      {
+        "name": "Ditto Coffee",
+        "category": "catering",
+        "addressLine": "Ditto Coffee, Albert Square, Manchester, M2 6LW, United Kingdom",
+        "distanceMeters": 60,
+        "lat": 53.4797941,
+        "lon": -2.2458529
+      },
+      {
+        "name": "Albert Square, Princess Street / Town Hall (Stop SC)",
+        "category": "public_transport",
+        "addressLine": "Albert Square, Princess Street / Town Hall (Stop SC), Princess Street, Manchester, M2 4DF, United Kingdom",
+        "distanceMeters": 64,
+        "lat": 53.4800154,
+        "lon": -2.2447448
+      },
+      {
+        "name": "Shirley's Sandwiches",
+        "category": "catering",
+        "addressLine": "Shirley's Sandwiches, 46 Brazennose Street, Manchester, M2 5EB, United Kingdom",
+        "distanceMeters": 69,
+        "lat": 53.4795868,
+        "lon": -2.2461374
+      },
+      {
+        "name": "Piccolino Caffe Grande",
+        "category": "catering",
+        "addressLine": "Piccolino Caffe Grande, 8 Clarence Street, Manchester, M2 4DW, United Kingdom",
+        "distanceMeters": 72,
+        "lat": 53.4800037,
+        "lon": -2.2444509
+      },
+      {
+        "name": "Armenian Taverna",
+        "category": "catering",
+        "addressLine": "Armenian Taverna, 1-7 Princess Street, Manchester, M2 4DF, United Kingdom",
+        "distanceMeters": 72,
+        "lat": 53.4801096,
+        "lon": -2.2447869
+      },
+      {
+        "name": "Albert Square, Princess Street / Town Hall (Stop SB)",
+        "category": "public_transport",
+        "addressLine": "Albert Square, Princess Street / Town Hall (Stop SB), Princess Street, Manchester, M2 4EW, United Kingdom",
+        "distanceMeters": 81,
+        "lat": 53.4796517,
+        "lon": -2.2439251
+      },
+      {
+        "name": "Manchester City Centre, John Dalton Street / opposite St James Square",
+        "category": "public_transport",
+        "addressLine": "Manchester City Centre, John Dalton Street / opposite St James Square, John Dalton Street, Manchester, M2 6HY, United Kingdom",
+        "distanceMeters": 106,
+        "lat": 53.4803059,
+        "lon": -2.2459404
+      },
+      {
+        "name": "King Street/Cross Street (Stop CL)",
+        "category": "public_transport",
+        "addressLine": "King Street/Cross Street (Stop CL), King Street, Manchester, M2 4NH, United Kingdom",
+        "distanceMeters": 173,
+        "lat": 53.4810018,
+        "lon": -2.2445247
+      },
+      {
+        "name": "King Street/Cross Street (Stop CP)",
+        "category": "public_transport",
+        "addressLine": "King Street/Cross Street (Stop CP), King Street, Manchester, M2 4PD, United Kingdom",
+        "distanceMeters": 177,
+        "lat": 53.4808893,
+        "lon": -2.2438508
+      }
+    ],
+    "localLanguage": [
+      {
+        "phrase": "Manchester, UK",
+        "type": "area-name",
+        "importance": "high"
+      }
+    ],
+    "geoComparisons": [],
+    "localDecisionFactors": [
+      {
+        "factor": "Public transport links",
+        "category": "transport",
+        "importance": "high",
+        "phrasePattern": "The area benefits from good transport connections, with [nearby stations/stops] providing access to..."
+      },
+      {
+        "factor": "Commuter accessibility",
+        "category": "transport",
+        "importance": "medium",
+        "phrasePattern": "For commuters, the location offers..."
+      },
+      {
+        "factor": "Local amenities within walking distance",
+        "category": "walkability",
+        "importance": "high",
+        "phrasePattern": "Day-to-day conveniences are within easy reach, including..."
+      },
+      {
+        "factor": "Local character",
+        "category": "lifestyle",
+        "importance": "medium",
+        "phrasePattern": "The area has a [characteristic] feel, with..."
+      },
+      {
+        "factor": "Community feel",
+        "category": "lifestyle",
+        "importance": "medium",
+        "phrasePattern": "Residents often mention the sense of community..."
+      },
+      {
+        "factor": "Shopping and services",
+        "category": "amenities",
+        "importance": "medium",
+        "phrasePattern": "Local shops and services include..."
+      }
+    ],
+    "geoInternalLinkSuggestions": [],
+    "generatedAt": "2026-01-30T08:26:54.951Z"
+  },
+  "sources": [
+    {
+      "url": "https://www.hitched.co.uk/wedding-photographers/manchester/",
+      "title": "Wedding Photographers in Manchester - Hitched",
+      "snippet": "K Bee Photography is a Greater Manchester-based family and wedding photographer with a gift for capturing emotion in its...Read more most honest form.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T08:26:54.948Z"
+    },
+    {
+      "url": "https://www.katiedervin.com/wedding-photographer-manchester",
+      "title": "Documentary Wedding Photographer Manchester",
+      "snippet": "Documentary Wedding Photographer Katie Dervin had been listed as one of the Top 50 Wedding Photographers in the UK for 2 years in a row.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T08:26:54.948Z"
+    },
+    {
+      "url": "https://www.katemccarthyphotography.co.uk/",
+      "title": "Manchester Wedding Photographer - Kate McCarthy ...",
+      "snippet": "Manchester Wedding Photographer & Cheshire Wedding Photographer covering the North West and whole of the UK, specialising in relaxed, creative wedding ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T08:26:54.948Z"
+    },
+    {
+      "url": "https://www.mickcookson.com/",
+      "title": "Manchester Wedding Photographer",
+      "snippet": "Modern authentic wedding photography by award-winning Manchester wedding photographer Mick Cookson. No posing, no fuss wedding photography throughout ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T08:26:54.948Z"
+    },
+    {
+      "url": "https://kellyclarke.co.uk/",
+      "title": "Manchester Wedding Photographer | Kelly Clarke | UK",
+      "snippet": "Hi, I'm Kelly, a full time wedding photographer. I love to travel all around Manchester, the rest of the UK and abroad to capture real moments at weddings.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T08:26:54.948Z"
+    },
+    {
+      "url": "https://www.visitmanchester.com/ideas-and-inspiration/blog/post/visit-manchester-insiders-guide-part-1-neighbourhoods/",
+      "title": "Visit Manchester Insider's Guide: Neighbourhoods",
+      "snippet": "The 40-page guide features dedicated sections on what's new and upcoming, along with maps and spotlight pages highlighting Greater Manchester's towns, boroughs ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T08:26:54.948Z"
+    },
+    {
+      "url": "https://www.martinco.com/guides/area-guides/manchester-area-guide/",
+      "title": "Manchester: area guide",
+      "snippet": "Discover Manchester living from city-centre flats and leafy suburbs like Prestwich & Chorlton to top schools, pubs, transport and affordable prices.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T08:26:54.948Z"
+    },
+    {
+      "url": "https://www.zoopla.co.uk/guides/areas/manchester/",
+      "title": "Living in Manchester: area guide",
+      "snippet": "Manchester is the ultimate urban playground and a great place to live: a city that pulses with culture, history and endless possibilities.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T08:26:54.948Z"
+    },
+    {
+      "url": "https://prestigeawards.co.uk/a-guide-to-the-neighbourhoods-of-manchester/",
+      "title": "A GUIDE TO THE NEIGHBOURHOODS OF MANCHESTER",
+      "snippet": "In this article, we take a look at five of the best neighbourhoods for everyone from the first time buyers through to hipster hotspots for young professionals.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T08:26:54.948Z"
+    },
+    {
+      "url": "https://wandering-everywhere.com/a-first-timers-guide-to-manchester/",
+      "title": "A FIRST TIMERS' GUIDE TO MANCHESTER",
+      "snippet": "The land of the Mancs is rich with culture, history, science, and art (how do, Lowry!), and honestly, I wasn't expecting to fall for it the way I did.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T08:26:54.948Z"
+    },
+    {
+      "url": "https://www.reddit.com/r/howislivingthere/comments/1i6lfv0/whats_it_like_to_live_in_manchester_england/",
+      "title": "What's It Like to Live in Manchester, England?",
+      "snippet": "I'd like to know about the cost of living, rent, people, gym prices, nightlife (such as band concerts), and job opportunities in the tech ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T08:26:54.948Z"
+    },
+    {
+      "url": "https://uncle.co.uk/thinking-about-moving-to-manchester-heres-some-advice/",
+      "title": "Thinking About Moving To Manchester? Here's Some Advice",
+      "snippet": "People often say that by living in Manchester you get to enjoy the bustle of the city and its plentiful amenities, without having to pay London prices.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T08:26:54.948Z"
+    },
+    {
+      "url": "https://www.findawayabroad.com/post/living-in-manchester",
+      "title": "An Expat's Guide to Living in Manchester",
+      "snippet": "Living in Manchester is ideal for those looking for a mid-size city with plenty of job opportunities and a lower cost of living.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T08:26:54.948Z"
+    },
+    {
+      "url": "https://www.cruk.manchester.ac.uk/life-at-mi/living-in-manchester/",
+      "title": "Living In Manchester",
+      "snippet": "While Manchester is a major UK hub, the cost of living here is affordable, especially when compared to other large cities. Living in Manchester, you get much ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T08:26:54.948Z"
+    },
+    {
+      "url": "https://www.millerhomes.co.uk/blog/a-guide-to-living-in-manchester",
+      "title": "A guide to living in Manchester",
+      "snippet": "If you're thinking about moving to Manchester, our experts have answered your questions in this guide so you can decide if it's right for you & your family.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T08:26:54.948Z"
+    }
+  ]
+}

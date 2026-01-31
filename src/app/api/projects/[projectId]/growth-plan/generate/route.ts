@@ -6,6 +6,8 @@ import {
   generateMonthBriefs,
   GrowthPlannerOptions,
 } from '@/lib/growth-planner';
+import { refineSeoDraftsForPlan } from '@/lib/growth-planner/refineSeoDrafts';
+import { enrichPlanWithResearch } from '@/lib/research';
 
 export async function POST(
   request: NextRequest,
@@ -22,6 +24,7 @@ export async function POST(
       runFreshResearch = false,
       researchReportId,
       startDate, // Optional: ISO date string for when plan should start
+      enrichWithAeoGeo = true, // NEW: Enable AEO + GEO research enrichment
     } = body;
 
     // Check if project exists and has sufficient foundation score (or dev mode)
@@ -35,16 +38,21 @@ export async function POST(
       return NextResponse.json({ error: 'Project not found' }, { status: 404 });
     }
 
-    if (!isDev && project.foundation_score < 80) {
+    // Foundation score check (skip in dev mode)
+    const foundationScore = project.foundation_score || 0;
+    if (!isDev && foundationScore < 80) {
       return NextResponse.json(
-        { error: 'Foundation score must be at least 80 to generate growth plan' },
+        { error: `Foundation score must be at least 80 to generate growth plan (current: ${foundationScore})` },
         { status: 400 }
       );
     }
 
-    console.log(`[GrowthPlan] Generating personalized plan for project: ${project.name}`);
+    console.log(`[GrowthPlan] Generating personalized plan for project: ${project.name} (foundation: ${foundationScore}, isDev: ${isDev})`);
     if (useResearch) {
       console.log(`[GrowthPlan] Research integration enabled (fresh: ${runFreshResearch})`);
+    }
+    if (enrichWithAeoGeo) {
+      console.log(`[GrowthPlan] AEO + GEO research enrichment enabled`);
     }
 
     // Build planner options
@@ -64,7 +72,63 @@ export async function POST(
       plannerOptions
     );
 
-    // Save the growth plan
+    // ========================================
+    // PHASE: AEO + GEO Research Enrichment
+    // ========================================
+    // Enrich tasks with Serper/Tavily/Geoapify research data
+    let researchEnrichmentResult = null;
+    if (enrichWithAeoGeo && plan.businessContext) {
+      console.log(`[GrowthPlan] Running AEO + GEO research enrichment...`);
+      try {
+        researchEnrichmentResult = await enrichPlanWithResearch(
+          plan.months,
+          plan.businessContext,
+          {
+            enrichAllTasks: false, // Only first month to avoid long waits
+            concurrency: 2,
+            forceRefresh: runFreshResearch,
+            onProgress: (completed, total, task) => {
+              console.log(`[GrowthPlan] Research progress: ${completed}/${total} - ${task}`);
+            },
+          }
+        );
+        console.log(`[GrowthPlan] Research enrichment complete:
+          - Tasks enriched: ${researchEnrichmentResult.tasksEnriched}
+          - From cache: ${researchEnrichmentResult.fromCache}
+          - Failed: ${researchEnrichmentResult.tasksFailed}
+        `);
+      } catch (error) {
+        console.warn('[GrowthPlan] Research enrichment failed (non-fatal):', error);
+      }
+    }
+
+    // ========================================
+    // PHASE: SEO Title/H1/Meta Refinement (Finesse Layer)
+    // ========================================
+    // This makes the growth plan tasks the source of truth for refined titles.
+    try {
+      const businessName =
+        plan.businessContext?.businessName ||
+        project.name ||
+        'Brand';
+      const geo =
+        plan.businessContext?.location ||
+        plan.businessContext?.geo ||
+        undefined;
+
+      console.log(`[GrowthPlan] Refining SEO drafts (business: ${businessName}, geo: ${geo || 'none'})...`);
+      plan.months = await refineSeoDraftsForPlan({
+        months: plan.months,
+        businessName,
+        geo,
+        openaiApiKey: process.env.OPENAI_API_KEY,
+      });
+      console.log('[GrowthPlan] SEO drafts refined and embedded into tasks');
+    } catch (e) {
+      console.warn('[GrowthPlan] SEO draft refinement failed (non-fatal):', e);
+    }
+
+    // Save the growth plan (including research-enriched tasks)
     const { data: savedPlan, error: saveError } = await adminClient
       .from('growth_plans')
       .upsert({
@@ -87,11 +151,13 @@ export async function POST(
       - Tasks: ${plan.totalTasks}
       - Quality: ${plan.qualityScore.overall}/100
       - Cadence: ${plan.cadenceReport?.completeMonths || 0}/${plan.months.length} complete months
+      - Research enriched: ${researchEnrichmentResult?.tasksEnriched || 0} tasks
     `);
 
     return NextResponse.json({
       data: {
         ...savedPlan,
+        researchEnrichment: researchEnrichmentResult,
         qualityScore: plan.qualityScore,
         gapAnalysis: plan.gapAnalysis,
         assumptions: plan.assumptions,
@@ -103,8 +169,17 @@ export async function POST(
     });
   } catch (error) {
     console.error('[GrowthPlan] Error generating growth plan:', error);
+    
+    // Log the full error stack if available
+    if (error instanceof Error) {
+      console.error('[GrowthPlan] Error stack:', error.stack);
+    }
+    
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Internal server error' },
+      { 
+        error: error instanceof Error ? error.message : 'Internal server error',
+        details: error instanceof Error ? error.stack : undefined,
+      },
       { status: 500 }
     );
   }

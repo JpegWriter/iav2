@@ -1,0 +1,268 @@
+{
+  "geo": {
+    "geoSummary": "Buckinghamshire, Buckinghamshire, United Kingdom",
+    "primaryLocation": {
+      "name": "Buckinghamshire",
+      "formatted": "Buckinghamshire, ENG, UK",
+      "lat": 51.840894,
+      "lon": -0.8998073587480795,
+      "country": "United Kingdom",
+      "region": "Buckinghamshire"
+    },
+    "nearbyAreas": [],
+    "proximityAnchors": [
+      {
+        "category": "transport",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      },
+      {
+        "category": "shopping",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      },
+      {
+        "category": "amenity",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      }
+    ],
+    "placeAnchors": [
+      {
+        "name": "Crossroads",
+        "category": "public_transport",
+        "addressLine": "Crossroads, Waddesdon Hill, Waddesdon, HP18 0ER, United Kingdom",
+        "distanceMeters": 427,
+        "lat": 51.8442924,
+        "lon": -0.9026718
+      },
+      {
+        "name": "Waddesdon Crossroads",
+        "category": "public_transport",
+        "addressLine": "Waddesdon Crossroads, Waddesdon Hill, Waddesdon, HP18 0ER, United Kingdom",
+        "distanceMeters": 434,
+        "lat": 51.8442602,
+        "lon": -0.9029899
+      },
+      {
+        "name": "Unnamed",
+        "category": "public_transport",
+        "addressLine": "A41, Waddesdon, HP18 0NJ, United Kingdom",
+        "distanceMeters": 628,
+        "lat": 51.8437103,
+        "lon": -0.891916
+      },
+      {
+        "name": "Fleet Marston Cranwell Gate",
+        "category": "public_transport",
+        "addressLine": "Fleet Marston Cranwell Gate, A41, Waddesdon, HP18 0QB, United Kingdom",
+        "distanceMeters": 672,
+        "lat": 51.8433412,
+        "lon": -0.8908991
+      },
+      {
+        "name": "Porky's Diner",
+        "category": "catering",
+        "addressLine": "Porky's Diner, A41, Waddesdon, HP18 0NQ, United Kingdom",
+        "distanceMeters": 1075,
+        "lat": 51.8453199,
+        "lon": -0.9136755
+      },
+      {
+        "name": "Anstey Close",
+        "category": "public_transport",
+        "addressLine": "Anstey Close, A41, Waddesdon, HP18 0NA, United Kingdom",
+        "distanceMeters": 1262,
+        "lat": 51.845442,
+        "lon": -0.9165802
+      },
+      {
+        "name": "The Chadnis",
+        "category": "catering",
+        "addressLine": "The Chadnis, 43-45 High Street, Waddesdon, HP18 0LL, United Kingdom",
+        "distanceMeters": 1541,
+        "lat": 51.8461342,
+        "lon": -0.9205127
+      },
+      {
+        "name": "The Lion",
+        "category": "catering",
+        "addressLine": "The Lion, High Street, Waddesdon, HP18 0LB, United Kingdom",
+        "distanceMeters": 1700,
+        "lat": 51.845869,
+        "lon": -0.9231367
+      },
+      {
+        "name": "94 Coffee Shop",
+        "category": "catering",
+        "addressLine": "94 Coffee Shop, 94 High Street, Waddesdon, HP18 0JD, United Kingdom",
+        "distanceMeters": 1807,
+        "lat": 51.8457407,
+        "lon": -0.9248362
+      },
+      {
+        "name": "The Long Dog",
+        "category": "catering",
+        "addressLine": "The Long Dog, High Street, Waddesdon, HP18 0JF, United Kingdom",
+        "distanceMeters": 2009,
+        "lat": 51.8462884,
+        "lon": -0.9276206
+      }
+    ],
+    "localLanguage": [
+      {
+        "phrase": "Buckinghamshire",
+        "type": "area-name",
+        "importance": "high"
+      }
+    ],
+    "geoComparisons": [],
+    "localDecisionFactors": [
+      {
+        "factor": "Public transport links",
+        "category": "transport",
+        "importance": "high",
+        "phrasePattern": "The area benefits from good transport connections, with [nearby stations/stops] providing access to..."
+      },
+      {
+        "factor": "Commuter accessibility",
+        "category": "transport",
+        "importance": "medium",
+        "phrasePattern": "For commuters, the location offers..."
+      },
+      {
+        "factor": "Local amenities within walking distance",
+        "category": "walkability",
+        "importance": "high",
+        "phrasePattern": "Day-to-day conveniences are within easy reach, including..."
+      },
+      {
+        "factor": "Local character",
+        "category": "lifestyle",
+        "importance": "medium",
+        "phrasePattern": "The area has a [characteristic] feel, with..."
+      },
+      {
+        "factor": "Community feel",
+        "category": "lifestyle",
+        "importance": "medium",
+        "phrasePattern": "Residents often mention the sense of community..."
+      },
+      {
+        "factor": "Shopping and services",
+        "category": "amenities",
+        "importance": "medium",
+        "phrasePattern": "Local shops and services include..."
+      }
+    ],
+    "geoInternalLinkSuggestions": [],
+    "generatedAt": "2026-01-30T13:00:09.386Z"
+  },
+  "sources": [
+    {
+      "url": "https://jessicawyles.co.uk/buckinghamshire-engagement-photographer/",
+      "title": "Buckinghamshire Engagement Photographer",
+      "snippet": "As a Buckinghamshire engagement photographer I absolutely loved walking around at the beautiful Stowe Gardens in during summer 2021.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:09.385Z"
+    },
+    {
+      "url": "https://katrinamatthewsphotography.co.uk/engagement-session-locations/",
+      "title": "Engagement Session Locations",
+      "snippet": "My favourite spots in Hertfordshire & Buckinghamshire · Stockgrove Country Park · Ashridge Estate · Tring Park · Cassiobury Park.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:09.385Z"
+    },
+    {
+      "url": "https://damionmowerphotography.co.uk/burnham-beeches-engagement-photography/",
+      "title": "Burnham Beeches Engagement Photography",
+      "snippet": "Burnham Beeches engagement photography by Damion Mower. A local Buckinghamshire photographer capturing elegant, natural and unique images.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:09.385Z"
+    },
+    {
+      "url": "https://alisonbusbyphotography.co.uk/category/engagement/",
+      "title": "Engagement",
+      "snippet": "An engagement shoot with her and fiancé Will at the family home near Amersham in Buckinghamshire. Making an engagement shoot fun.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:09.385Z"
+    },
+    {
+      "url": "https://hannahmia.com/black-park-slough-berkshire-engagement-photographer/",
+      "title": "Black Park Country Park Buckinghamshire Engagement ...",
+      "snippet": "Buckinghamshire engagement photographer - a casual, colourful engagement photoshoot in Black Park Country Park, Buckinghamshire.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:09.385Z"
+    },
+    {
+      "url": "https://www.struttandparker.com/properties/residential/area-guides/buckinghamshire",
+      "title": "Buckinghamshire Area Guide",
+      "snippet": "Read our Buckinghamshire area guide to learn more about living in the county, including information on key schools, transport links and property prices.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:09.385Z"
+    },
+    {
+      "url": "https://www.visitsoutheastengland.com/places-to-visit/Buckinghamshire",
+      "title": "Things To Do in Buckinghamshire",
+      "snippet": "Official guide to Buckinghamshire with hundreds of things to do, what's on & best places to visit throughout 2026 in Aylesbury, Wycombe, Milton Keynes ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:09.385Z"
+    },
+    {
+      "url": "https://www.griggshomes.co.uk/buckinghamshire-area-guide",
+      "title": "Buckinghamshire Area Guide, Average House Prices and ...",
+      "snippet": "Buckinghamshire has a population of 540,000 and is located 45 mins north of London. With average house prices of around £413,924, the county is known for its ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:09.385Z"
+    },
+    {
+      "url": "https://www.britainexpress.com/counties/bucks/index.htm",
+      "title": "Buckinghamshire England travel guide",
+      "snippet": "A profile of the county of Buckinghamshire, England, highlighting attractions, history, and visitor information.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:09.385Z"
+    },
+    {
+      "url": "https://whichschooladvisor.com/uk/area-guide/south-east-england/buckinghamshire",
+      "title": "Buckinghamshire Area Guide - The best places to live in UK",
+      "snippet": "Read our Buckinghamshire area guide for a quick overview of the area and its schools.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:09.385Z"
+    },
+    {
+      "url": "https://www.reddit.com/r/Buckinghamshire/comments/1eb6ape/best_place_in_buckinghamshire/",
+      "title": "Best place in Buckinghamshire",
+      "snippet": "Milton Keynes is great. You don't have to live near the centre or even on one of the many estates. We have numerous beautiful villages that come ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:09.385Z"
+    },
+    {
+      "url": "https://bucksoxon.muddystilettos.co.uk/best-places-to-live/buckinghamshire/",
+      "title": "Buckinghamshire",
+      "snippet": "A hop and a skip into London, yet somehow a million miles away, Buckinghamshire is famous for its stunning Chilterns landscape, chic market towns and relaxed ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:09.385Z"
+    },
+    {
+      "url": "https://connectexperts.co.uk/why-move-to-buckinghamshire/",
+      "title": "Why Move to Buckinghamshire | Living & Mortgage Advice",
+      "snippet": "With outstanding schools, a strong economy, and a welcoming community atmosphere, Buckinghamshire is a highly desirable place to live. Whether seeking career ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:09.385Z"
+    },
+    {
+      "url": "https://www.arkrelocation.com/10-best-places-to-live-in-buckinghamshire/",
+      "title": "10 Best Places to Live in Buckinghamshire",
+      "snippet": "With its rolling hills, picturesque villages, and vibrant market towns, Buckinghamshire offers an excellent quality of life for families, professionals, and ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:09.385Z"
+    },
+    {
+      "url": "https://www.homeviews.com/area/buckinghamshire",
+      "title": "Buckinghamshire Reviews",
+      "snippet": "Buckinghamshire is a county in the southeast of England. The largest and most populous town in Buckinghamshire is Milton Keynes with over 200,000 residents.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T13:00:09.385Z"
+    }
+  ]
+}

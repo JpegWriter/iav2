@@ -32,6 +32,7 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { TaskDetailPanel } from '@/components/growth/TaskDetailPanel';
 
 // ============================================================================
 // TYPES - Support both new personalized and legacy template structures
@@ -57,6 +58,14 @@ interface GrowthTask {
   briefId: string | null;
   localAnchoring: string | null;
   experienceRequired: string[];
+  // SEO Options
+  seoTitleOptions?: string[];
+  h1Options?: string[];
+  metaDescriptionOptions?: string[];
+  selectedSeoTitleIndex?: number | null;
+  selectedH1Index?: number | null;
+  selectedMetaIndex?: number | null;
+  seoLocked?: boolean;
   proofElements: string[];
   reviewThemesToUse: string[];
   internalLinksUp: string[];
@@ -107,6 +116,7 @@ export default function GrowthPlannerPage({
   params: { projectId: string };
 }) {
   const [expandedMonth, setExpandedMonth] = useState<number | null>(1);
+  const [selectedTask, setSelectedTask] = useState<GrowthTask | null>(null);
 
   const queryClient = useQueryClient();
 
@@ -728,7 +738,8 @@ export default function GrowthPlannerPage({
                         {monthItems.map((task: any) => (
                           <div
                             key={task.id}
-                            className="p-3 bg-white border border-slate-200 rounded-lg hover:border-slate-300 transition-colors"
+                            className="p-3 bg-white border border-slate-200 rounded-lg hover:border-primary-300 hover:shadow-sm transition-all cursor-pointer"
+                            onClick={() => setSelectedTask(task)}
                           >
                             <div className="flex items-start justify-between">
                               <div className="flex items-start gap-3">
@@ -786,7 +797,7 @@ export default function GrowthPlannerPage({
                                   </div>
                                 </div>
                               </div>
-                              <div className="flex items-center gap-2">
+                              <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
                                 <ImageUploadButton
                                   projectId={params.projectId}
                                   taskId={task.id}
@@ -801,7 +812,10 @@ export default function GrowthPlannerPage({
                                   <Button 
                                     variant="outline" 
                                     size="sm"
-                                    onClick={() => generateBriefMutation.mutate(task.id)}
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      generateBriefMutation.mutate(task.id);
+                                    }}
                                     disabled={generatingBriefTaskId === task.id}
                                   >
                                     {generatingBriefTaskId === task.id ? (
@@ -815,11 +829,24 @@ export default function GrowthPlannerPage({
                                   </Button>
                                 )}
                                 {task.status === 'briefed' && (
-                                  <Button size="sm">
-                                    Start Writing
+                                  <Button 
+                                    size="sm"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      setSelectedTask(task);
+                                    }}
+                                  >
+                                    Create Article
                                   </Button>
                                 )}
-                                <Button variant="ghost" size="sm">
+                                <Button 
+                                  variant="ghost" 
+                                  size="sm"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setSelectedTask(task);
+                                  }}
+                                >
                                   <ChevronRight className="w-4 h-4" />
                                 </Button>
                               </div>
@@ -855,6 +882,18 @@ export default function GrowthPlannerPage({
             </Button>
           </div>
         </Card>
+      )}
+
+      {/* Task Detail Panel */}
+      {selectedTask && (
+        <TaskDetailPanel
+          projectId={params.projectId}
+          task={selectedTask}
+          onClose={() => setSelectedTask(null)}
+          onStatusChange={() => {
+            queryClient.invalidateQueries({ queryKey: ['growth-plan', params.projectId] });
+          }}
+        />
       )}
     </div>
   );

@@ -123,7 +123,7 @@ function ImageUploadModal({
     if (!files) return;
 
     const newImages: UploadedImage[] = [];
-    const maxFiles = 3 - images.length;
+    const maxFiles = 10 - images.length;
 
     for (let i = 0; i < Math.min(files.length, maxFiles); i++) {
       const file = files[i];
@@ -312,7 +312,7 @@ function ImageUploadModal({
                 Drag & drop images or <span className="text-primary-600 font-medium">browse</span>
               </p>
               <p className="text-xs text-slate-400 mt-1">
-                Up to 3 images, max 10MB each
+                Up to 10 images, max 10MB each
               </p>
             </div>
           )}

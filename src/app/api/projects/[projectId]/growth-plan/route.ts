@@ -9,6 +9,10 @@ interface GrowthPlanTask {
 interface VisionEvidencePack {
   id: string;
   used_in_task_ids: string[];
+  context_snapshot?: {
+    linkedTaskId?: string;
+    [key: string]: unknown;
+  };
   images?: { id: string }[];
 }
 
@@ -32,14 +36,19 @@ export async function GET(
     // If we have a growth plan, enrich tasks with image pack info
     if (growthPlan?.months) {
       // Fetch all vision evidence packs for this project
+      // Include context_snapshot to get linkedTaskId for non-UUID task IDs
       const { data: packs, error: packsError } = await adminClient
         .from('vision_evidence_packs')
-        .select('id, used_in_task_ids')
+        .select('id, used_in_task_ids, context_snapshot')
         .eq('project_id', params.projectId);
 
       console.log('[GrowthPlan] Vision packs found:', packs?.length || 0, 'error:', packsError?.message || 'none');
       if (packs?.length) {
-        console.log('[GrowthPlan] Pack task IDs:', packs.map((p: VisionEvidencePack) => ({ id: p.id, taskIds: p.used_in_task_ids })));
+        console.log('[GrowthPlan] Pack task IDs:', packs.map((p: VisionEvidencePack) => ({ 
+          id: p.id, 
+          taskIds: p.used_in_task_ids,
+          linkedTaskId: p.context_snapshot?.linkedTaskId 
+        })));
       }
 
       // Also get image counts per pack
@@ -56,11 +65,23 @@ export async function GET(
         for (const pack of packs as VisionEvidencePack[]) {
           const imageCount = imageCounts?.filter((img: { pack_id: string }) => img.pack_id === pack.id).length || 0;
           
+          // First check UUID-based task IDs (for future UUID task IDs)
           for (const taskId of pack.used_in_task_ids || []) {
             taskImageMap[taskId] = {
               packId: pack.id,
               imageCount,
             };
+          }
+          
+          // Also check linkedTaskId in context_snapshot for non-UUID task IDs
+          // This handles task IDs like "task-6-case-study-XXX"
+          const linkedTaskId = pack.context_snapshot?.linkedTaskId;
+          if (linkedTaskId && typeof linkedTaskId === 'string') {
+            taskImageMap[linkedTaskId] = {
+              packId: pack.id,
+              imageCount,
+            };
+            console.log('[GrowthPlan] Found linkedTaskId in context:', linkedTaskId, 'for pack:', pack.id);
           }
         }
       }

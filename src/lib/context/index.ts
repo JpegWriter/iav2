@@ -28,5 +28,6 @@ export {
   buildWriterSnapshot,
   buildProfileConfidence,
   buildProfileCompleteness,
+  NICHE_DEFINITIONS,
 } from './serviceInference';
-export type { InferredServices } from './serviceInference';
+export type { InferredServices, ServiceSource } from './serviceInference';

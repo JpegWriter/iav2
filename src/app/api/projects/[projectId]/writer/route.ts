@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import crypto from 'crypto';
 import { createAdminClient } from '@/lib/supabase/server';
 import { 
   buildMasterProfile, 
@@ -6,6 +7,54 @@ import {
   type TaskInput,
   type WriterJobConfig,
 } from '@/lib/context';
+import { refineSeoDraftsForTask } from '@/lib/growth-planner/refineSeoDrafts';
+
+// ============================================================================
+// UUID VALIDATION & CONVERSION
+// ============================================================================
+
+const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+function isValidUUID(str: string): boolean {
+  return UUID_REGEX.test(str);
+}
+
+/**
+ * Converts a string task ID to a deterministic UUID.
+ * For task IDs that are already UUIDs, returns as-is.
+ * For string IDs like "task-6-case-study-XXX", generates a v5-style UUID.
+ */
+function toDbTaskId(taskId: string): string {
+  if (isValidUUID(taskId)) {
+    return taskId;
+  }
+  // Generate a deterministic UUID from the string
+  const hash = crypto.createHash('sha256').update(taskId).digest('hex');
+  return `${hash.slice(0, 8)}-${hash.slice(8, 12)}-4${hash.slice(13, 16)}-a${hash.slice(17, 20)}-${hash.slice(20, 32)}`;
+}
+
+/**
+ * Resolve vision pack ID for a task even when task IDs are not UUIDs.
+ * Falls back to searching by linkedTaskId in context_snapshot.
+ */
+async function resolveVisionPackIdForTask(
+  adminClient: any,
+  projectId: string,
+  taskId: string
+): Promise<string | null> {
+  // If the taskId is not a UUID, vision pack linking happens via context_snapshot.linkedTaskId
+  // We fetch the most recent pack for that task.
+  const { data, error } = await adminClient
+    .from('vision_evidence_packs')
+    .select('id, created_at, context_snapshot')
+    .eq('project_id', projectId)
+    .order('created_at', { ascending: false });
+
+  if (error || !data) return null;
+
+  const match = data.find((p: any) => p?.context_snapshot?.linkedTaskId === taskId);
+  return match?.id || null;
+}
 
 // ============================================================================
 // WRITER API ROUTES
@@ -96,6 +145,129 @@ export async function POST(
     }
 
     // =========================================================================
+    // EXTRACT VISION FACTS FROM IMAGE PACKS
+    // =========================================================================
+    let visionFacts: string[] = [];
+    let userFacts: string[] = []; // User-provided facts like "Sold in 3 days"
+    
+    // Resolve pack ID even if task.imagePackId wasn't persisted
+    const taskImagePackId = task.imagePackId || task.image_pack_id;
+    console.log(`[Writer] === VISION PACK RESOLUTION ===`);
+    console.log(`[Writer] task.imagePackId: ${task.imagePackId || 'undefined'}`);
+    console.log(`[Writer] task.image_pack_id: ${task.image_pack_id || 'undefined'}`);
+    console.log(`[Writer] taskId for fallback: ${taskId || 'none'}`);
+    
+    const resolvedPackId = taskImagePackId || 
+      (taskId ? await resolveVisionPackIdForTask(adminClient, projectId, taskId) : null);
+    
+    console.log(`[Writer] resolvedPackId: ${resolvedPackId || 'NONE - NO VISION PACK FOUND'}`);
+    
+    if (resolvedPackId) {
+      console.log(`[Writer] Fetching vision facts from pack: ${resolvedPackId}${!taskImagePackId ? ' (resolved by linkedTaskId)' : ''}`);
+      
+      // Get the vision evidence pack with its images
+      const { data: visionPack } = await adminClient
+        .from('vision_evidence_packs')
+        .select('id, context_snapshot, combined_narrative, cross_image_themes')
+        .eq('id', resolvedPackId)
+        .single();
+      
+      if (visionPack) {
+        // Extract userFacts from context_snapshot (first-party evidence, MUST appear in output)
+        const snapshot = visionPack.context_snapshot as any;
+        if (snapshot?.userFacts && Array.isArray(snapshot.userFacts)) {
+          userFacts = snapshot.userFacts;
+          console.log(`[Writer] Found ${userFacts.length} user-provided facts from userFacts array:`, userFacts);
+        }
+        
+        // ALSO check writerNotes (the "Image Context" text from UI)
+        if (snapshot?.writerNotes && typeof snapshot.writerNotes === 'string' && userFacts.length === 0) {
+          // Parse writerNotes into facts (split by newlines or semicolons)
+          const notesAsFacts = snapshot.writerNotes
+            .split(/[\n;]+/)
+            .map((s: string) => s.trim())
+            .filter((s: string) => s.length > 0);
+          if (notesAsFacts.length > 0) {
+            userFacts = notesAsFacts;
+            console.log(`[Writer] Extracted ${userFacts.length} user facts from writerNotes:`, userFacts);
+          }
+        }
+        
+        // Add combined narrative as a fact
+        if (visionPack.combined_narrative) {
+          visionFacts.push(visionPack.combined_narrative);
+        }
+        
+        // Add cross-image themes as facts
+        if (visionPack.cross_image_themes && Array.isArray(visionPack.cross_image_themes)) {
+          visionFacts.push(...visionPack.cross_image_themes);
+        }
+        
+        // Get the images and their evidence
+        const { data: images } = await adminClient
+          .from('vision_evidence_images')
+          .select('evidence')
+          .eq('pack_id', resolvedPackId);
+        
+        if (images && images.length > 0) {
+          for (const img of images) {
+            const evidence = img.evidence as any;
+            if (evidence) {
+              // Scene summary is a key fact
+              if (evidence.sceneSummary) {
+                visionFacts.push(evidence.sceneSummary);
+              }
+              // Story angles have hooks we can use
+              if (evidence.storyAngles && Array.isArray(evidence.storyAngles)) {
+                for (const angle of evidence.storyAngles) {
+                  if (angle.suggestedHook) {
+                    visionFacts.push(angle.suggestedHook);
+                  }
+                }
+              }
+              // Detected entities provide concrete details
+              if (evidence.entities && Array.isArray(evidence.entities)) {
+                const entityFacts = evidence.entities
+                  .filter((e: any) => e.confidence >= 70)
+                  .map((e: any) => {
+                    const attrs = e.attributes ? Object.entries(e.attributes).map(([k, v]) => `${k}: ${v}`).join(', ') : '';
+                    return attrs ? `${e.name} (${attrs})` : e.name;
+                  });
+                if (entityFacts.length > 0) {
+                  visionFacts.push(`Observed in the images: ${entityFacts.join(', ')}`);
+                }
+              }
+            }
+          }
+        }
+        
+        console.log(`[Writer] Extracted ${visionFacts.length} vision facts from pack`);
+      }
+    } else {
+      console.log(`[Writer] ⚠️ NO VISION PACK ATTACHED - Article will lack first-hand evidence!`);
+      console.log(`[Writer] To fix: Attach images to this task in the Growth Plan, or create a vision_evidence_pack linked to this taskId.`);
+    }
+    
+    // Also check for vision facts directly on the task (from growth plan)
+    if (task.visionFacts && Array.isArray(task.visionFacts)) {
+      visionFacts = [...visionFacts, ...task.visionFacts];
+    }
+    
+    // Merge userFacts into visionFacts - these are first-party evidence and MUST appear in output
+    // Place them at the start so they have the highest priority
+    if (userFacts.length > 0) {
+      console.log(`[Writer] Prepending ${userFacts.length} user-provided facts (MUST appear in output)`);
+      visionFacts = [...userFacts, ...visionFacts];
+    }
+    
+    console.log(`[Writer] === FINAL VISION FACTS: ${visionFacts.length} total ===`);
+    if (visionFacts.length === 0) {
+      console.log(`[Writer] ❌ CRITICAL: No vision facts will be injected. Output will be GENERIC.`);
+    } else {
+      visionFacts.slice(0, 5).forEach((f, i) => console.log(`  [${i+1}] ${f.substring(0, 100)}`));
+    }
+
+    // =========================================================================
     // BUILD MASTER PROFILE
     // =========================================================================
     console.log('[Writer] Building master profile...');
@@ -106,6 +278,45 @@ export async function POST(
     // BUILD TASK CONTEXT PACK
     // =========================================================================
     console.log('[Writer] Building task context pack...');
+    
+    // Extract SEO drafts from growth plan task (if present)
+    let seoDrafts = (task.seoTitleDraft && task.h1Draft && task.metaDescriptionDraft) ? {
+      seoTitleDraft: task.seoTitleDraft,
+      h1Draft: task.h1Draft,
+      metaDescriptionDraft: task.metaDescriptionDraft,
+    } : undefined;
+    
+    // If no SEO drafts in growth plan, generate them on-the-fly
+    if (!seoDrafts) {
+      console.log('[Writer] No SEO drafts in growth plan - generating on-the-fly...');
+      try {
+        const businessName = masterProfile.business.name;
+        const geo = masterProfile.business.locations?.[0];
+        const { default: OpenAI } = await import('openai');
+        const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+        
+        const refinedDrafts = await refineSeoDraftsForTask(task, businessName, geo, openai);
+        
+        if (refinedDrafts.seoTitleDraft && refinedDrafts.h1Draft && refinedDrafts.metaDescriptionDraft) {
+          seoDrafts = {
+            seoTitleDraft: refinedDrafts.seoTitleDraft,
+            h1Draft: refinedDrafts.h1Draft,
+            metaDescriptionDraft: refinedDrafts.metaDescriptionDraft,
+          };
+          console.log(`[Writer] Generated SEO drafts: "${seoDrafts.seoTitleDraft}"`)
+        }
+      } catch (seoError) {
+        console.warn('[Writer] Failed to generate SEO drafts on-the-fly:', seoError);
+        // Continue without SEO drafts - writer will generate its own
+      }
+    } else {
+      console.log(`[Writer] SEO drafts from growth plan: "${seoDrafts.seoTitleDraft}"`);
+    }
+    
+    if (visionFacts.length > 0) {
+      console.log(`[Writer] Vision facts to inject: ${visionFacts.length}`);
+      visionFacts.forEach((f, i) => console.log(`  [${i+1}] ${f.substring(0, 80)}...`));
+    }
     
     // Convert task to TaskInput format
     const taskInput: TaskInput = {
@@ -128,7 +339,17 @@ export async function POST(
       originalUrl: originalUrl || task.originalUrl || task.original_url,
       requiredProofElements: task.requiredProofElements || [],
       requiredEEATSignals: task.requiredEEATSignals || [],
+      // SEO drafts from growth plan (source of truth)
+      seoDrafts,
+      // Vision facts from image analysis
+      visionFacts: visionFacts.length > 0 ? visionFacts : undefined,
     };
+    
+    // Log before context pack building
+    console.log(`[Writer] === TRACE: TaskInput visionFacts: ${taskInput.visionFacts?.length ?? 0} ===`);
+    if (taskInput.seoDrafts) {
+      console.log(`[Writer] === TRACE: TaskInput seoDrafts.seoTitle: "${taskInput.seoDrafts.seoTitleDraft}" ===`);
+    }
 
     const contextPack = await buildTaskContextPack({
       projectId,
@@ -136,6 +357,12 @@ export async function POST(
       forceRefreshMasterProfile,
     });
     console.log(`[Writer] Context pack ${contextPack.id} ready (mode: ${contextPack.mode})`);
+    
+    // Verify vision facts carried through to context pack
+    console.log(`[Writer] === TRACE: WriterBrief visionFacts: ${contextPack.writerBrief.visionFacts?.length ?? 0} ===`);
+    if (contextPack.writerBrief.seoDrafts) {
+      console.log(`[Writer] === TRACE: WriterBrief seoDrafts.seoTitle: "${contextPack.writerBrief.seoDrafts.seoTitleDraft}" ===`);
+    }
 
     // =========================================================================
     // VALIDATE REWRITE MODE
@@ -177,11 +404,14 @@ export async function POST(
     };
 
     // Create the writer job
+    // Convert task ID to UUID for database storage (handle non-UUID task IDs)
+    const dbTaskId = taskInput.id ? toDbTaskId(taskInput.id) : null;
+    
     const { data: writerJob, error: jobError } = await adminClient
       .from('writer_jobs')
       .insert({
         project_id: projectId,
-        task_id: taskInput.id || null,
+        task_id: dbTaskId,
         page_id: pageId || null,
         job_config: jobConfig,
         target_wordpress: publishingTargets.wordpress ?? true,
@@ -191,9 +421,6 @@ export async function POST(
         tone_profile_id: toneProfileId,
         tone_overrides: toneOverrides,
         status: 'pending',
-        // NEW: Link to context pack and master profile
-        context_pack_id: contextPack.id,
-        master_profile_id: masterProfile.id,
       })
       .select()
       .single();

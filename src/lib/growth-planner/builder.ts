@@ -1691,3 +1691,78 @@ function deduplicateTasks(months: GrowthPlanMonth[]): void {
     });
   }
 }
+
+// ============================================================================
+// VISION EVIDENCE TASK GENERATION
+// ============================================================================
+
+/**
+ * Patterns that indicate vision/observation-based content requiring outcome evidence
+ * Designed to be niche-agnostic across property, wedding, trades, legal, etc.
+ */
+const VISION_TRIGGER_PATTERNS = [
+  /what we (observed|noticed|found|saw|documented|captured)/i,
+  /during (sessions?|consultations?|viewings?|inspections?|visits?|our assessment)/i,
+  /when we (arrived|visited|assessed|reviewed|inspected|photographed|filmed)/i,
+  /case study|client story|before.?after|portfolio|recent work/i,
+  /local (area )?analysis|area (guide|overview)/i,
+  /on[- ]?site (review|assessment|inspection|session)/i,
+  /first[- ]?hand (observation|experience|assessment|account)/i,
+];
+
+/**
+ * Detect if a task requires vision evidence based on its content type and signals
+ */
+function taskRequiresVisionEvidence(task: GrowthTask): boolean {
+  // Check explicit fields
+  if (task.imagePackId || (task.visionFacts && task.visionFacts.length > 0)) {
+    return true;
+  }
+  
+  // Check page role - money and trust pages often need vision
+  if (task.role === 'money' || task.role === 'trust') {
+    // Case studies always need vision evidence
+    if (task.slug?.includes('case-study') || task.title?.toLowerCase().includes('case study')) {
+      return true;
+    }
+  }
+  
+  // Check title for vision signals
+  const titleText = task.title || '';
+  for (const pattern of VISION_TRIGGER_PATTERNS) {
+    if (pattern.test(titleText)) {
+      return true;
+    }
+  }
+  
+  return false;
+}
+
+/**
+ * Scan growth plan tasks and flag those requiring vision → outcome evidence.
+ * Sets requiresOutcomeEvidence flag and outcomeEvidenceStatus on applicable tasks.
+ * 
+ * This is called AFTER the plan is built to ensure all vision-required pages
+ * have proper tracking for the Vision Evidence Gate.
+ */
+export function flagVisionEvidenceTasks(months: GrowthPlanMonth[]): {
+  flaggedCount: number;
+  flaggedTasks: string[];
+} {
+  const flaggedTasks: string[] = [];
+  
+  for (const month of months) {
+    for (const task of month.tasks) {
+      if (taskRequiresVisionEvidence(task)) {
+        task.requiresOutcomeEvidence = true;
+        task.outcomeEvidenceStatus = 'missing';
+        flaggedTasks.push(task.title);
+      }
+    }
+  }
+  
+  return {
+    flaggedCount: flaggedTasks.length,
+    flaggedTasks,
+  };
+}

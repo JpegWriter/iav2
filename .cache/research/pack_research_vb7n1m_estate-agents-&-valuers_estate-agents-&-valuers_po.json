@@ -1,0 +1,794 @@
+{
+  "aeo": {
+    "targetQueries": [
+      "Estate Agents & Valuers",
+      "best estate agents & valuers",
+      "best estate agents & valuers near me",
+      "estate agents & valuers vs",
+      "estate agents & valuers comparison",
+      "estate agents & valuers mistakes to avoid",
+      "common estate agents & valuers problems",
+      "what is estate agents & valuers",
+      "what does estate agents & valuers include",
+      "why use estate agents & valuers",
+      "why is estate agents & valuers important",
+      "how does estate agents & valuers work"
+    ],
+    "peopleAlsoAsk": [],
+    "questionClusters": [],
+    "answerShapes": [],
+    "citationTargets": [
+      {
+        "url": "https://www.legislation.gov.uk/ukpga/1979/38",
+        "title": "Estate Agents Act 1979 - Legislation.gov.uk",
+        "snippet": "An Act to make provision with respect to the carrying on of and to persons who carry on, certain activities in connection with the disposal and acquisition",
+        "type": "official",
+        "credibilityScore": 92.05532
+      },
+      {
+        "url": "https://hoa.org.uk/advice/guides-for-homeowners/i-am-buying/estate-agents-legal-obligations-to-buyers/",
+        "title": "Estate Agents Legal Obligations To Buyers - HomeOwners Alliance",
+        "snippet": "1. Estate agents must accurately describe the property · 2. Estate agents must not withhold important information · 3. Estate agents must pass on offers to the",
+        "type": "industry",
+        "credibilityScore": 77.293844
+      },
+      {
+        "url": "https://uk.practicallaw.thomsonreuters.com/4-382-9877?transitionType=Default&contextData=(sc.Default)",
+        "title": "Regulation of estate agents and entitlement to commission",
+        "snippet": "Estate agents are regulated under the Estate Agents Act 1979, which also sets out the duties owed to buyer and seller clients.",
+        "type": "guide",
+        "credibilityScore": 76.46988
+      },
+      {
+        "url": "https://www.davidcosby.co.uk/regulation-of-estate-agents/",
+        "title": "Regulation of Estate Agents",
+        "snippet": "Regulation of Estate Agents | Establishing minimum standards and qualifications to ensure transparency, integrity, and consumer protection.",
+        "type": "guide",
+        "credibilityScore": 68.191797
+      },
+      {
+        "url": "https://www.irs.gov/irm/part4/irm_04-048-006",
+        "title": "4.48.6 Real Property Valuation Guidelines | Internal Revenue Service",
+        "snippet": "Purpose: The purpose of this IRM is to provide guidelines applicable to all IRS personnel that are engaged in valuation practice (hereinafter",
+        "type": "official",
+        "credibilityScore": 67.079534
+      },
+      {
+        "url": "https://www.which.co.uk/money/mortgages-and-property/home-movers/selling-a-house/how-to-find-the-best-estate-agent-agoSM1o7mzQb",
+        "title": "How to find the best estate agent - Which? - Which.co.uk",
+        "snippet": "Looking for an estate agent? Watch our video for expert tips on how to choose the best estate agent to sell your house quickly and for the ...",
+        "type": "guide",
+        "credibilityScore": 65
+      },
+      {
+        "url": "https://commonslibrary.parliament.uk/research-briefings/sn06900/",
+        "title": "Regulation of estate agents - The House of Commons Library",
+        "snippet": "This briefing provides an outline of the current regulation of estate agents. It also looks at past market studies and consultations.",
+        "type": "guide",
+        "credibilityScore": 63.152665
+      }
+    ],
+    "misconceptions": [
+      {
+        "misconception": "All estate agents & valuers providers are the same",
+        "correction": "Quality, experience, and approach can vary significantly. Look for credentials, reviews, and local expertise."
+      },
+      {
+        "misconception": "The cheapest option is always the best value",
+        "correction": "Price should be weighed against quality, reliability, and what's included. Sometimes paying more saves money long-term."
+      }
+    ],
+    "snippetHooks": [
+      "In practice...",
+      "What usually changes the price is...",
+      "A common mistake we see is...",
+      "From experience, the key factor is...",
+      "The typical journey looks like this...",
+      "What most people don't realise is...",
+      "The main difference comes down to...",
+      "For those in the local area...",
+      "What we've found works best is...",
+      "The honest answer is..."
+    ],
+    "relatedSearches": [],
+    "generatedAt": "2026-01-30T09:39:05.223Z"
+  },
+  "geo": {
+    "geoSummary": "Portslade, Brighton and Hove, United Kingdom",
+    "primaryLocation": {
+      "name": "Portslade",
+      "formatted": "Portslade by Sea, BNH, ENG, United Kingdom",
+      "lat": 50.8329633,
+      "lon": -0.2070213,
+      "country": "United Kingdom",
+      "region": "Brighton and Hove",
+      "postcode": "BN41 1GB"
+    },
+    "nearbyAreas": [
+      {
+        "name": "the old",
+        "relationship": "adjacent"
+      },
+      {
+        "name": "be friendly",
+        "relationship": "adjacent"
+      }
+    ],
+    "proximityAnchors": [
+      {
+        "category": "transport",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      },
+      {
+        "category": "shopping",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      },
+      {
+        "category": "amenity",
+        "hasPlaces": true,
+        "relevanceScore": 100
+      }
+    ],
+    "placeAnchors": [
+      {
+        "name": "The Foghorn",
+        "category": "catering",
+        "addressLine": "The Foghorn, 55 Boundary Road, Portslade by Sea, BN3 4EF, United Kingdom",
+        "distanceMeters": 19,
+        "lat": 50.8328559,
+        "lon": -0.2072314
+      },
+      {
+        "name": "Boundary Road",
+        "category": "public_transport",
+        "addressLine": "Boundary Road, Portslade by Sea, BN41 1AG, United Kingdom",
+        "distanceMeters": 33,
+        "lat": 50.8328102,
+        "lon": -0.2074172
+      },
+      {
+        "name": "Boundary Road",
+        "category": "public_transport",
+        "addressLine": "Boundary Road, New Church Road, Portslade by Sea, BN3 4EB, United Kingdom",
+        "distanceMeters": 33,
+        "lat": 50.8330043,
+        "lon": -0.2065592
+      },
+      {
+        "name": "17 Grams",
+        "category": "catering",
+        "addressLine": "17 Grams, 56 Station Road, Portslade by Sea, BN3 5TD, United Kingdom",
+        "distanceMeters": 42,
+        "lat": 50.8333403,
+        "lon": -0.2069848
+      },
+      {
+        "name": "Food App",
+        "category": "catering",
+        "addressLine": "Food App, Boundary Road, Portslade by Sea, BN41 1AG, United Kingdom",
+        "distanceMeters": 46,
+        "lat": 50.8326054,
+        "lon": -0.2073523
+      },
+      {
+        "name": "No 30 Cafe",
+        "category": "catering",
+        "addressLine": "No 30 Cafe, 30 Station Road, Portslade by Sea, BN41 1GB, United Kingdom",
+        "distanceMeters": 53,
+        "lat": 50.8333712,
+        "lon": -0.207418
+      },
+      {
+        "name": "Madeira Cafe and Restaurant",
+        "category": "catering",
+        "addressLine": "Madeira Cafe and Restaurant, Station Road, Portslade by Sea, BN3 5TD, United Kingdom",
+        "distanceMeters": 62,
+        "lat": 50.8334879,
+        "lon": -0.2073259
+      },
+      {
+        "name": "Boundary Road",
+        "category": "public_transport",
+        "addressLine": "Boundary Road, Station Road, Portslade by Sea, BN3 5TD, United Kingdom",
+        "distanceMeters": 74,
+        "lat": 50.8336201,
+        "lon": -0.2071477
+      },
+      {
+        "name": "Tesco",
+        "category": "commercial",
+        "addressLine": "Tesco, 19-20 Station Road, Portslade by Sea, BN41 1GB, United Kingdom",
+        "distanceMeters": 130,
+        "lat": 50.8341339,
+        "lon": -0.2070059
+      },
+      {
+        "name": "St Andrew's Road",
+        "category": "public_transport",
+        "addressLine": "St Andrew's Road, Boundary Road, Portslade by Sea, BN41 1AG, United Kingdom",
+        "distanceMeters": 137,
+        "lat": 50.8318992,
+        "lon": -0.2079934
+      }
+    ],
+    "localLanguage": [
+      {
+        "phrase": "Portslade",
+        "type": "area-name",
+        "importance": "high"
+      }
+    ],
+    "geoComparisons": [
+      {
+        "areaA": "Portslade",
+        "areaB": "the old",
+        "framingSuggestion": "When comparing Portslade and the old, factors like transport links, local amenities, and community feel often come into play.",
+        "comparisonFactors": [
+          "Transport accessibility",
+          "Local amenities",
+          "Community character",
+          "Property types"
+        ]
+      },
+      {
+        "areaA": "Portslade",
+        "areaB": "be friendly",
+        "framingSuggestion": "When comparing Portslade and be friendly, factors like transport links, local amenities, and community feel often come into play.",
+        "comparisonFactors": [
+          "Transport accessibility",
+          "Local amenities",
+          "Community character",
+          "Property types"
+        ]
+      }
+    ],
+    "localDecisionFactors": [
+      {
+        "factor": "Public transport links",
+        "category": "transport",
+        "importance": "high",
+        "phrasePattern": "The area benefits from good transport connections, with [nearby stations/stops] providing access to..."
+      },
+      {
+        "factor": "Commuter accessibility",
+        "category": "transport",
+        "importance": "medium",
+        "phrasePattern": "For commuters, the location offers..."
+      },
+      {
+        "factor": "Local amenities within walking distance",
+        "category": "walkability",
+        "importance": "high",
+        "phrasePattern": "Day-to-day conveniences are within easy reach, including..."
+      },
+      {
+        "factor": "Local character",
+        "category": "lifestyle",
+        "importance": "medium",
+        "phrasePattern": "The area has a [characteristic] feel, with..."
+      },
+      {
+        "factor": "Community feel",
+        "category": "lifestyle",
+        "importance": "medium",
+        "phrasePattern": "Residents often mention the sense of community..."
+      },
+      {
+        "factor": "Shopping and services",
+        "category": "amenities",
+        "importance": "medium",
+        "phrasePattern": "Local shops and services include..."
+      }
+    ],
+    "geoInternalLinkSuggestions": [],
+    "generatedAt": "2026-01-30T09:39:04.873Z"
+  },
+  "sources": [
+    {
+      "url": "https://jacobs-steel.co.uk/portslade/",
+      "title": "Estate Agents in Portslade",
+      "snippet": "We offer a wide range of services, including property sales, lettings, and property valuations. Our local expertise means we can help you find the best ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.sinnottgreen.co.uk/",
+      "title": "Sinnott Green | Estate Agents in Portslade, Brighton, Hove ...",
+      "snippet": "Sinnott Green, Estate Agents in Portslade, Brighton, Hove, East Sussex, Shoreham by Sea, Mile Oak.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.spencerandleigh.co.uk/branches/portslade",
+      "title": "Spencer & Leigh Estate and Letting Agent, Property ...",
+      "snippet": "Portslade. T: 01273 421777 (Sales) T: 01273 421777 (Lettings). 10 South Street Portslade Brighton BN41 2LE. Opening Hours: Sunday Closed; Monday - Friday 09:00 ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.sawyerandco.co.uk/contact-portslade/",
+      "title": "Letting Agents in Portslade",
+      "snippet": "Your Most Trusted Local Estate Agents and Letting Agents in Portslade. Book a valuation · General Enquiry · 4.84+/5 from 1245 reviews · Google Review logo.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://coxandcohomes.co.uk/",
+      "title": "Estate Agents in Hove, Brighton & Sussex | Cox & Co",
+      "snippet": "Cox & Co are trusted estate agents in Hove, helping you buy or sell in Brighton, Hove & Sussex. Expert advice, free valuation & great service. Call today!",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.tripadvisor.co.uk/Attractions-g20314053-Activities-Portslade_East_Sussex_England.html",
+      "title": "THE 5 BEST Things to Do in Portslade (2026)",
+      "snippet": "Things to Do in Portslade ; 1. Yupin Thai Massage. 5.0. (3). Spas ; 2. Jumpzone Brighton. Game & Entertainment Centres ; 3. Portslade Railway Station. 3.0. (1).",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://mindtrip.ai/location/portslade-east-sussex/portslade/lo-VAqpebMk",
+      "title": "Portslade in Portslade | What to Know Before You Go",
+      "snippet": "Portslade is divided into two main areas: Portslade Village, which retains a more traditional village feel with its historic buildings and local shops, and ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.brighton-hove.gov.uk/sites/default/files/migrated/article/inline/6608%20NAP%20S%20and%20N%20Portslade%20%20web%20map.pdf",
+      "title": "Portslade",
+      "snippet": "Community. Map. Hangleton. & Knoll. Wish. North. Portslade. Hangleton. & Knoll. North ... The ruins of Portslade Manor, north side of St Nicolas. To Aldrington.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.mybrightonandhove.org.uk/places/placestree/station-road-portslade/portslade",
+      "title": "Introducing Portslade | Station Road, ...",
+      "snippet": "Portslade is the district furthest west in the city conurbation. It lies along the West Sussex border at Southwick, and consists of a number of separate ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.travelodge.co.uk/uk/east-sussex/portslade/index.html",
+      "title": "Explore Portslade's history",
+      "snippet": "Portslade is an attractive coastal area to the east of Brighton and Hove filled with history. Visit the beautiful 16th century Portslade village situated ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.reddit.com/r/brighton/comments/ihhjkw/portslade_crew/",
+      "title": "Portslade Crew : r/brighton",
+      "snippet": "I live in Portslade near the old village and I really like it here. It's unpretentious and feels like a community. I can see why people who ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.mumsnet.com/talk/am_i_being_unreasonable/3856559-Tell-me-about-Portslade",
+      "title": "Tell me about Portslade!",
+      "snippet": "I found Portslade to be friendly and quiet. The children's centres and libraries have groups as do many churches. Being on the main bus route / ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://singletrackworld.com/forum/off-topic/anyone-live-in-portslade/",
+      "title": "Anyone live in Portslade? – Chat Forum",
+      "snippet": "If you go to Portslade Old Village there's some proper medieval houses. Good access to the Downs for walking/riding and access to the beach over the Shoreham ...",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.facebook.com/groups/475529386113274/?locale=en_GB",
+      "title": "Portslade Old Village",
+      "snippet": "This group is for our community in and around Portslade Old Village. Only local news and business promotions are to be shared here.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://nextdoor.co.uk/neighbourhood/portsladevillage--brighton-and-hove--england/",
+      "title": "Portslade Village, Brighton and Hove",
+      "snippet": "Portslade Village is a peaceful and family-friendly neighbourhood in Brighton and Hove, England. Known for its welcoming atmosphere.",
+      "type": "local",
+      "fetchedAt": "2026-01-30T09:39:04.872Z"
+    },
+    {
+      "url": "https://www.morgananddavies.co.uk/",
+      "title": "Morgan & Davies",
+      "snippet": "Established in 1989, Morgan & Davies is a leading estate agent in Mid & West Wales providing a comprehensive service to our customers.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://connells.co.uk/",
+      "title": "Connells: Estate Agents & Letting Agents | Houses For Sale",
+      "snippet": "155 Branches. Part of our nationwide network ; 1,000s OF PROPERTIES. For sale across our network ; Established in 1936. Experienced estate agents ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "http://www.jefferys.uk.com/",
+      "title": "Jefferys | Estate Agents in Liskeard, Lostwithiel and St Austell",
+      "snippet": "Jefferys are a long established and independent Estate Agent with properties for sale and to let in East, Mid and North Cornwall.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.purplebricks.co.uk/book-your-free-valuation",
+      "title": "Free House Valuation. Book Online",
+      "snippet": "Schedule an appointment with one of our Local Property Experts for a free valuation on your property. Book online in minutes with our easy to use platform.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.propertymark.co.uk/",
+      "title": "Propertymark: The professional body for the property sector",
+      "snippet": "Propertymark is the leading professional body for property agents. Whether you are starting out or have years of experience, our membership equips you to win ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.chaffersestateagents.co.uk/",
+      "title": "Chaffers Estate Agents: Home - Shaftesbury",
+      "snippet": "Buying, Selling, Renting Or Letting? We have you covered... · Draw Search · Register With Us · Free Valuations · Landlord Information · Local Agent · Happy Tenants.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.samuelwood.co.uk/",
+      "title": "Samuel Wood: Estate Agents | Valuers | Auctioneers ...",
+      "snippet": "Samuel Wood handles all types of residential and commercial property, throughout Shrewsbury and the Welsh Marches. We update our site on a daily basis, ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.watsons-property.co.uk/",
+      "title": "Watsons Property Group Limited | Established Property ...",
+      "snippet": "We provide professional valuations and surveys for both residential and commercial properties, hassle-free lettings services for both landlords and tenants.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.savills.co.uk/",
+      "title": "Savills UK | Estate Agents & Lettings UK & London ...",
+      "snippet": "Get specialist advice for residential, commercial or rural properties, grounded in our local, regional and international market knowledge.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.symondsandsampson.co.uk/",
+      "title": "Symonds & Sampson - Estate Agents, Auctioneers & ...",
+      "snippet": "Symonds & Sampson has been providing a comprehensive range of property advice to clients across Dorset, Devon, Somerset, Wiltshire, Hampshire and Cornwall ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.bestpropertyservices.com/",
+      "title": "Best Property Services: Estate Agent Dungannon, Newry ...",
+      "snippet": "With over 125 years' experience, Best Property Services offers clients unrivalled knowledge of the local property market. Discover More ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.which.co.uk/money/mortgages-and-property/home-movers/selling-a-house/how-to-find-the-best-estate-agent-agoSM1o7mzQb",
+      "title": "How to find the best estate agent - Which? - Which.co.uk",
+      "snippet": "Looking for an estate agent? Watch our video for expert tips on how to choose the best estate agent to sell your house quickly and for the ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://uk.trustpilot.com/categories/real_estate_agents",
+      "title": "Best companies in Estate Agents on Trustpilot",
+      "snippet": "Newest companies · Prestige Properties Cyprus · Sheppardandbear · Acen Properties Estate and Letting Agents in Bristol · Agree Your Fee · Ross & Sons Estate Agents.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.bests.co.uk/",
+      "title": "Bests Estate Agents Runcorn | Property Sales & Lettings ...",
+      "snippet": "Bests Estate Agents is a truly family run, local independent estate who specialises in residential sales and lettings, and also auction properties.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://bestestateagentguide.co.uk/",
+      "title": "Best Estate Agent Guide",
+      "snippet": "Search for the best estate agents near you. Whether sales or lettings, the Best Estate Agent Guide will let you find the best of the best in your area.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.rightmove.co.uk/estate-agents",
+      "title": "Find estate agents and letting agents in the UK",
+      "snippet": "If you're thinking of selling or renting out your property, make sure you choose an agent that can advertise your property on Rightmove.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://chrisgeorgetheestateagent.co.uk/",
+      "title": "Chris George The Estate Agent Kettering | The Most Sold Signs",
+      "snippet": "The leading estate agent in Kettering, Corby, Rothwell and Thrapston, providing the very best in cutting edge marketing, photography and personal service.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.unbiased.co.uk/discover/mortgages-property/buying-a-home/top-10-online-estate-agents-for-buying-and-selling-property",
+      "title": "Top 5 online estate agents for buying and selling property",
+      "snippet": "Here's a snapshot of some of the UK's leading online estate agents. Some have a flat fee payable upfront or the option to pay on completion, which may cost up ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.struttandparker.com/",
+      "title": "UK Estate Agents & Property Consultants | Strutt & Parker, part ...",
+      "snippet": "Property Search Specialists Strutt and Parker, Estate Agent Services for Residential Property, Farming, and Estate Management.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.zoopla.co.uk/find-agents/",
+      "title": "Find and compare local estate agents",
+      "snippet": "Find top estate and letting agents with Zoopla. Use our agent finder to compare fees, performance and reviews to find your perfect property partner today.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.whittakerandbiggs.co.uk/",
+      "title": "Whittaker & Biggs: Estate Agents in Staffordshire & Cheshire",
+      "snippet": "Established in 1930, we provide a professional friendly service throughout North Staffordshire & South Cheshire.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.starofservice.co.uk/real-estate-appraisal/near-me",
+      "title": "The best valuers near me - StarOfService",
+      "snippet": "This is a complete list of our best valuers, as rated by our StarOfService community. Would you like to know who made it to our top 100?",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.rics.org/find-a-member",
+      "title": "Find a Member",
+      "snippet": "Looking for firms that operate in your area? Connect with 40,000+ surveying firms globally to help manage with your surveying needs.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.david-james.com/",
+      "title": "David James Estate Agents - Free Valuation | David James",
+      "snippet": "At David James, we provide a complimentary, no-obligation property valuation. Our expert valuers will consider key factors like location, size, condition, and ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.ctf-uk.com/",
+      "title": "Welcome to Clee Tompkinson & Francis",
+      "snippet": "Clee Tompkinson & Francis are one of the leading independent firms of estate agents and chartered surveyors in Wales and the borders.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.purplebricks.co.uk/contact-us",
+      "title": "Contact us",
+      "snippet": "For sales, call 0800 810 8008 (Monday to Friday 9am – 6pm and Saturday 9am – 5pm). For lettings, call 0800 810 8419 (Monday to Friday 9am - 5:30pm).",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.reddit.com/r/HousingUK/comments/1nkxcve/massive_difference_between_surveyors_valuation/",
+      "title": "Massive difference between surveyor's valuation and ...",
+      "snippet": "However the big gap in surveyor vs estate agents valuations is causing a lot of arguments between family members who want to purchase the ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://wrsurveying.co.uk/rics-valuation-vs-estate-agent-valuation-whats-the-difference/",
+      "title": "RICS Valuation vs Estate Agent Valuation",
+      "snippet": "RICS valuation or estate agent valuation? Learn the difference, when each is used, and which option gives you an accurate property value.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://sava.co.uk/dont-estate-agents-surveyors-agree-value/",
+      "title": "Estate Agent Vs. Surveyor Valuations: Understanding ... - Sava",
+      "snippet": "Surveyor and estate agent valuations are often different - find out the reasons why, including the recognised definition of \"market value\".",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.niveksurveyors.com/post/red-book-valuation-vs-estate-agent-appraisal-unveiling-the-trust-factor-for-lenders-and-beyond",
+      "title": "Red Book Valuation vs Estate Agent Appraisal",
+      "snippet": "While a Red Book valuation may come at a higher cost compared to an estate agent's appraisal, the investment proves worthwhile in the long run.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.reallymoving.com/blog/march-2017/the-property-valuation-conundrum",
+      "title": "Navigating the Property Valuation Puzzle: Expert Insights",
+      "snippet": "While an estate agent valuation is for the benefit of the buyer and seller, a mortgage valuation is used to confirm to a lender how much a property is worth and ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.whozoo.co.uk/blog/the-difference-between-valuation-from-a-professional-valuer-and-a-commercial-estate-agent",
+      "title": "What is the difference between a valuation ...",
+      "snippet": "The valuation of a commercial property in the UK can be carried out by both professional valuers and commercial estate agents, each with distinct approaches ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://tppuk.com/sales/market-appraisal-vs-valuation/",
+      "title": "Market Appraisal vs Valuation in North Wales",
+      "snippet": "Estate agent valuations are often referred to as appraisals interchangeably. They are an informed estimate on the value of a home, based upon ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://divorce.wikivorce.com/advice/financial/property-and-mortgages/493838-fmh-valuation-surveyor-vs-estate-agent-difference",
+      "title": "FMH valuation- Surveyor vs estate agent difference",
+      "snippet": "The surveyor will tell you what the value of the property is whereas the estate agent will tell you the figure at which you should market the property.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.facebook.com/groups/ukbmv/posts/6307394175985814/",
+      "title": "Can someone specify the differences between an estate ...",
+      "snippet": "Estate agents use the open market value which is what they believe someone will pay for it on the open market. Valuers/surveyors for banks err ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.johndwood.co.uk/journal/market-appraisals-vs-valuations-what-are-the-differences/",
+      "title": "Market Appraisals vs Valuations, what are the differences?",
+      "snippet": "Firstly, an agent's valuation is not a valuation. It is a market appraisal, which is a recommendation of guide price or – rather – advice on how to market the ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.reddit.com/r/UKRealEstate/comments/1nkxbl0/massive_difference_between_surveyors_and_estate/",
+      "title": "Massive difference between surveyors' and estate agents ...",
+      "snippet": "The big difference is in the methodology, the RICS valuers are highly trained but have to work within fixed peramiters where the Estate Agents ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://compareestateagents.which.co.uk/",
+      "title": "Compare Estate Agents | Which.co.uk",
+      "snippet": "Compare Estate Agents · Save money. Agents compete to offer you the best fee · Save time. Instantly request valuation visits from agents you choose · No pushy ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://thepropertysellingcompany.co.uk/purplebricks-house-valuation-vs-estate-agent-who-to-pick/",
+      "title": "Purplebricks House Valuation VS Estate Agent Who To Pick?",
+      "snippet": "Most estate agent valuations are based on their personal judgement. Estate agents may have different perspectives on the home's features, condition and appeal, ...",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://ardenestates.co.uk/news/why-two-valuers-might-give-you-two-different-figures/",
+      "title": "Why Two Valuers Might Give You Two Different Figures",
+      "snippet": "Experience and Local Knowledge – Two agents may have different insights into recent sales or buyer demand in your street or neighbourhood. · Method Used –.",
+      "type": "serp",
+      "fetchedAt": "2026-01-30T09:39:04.802Z"
+    },
+    {
+      "url": "https://www.irs.gov/irm/part4/irm_04-048-006",
+      "title": "4.48.6 Real Property Valuation Guidelines | Internal Revenue Service",
+      "snippet": "Purpose: The purpose of this IRM is to provide guidelines applicable to all IRS personnel that are engaged in valuation practice (hereinafter",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T09:39:05.222Z"
+    },
+    {
+      "url": "https://www.aceableagent.com/blog/real-estate-agents-guide-appraisal-process/",
+      "title": "A Real Estate Agent's Guide to the Appraisal Process - AceableAgent",
+      "snippet": "As a real estate agent, you've probably heard about appraisals. Here's a guide for real estate agents about the appraisal process.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T09:39:05.222Z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=ld4BnYbpRck",
+      "title": "The Best Estate Agent Guide 2019 - The Criteria of the Judging",
+      "snippet": "Peter Knight is Estate Agency Royalty - the man who founded the Sunday Times Awards for Estate and Letting Agents (which has now evolved",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T09:39:05.222Z"
+    },
+    {
+      "url": "https://www.mckissock.com/blog/real-estate/running-real-estate-business/property-data-collection-everything-you-need-to-know/",
+      "title": "Master Real Estate Valuation Methods: Your Ultimate Guide",
+      "snippet": "Explore the key methods of real estate valuation, including Cost, Income, and Sales Comparison approaches. Learn about emerging trends and",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T09:39:05.222Z"
+    },
+    {
+      "url": "https://www.reallymoving.com/valuations/guides/what-is-a-property-valuation",
+      "title": "Understanding Property Valuations: A Comprehensive Guide",
+      "snippet": "Discover what's included in a property valuation, who carries it out, and why it's essential in the home buying process.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T09:39:05.222Z"
+    },
+    {
+      "url": "https://uk.practicallaw.thomsonreuters.com/4-382-9877?transitionType=Default&contextData=(sc.Default)",
+      "title": "Regulation of estate agents and entitlement to commission",
+      "snippet": "Estate agents are regulated under the Estate Agents Act 1979, which also sets out the duties owed to buyer and seller clients.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T09:39:05.222Z"
+    },
+    {
+      "url": "https://www.davidcosby.co.uk/regulation-of-estate-agents/",
+      "title": "Regulation of Estate Agents",
+      "snippet": "Regulation of Estate Agents | Establishing minimum standards and qualifications to ensure transparency, integrity, and consumer protection.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T09:39:05.222Z"
+    },
+    {
+      "url": "https://commonslibrary.parliament.uk/research-briefings/sn06900/",
+      "title": "Regulation of estate agents - The House of Commons Library",
+      "snippet": "This briefing provides an outline of the current regulation of estate agents. It also looks at past market studies and consultations.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T09:39:05.222Z"
+    },
+    {
+      "url": "https://www.legislation.gov.uk/ukpga/1979/38",
+      "title": "Estate Agents Act 1979 - Legislation.gov.uk",
+      "snippet": "An Act to make provision with respect to the carrying on of and to persons who carry on, certain activities in connection with the disposal and acquisition",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T09:39:05.222Z"
+    },
+    {
+      "url": "https://hoa.org.uk/advice/guides-for-homeowners/i-am-buying/estate-agents-legal-obligations-to-buyers/",
+      "title": "Estate Agents Legal Obligations To Buyers - HomeOwners Alliance",
+      "snippet": "1. Estate agents must accurately describe the property · 2. Estate agents must not withhold important information · 3. Estate agents must pass on offers to the",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T09:39:05.222Z"
+    },
+    {
+      "url": "https://www.yellowpages.com/mountain-view-ca/real-estate-appraisers",
+      "title": "Best 30 Real Estate Appraisers in Mountain View, CA - Yellow Pages",
+      "snippet": "Real estate appraisers in Mountain View, CA · 1.Hennig & Co. 1770 Fordham Way · 2.Phares Fredric C Co. · 3.Western Business Valuation Services",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T09:39:05.222Z"
+    },
+    {
+      "url": "https://therealexperts.com/",
+      "title": "Real Estate Experts",
+      "snippet": "We are EXPERTS in helping you create a better life through real estate. 3100+ Clients Served, 1200+ 5 Star Reviews, $4 Billion Real Estate Sold to Date.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T09:39:05.222Z"
+    },
+    {
+      "url": "https://www.realtor.com/realestateagents/mountain-view_ca",
+      "title": "Find Realtors & Real Estate Agents in Mountain View, CA",
+      "snippet": "Find Realtors® & Real Estate agents in Mountain View, CA that can help you with your real estate needs.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T09:39:05.222Z"
+    },
+    {
+      "url": "https://www.angi.com/companylist/us/ca/mountain-view/property-appraiser.htm",
+      "title": "Top 10 Best Property appraisers in Mountain View, CA | Angi",
+      "snippet": "Free onsite estimate. Fleener Services is a real estate appraisal firm servicing lenders, real estate agents, lawyers, accountants, and the general public.",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T09:39:05.222Z"
+    },
+    {
+      "url": "https://www.yelp.com/search?find_desc=Real+Estate+Appraiser&find_loc=Mountain+View%2C+CA",
+      "title": "TOP 10 BEST Real Estate Appraiser in Mountain View, CA - Yelp",
+      "snippet": "Top 10 Best Real Estate Appraiser Near Mountain View, California ; Rich Appraisal Services · (7 reviews) · 1.7 mi ; Appraisals Only, Residential Real Estate",
+      "type": "tavily",
+      "fetchedAt": "2026-01-30T09:39:05.222Z"
+    }
+  ],
+  "cache": {
+    "cacheKey": "pack_research_vb7n1m_estate-agents-&-valuers_estate-agents-&-valuers_po",
+    "cachedAt": "2026-01-30T09:39:05.225Z",
+    "expiresAt": "2026-02-06T09:39:05.225Z",
+    "fromCache": false
+  },
+  "request": {
+    "businessName": "Estate Agent",
+    "focusKeyword": "Estate Agents & Valuers",
+    "service": "Estate Agents & Valuers",
+    "geoPrimary": "Portslade",
+    "intent": "TRUST",
+    "pageRole": "trust"
+  }
+}
